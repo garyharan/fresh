@@ -1,6 +1,10 @@
-<div class="text-slate-200">
+<div class="">
   <h1 class="home_header">Fresh dating</h1>
   <p class="text-inherit">
     We show you the people you'd most likely be compatible with. No expensive paywalls. No lies. No carrot dangling in front of you.
   </p>
+</div>
+<div class="text-slate-200 m-4 flex">
+  <%= button_to "Sign Up", new_user_registration_path, method: :get, class: "px-3 py-1 text-sm bg-slate-200 dark:bg-slate-700 text-cyan-800 dark:text-white border border-cyan-300 dark:border-slate-600 hover:border-indigo-300 dark:hover:border-slate-400 rounded-full shadow-sm" %>
+  <%= button_to "Sign In", new_user_session_path, method: :get, class: "ml-3 px-3 py-1 text-sm bg-slate-200 dark:bg-slate-700 text-cyan-800 dark:text-white border border-cyan-300 dark:border-slate-600 hover:border-indigo-300 dark:hover:border-slate-400 rounded-full shadow-sm" %>
 </div>
