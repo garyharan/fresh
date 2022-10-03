@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Refresh</title>
+    <title>Fresh - Honest dating</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,8 +11,11 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body class="bg-teal-500">
     <main class="container mx-auto mt-28 px-5 flex">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+
       <%= yield %>
     </main>
   </body>

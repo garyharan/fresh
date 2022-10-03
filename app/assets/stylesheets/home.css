@@ -1,0 +1,19 @@
+
+.home_header {
+  color: #CFEFEF;
+  font-family: Arial;
+  font-size: calc(4em);
+  font-weight: 900;
+  text-shadow:
+  -0.0075em 0.0075em 0 #f0f7f7,
+  0.005em 0.005em 0 #99cccc,
+  0.01em 0.01em 0 #9ecfcf,
+  0.015em 0.015em #a3d1d1,
+  0.02em 0.02em 0 #a8d4d4,
+  0.025em 0.025em 0 #add6d6,
+  0.03em 0.03em 0 #b3d9d9,
+  0.035em 0.035em 0 #b8dbdb,
+  0.040em 0.040em 0 #b8dbdb,
+  0.045em 0.045em 0 #b8dbdb
+}
+
