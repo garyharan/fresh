@@ -41,13 +41,9 @@ Rails.application.configure do
     port: 3000
   }
 
-  config.action_mailer.deliver_method = :letter_opener
+  config.action_mailer.delivery_method = :letter_opener
   config.action_mailer.perform_deliveries = true
-
-  # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = true
-
-  config.action_mailer.perform_caching = false
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log

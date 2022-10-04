@@ -1,30 +1,34 @@
 
-<div class="text-sm my-5">
+<div class="text-xs my-5">
 <%- if controller_name != 'sessions' %>
   <p>
-    Already have an account? <%= link_to "Log in", new_session_path(resource_name), class: "px-3 py-1 my-2 text-sm bg-slate-200 dark:bg-slate-700 text-cyan-800 dark:text-white border border-cyan-300 dark:border-slate-600 hover:border-indigo-300 dark:hover:border-slate-400 rounded-full shadow-sm" %><br />
+    Already have an account? <%= link_to "Log in", new_session_path(resource_name), class: "" %><br />
   </p>
 <% end %>
-
+<br/>
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <%= button_to "Sign up", new_registration_path(resource_name), class: "px-3 py-1 my-2 text-sm bg-slate-200 dark:bg-slate-700 text-cyan-800 dark:text-white border border-cyan-300 dark:border-slate-600 hover:border-indigo-300 dark:hover:border-slate-400 rounded-full shadow-sm" %><br />
+  <%= link_to "Sign up", new_registration_path(resource_name), class: "" %><br />
 <% end %>
+<br/>
 
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-  <%= button_to "Forgot your password?", new_password_path(resource_name, class: "px-3 py-1 my-2 text-sm bg-slate-200 dark:bg-slate-700 text-cyan-800 dark:text-white border border-cyan-300 dark:border-slate-600 hover:border-indigo-300 dark:hover:border-slate-400 rounded-full shadow-sm") %>
+  <%= link_to "Forgot your password?", new_password_path(resource_name, class: "") %>
 <% end %>
+<br/>
 
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
-  <%= button_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name), class: "px-3 py-1 my-2 text-sm bg-slate-200 dark:bg-slate-700 text-cyan-800 dark:text-white border border-cyan-300 dark:border-slate-600 hover:border-indigo-300 dark:hover:border-slate-400 rounded-full shadow-sm text-sm" %><br />
+  <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name), class: "" %><br />
 <% end %>
+<br/>
 
 <%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
-  <%= button_to "Didn't receive unlock instructions?", new_unlock_path(resource_name), class: "px-3 py-1 my-3 text-sm bg-slate-200 dark:bg-slate-700 text-cyan-800 dark:text-white border border-cyan-300 dark:border-slate-600 hover:border-indigo-300 dark:hover:border-slate-400 rounded-full shadow-sm text-sm" %><br />
+  <%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name), class: "" %><br />
 <% end %>
+<br/>
 
 <%- if devise_mapping.omniauthable? %>
   <%- resource_class.omniauth_providers.each do |provider| %>
-    <%= button_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), method: :post, class: "px-3 py-1 my-2 text-sm bg-slate-200 dark:bg-slate-700 text-cyan-800 dark:text-white border border-cyan-300 dark:border-slate-600 hover:border-indigo-300 dark:hover:border-slate-400 rounded-full shadow-sm" %><br />
+    <%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), method: :post, class: "" %><br />
   <% end %>
 <% end %>
 </div>
