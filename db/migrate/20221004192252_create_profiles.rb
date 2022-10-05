@@ -3,7 +3,7 @@ class CreateProfiles < ActiveRecord::Migration[7.0]
     create_table :profiles do |t|
       t.references :user, null: false, foreign_key: true
       t.text :body
-      t.datetime :born
+      t.date :born
 
       t.timestamps
     end

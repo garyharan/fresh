@@ -14,7 +14,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_04_192252) do
   create_table "profiles", force: :cascade do |t|
     t.integer "user_id", null: false
     t.text "body"
-    t.datetime "born"
+    t.date "born"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_profiles_on_user_id"
