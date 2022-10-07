@@ -1,5 +1,7 @@
 class ProfilesController < ApplicationController
   before_action :authenticate_user!
+
+  before_action :new_profile, only: :new
   before_action :set_profile, only: %i[edit update destroy]
 
   # GET /profiles or /profiles.json
@@ -14,7 +16,6 @@ class ProfilesController < ApplicationController
 
   # GET /profiles/new
   def new
-    @profile = Profile.new
   end
 
   # GET /profiles/1/edit
@@ -64,6 +65,11 @@ class ProfilesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_profile
       @profile = current_user.profile
+    end
+
+    def new_profile
+      username = current_user.email.split("@")[0]
+      @profile = Profile.new display_name: username
     end
 
     # Only allow a list of trusted parameters through.

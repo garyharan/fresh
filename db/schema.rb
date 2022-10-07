@@ -13,6 +13,7 @@
 ActiveRecord::Schema[7.0].define(version: 2022_10_04_192252) do
   create_table "profiles", force: :cascade do |t|
     t.integer "user_id", null: false
+    t.string "display_name"
     t.text "body"
     t.date "born"
     t.datetime "created_at", null: false

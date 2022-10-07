@@ -12,13 +12,18 @@
   <% end %>
 
   <div class="my-5">
+    <%= form.label :display_name %>
+    <%= form.text_field :display_name, class: "block shadow rounded-md border text-slate-800 border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
     <%= form.label :body %>
-    <%= form.text_area :body, rows: 4, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.text_area :body, rows: 4, class: "block shadow rounded-md border text-slate-800 border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="my-5">
     <%= form.label :born %>
-    <%= form.date_field :born, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.date_field :born, class: "block shadow rounded-md border text-slate-800 border-gray-200 outline-none px-3 py-2 mt-2 w-full text-slate-800" %>
   </div>
 
   <div class="inline">

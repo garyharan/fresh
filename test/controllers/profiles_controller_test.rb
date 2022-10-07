@@ -52,7 +52,7 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
 
   test "should destroy profile" do
     sign_in users(:gathino)
-    
+
     assert_difference("Profile.count", -1) do
       delete profile_url(@profile)
     end

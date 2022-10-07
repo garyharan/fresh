@@ -13,8 +13,7 @@
 
   <body class="bg-teal-500 text-slate-200">
     <main class="container mx-auto mt-28 px-5">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+      <%= render "shared/flashes" %>
 
       <%= yield %>
     </main>
