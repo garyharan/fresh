@@ -43,7 +43,7 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to profile_url(Profile.last)
   end
 
-  test "should have images attached to profile" do
+  test "should have an image attached to profile" do
     sign_in users(:gathino)
 
     image = fixture_file_upload("rick.jpg", "image/jpeg")
@@ -58,6 +58,26 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to profile_url(Profile.last)
     assert Profile.last.images.attached?
+  end
+
+  test "should allow for multiple images attached to profile" do
+    sign_in users(:gathino)
+
+    image =
+      post profiles_url,
+           params: {
+             profile: {
+               body: "I love turtles",
+               born: 18.years.ago,
+               images: [
+                 fixture_file_upload("rick.jpg", "image/jpeg"),
+                 fixture_file_upload("rick_in_dallas.jpg", "image/jpeg")
+               ]
+             }
+           }
+
+    assert_redirected_to profile_url(Profile.last)
+    assert_equal 2, Profile.last.images.count
   end
 
   test "should show profile" do

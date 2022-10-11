@@ -88,8 +88,7 @@ class ProfilesController < ApplicationController
     @profile.user_id = current_user.id
 
     images = params.dig(:profile, :images) || []
-
-    @profile.save! && images.all? { |image| @profile.images.attach(image) }
+    @profile.save! && @profile.images.attach(images)
   end
 
   # Only allow a list of trusted parameters through.
