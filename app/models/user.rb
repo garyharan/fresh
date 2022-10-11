@@ -3,5 +3,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :trackable, :confirmable, :lockable
 
-  has_one :profile
+  has_one :profile, dependent: :destroy
 end
