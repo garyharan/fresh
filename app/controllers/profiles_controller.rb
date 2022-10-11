@@ -6,6 +6,7 @@ class ProfilesController < ApplicationController
 
   # GET /profiles or /profiles.json
   def index
+    redirect_to new_profile_url if current_user.profile.blank?
     @profiles = Profile.all
   end
 
@@ -24,16 +25,18 @@ class ProfilesController < ApplicationController
 
   # POST /profiles or /profiles.json
   def create
-    @profile = Profile.new(profile_params)
-    @profile.user_id = current_user.id
-
     respond_to do |format|
-      if @profile.save
-        format.html { redirect_to profile_url(@profile), notice: "Profile was successfully created." }
+      if create_profile!
+        format.html do
+          redirect_to profile_url(@profile),
+                      notice: "Profile was successfully created."
+        end
         format.json { render :show, status: :created, location: @profile }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @profile.errors, status: :unprocessable_entity }
+        format.json do
+          render json: @profile.errors, status: :unprocessable_entity
+        end
       end
     end
   end
@@ -42,11 +45,16 @@ class ProfilesController < ApplicationController
   def update
     respond_to do |format|
       if @profile.update(profile_params)
-        format.html { redirect_to profile_url(@profile), notice: "Profile was successfully updated." }
+        format.html do
+          redirect_to profile_url(@profile),
+                      notice: "Profile was successfully updated."
+        end
         format.json { render :show, status: :ok, location: @profile }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @profile.errors, status: :unprocessable_entity }
+        format.json do
+          render json: @profile.errors, status: :unprocessable_entity
+        end
       end
     end
   end
@@ -56,24 +64,36 @@ class ProfilesController < ApplicationController
     @profile.destroy
 
     respond_to do |format|
-      format.html { redirect_to profiles_url, notice: "Profile was successfully destroyed." }
+      format.html do
+        redirect_to profiles_url, notice: "Profile was successfully destroyed."
+      end
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_profile
-      @profile = current_user.profile
-    end
 
-    def new_profile
-      username = current_user.email.split("@")[0]
-      @profile = Profile.new display_name: username
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_profile
+    @profile = current_user.profile
+  end
 
-    # Only allow a list of trusted parameters through.
-    def profile_params
-      params.require(:profile).permit(:body, :born)
-    end
+  def new_profile
+    username = current_user.email.split("@")[0]
+    @profile = Profile.new display_name: username
+  end
+
+  def create_profile!
+    @profile = Profile.new(profile_params)
+    @profile.user_id = current_user.id
+
+    images = params.dig(:profile, :images) || []
+
+    @profile.save! && images.all? { |image| @profile.images.attach(image) }
+  end
+
+  # Only allow a list of trusted parameters through.
+  def profile_params
+    params.require(:profile).permit(:body, :born)
+  end
 end

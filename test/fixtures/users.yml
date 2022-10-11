@@ -4,6 +4,10 @@ gathino:
   email: gathino@gmail.com
   confirmed_at: 2022-10-04 22:22:28.355003
 
-velvet: 
+velvet:
   email: velvet@gmail.com
+  confirmed_at: 2022-10-04 22:22:28.355003
+
+no_profile_yet:
+  email: no_profile_yet@gmail.com
   confirmed_at: 2022-10-04 22:22:28.355003
