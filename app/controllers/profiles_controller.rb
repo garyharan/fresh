@@ -44,7 +44,7 @@ class ProfilesController < ApplicationController
   # PATCH/PUT /profiles/1 or /profiles/1.json
   def update
     respond_to do |format|
-      if @profile.update(profile_params)
+      if update_profile!
         format.html do
           redirect_to profile_url(@profile),
                       notice: "Profile was successfully updated."
@@ -89,6 +89,13 @@ class ProfilesController < ApplicationController
 
     images = params.dig(:profile, :images) || []
     @profile.save! && @profile.images.attach(images)
+  end
+
+  def update_profile!
+    @profile = current_user.profile
+
+    images = params.dig(:profile, :images) || []
+    @profile.update(profile_params) && @profile.images.attach(images)
   end
 
   # Only allow a list of trusted parameters through.

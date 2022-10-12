@@ -112,6 +112,8 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
+    jsbundling-rails (1.0.3)
+      railties (>= 6.0.0)
     language_server-protocol (3.17.0.1)
     launchy (2.5.0)
       addressable (~> 2.7)
@@ -249,6 +251,7 @@ DEPENDENCIES
   image_processing (~> 1.2)
   importmap-rails
   jbuilder
+  jsbundling-rails (~> 1.0)
   letter_opener
   puma (~> 5.0)
   rails (~> 7.0.4)

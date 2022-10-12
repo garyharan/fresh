@@ -1,6 +1,14 @@
 <div id="<%= dom_id profile %>">
+  <h1><%= profile.display_name %></h1>
+
   <p class="my-5">
     <%= profile.body %>
+  </p>
+
+  <p class="my-5">
+    <% profile.images.each do |image| %>
+      <%= image_tag image.variant(:thumb) %>
+    <% end %>
   </p>
 
   <p class="my-5">

@@ -34,12 +34,16 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
       post profiles_url,
            params: {
              profile: {
+               display_name: "Kitty",
                body: "I love turtles",
                born: 18.years.ago
              }
            }
     end
 
+    assert "Kitty", Profile.last.display_name
+    assert "I love turtles", Profile.last.body
+    assert 18.years.ago, Profile.last.born
     assert_redirected_to profile_url(Profile.last)
   end
 
@@ -63,18 +67,17 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
   test "should allow for multiple images attached to profile" do
     sign_in users(:gathino)
 
-    image =
-      post profiles_url,
-           params: {
-             profile: {
-               body: "I love turtles",
-               born: 18.years.ago,
-               images: [
-                 fixture_file_upload("rick.jpg", "image/jpeg"),
-                 fixture_file_upload("rick_in_dallas.jpg", "image/jpeg")
-               ]
-             }
+    post profiles_url,
+         params: {
+           profile: {
+             body: "I love turtles",
+             born: 18.years.ago,
+             images: [
+               fixture_file_upload("rick.jpg", "image/jpeg"),
+               fixture_file_upload("rick_in_dallas.jpg", "image/jpeg")
+             ]
            }
+         }
 
     assert_redirected_to profile_url(Profile.last)
     assert_equal 2, Profile.last.images.count
@@ -102,6 +105,25 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
             }
           }
     assert_redirected_to profile_url(@profile)
+  end
+
+  test "should save images with update" do
+    sign_in users(:gathino)
+
+    patch profile_url(users(:gathino).profile),
+          params: {
+            profile: {
+              body: "I love turtles",
+              born: 18.years.ago,
+              images: [
+                fixture_file_upload("rick.jpg", "image/jpeg"),
+                fixture_file_upload("rick_in_dallas.jpg", "image/jpeg")
+              ]
+            }
+          }
+
+    assert_redirected_to profile_url(Profile.last)
+    assert_equal 2, Profile.last.images.count
   end
 
   test "should destroy profile" do
