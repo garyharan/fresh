@@ -30,20 +30,22 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
   test "should create profile" do
     sign_in users(:gathino)
 
+    born = 18.years.ago.to_date
+
     assert_difference("Profile.count") do
       post profiles_url,
            params: {
              profile: {
                display_name: "Kitty",
                body: "I love turtles",
-               born: 18.years.ago
+               born: born
              }
            }
     end
 
-    assert "Kitty", Profile.last.display_name
-    assert "I love turtles", Profile.last.body
-    assert 18.years.ago, Profile.last.born
+    assert_equal "Kitty", Profile.last.display_name
+    assert_equal "I love turtles", Profile.last.body
+    assert_equal born, Profile.last.born
     assert_redirected_to profile_url(Profile.last)
   end
 

@@ -100,6 +100,6 @@ class ProfilesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def profile_params
-    params.require(:profile).permit(:body, :born)
+    params.require(:profile).permit(:display_name, :body, :born)
   end
 end
