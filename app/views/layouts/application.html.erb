@@ -13,7 +13,9 @@
 
   <body class="bg-teal-500 text-slate-200">
     <main class="container mx-auto mt-28 px-5">
-      <%= render "shared/flashes" %>
+      <div class="mx-auto md:w-2/3 w-full flex">
+        <%= render "shared/flashes" %>
+      </div>
 
       <%= yield %>
     </main>
