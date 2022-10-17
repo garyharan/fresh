@@ -11,8 +11,13 @@ class ApplicationHelperTest < ActionView::TestCase
     assert_equal "velvet@gmail.com", display_name(user)
   end
 
-  test "should have gender choices" do
+  test "#gender_choice should show default choices" do
     assert_equal ["Woman", "Man", "Non-Binary and/or Two Spirit Person"],
                  gender_choices
+  end
+
+  test "#age should show appropriate age" do
+    assert_equal 17, age(17.years.ago)
+    assert_equal 18, age(18.years.ago)
   end
 end
