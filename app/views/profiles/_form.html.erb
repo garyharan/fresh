@@ -17,13 +17,18 @@
   </div>
 
   <div class="my-5">
+    <%= form.label :images, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" %>
+    <%= form.file_field :images, class: "block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400", multiple: true %>
+  </div>
+
+  <div class="my-5">
     <%= form.label :body %>
     <%= form.text_area :body, rows: 4, class: "block shadow rounded-md border text-slate-800 border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="my-5">
-    <%= form.label :images, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" %>
-    <%= form.file_field :images, class: "block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400", multiple: true %>
+    <%= form.label :gender %> <br/>
+    <%= form.select(:gender, Profile::POSSIBLE_GENDERS) %>
   </div>
 
   <div class="my-5">

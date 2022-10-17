@@ -38,6 +38,7 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
              profile: {
                display_name: "Kitty",
                body: "I love turtles",
+               gender: "Man",
                born: born
              }
            }
@@ -45,6 +46,7 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
 
     assert_equal "Kitty", Profile.last.display_name
     assert_equal "I love turtles", Profile.last.body
+    assert_equal "Man", Profile.last.gender
     assert_equal born, Profile.last.born
     assert_redirected_to profile_url(Profile.last)
   end

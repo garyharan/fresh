@@ -9,7 +9,7 @@ class Profile < ApplicationRecord
   POSSIBLE_GENDERS = [
     "Woman",
     "Man",
-    "Non-Binary and/or Two Spirit Person",
-    "Let me be more specific"
+    "Non-Binary and/or Two Spirit Person"
+    # "Let me be more specific"
   ]
 end
