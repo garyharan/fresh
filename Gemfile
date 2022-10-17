@@ -1,5 +1,5 @@
-source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+source "https://rubygems.org"
 
 ruby "3.1.2"
 
@@ -22,9 +22,10 @@ gem "importmap-rails"
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails"
-
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
+
+gem "tailwindcss-rails", "~> 2.0"
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
@@ -39,7 +40,7 @@ gem "redis", "~> 4.0"
 # gem "bcrypt", "~> 3.1.7"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
+gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
@@ -52,7 +53,7 @@ gem "image_processing", "~> 1.2"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem "debug", platforms: %i[mri mingw x64_mingw]
 end
 
 group :development do
@@ -62,11 +63,6 @@ group :development do
   # Open emails in browser in dev mode
   gem "letter_opener"
 
-  # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
-  # gem "rack-mini-profiler"
-
-  # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
-  # gem "spring"
   gem "ruby-lsp", "~> 0.3.3"
 end
 
@@ -76,8 +72,5 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
-
-gem "tailwindcss-rails", "~> 2.0"
-
 
 gem "jsbundling-rails", "~> 1.0"
