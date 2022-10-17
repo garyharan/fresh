@@ -95,11 +95,24 @@ class ProfilesController < ApplicationController
     @profile = current_user.profile
 
     images = params.dig(:profile, :images) || []
+
     @profile.update(profile_params) && @profile.images.attach(images)
   end
 
-  # Only allow a list of trusted parameters through.
   def profile_params
-    params.require(:profile).permit(:display_name, :body, :gender, :born)
+    p =
+      params.require(:profile).permit(
+        :display_name,
+        :body,
+        :gender,
+        :specified_gender,
+        :born
+      )
+
+    p[:gender] = p[:specified_gender] unless Profile::POSSIBLE_GENDERS.include?(
+      p[:gender]
+    )
+    p.delete(:specified_gender)
+    p
   end
 end

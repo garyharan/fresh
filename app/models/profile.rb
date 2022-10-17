@@ -10,6 +10,6 @@ class Profile < ApplicationRecord
     "Woman",
     "Man",
     "Non-Binary and/or Two Spirit Person"
-    # "Let me be more specific"
+    # "Let me be more specific" Do not add or you risk breaking ProfileController#profile_params
   ]
 end

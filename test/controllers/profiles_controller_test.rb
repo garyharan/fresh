@@ -51,6 +51,23 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to profile_url(Profile.last)
   end
 
+  test "should allow user to specify gender" do
+    sign_in users(:gathino)
+
+    post profiles_url,
+         params: {
+           profile: {
+             display_name: "Kitty",
+             body: "I love turtles",
+             gender: "Let me be more specific",
+             specified_gender: "Agender",
+             born: 19.years.ago
+           }
+         }
+
+    assert_equal "Agender", Profile.last.gender
+  end
+
   test "should have an image attached to profile" do
     sign_in users(:gathino)
 

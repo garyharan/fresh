@@ -12,12 +12,7 @@ class ApplicationHelperTest < ActionView::TestCase
   end
 
   test "should have gender choices" do
-    assert_equal [
-                   "Woman",
-                   "Man",
-                   "Non-Binary and/or Two Spirit Person",
-                   "Let me be more specific"
-                 ],
+    assert_equal ["Woman", "Man", "Non-Binary and/or Two Spirit Person"],
                  gender_choices
   end
 end
