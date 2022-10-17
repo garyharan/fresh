@@ -5,17 +5,17 @@ export default class extends Controller {
   static targets = ['gender', 'extras']
 
   connect() {
-    var specific = document.createElement("option")
-    specific.text = this.letMeBeMoreSpecific()
-    this.genderTarget.options.add(specific)
+    this.setupSpecifiedGenderLogic()
   }
 
   chooseGender() {
-    if (this.genderTarget.value == this.letMeBeMoreSpecific()) {
-      this.extrasTarget.style.display = "block"
-    } else {
-      this.extrasTarget.style.display = "none"
-    }
+    this.extrasTarget.style.display = (this.genderTarget.value == this.letMeBeMoreSpecific()) ? "block" :  "none"
+  }
+
+  setupSpecifiedGenderLogic() {
+    var specific = document.createElement("option")
+    specific.text = this.letMeBeMoreSpecific()
+    this.genderTarget.options.add(specific)
   }
 
   letMeBeMoreSpecific() {
