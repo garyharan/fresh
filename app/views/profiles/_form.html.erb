@@ -1,4 +1,4 @@
-<%= form_with(model: profile, class: "contents w-full") do |form| %>
+<%= form_with(model: profile, class: "contents w-full", data: { controller: "profile_form" }) do |form| %>
   <% if profile.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
       <h2><%= pluralize(profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
@@ -28,7 +28,11 @@
 
   <div class="my-5">
     <%= form.label :gender %> <br/>
-    <%= form.select(:gender, Profile::POSSIBLE_GENDERS) %>
+    <%= form.select(:gender, Profile::POSSIBLE_GENDERS, {}, { "data-profile_form-target": "gender", "data-action": "profile_form#chooseGender" }) %>
+    <div id="more_specific" data-profile_form-target="extras" style="display: none;">
+      <%= form.text_field(:specified_gender, placeholder: "", class: "block shadow rounded-md border text-slate-800 border-gray-200 outline-none px-3 py-2 mt-2 w-full") %>
+      <p class="text-xs">We're not sure we have all the options we should have in here.  Adding your own lets you express yourself and offers us a chance to educate ourselves.</p>
+    </div>
   </div>
 
   <div class="my-5">
