@@ -1,10 +1,10 @@
-<nav class="w-full bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900">
+<nav class="w-full bg-white border-gray-300 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900">
   <div class="container flex flex-wrap justify-between mx-auto">
-    <div class="flex-none">
+    <div class="flex-none my-4">
       <h2 class="text-slate-700"><%= link_to "❤️ Fresh Dating", root_path %></h2>
     </div>
 
-    <div class="">
+    <div class="mx-4 my-4">
         <button type="button" class="order-last mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
             <span class="sr-only">Open user menu</span>
             <%= image_tag avatar_image_url(current_user), class: "w-8 h-8 rounded-full ml-auto", alt: "user photo" %>
@@ -16,7 +16,7 @@
             </div>
             <ul class="py-1" aria-labelledby="user-menu-button">
                 <li>
-                    <%= link_to "My Profile", profiles_path(current_user.profile), class: "block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white" %>
+                    <%= link_to "My Profile", current_user.profile, class: "block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white", data: { turbo: "false" } %>
                 </li>
                 <li>
                     <%= link_to("Sign out", destroy_user_session_path, data: { turbo_method: :delete }, class: "block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white") %>
