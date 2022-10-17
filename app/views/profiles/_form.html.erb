@@ -1,17 +1,17 @@
-<%= form_with(model: profile, class: "contents") do |form| %>
+<%= form_with(model: profile, class: "contents w-full") do |form| %>
   <% if profile.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
       <h2><%= pluralize(profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
 
       <ul>
-        <% profile.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
+        <% profile.errors.each do |error| %>
       </ul>
     </div>
   <% end %>
 
-  <div class="my-5">
+  <div class="my-5 w-full">
     <%= form.label :display_name %>
     <%= form.text_field :display_name, class: "block shadow rounded-md border text-slate-800 border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
@@ -43,7 +43,12 @@
     <%= form.date_field :born, class: "block shadow rounded-md border text-slate-800 border-gray-200 outline-none px-3 py-2 mt-2 w-full text-slate-800" %>
   </div>
 
-  <div class="inline">
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+  <div class="flex justify-between h-48">
+    <div class="w-32 h-32 py-5 px-5">
+      <%= link_to 'Cancel', :back %>
+    </div>
+    <div>
+      <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+    </div>
   </div>
 <% end %>
