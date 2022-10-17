@@ -10,4 +10,14 @@ class ApplicationHelperTest < ActionView::TestCase
     user = users(:velvet)
     assert_equal "velvet@gmail.com", display_name(user)
   end
+
+  test "should have gender choices" do
+    assert_equal [
+                   "Woman",
+                   "Man",
+                   "Non-Binary and/or Two Spirit Person",
+                   "Let me be more specific"
+                 ],
+                 gender_choices
+  end
 end

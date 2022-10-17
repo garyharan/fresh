@@ -10,4 +10,8 @@ module ApplicationHelper
   def avatar_image_url(user)
     user.profile.images.first if user.profile && user.profile.images.any?
   end
+
+  def gender_choices
+    Profile::POSSIBLE_GENDERS
+  end
 end
