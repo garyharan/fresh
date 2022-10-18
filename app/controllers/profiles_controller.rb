@@ -106,7 +106,9 @@ class ProfilesController < ApplicationController
         :body,
         :gender,
         :specified_gender,
-        :born
+        :born,
+        :lat,
+        :lon
       )
 
     p[:gender] = p[:specified_gender] unless Profile::POSSIBLE_GENDERS.include?(

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_17_155038) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_18_134217) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -47,6 +47,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_17_155038) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "gender"
+    t.float "lat"
+    t.float "lon"
+    t.string "county"
+    t.string "city"
+    t.string "country_code"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 

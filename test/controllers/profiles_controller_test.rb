@@ -39,7 +39,9 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
                display_name: "Kitty",
                body: "I love turtles",
                gender: "Man",
-               born: born
+               born: born,
+               lat: 45.49847190802318,
+               lon: -73.43272587208975
              }
            }
     end
@@ -48,6 +50,8 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
     assert_equal "I love turtles", Profile.last.body
     assert_equal "Man", Profile.last.gender
     assert_equal born, Profile.last.born
+    assert_equal 45.49847190802318, Profile.last.lat
+    assert_equal -73.43272587208975, Profile.last.lon
     assert_redirected_to profile_url(Profile.last)
   end
 
