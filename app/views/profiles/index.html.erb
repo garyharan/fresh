@@ -7,12 +7,12 @@
   <% end %>
 
   <section id="profiles" class="bg-white dark:bg-gray-900">
-    <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-6">
+    <div class="grid grid-cols-3">
       <% @profiles.each do |profile| %>
-        <div class="grid gap-8 lg:gap-16 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        <div class="gap-4 lg:gap-16 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           <div class="text-center text-gray-500 dark:text-gray-400 mb-6">
-            <%= link_to image_tag(profile.images.first.variant(:thumb), class: "mx-auto w-20 h-20 rounded-full", alt: profile.display_name), profile %>
-              <h3 class="mb-1 text-lg font-bold tracking-tight text-gray-900 dark:text-white">
+            <%= link_to image_tag(profile.images.first, class: "mx-auto w-20 h-20 rounded-full", alt: profile.display_name), profile %>
+              <h3 class="mb-1 font-bold tracking-tight text-gray-900 dark:text-white">
                 <%= link_to profile.display_name, profile %>
               </h3>
               <p class="text-sm">

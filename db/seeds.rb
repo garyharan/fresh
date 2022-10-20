@@ -5,3 +5,25 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+if Rails.env.development?
+  (0..10).each do |number|
+    u =
+      User.create! email: Faker::Internet.email,
+                   password: "asd0fadsfh",
+                   confirmation_token: Devise.friendly_token
+
+    p =
+      Profile.create! user_id: u.id,
+                      display_name: Faker::Name.name,
+                      born: (18..99).to_a.sample.years.ago,
+                      body: Faker::Lorem.paragraph
+
+    p.images.attach(
+      io:
+        File.open(
+          Rails.root.join("test/fixtures/files/seed/", "#{number}.png")
+        ),
+      filename: "#{number}.png"
+    )
+  end
+end
