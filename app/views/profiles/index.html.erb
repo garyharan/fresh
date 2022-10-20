@@ -1,8 +1,4 @@
 <div class="w-full">
-  <% if notice.present? %>
-    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-  <% end %>
-
   <% if current_user.profile.nil? %>
     <div class="flex justify-between items-center">
       <h1 class="font-bold text-4xl">Profiles</h1>
@@ -10,14 +6,20 @@
     </div>
   <% end %>
 
-  <div id="profiles" >
-    <% @profiles.each do |profile| %>
-      <div class="inline">
-        <%= link_to profile.display_name, profile %>
-      </div>
-
-      <%= render "pics", profile: profile %>
-      <%= render "details", profile: profile %>
+  <section id="profiles" class="bg-white dark:bg-gray-900">
+    <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-6">
+      <% @profiles.each do |profile| %>
+        <div class="grid gap-8 lg:gap-16 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          <div class="text-center text-gray-500 dark:text-gray-400 mb-6">
+            <%= link_to image_tag(profile.images.first.variant(:thumb), class: "mx-auto w-20 h-20 rounded-full", alt: profile.display_name), profile %>
+              <h3 class="mb-1 text-lg font-bold tracking-tight text-gray-900 dark:text-white">
+                <%= link_to profile.display_name, profile %>
+              </h3>
+              <p class="text-sm">
+                <%= age(profile.born) %> years old <%= profile.gender %>
+              </p>
+          </div>
+        </div>
     <% end %>
-  </div>
+  </section>
 </div>
