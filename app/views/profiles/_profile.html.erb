@@ -1,30 +1,16 @@
 <div id="<%= dom_id profile %>" class="mx-auto w-full py-10">
   <h1><%= profile.display_name %></h1>
 
-  <div class="my-5 inline-flex rounded-md shadow-sm" role="group">
-     <div class="py-2 px-4 text-sm font-medium text-gray-900 rounded-l-lg border border-gray-200">
-        <%= age(profile.born) %> years old
-      </div>
-      <div class="py-2 px-4 text-sm font-medium text-gray-900 border-y border-gray-200">
-        <%= profile.gender %>
-      </div>
-      <div class="py-2 px-4 text-sm font-medium text-gray-900 rounded-r-md border border-gray-200">
-        <%= profile.lat %>, <%= profile.lon %>
-      </div>
-  </div>
+  <%= render "details", profile: profile %>
 
   <p class="my-5">
     <%= profile.body %>
   </p>
 
   <p class="my-5">
-    <% profile.images.each do |image| %>
-      <%= image_tag image.variant(:thumb) %>
-    <% end %>
+    <%= render "pics", profile: profile %>
   </p>
 
-
-  <%= link_to("Show this profile", profile, class: "rounded-lg py-2 px-2 bg-blue-200 text-slate-700 inline-block font-medium text-sm", data: { turbo: false }) if action_name != "show" %>
   <%= link_to 'Edit this profile', edit_profile_path(profile), class: "rounded-lg py-2 ml-2 px-2 text-slate-700 bg-blue-200 inline-block font-medium text-sm" %>
   <hr class="mt-6">
 </div>

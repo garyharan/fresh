@@ -10,7 +10,14 @@
     </div>
   <% end %>
 
-  <div id="profiles" class="min-w-full">
-    <%= render @profiles %>
+  <div id="profiles" >
+    <% @profiles.each do |profile| %>
+      <div class="inline">
+        <%= link_to profile.display_name, profile %>
+      </div>
+
+      <%= render "pics", profile: profile %>
+      <%= render "details", profile: profile %>
+    <% end %>
   </div>
 </div>
