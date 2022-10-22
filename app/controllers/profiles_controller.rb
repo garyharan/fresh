@@ -21,6 +21,8 @@ class ProfilesController < ApplicationController
 
   # GET /profiles/1/edit
   def edit
+    @profile.specified_gender =
+      @profile.gender unless Profile::POSSIBLE_GENDERS.include?(@profile.gender)
   end
 
   # POST /profiles or /profiles.json
@@ -108,7 +110,10 @@ class ProfilesController < ApplicationController
         :specified_gender,
         :born,
         :lat,
-        :lon
+        :lon,
+        :city,
+        :state,
+        :country
       )
 
     p[:gender] = p[:specified_gender] unless Profile::POSSIBLE_GENDERS.include?(

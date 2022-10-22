@@ -41,7 +41,10 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
                gender: "Man",
                born: born,
                lat: 45.49847190802318,
-               lon: -73.43272587208975
+               lon: -73.43272587208975,
+               city: "Saint-Hubert",
+               state: "Quebec",
+               country: "Canada"
              }
            }
     end
@@ -52,6 +55,9 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
     assert_equal born, Profile.last.born
     assert_equal 45.49847190802318, Profile.last.lat
     assert_equal -73.43272587208975, Profile.last.lon
+    assert_equal "Saint-Hubert", Profile.last.city
+    assert_equal "Quebec", Profile.last.state
+    assert_equal "Canada", Profile.last.country
     assert_redirected_to profile_url(Profile.last)
   end
 

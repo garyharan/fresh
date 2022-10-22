@@ -4,8 +4,8 @@
 
 import { application } from "./application"
 
-import HelloController from "./hello_controller"
-application.register("hello", HelloController)
+import GenderController from "./gender_controller"
+application.register("gender", GenderController)
 
-import ProfileGenderController from "./profile_form_controller"
-application.register("profile_form", ProfileGenderController)
+import LocationController from "./location_controller"
+application.register("location", LocationController)

@@ -49,9 +49,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_18_134217) do
     t.string "gender"
     t.float "lat"
     t.float "lon"
-    t.string "county"
     t.string "city"
-    t.string "country_code"
+    t.string "state"
+    t.string "country"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 

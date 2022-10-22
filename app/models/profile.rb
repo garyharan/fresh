@@ -6,6 +6,8 @@ class Profile < ApplicationRecord
     attachable.variant :board, resize_to_limit: [300, 300]
   end
 
+  attr_accessor :specified_gender
+
   POSSIBLE_GENDERS = [
     "Woman",
     "Man",

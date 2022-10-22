@@ -1,4 +1,4 @@
-<%= form_with(model: profile, class: "contents w-full", data: { controller: "profile_form" }) do |form| %>
+<%= form_with(model: profile, class: "contents w-full") do |form| %>
   <% if profile.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
       <h2><%= pluralize(profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
@@ -21,14 +21,17 @@
     <%= form.file_field :images, class: "block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400", multiple: true %>
   </div>
 
-  <div class="my-5">
+  <div class="my-5" data-controller="location" data-location-url-value="<%= geo_url %>">
     <%= form.label :location, class: "mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" %>
     <div class="relative">
         <div class="flex absolute top-2 left-0 items-center pl-3 pointer-events-none font-extrabold text-2xl">⌖</div>
-        <input type="text" class="block p-4 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" data-profile_form-target="locationField" />
-        <%= form.hidden_field :lat, "data-profile_form-target": "lat" %>
-        <%= form.hidden_field :lon, "data-profile_form-target": "lon" %>
-        <button data-profile_form-target="locationButton" data-action="profile_form#askLocation" class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+        <input type="text" class="block p-4 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" data-location-target="locationField" />
+        <%= form.hidden_field :lat, "data-location-target": "lat" %>
+        <%= form.hidden_field :lon, "data-location-target": "lon" %>
+        <%= form.hidden_field :city, "data-location-target": "city" %>
+        <%= form.hidden_field :state, "data-location-target": "state" %>
+        <%= form.hidden_field :country, "data-location-target": "country" %>
+        <button data-location-target="locationButton" data-action="location#askLocation" class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
           Find Location
         </button>
     </div>
@@ -40,11 +43,11 @@
     <%= form.text_area :body, rows: 4, class: "block shadow rounded-md border text-slate-800 border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
-  <div class="my-5">
+  <div class="my-5" data-controller="gender">
     <%= form.label :gender %> <br/>
-    <%= form.select(:gender, Profile::POSSIBLE_GENDERS, {}, { "data-profile_form-target": "gender", "data-action": "profile_form#chooseGender" }) %>
-    <div id="more_specific" data-profile_form-target="extras" style="display: none;">
-      <%= form.text_field(:specified_gender, placeholder: "", class: "block shadow rounded-md border text-slate-800 border-gray-200 outline-none px-3 py-2 mt-2 w-full", "data-profile_form-target": "specified" ) %>
+    <%= form.select(:gender, Profile::POSSIBLE_GENDERS, {}, { "data-gender-target": "gender", "data-action": "gender#chooseGender gender#focusSpecifiedGender" }) %>
+    <div id="more_specific" data-gender-target="extras" style="display: none;">
+      <%= form.text_field(:specified_gender, placeholder: "", class: "block shadow rounded-md border text-slate-800 border-gray-200 outline-none px-3 py-2 mt-2 w-full", "data-gender-target": "specified" ) %>
       <p class="text-xs">We're not sure we have all the options we should have in here.  Adding your own lets you express yourself and offers us a chance to educate ourselves.</p>
     </div>
   </div>
