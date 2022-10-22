@@ -7,11 +7,24 @@ export default class extends Controller {
     'display',
   ]
 
+  static values = {
+    units: String
+  }
+
   connect() {
     this.update()
   }
 
   update() {
-    this.displayTarget.innerText = this.sliderTarget.value + "cm"
+    if (this.unitsValue == 'imperial') {
+      this.displayTarget.innerText = this.toImperial(this.sliderTarget.value)
+    } else {
+      this.displayTarget.innerText = this.sliderTarget.value + "cm"
+    }
+  }
+
+  toImperial(cm) {
+    var inches = parseInt(cm * 0.3937)
+    return Math.floor(inches / 12) + "'" + (inches % 12) + '"'
   }
 }
