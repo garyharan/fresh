@@ -109,6 +109,7 @@ class ProfilesController < ApplicationController
         :gender,
         :specified_gender,
         :born,
+        :height,
         :lat,
         :lon,
         :city,

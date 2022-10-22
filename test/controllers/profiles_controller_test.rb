@@ -40,6 +40,7 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
                body: "I love turtles",
                gender: "Man",
                born: born,
+               height: 178,
                lat: 45.49847190802318,
                lon: -73.43272587208975,
                city: "Saint-Hubert",
@@ -53,6 +54,7 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
     assert_equal "I love turtles", Profile.last.body
     assert_equal "Man", Profile.last.gender
     assert_equal born, Profile.last.born
+    assert_equal 178, Profile.last.height
     assert_equal 45.49847190802318, Profile.last.lat
     assert_equal -73.43272587208975, Profile.last.lon
     assert_equal "Saint-Hubert", Profile.last.city

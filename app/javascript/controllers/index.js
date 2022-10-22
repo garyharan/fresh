@@ -7,5 +7,8 @@ import { application } from "./application"
 import GenderController from "./gender_controller"
 application.register("gender", GenderController)
 
+import HeightController from "./height_controller"
+application.register("height", HeightController)
+
 import LocationController from "./location_controller"
 application.register("location", LocationController)
