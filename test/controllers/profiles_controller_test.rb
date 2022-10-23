@@ -41,6 +41,8 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
                gender: "Man",
                born: born,
                height: 178,
+               drinking: "Occasionally",
+               smoking: "Never",
                lat: 45.49847190802318,
                lon: -73.43272587208975,
                city: "Saint-Hubert",
@@ -50,17 +52,21 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
            }
     end
 
-    assert_equal "Kitty", Profile.last.display_name
-    assert_equal "I love turtles", Profile.last.body
-    assert_equal "Man", Profile.last.gender
-    assert_equal born, Profile.last.born
-    assert_equal 178, Profile.last.height
-    assert_equal 45.49847190802318, Profile.last.lat
-    assert_equal -73.43272587208975, Profile.last.lon
-    assert_equal "Saint-Hubert", Profile.last.city
-    assert_equal "Quebec", Profile.last.state
-    assert_equal "Canada", Profile.last.country
-    assert_redirected_to profile_url(Profile.last)
+    profile = Profile.last
+
+    assert_equal "Kitty", profile.display_name
+    assert_equal "I love turtles", profile.body
+    assert_equal "Man", profile.gender
+    assert_equal born, profile.born
+    assert_equal 178, profile.height
+    assert_equal "Occasionally", profile.drinking
+    assert_equal "Never", profile.smoking
+    assert_equal 45.49847190802318, profile.lat
+    assert_equal -73.43272587208975, profile.lon
+    assert_equal "Saint-Hubert", profile.city
+    assert_equal "Quebec", profile.state
+    assert_equal "Canada", profile.country
+    assert_redirected_to profile_url(profile)
   end
 
   test "should allow user to specify gender" do

@@ -110,6 +110,8 @@ class ProfilesController < ApplicationController
         :specified_gender,
         :born,
         :height,
+        :smoking,
+        :drinking,
         :lat,
         :lon,
         :city,

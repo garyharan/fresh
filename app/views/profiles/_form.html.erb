@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="my-5 w-full">
-    <%= form.label :display_name %>
+    <%= form.label :display_name, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" %>
     <%= form.text_field :display_name, class: "block shadow rounded-md border text-slate-800 border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
@@ -61,6 +61,16 @@
     <%= form.label :height, class: "mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" %>
     <%= form.range_field :height, min: 90, max: 243, class: "w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700", "data-height-target": "slider", "data-action": "height#update" %>
     <p data-height-target="display" class="inline text-slate-800 border-gray-200 outline-none px-3 py-2 mt-2 w-1/3"></p>
+  </div>
+
+  <div class="my-5 w-full">
+    <%= form.label :smoking, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" %>
+    <%= form.select(:smoking, Profile::POSSIBLE_SMOKING_OPTIONS) %>
+  </div>
+
+  <div class="my-5 w-full">
+    <%= form.label :drinking, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" %>
+    <%= form.select(:drinking, Profile::POSSIBLE_DRINKING_OPTIONS) %>
   </div>
 
   <div class="flex justify-between h-48">

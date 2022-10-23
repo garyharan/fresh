@@ -8,10 +8,17 @@ class Profile < ApplicationRecord
 
   attr_accessor :specified_gender
 
-  POSSIBLE_GENDERS = [
-    "Woman",
-    "Man",
-    "Non-Binary and/or Two Spirit Person"
-    # "Let me be more specific" Do not add or you risk breaking ProfileController#profile_params
+  POSSIBLE_GENDERS = ["Woman", "Man", "Non-Binary and/or Two Spirit Person"]
+  POSSIBLE_SMOKING_OPTIONS = [
+    "Never",
+    "Occasionally",
+    "Often",
+    "Prefer not to say"
+  ]
+  POSSIBLE_DRINKING_OPTIONS = [
+    "Never",
+    "Occasionally",
+    "Often",
+    "Prefer not to say"
   ]
 end
