@@ -9,6 +9,13 @@ class Profile < ApplicationRecord
   attr_accessor :specified_gender
 
   POSSIBLE_GENDERS = ["Woman", "Man", "Non-Binary and/or Two Spirit Person"]
+  POSSIBLE_CHILDREN_CONFIGURATIONS = [
+    "Want someday",
+    "Don't want",
+    "Have & want more",
+    "Have & don't want more",
+    "Not sure yet"
+  ]
   POSSIBLE_RELATIONSHIP_STYLES = %w[Monogamous Non-monogamous]
   POSSIBLE_SMOKING_OPTIONS = [
     "Never",
