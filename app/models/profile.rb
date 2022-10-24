@@ -16,7 +16,11 @@ class Profile < ApplicationRecord
     "Have & don't want more",
     "Not sure yet"
   ]
-  POSSIBLE_RELATIONSHIP_STYLES = %w[Monogamous Non-monogamous]
+  POSSIBLE_RELATIONSHIP_STYLES = [
+    "Monogamous",
+    "Non-monogamous",
+    "I would rather not say"
+  ]
   POSSIBLE_SMOKING_OPTIONS = [
     "Never",
     "Occasionally",
