@@ -39,6 +39,7 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
                display_name: "Kitty",
                body: "I love turtles",
                gender: "Man",
+               relationship_style: "Non-monogamous",
                born: born,
                height: 178,
                drinking: "Occasionally",
@@ -57,6 +58,7 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
     assert_equal "Kitty", profile.display_name
     assert_equal "I love turtles", profile.body
     assert_equal "Man", profile.gender
+    assert_equal "Non-monogamous", profile.relationship_style
     assert_equal born, profile.born
     assert_equal 178, profile.height
     assert_equal "Occasionally", profile.drinking

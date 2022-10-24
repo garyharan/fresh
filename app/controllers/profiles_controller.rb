@@ -107,6 +107,7 @@ class ProfilesController < ApplicationController
         :display_name,
         :body,
         :gender,
+        :relationship_style,
         :specified_gender,
         :born,
         :height,
