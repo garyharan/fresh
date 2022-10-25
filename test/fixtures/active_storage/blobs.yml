@@ -1,1 +1,0 @@
-gathino_avatar_blog: <%= ActiveStorage::FixtureSet.blob filename: "gathino.png", service_name: "test_fixtures" %>

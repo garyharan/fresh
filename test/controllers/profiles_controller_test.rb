@@ -39,7 +39,7 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
                display_name: "Kitty",
                body: "I love turtles",
                gender: "Man",
-               children: "Never",
+               children: "Have & don't want more",
                relationship_style: "Non-monogamous",
                born: born,
                height: 178,
