@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  resources :profiles
-  resources :images
+  resources :profiles do
+    resources :images
+  end
 
   get "geo", to: "geo#show"
 

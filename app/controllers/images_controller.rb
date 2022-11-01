@@ -3,6 +3,7 @@ class ImagesController < ApplicationController
 
   before_action :set_images
   before_action :set_image, only: [:destroy]
+  before_action :set_profile
 
   def index
     @images = current_user.profile.images
@@ -13,7 +14,9 @@ class ImagesController < ApplicationController
 
     @image.purge
 
-    respond_to { |format| format.json { head :no_content } }
+    @images = current_user.profile.images
+
+    respond_to { |format| format.turbo_stream if @image.purge }
   end
 
   private
@@ -24,5 +27,9 @@ class ImagesController < ApplicationController
 
   def set_image
     @images.find(params[:id])
+  end
+
+  def set_profile
+    @profile = Profile.where(user_id: current_user.id).first
   end
 end

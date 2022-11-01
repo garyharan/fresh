@@ -1,0 +1,6 @@
+<% @images.each do |image| %>
+  <div id="<%= dom_id(image) %>">
+    <%= image_tag image, size: "300x300", class: "max-w-1/4 h-auto rounded-lg" %>
+    <%= button_to "Delete Image", profile_image_path(@profile.id, image), method: :delete, data: { confirm: "Are you sure?" } %>
+  </div>
+<% end %>

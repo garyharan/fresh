@@ -1,12 +1,5 @@
+<%= turbo_stream_from @profile %>
 
-<% @images.each do |image| %>
-  <%= image_tag image %>
-
-    <%= turbo_frame_tag "image_#{image.id}" do %>
-        <figure class="max-w-lg">
-            <%= image_tag image, class: "max-w-1/4 h-auto rounded-lg" %>
-            <figcaption class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">Image caption</figcaption>
-        </figure>
-        <%= button_to "Delete Image", image_path(image), method: :delete, data: { turbo_frame: "image_#{image.id}", confirm: "Are you sure?" } %>
-    <% end %>
-<% end %>
+<div id="images">
+  <%= render "images/images" %>
+</div>
