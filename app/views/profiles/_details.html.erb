@@ -1,7 +1,9 @@
 <div class="my-5 inline-flex" role="group">
-    <div class="py-3 px-4 mx-2 text-xs font-medium text-gray-900 rounded-full border border-gray-200 bg-gray-100">
-        ⏳ <%= age(profile.born) %>yo
-    </div>
+    <%= turbo_frame_tag "age" do %>
+        <div class="py-3 px-4 mx-2 text-xs font-medium text-gray-900 rounded-full border border-gray-200 bg-gray-100">
+            <%= button_to "⏳ #{age(profile.born)}yo", edit_age_profile_path, method: :get, data: {"turbo-frame": "age"} %>
+        </div>
+    <% end %>
     <div class="py-3 px-4 mx-2 text-xs font-medium text-gray-900 rounded-full border border-gray-200 bg-gray-100">
         ☿️ <%= profile.gender %>
     </div>

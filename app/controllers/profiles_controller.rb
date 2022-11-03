@@ -118,13 +118,13 @@ class ProfilesController < ApplicationController
         :lon,
         :city,
         :state,
-        :country
+        :country,
+        :images
       )
 
     p[:gender] = p[:specified_gender] unless Profile::POSSIBLE_GENDERS.include?(
       p[:gender]
     )
     p.delete(:specified_gender)
-    p
   end
 end

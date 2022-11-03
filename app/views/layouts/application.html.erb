@@ -12,16 +12,12 @@
   </head>
 
   <body class="text-slate-700">
-    <main class="container mx-auto mt-28 px-5">
-      <div class="mx-auto md:w-3/4 w-full flex">
+    <main class="container mx-auto px-10 my-10">
         <%= render "shared/topbar" %>
-      </div>
+        <%= render "shared/flashes" %>
+        <%= render "shared/sub_nav" %>
 
-      <%= render "shared/flashes" %>
-
-      <div class="mx-auto md:w-3/4 w-full flex">
         <%= yield %>
-      </div>
     </main>
   </body>
 </html>

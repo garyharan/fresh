@@ -63,11 +63,7 @@
     <p class="text-xs">By presenting your relationship style you can have matches that are looking for the same thing you are.</p>
   </div>
 
-  <div class="my-5">
-    <%= form.label :born, class: "mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" %>
-    <br />
-    <%= form.date_select :born, {start_year: 1950, end_year: Date.current.year - 18}, class: "p-2 pr-8 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" %>
-  </div>
+  <%= render "profiles/age_form", form: form %>
 
   <div class="my-5" data-controller="height" data-height-units-value="imperial">
     <%= form.label :height, class: "mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" %>
