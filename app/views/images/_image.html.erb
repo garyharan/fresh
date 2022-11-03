@@ -1,6 +1,6 @@
 <% unless image == "" %>
   <div id="<%= dom_id image %>" class="my-10">
-    <%= image_tag "#{image.photo.url}", size: "300x300", class: "max-w-1/4 h-auto rounded-lg" %>
+    <%= image_tag "#{image.photo.url}", class: "max-w-1/4 h-auto rounded-lg" %>
     <%= button_to "Delete Image", profile_image_path(@profile.id, image), method: :delete, data: { confirm: "Are you sure?" } %>
   </div>
 <% end %>

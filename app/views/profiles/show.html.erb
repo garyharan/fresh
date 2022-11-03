@@ -1,13 +1,13 @@
 <div id="<%= dom_id @profile %>" class="mx-auto w-full py-10">
   <h1><%= @profile.display_name %></h1>
 
+  <p class="my-5">
+    <%= render "images", profile: @profile %>
+  </p>
+
   <%= render "details", profile: @profile %>
 
   <p class="my-5">
     <%= @profile.body %>
-  </p>
-
-  <p class="my-5">
-    <%= render "pics", profile: @profile %>
   </p>
 </div>
