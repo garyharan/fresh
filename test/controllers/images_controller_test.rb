@@ -2,30 +2,47 @@ require "test_helper"
 
 class ImagesControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @profile = users(:gathino).profile
-    @profile.images.attach fixture_file_upload("rick.jpg", "image/jpeg")
+    @image = images(:one)
   end
 
-  test "should be logged in" do
-    get images_url
-    assert_redirected_to user_session_path
-  end
-
-  test "should show index" do
-    sign_in users(:gathino)
-
+  test "should get index" do
     get images_url
     assert_response :success
   end
 
-  test "should delete image" do
-    sign_in users(:gathino)
+  test "should get new" do
+    get new_image_url
+    assert_response :success
+  end
 
-    assert_difference("@profile.images.count", -1) do
-      delete image_url(@profile.images.last.id), xhr: true
+  test "should create image" do
+    assert_difference("Image.count") do
+      post images_url, params: { image: { profile_id: @image.profile_id } }
     end
 
+    assert_redirected_to image_url(Image.last)
+  end
+
+  test "should show image" do
+    get image_url(@image)
     assert_response :success
-    assert_equal "", response.body
+  end
+
+  test "should get edit" do
+    get edit_image_url(@image)
+    assert_response :success
+  end
+
+  test "should update image" do
+    patch image_url(@image), params: { image: { profile_id: @image.profile_id } }
+    assert_redirected_to image_url(@image)
+  end
+
+  test "should destroy image" do
+    assert_difference("Image.count", -1) do
+      delete image_url(@image)
+    end
+
+    assert_redirected_to images_url
   end
 end

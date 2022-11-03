@@ -1,5 +1,8 @@
-<%= turbo_stream_from @profile %>
-
 <div id="images">
-  <%= render "images/images" %>
+  <%= render @images %>
+</div>
+
+<div id="add_images" class="my-10">
+  <h2>Add photos</h2>
+  <%= render "form", image: @image %>
 </div>

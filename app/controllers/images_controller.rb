@@ -1,35 +1,84 @@
 class ImagesController < ApplicationController
   before_action :authenticate_user!
 
-  before_action :set_images
-  before_action :set_image, only: [:destroy]
   before_action :set_profile
+  before_action :set_image, only: %i[show edit update destroy]
 
   def index
-    @images = current_user.profile.images
+    @images = Image.all
+    @image = Image.new
+  end
+
+  def show
+  end
+
+  def new
+    @image = Image.new
+  end
+
+  def edit
+  end
+
+  def create
+    @image = Image.new(image_params)
+    @image.profile = @profile
+
+    respond_to do |format|
+      if @image.save
+        format.html do
+          redirect_to profile_images_url(@profile),
+                      notice: "Image was successfully created."
+        end
+        format.json { render :show, status: :created, location: @image }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json do
+          render json: @image.errors, status: :unprocessable_entity
+        end
+      end
+    end
+  end
+
+  def update
+    respond_to do |format|
+      if @image.update(image_params)
+        format.html do
+          redirect_to image_url(@image),
+                      notice: "Image was successfully updated."
+        end
+        format.json { render :show, status: :ok, location: @image }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json do
+          render json: @image.errors, status: :unprocessable_entity
+        end
+      end
+    end
   end
 
   def destroy
-    @image = current_user.profile.images.find(params[:id])
+    @image.destroy
 
-    @image.purge
-
-    @images = current_user.profile.images
-
-    respond_to { |format| format.turbo_stream if @image.purge }
+    respond_to do |format|
+      format.html do
+        redirect_to profile_images_path(@profile),
+                    notice: "Image was successfully destroyed."
+      end
+      format.json { head :no_content }
+    end
   end
 
   private
 
-  def set_images
-    @images = current_user.profile.images
+  def set_profile
+    @profile = current_user.profile
   end
 
   def set_image
-    @images.find(params[:id])
+    @image = Image.find(params[:id])
   end
 
-  def set_profile
-    @profile = Profile.where(user_id: current_user.id).first
+  def image_params
+    params.require(:image).permit(:photo)
   end
 end
