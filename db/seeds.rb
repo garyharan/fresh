@@ -18,7 +18,8 @@ if Rails.env.development?
                       born: (18..99).to_a.sample.years.ago,
                       body: Faker::Lorem.paragraph
 
-    p.images.attach(
+    image = p.images.create
+    image.photo.attach(
       io:
         File.open(
           Rails.root.join("test/fixtures/files/seed/", "#{number}.png")
