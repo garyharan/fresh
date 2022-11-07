@@ -89,16 +89,13 @@ class ProfilesController < ApplicationController
     @profile = Profile.new(profile_params)
     @profile.user_id = current_user.id
 
-    images = params.dig(:profile, :images) || []
-    @profile.save! && @profile.images.attach(images)
+    @profile.save!
   end
 
   def update_profile!
     @profile = current_user.profile
 
-    images = params.dig(:profile, :images) || []
-
-    @profile.update(profile_params) && @profile.images.attach(images)
+    @profile.update(profile_params)
   end
 
   def profile_params
@@ -118,8 +115,7 @@ class ProfilesController < ApplicationController
         :lon,
         :city,
         :state,
-        :country,
-        :images
+        :country
       )
 
     p[:gender] = p[:specified_gender] unless Profile::POSSIBLE_GENDERS.include?(

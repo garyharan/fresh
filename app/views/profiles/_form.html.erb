@@ -16,11 +16,6 @@
     <%= form.text_field :display_name, class: "block shadow rounded-md border text-slate-800 border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
-  <div class="my-5">
-    <%= form.label :images, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" %>
-    <%= form.file_field :images, class: "block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400", multiple: true %>
-  </div>
-
   <div class="my-5" data-controller="location" data-location-url-value="<%= geo_url %>">
     <%= form.label :location, class: "mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" %>
     <div class="relative">
@@ -62,8 +57,6 @@
     <%= form.select(:relationship_style, Profile::POSSIBLE_RELATIONSHIP_STYLES, {}, { "data-gender-target": "gender", "data-action": "gender#chooseGender gender#focusSpecifiedGender", class: "block p-2 mb-0 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" }) %>
     <p class="text-xs">By presenting your relationship style you can have matches that are looking for the same thing you are.</p>
   </div>
-
-  <%= render "profiles/age_form", form: form %>
 
   <div class="my-5" data-controller="height" data-height-units-value="imperial">
     <%= form.label :height, class: "mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" %>
