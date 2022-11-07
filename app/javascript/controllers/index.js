@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import DragController from "./drag_controller"
+application.register("drag", DragController)
+
 import GenderController from "./gender_controller"
 application.register("gender", GenderController)
 
@@ -12,3 +15,6 @@ application.register("height", HeightController)
 
 import LocationController from "./location_controller"
 application.register("location", LocationController)
+
+import SortableController from "./sortable_controller"
+application.register("sortable", SortableController)

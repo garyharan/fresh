@@ -1,6 +1,6 @@
 import { Controller } from "@hotwired/stimulus"
 
-// Connects to data-controller="profile"
+// Connects to data-controller="location"
 export default class extends Controller {
   static targets = [
     'locationField',

@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :profiles do
-    resources :images
+    resources :images do
+      patch :sort, on: :collection
+    end
   end
 
   get "geo", to: "geo#show"

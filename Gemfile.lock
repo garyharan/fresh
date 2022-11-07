@@ -66,6 +66,8 @@ GEM
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
       tzinfo (~> 2.0)
+    acts_as_list (1.0.4)
+      activerecord (>= 4.2)
     addressable (2.8.1)
       public_suffix (>= 2.0.2, < 6.0)
     bcrypt (3.1.18)
@@ -115,8 +117,6 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
-    jsbundling-rails (1.0.3)
-      railties (>= 6.0.0)
     language_server-protocol (3.17.0.1)
     launchy (2.5.0)
       addressable (~> 2.7)
@@ -247,6 +247,7 @@ PLATFORMS
   x86_64-darwin-21
 
 DEPENDENCIES
+  acts_as_list
   bootsnap
   capybara
   debug
@@ -256,7 +257,6 @@ DEPENDENCIES
   image_processing (~> 1.2)
   importmap-rails
   jbuilder
-  jsbundling-rails (~> 1.0)
   letter_opener
   puma (~> 5.0)
   rails (~> 7.0.4)

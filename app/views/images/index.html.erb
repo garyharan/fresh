@@ -1,5 +1,12 @@
-<div id="images">
-  <%= render @images %>
+<div id="images" data-controller="sortable" data-url="<%= sort_profile_images_path(current_user.profile) %>">
+  <% @images.each do |image| %>
+    <% next if image == "" %>
+
+    <div id="<%= dom_id image %>" class="my-10 draggable">
+      <%= image_tag "#{image.photo.url}", class: "max-w-xs h-auto rounded-lg" %>
+      <%= button_to "Delete Image", profile_image_path(@profile.id, image), method: :delete, data: { confirm: "Are you sure?" } %>
+    </div>
+  <% end %>
 </div>
 
 <div id="add_images" class="my-10">

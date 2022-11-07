@@ -3,9 +3,13 @@
     "@hotwired/stimulus": "^3.1.0",
     "@hotwired/turbo-rails": "^7.2.0",
     "esbuild": "^0.15.10",
-    "flowbite": "^1.5.3"
+    "flowbite": "^1.5.3",
+    "sortablejs": "^1.15.0"
   },
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets"
+  },
+  "devDependencies": {
+    "@types/sortablejs": "^1.15.0"
   }
 }

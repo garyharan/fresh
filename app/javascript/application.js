@@ -2,3 +2,7 @@
 import "@hotwired/turbo-rails"
 import "./controllers"
 import "flowbite"
+
+import Sortable from 'sortablejs'
+window.Sortable = Sortable
+

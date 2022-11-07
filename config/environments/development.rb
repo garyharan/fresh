@@ -3,6 +3,9 @@ require "active_support/core_ext/integer/time"
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  # https://github.com/rails/web-console#configweb_consolepermissions
+  config.web_console.whiny_requests = false
+
   config.hosts << "garyharan.local"
 
   # In the development environment your application's code is reloaded any time

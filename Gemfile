@@ -24,7 +24,7 @@ gem "importmap-rails"
 gem "turbo-rails"
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
-gem "jsbundling-rails", "~> 1.0"
+# gem "jsbundling-rails", "~> 1.0"
 gem "tailwindcss-rails", "~> 2.0"
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
@@ -35,6 +35,9 @@ gem "redis", "~> 4.0"
 
 # To get City or County from profile LAT/LON
 gem "geocoder", "~> 1.8.1"
+
+# Allows us to sort with SortableJS
+gem "acts_as_list"
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"

@@ -5,7 +5,7 @@ class ImagesController < ApplicationController
   before_action :set_image, only: %i[show edit update destroy]
 
   def index
-    @images = Image.all
+    @images = @profile.images.order(:position)
     @image = Image.new
   end
 
@@ -17,6 +17,12 @@ class ImagesController < ApplicationController
   end
 
   def edit
+  end
+
+  def sort
+    image = @profile.images.find(sort_params[:id])
+    image.insert_at(sort_params[:position].to_i)
+    head :ok
   end
 
   def create
@@ -80,5 +86,9 @@ class ImagesController < ApplicationController
 
   def image_params
     params.require(:image).permit(:photo)
+  end
+
+  def sort_params
+    params.require(:resource).permit(:id, :position)
   end
 end
