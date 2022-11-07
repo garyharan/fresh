@@ -2,9 +2,9 @@
   <% @images.each do |image| %>
     <% next if image == "" %>
 
-    <div id="<%= dom_id image %>" class="my-10 draggable">
-      <%= image_tag "#{image.photo.url}", class: "max-w-xs h-auto rounded-lg" %>
-      <%= button_to "Delete Image", profile_image_path(@profile.id, image), method: :delete, data: { confirm: "Are you sure?" } %>
+    <div id="<%= dom_id image %>" class="my-10 rounded-md draggable inline-flex">
+      <%= image_tag image.photo.variant(:thumb), class: "max-w-xs h-auto rounded-lg" %>
+      <%= button_to "🗑️", profile_image_path(@profile.id, image), method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "delete_button" %>
     </div>
   <% end %>
 </div>

@@ -1,0 +1,8 @@
+#images img {
+  cursor: grab;
+}
+#images img:active {
+  cursor: grabbing;
+  cursor: -moz-grabbing;
+  cursor: -webkit-grabbing;
+}

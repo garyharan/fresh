@@ -1,5 +1,5 @@
- <div class="my-5 inline-flex rounded-md shadow-sm" role="group">
+ <div class="my-5" role="group">
   <% profile.images.each do |image| %>
-    <%= image_tag image.photo.variant(:medium) %>
+    <%= image_tag image.photo.variant(:thumb), class: "inline-flex rounded-md mx-5"  %>
   <% end %>
 </div>
