@@ -1,7 +1,7 @@
 <nav class="w-full">
   <div class="container flex flex-wrap justify-between mx-auto">
-    <div class="flex-none my-0">
-      <h2 class="text-slate-700"><%= link_to "❤️ Fresh Dating", root_path %></h2>
+    <div class="flex-none my-0" id="title">
+      <%= link_to "❤ Fresh.Dating", root_path %>
     </div>
 
     <% if user_signed_in? %>
