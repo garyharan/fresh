@@ -7,7 +7,8 @@ class ProfilesController < ApplicationController
   # GET /profiles or /profiles.json
   def index
     redirect_to new_profile_url if current_user.profile.blank?
-    @profiles = Profile.where.not(user_id: current_user.id)
+    @profiles =
+      Profile.joins(:images).distinct.where.not(id: current_user.profile.id)
   end
 
   # GET /profiles/1 or /profiles/1.json

@@ -1,5 +1,5 @@
 class Image < ApplicationRecord
-  belongs_to :profile
+  belongs_to :profile, counter_cache: :images_count
 
   has_one_attached :photo do |attachable|
     attachable.variant :thumb, resize_to_fit: [100, 100]
