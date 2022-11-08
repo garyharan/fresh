@@ -1,5 +1,5 @@
 <div id="<%= dom_id @profile %>" class="mx-auto w-full py-10">
-  <h1><%= @profile.display_name %></h1>
+  <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-700 md:text-5xl lg:text-6xl dark:text-white"><%= @profile.display_name %></h1>
 
   <p class="my-5">
     <%= render "images", profile: @profile %>
