@@ -7,6 +7,9 @@ import { application } from "./application"
 import DragController from "./drag_controller"
 application.register("drag", DragController)
 
+import DropdownController from "./dropdown_controller"
+application.register("dropdown", DropdownController)
+
 import GenderController from "./gender_controller"
 application.register("gender", GenderController)
 

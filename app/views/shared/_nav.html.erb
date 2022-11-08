@@ -25,11 +25,24 @@ inactive_tab_classes = "inline-block p-4 rounded-t-lg border-b-2 border-transpar
             <% end %>
         </ul>
         <ul class="flex justify-between md:flex md:order-2">
-            <li class="mr-2">
-                <%= link_to settings_path do %>
+            <li class="mr-2" data-controller="dropdown">
+                <div class="trigger">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path></svg>
-                <% end %>
+                </div>
+                <div class="target hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
+                    <ul class="py-1 text-sm text-gray-700 dark:text-gray-200">
+                        <li>
+                            <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
+                        </li>
+                        <li>
+                        </li>
+                    </ul>
+                    <div class="py-1">
+                        <%= link_to("Sign out", destroy_user_session_path, class: "block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white", data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to sign out?" }) %>
+                    </div>
+                </div>
             </li>
         </ul>
     </div>
 </div>
+
