@@ -10,6 +10,9 @@ application.register("drag", DragController)
 import DropdownController from "./dropdown_controller"
 application.register("dropdown", DropdownController)
 
+import FlashController from "./flash_controller"
+application.register("flash", FlashController)
+
 import GenderController from "./gender_controller"
 application.register("gender", GenderController)
 
