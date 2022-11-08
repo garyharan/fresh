@@ -1,24 +1,37 @@
 <div class="my-5 inline-flex" role="group">
-    <%= turbo_frame_tag "age" do %>
+    <% unless profile.born.blank? %>
         <div class="py-3 px-4 mx-2 text-xs font-medium text-gray-900 rounded-full border border-gray-200 bg-gray-100">
             ⏳ <%= "#{age(profile.born)}yo" %>
         </div>
     <% end %>
-    <div class="py-3 px-4 mx-2 text-xs font-medium text-gray-900 rounded-full border border-gray-200 bg-gray-100">
-        ☿️ <%= profile.gender %>
-    </div>
-    <div class="py-3 px-4 mx-2 text-xs font-medium text-gray-900 rounded-full border border-gray-200 bg-gray-100">
-        📏 <%= imperialize(profile.height) %>
-    </div>
-    <div class="py-3 px-4 mx-2 text-xs font-medium text-gray-900 rounded-full border border-gray-200 bg-gray-100">
-        🧒 <%= profile.children %>
-    </div>
-    <% if profile.relationship_style != "I would rather not say" %>
+
+    <% unless profile.gender.blank? %>
+        <div class="py-3 px-4 mx-2 text-xs font-medium text-gray-900 rounded-full border border-gray-200 bg-gray-100">
+            ☿️ <%= profile.gender %>
+        </div>
+    <% end %>
+
+    <% unless profile.height.nil? %>
+        <div class="py-3 px-4 mx-2 text-xs font-medium text-gray-900 rounded-full border border-gray-200 bg-gray-100">
+            📏 <%= imperialize(profile.height) %>
+        </div>
+    <% end %>
+
+    <% unless profile.children.blank? %>
+        <div class="py-3 px-4 mx-2 text-xs font-medium text-gray-900 rounded-full border border-gray-200 bg-gray-100">
+            🧒 <%= profile.children %>
+        </div>
+    <% end %>
+
+    <% if profile.relationship_style != nil &&  profile.relationship_style != "I would rather not say" %>
         <div class="py-3 px-4 mx-2 text-xs font-medium text-gray-900 rounded-full border border-gray-200 bg-gray-100">
             💕 <%= profile.relationship_style %>
         </div>
     <% end %>
-    <div class="py-3 px-4 mx-2 text-xs font-medium text-gray-900 rounded-full border border-gray-200 bg-gray-100">
-        📍<%= profile.city %>
-    </div>
+
+    <% unless profile.city.blank? %>
+        <div class="py-3 px-4 mx-2 text-xs font-medium text-gray-900 rounded-full border border-gray-200 bg-gray-100">
+            📍<%= profile.city %>
+        </div>
+    <% end %>
 </div>
