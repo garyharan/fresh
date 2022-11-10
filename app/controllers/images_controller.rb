@@ -49,7 +49,7 @@ class ImagesController < ApplicationController
     respond_to do |format|
       if @image.update(image_params)
         format.html do
-          redirect_to image_url(@image),
+          redirect_to profile_image_url(@profile, @image),
                       notice: "Image was successfully updated."
         end
         format.json { render :show, status: :ok, location: @image }

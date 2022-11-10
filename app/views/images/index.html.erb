@@ -1,6 +1,6 @@
 <div id="images" data-controller="sortable" data-url="<%= sort_profile_images_path(current_user.profile) %>">
   <% @images.each do |image| %>
-    <% next if image == "" %>
+    <% next if image == "" || !image.photo.attached? %>
 
     <div id="<%= dom_id image %>" class="my-10 rounded-md draggable inline-flex">
       <%= image_tag image.photo.variant(:thumb), class: "max-w-xs h-auto rounded-lg" %>

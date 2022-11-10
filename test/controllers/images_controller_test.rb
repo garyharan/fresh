@@ -28,11 +28,11 @@ class ImagesControllerTest < ActionDispatch::IntegrationTest
            }
     end
 
-    assert_redirected_to profile_image_url(@profile, Image.last)
+    assert_redirected_to profile_images_url(@profile)
   end
 
   test "should show image" do
-    get profile_image_url(@image)
+    get profile_image_url(@profile, @image)
     assert_response :success
   end
 
@@ -48,7 +48,7 @@ class ImagesControllerTest < ActionDispatch::IntegrationTest
               profile_id: @image.profile_id
             }
           }
-    assert_redirected_to image_url(@image)
+    assert_redirected_to profile_image_url(@profile, @image)
   end
 
   test "should destroy image" do
