@@ -11,8 +11,7 @@ class ProfilesController < ApplicationController
       return
     end
 
-    @profiles =
-      Profile.joins(:images).distinct.where.not(id: current_user.profile.id)
+    @profiles = Profile.all
   end
 
   # GET /profiles/1 or /profiles/1.json
