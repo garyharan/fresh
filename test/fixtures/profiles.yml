@@ -17,3 +17,19 @@ one:
   drinking: Occasionally
   relationship_style: Non-monogamous
   children: Have & don't want more
+
+two:
+  user: velvet
+  body: Kitty is soft
+  height: 167
+  born: 1982-10-6
+  gender: Woman
+  lat: 45.498398543048125
+  lon: -73.4327665245693
+  city: Longueuil
+  state: Quebec
+  country: Canada
+  smoking: Never
+  drinking: Occasionally
+  relationship_style: Non-monogamous
+  children: Have & don't want more

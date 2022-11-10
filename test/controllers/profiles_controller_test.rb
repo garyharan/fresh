@@ -1,7 +1,15 @@
 require "test_helper"
 
 class ProfilesControllerTest < ActionDispatch::IntegrationTest
-  setup { @profile = profiles(:one) }
+  setup do
+    @profile = profiles(:one)
+
+    @profile.images.first.photo.attach(
+      io: File.open(Rails.root.join("test/fixtures/files/gathino.png")),
+      filename: "gathino.jpg",
+      content_type: "image/png"
+    )
+  end
 
   test "should be logged in" do
     get profiles_url
@@ -9,7 +17,7 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index" do
-    sign_in users(:gathino)
+    sign_in users(:velvet)
     get profiles_url
     assert_response :success
   end
@@ -90,44 +98,9 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
     assert_equal "Agender", Profile.last.gender
   end
 
-  test "should have an image attached to profile" do
-    sign_in users(:gathino)
-
-    image = fixture_file_upload("rick.jpg", "image/jpeg")
-    post profiles_url,
-         params: {
-           profile: {
-             body: "I love turtles",
-             born: 18.years.ago,
-             images: [image]
-           }
-         }
-
-    assert_redirected_to profile_url(Profile.last)
-    assert Profile.last.images.attached?
-  end
-
-  test "should allow for multiple images attached to profile" do
-    sign_in users(:gathino)
-
-    post profiles_url,
-         params: {
-           profile: {
-             body: "I love turtles",
-             born: 18.years.ago,
-             images: [
-               fixture_file_upload("rick.jpg", "image/jpeg"),
-               fixture_file_upload("rick_in_dallas.jpg", "image/jpeg")
-             ]
-           }
-         }
-
-    assert_redirected_to profile_url(Profile.last)
-    assert_equal 2, Profile.last.images.count
-  end
-
   test "should show profile" do
     sign_in users(:gathino)
+
     get profile_url(@profile)
     assert_response :success
   end
@@ -148,25 +121,6 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
             }
           }
     assert_redirected_to profile_url(@profile)
-  end
-
-  test "should save images with update" do
-    sign_in users(:gathino)
-
-    patch profile_url(users(:gathino).profile),
-          params: {
-            profile: {
-              body: "I love turtles",
-              born: 18.years.ago,
-              images: [
-                fixture_file_upload("rick.jpg", "image/jpeg"),
-                fixture_file_upload("rick_in_dallas.jpg", "image/jpeg")
-              ]
-            }
-          }
-
-    assert_redirected_to profile_url(Profile.last)
-    assert_equal 2, Profile.last.images.count
   end
 
   test "should destroy profile" do

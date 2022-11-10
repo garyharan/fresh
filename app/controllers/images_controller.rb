@@ -85,7 +85,7 @@ class ImagesController < ApplicationController
   end
 
   def image_params
-    params.require(:image).permit(:photo)
+    params.require(:image).permit(:photos)
   end
 
   def sort_params

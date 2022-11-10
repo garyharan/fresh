@@ -6,7 +6,11 @@ class ProfilesController < ApplicationController
 
   # GET /profiles or /profiles.json
   def index
-    redirect_to new_profile_url if current_user.profile.blank?
+    if current_user.profile.blank?
+      redirect_to new_profile_url
+      return
+    end
+
     @profiles =
       Profile.joins(:images).distinct.where.not(id: current_user.profile.id)
   end
@@ -123,5 +127,6 @@ class ProfilesController < ApplicationController
       p[:gender]
     )
     p.delete(:specified_gender)
+    p
   end
 end
