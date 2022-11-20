@@ -20,7 +20,7 @@ inactive_tab_classes = "inline-block p-4 rounded-t-lg border-b-2 border-transpar
                     <%= link_to "My photos", profile_images_path(current_user.profile), class: (action_name == 'index' && controller_name == "images" ? active_tab_classes : inactive_tab_classes) %>
                 </li>
                 <li class="mr-2">
-                    <%= link_to "Search", profiles_path, class: (["index", "show"].include?(action_name) && controller_name == "profiles" && current_user.profile != @profile ? active_tab_classes : inactive_tab_classes) %>
+                    <%= link_to "Discover", profiles_path, class: (["index", "show"].include?(action_name) && controller_name == "profiles" && current_user.profile != @profile ? active_tab_classes : inactive_tab_classes) %>
                 </li>
             <% end %>
         </ul>
