@@ -11,6 +11,9 @@ inactive_tab_classes = "inline-block p-4 rounded-t-lg border-b-2 border-transpar
         <ul class="flex md:order-1">
             <% if %w[profiles images settings].include? controller_name %>
                 <li class="mr-2">
+                    <%= link_to "Discover", profiles_path, class: (["index", "show"].include?(action_name) && controller_name == "profiles" && current_user.profile != @profile ? active_tab_classes : inactive_tab_classes) %>
+                </li>
+                <li class="mr-2">
                     <%= link_to "My profile", current_user.profile, class: (@profile == current_user.profile && action_name == 'show' ? active_tab_classes : inactive_tab_classes) %>
                 </li>
                 <li class="mr-2">
@@ -18,9 +21,6 @@ inactive_tab_classes = "inline-block p-4 rounded-t-lg border-b-2 border-transpar
                 </li>
                 <li class="mr-2">
                     <%= link_to "My photos", profile_images_path(current_user.profile), class: (action_name == 'index' && controller_name == "images" ? active_tab_classes : inactive_tab_classes) %>
-                </li>
-                <li class="mr-2">
-                    <%= link_to "Discover", profiles_path, class: (["index", "show"].include?(action_name) && controller_name == "profiles" && current_user.profile != @profile ? active_tab_classes : inactive_tab_classes) %>
                 </li>
             <% end %>
         </ul>
