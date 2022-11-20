@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "users/update"
   resources :profiles do
     resources :images do
       patch :sort, on: :collection
@@ -7,9 +8,9 @@ Rails.application.routes.draw do
 
   get "geo", to: "geo#show"
 
-  devise_for :users
+  resources :users, only: %i[edit update]
 
-  resources :settings
+  devise_for :users
 
   root "root#index"
 end

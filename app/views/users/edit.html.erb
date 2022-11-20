@@ -1,0 +1,38 @@
+
+  <p>We prioritize recommendations based on your preferences below</p>
+
+  <%= form_with(model: current_user) do |form| %>
+    <section class="my-5">
+      <%= form.label :genders, class: "block mb-2 text-sm font-semibold text-gray-900 dark:text-gray-400" %>
+      <ul class="w-full text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+          <% Profile::POSSIBLE_GENDERS.each do |gender| %>
+            <li class="rounded-t-lg border-b border-gray-200 dark:border-gray-600">
+                <div class="flex items-center pl-3">
+                    <%= form.check_box gender, class: "w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" %>
+                    <%= form.label gender, gender, class: "py-3 ml-2 w-full text-sm font-medium text-gray-900 dark:text-gray-300"  %>
+                </div>
+            </li>
+          <% end %>
+      </ul>
+    </section>
+
+    <section class="my-5">
+      <%= form.label :age, class: "block mb-2 text-sm font-semibold text-gray-900 dark:text-gray-400" %>
+      <%= form.number_field :minimum_age, min: 18, placeholder: "Minimum must be at least 18", class: "w-1/6 shadow rounded-md border text-slate-800 border-gray-200 outline-none" %>
+      -
+      <%= form.number_field :maximum_age, min: 19, max: 150, placeholder: "", class: "w-1/6 shadow rounded-md border text-slate-800 border-gray-200 outline-none" %>
+    </section>
+
+    <section class="my-5">
+      <%= form.label :distance, class: "block mb-2 text-sm font-semibold text-gray-900 dark:text-gray-400" %>
+      <%= form.select(:gender, User::POSSIBLE_DISTANCES.map { |d| ["#{d} km", d] }, {}, { class: "block shadow rounded-md border text-slate-800 border-gray-200 outline-none px-3 py-2 mt-2 w-full" }) %>
+    </section>
+
+    <section class="my-5">
+      <%= form.label "Freshness", class: "block mb-2 text-sm font-semibold text-gray-900 dark:text-gray-400" %>
+      <%= form.select(:freshness, User::POSSIBLE_FRESHNESS.map { |i| "#{i} days"}, {}, { class: "block shadow rounded-md border text-slate-800 border-gray-200 outline-none px-3 py-2 mt-2 w-full" }) %>
+      <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">Be weary of any dating web sites not giving you control over this. Before OKCupid was purchased by the Match Group they estimated that paying web sites were showing inactive profiles over 93% of the time.  Match Group owns Hinge, Plenty of Fish, Tinder, and many others. We don't want to suck like their web sites.</p>
+    </section>
+
+  <% end %>
+

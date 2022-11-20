@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_07_181859) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_20_180633) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -37,6 +37,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_07_181859) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "genders", force: :cascade do |t|
+    t.string "label"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "images", force: :cascade do |t|
@@ -67,6 +73,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_07_181859) do
     t.string "relationship_style"
     t.string "children"
     t.integer "images_count", default: 0
+    t.bigint "gender_id"
+    t.index ["gender_id"], name: "index_profiles_on_gender_id"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
@@ -90,6 +98,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_07_181859) do
     t.datetime "locked_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "genders"
+    t.integer "minimum_age"
+    t.integer "maximum_age"
+    t.integer "distance"
+    t.integer "freshness"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

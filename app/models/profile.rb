@@ -1,6 +1,7 @@
 class Profile < ApplicationRecord
   belongs_to :user
   has_many :images, dependent: :destroy
+  belongs_to :gender
 
   attr_accessor :specified_gender
 

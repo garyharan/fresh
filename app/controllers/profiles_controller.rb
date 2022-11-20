@@ -103,29 +103,23 @@ class ProfilesController < ApplicationController
   end
 
   def profile_params
-    p =
-      params.require(:profile).permit(
-        :display_name,
-        :body,
-        :gender,
-        :relationship_style,
-        :specified_gender,
-        :born,
-        :height,
-        :drinking,
-        :smoking,
-        :children,
-        :lat,
-        :lon,
-        :city,
-        :state,
-        :country
-      )
-
-    p[:gender] = p[:specified_gender] unless Profile::POSSIBLE_GENDERS.include?(
-      p[:gender]
+    params.require(:profile).permit(
+      :display_name,
+      :body,
+      :gender_id,
+      :relationship_style,
+      :specified_gender,
+      :sexual_orientation,
+      :born,
+      :height,
+      :drinking,
+      :smoking,
+      :children,
+      :lat,
+      :lon,
+      :city,
+      :state,
+      :country
     )
-    p.delete(:specified_gender)
-    p
   end
 end
