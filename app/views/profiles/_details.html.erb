@@ -11,6 +11,12 @@
         </div>
     <% end %>
 
+    <% if profile.show_orientation? %>
+        <div class="py-3 px-4 mx-2 text-xs font-medium text-gray-900 rounded-full border border-gray-200 bg-gray-100">
+           ❤️ <%= profile.genders.to_sentence %>
+        </div>
+    <% end %>
+
     <% unless profile.height.nil? %>
         <div class="py-3 px-4 mx-2 text-xs font-medium text-gray-900 rounded-full border border-gray-200 bg-gray-100">
             📏 <%= imperialize(profile.height) %>

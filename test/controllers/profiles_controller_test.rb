@@ -46,7 +46,8 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
              profile: {
                display_name: "Kitty",
                body: "I love turtles",
-               gender: "Man",
+               gender_id: Gender.first.id,
+               gender_ids: [Gender.first.id, Gender.last.id],
                children: "Have & don't want more",
                relationship_style: "Non-monogamous",
                born: born,
@@ -66,7 +67,8 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
 
     assert_equal "Kitty", profile.display_name
     assert_equal "I love turtles", profile.body
-    assert_equal "Man", profile.gender
+    assert_equal Gender.first.label, profile.gender.label
+    assert_equal 2, profile.genders.count
     assert_equal "Have & don't want more", profile.children
     assert_equal "Non-monogamous", profile.relationship_style
     assert_equal born, profile.born
@@ -79,23 +81,6 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
     assert_equal "Quebec", profile.state
     assert_equal "Canada", profile.country
     assert_redirected_to profile_url(profile)
-  end
-
-  test "should allow user to specify gender" do
-    sign_in users(:gathino)
-
-    post profiles_url,
-         params: {
-           profile: {
-             display_name: "Kitty",
-             body: "I love turtles",
-             gender: "Let me be more specific",
-             specified_gender: "Agender",
-             born: 19.years.ago
-           }
-         }
-
-    assert_equal "Agender", Profile.last.gender
   end
 
   test "should show profile" do

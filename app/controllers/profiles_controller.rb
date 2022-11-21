@@ -103,23 +103,26 @@ class ProfilesController < ApplicationController
   end
 
   def profile_params
-    params.require(:profile).permit(
-      :display_name,
-      :body,
-      :gender_id,
-      :relationship_style,
-      :specified_gender,
-      :sexual_orientation,
-      :born,
-      :height,
-      :drinking,
-      :smoking,
-      :children,
-      :lat,
-      :lon,
-      :city,
-      :state,
-      :country
-    )
+    p =
+      params.require(:profile).permit(
+        :display_name,
+        :body,
+        :gender_id,
+        :relationship_style,
+        :specified_gender,
+        :show_orientation,
+        :born,
+        :height,
+        :drinking,
+        :smoking,
+        :children,
+        :lat,
+        :lon,
+        :city,
+        :state,
+        :country,
+        gender_ids: []
+      )
+    p
   end
 end

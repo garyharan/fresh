@@ -4,9 +4,9 @@
       <h2><%= pluralize(profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
 
       <ul>
+        <% profile.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
-        <% profile.errors.each do |error| %>
       </ul>
     </div>
   <% end %>
@@ -42,6 +42,21 @@
     <%= form.label :gender, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400" %>
     <%= form.select(:gender_id, Gender.all.map { |g| [g.label, g.id] }, {}, { "data-gender-target": "gender", "data-action": "gender#chooseGender gender#focusSpecifiedGender", class: "block p-2 mb-6 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" }) %>
   </div>
+
+  <div class="my-5">
+    <%= form.label "Orientation", class: "block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400" %>
+    <p class="">I am interested in</p>
+    <%= form.collection_check_boxes(:gender_ids, Gender.all, :id, :label) do |box|
+      box.label(class: "mr-2 text-sm font-medium text-gray-900 dark:text-gray-400") do
+        box.check_box(class: "check_box ml-2") + " " + box.text.pluralize
+      end
+    end %>
+
+    <hr>
+    <%= form.check_box :show_orientation, class: "ml-2" %>
+    <%= form.label :show_orientation, "Display my interest on my profile" %>
+  </div>
+
 
   <div class="my-5">
     <%= form.label :children, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400" %>
