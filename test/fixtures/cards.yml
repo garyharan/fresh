@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: Self summary
+  content: I want someone to hold and to live the moments together.
+  profile: one
+
+two:
+  title: 2 truths and a lie
+  content: I can breath underwater, I can breath real air, I am definitely not a platypus.
+  profile: one
