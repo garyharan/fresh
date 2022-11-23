@@ -1,11 +1,11 @@
 <%
 active_tab_classes = "inline-block p-4 text-blue-600 rounded-t-lg border-b-2 border-blue-600 active dark:text-blue-500 dark:border-blue-500"
-inactive_tab_classes = "inline-block p-4 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+inactive_tab_classes = "inline-block p-4 rounded-t-lg border-b-2 border-transparent hover:text-gray-100 hover:border-gray-300 dark:hover:text-gray-300"
 %>
 
-<div class="text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700 mt-4">
-    <div class="container flex flex-wrap justify-between items-center mx-auto">
-        <div class="flex">
+<div class="text-xs sm:text-sm  font-medium text-center text-gray-300 bg-black dark:text-gray-400 dark:border-gray-700 w-full">
+    <div class="container flex flex-wrap justify-between items-center">
+        <div class="flex my-2 mx-4">
             <h1 id="title">❤Fresh.Dating</h1>
         </div>
         <ul class="flex md:order-1">
@@ -25,7 +25,7 @@ inactive_tab_classes = "inline-block p-4 rounded-t-lg border-b-2 border-transpar
             <% end %>
         </ul>
         <% if user_signed_in? %>
-            <ul class="flex justify-between md:flex md:order-2">
+            <ul class="flex justify-between text-right flex order-2">
                 <li class="mr-2" data-controller="dropdown">
                     <div class="trigger">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path></svg>

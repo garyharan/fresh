@@ -1,13 +1,48 @@
-<div id="<%= dom_id @profile %>" class="mx-auto w-full py-10">
-  <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-700 md:text-5xl lg:text-6xl dark:text-white"><%= @profile.display_name %></h1>
+<% content_for(:head) do %>
+<style>
+   body {
+    background-image: linear-gradient(to bottom, #000 16rem, #fff 16rem);
+  }
 
-  <p class="my-5">
-    <%= render "images", profile: @profile %>
-  </p>
+  @media only screen and (max-width: 768px) {
+    body {
+      background-image: linear-gradient(to bottom, #000 18rem, #FFF 16rem);
+    }
+  }
+</style>
+<% end %>
 
-  <%= render "details", profile: @profile %>
+<div class="flex w-full mx-auto my-12 w-10/12 text-gray-200">
+  <div id="<%= dom_id @profile %>" class="flex justify-end mr-8 w-6/12 sm:w-4/12 ">
+    <div class="ml-auto mr-0">
+      <%= image_tag(@profile.images.first.photo.variant(:medium), class: "w-24 h-24 md:w-40 md:h-40 rounded-full", alt: @profile.display_name) %>
+    </div>
+  </div>
+  <div class="w-6/12 sm:w-8/12 pt-0 md:pt-12">
+    <div class="text-xl font-extrabold tracking-tight leading-none md:text-5xl lg:text-6xl dark:text-white"><%= @profile.display_name %></div>
+    <div class=""><%= "#{age(@profile.born)}yo" unless @profile.born.blank? %> • <%= @profile.city %></div>
+  </div>
+</div>
 
-  <p class="my-5">
-    <%= @profile.body %>
-  </p>
+<div class="flex w-8/12 mx-auto">
+  <div class="w-10/12 border-green" style="border: 2px dashed red">
+    <% @profile.cards.each do |card| %>
+      <div class="block max-w p-6 bg-white border border-gray-200 rounded-lg shadow-md ">
+        <h3 class="text-2xl font-bold text-gray-700 dark:text-white"><%= card.title %></h3>
+        <p class="text-gray-700 dark:text-white"><%= card.content %></p>
+      </div>
+    <% end %>
+
+    <p class="my-5">
+      <%= render "images", profile: @profile %>
+    </p>
+
+    <p class="my-5">
+      <%= @profile.body %>
+    </p>
+  </div>
+
+  <div id="details" class="w-2/12>
+    <%= render "details", profile: @profile %>
+  </div>
 </div>

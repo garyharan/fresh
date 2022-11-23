@@ -9,10 +9,12 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+
+    <%= yield :head %>
   </head>
 
-  <body class="text-slate-700">
-    <main class="container mx-auto px-10 my-10">
+  <body class="text-slate-700 mt-0">
+    <main class="w-full">
         <%= render "shared/nav" %>
 
         <%= render "shared/flashes" %>
