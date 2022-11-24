@@ -4,27 +4,27 @@
     background-image: linear-gradient(to bottom, #000 16rem, #fff 16rem);
   }
 
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 767px) {
     body {
-      background-image: linear-gradient(to bottom, #000 18rem, #FFF 16rem);
+      background-image: linear-gradient(to bottom, #000 11rem, #FFF 11rem);
     }
   }
 </style>
 <% end %>
 
-<div class="flex w-full mx-auto my-12 w-10/12 text-gray-200">
-  <div id="<%= dom_id @profile %>" class="flex justify-end mr-8 w-6/12 sm:w-4/12 ">
+<div class="flex mx-auto my-2 md:my-12 w-10/12 text-gray-200">
+  <div id="<%= dom_id @profile %>" class="flex grow-0 justify-end w-44">
     <div class="ml-auto mr-0">
       <%= image_tag(@profile.images.first.photo.variant(:medium), class: "w-24 h-24 md:w-40 md:h-40 rounded-full", alt: @profile.display_name) %>
     </div>
   </div>
-  <div class="w-6/12 sm:w-8/12 pt-0 md:pt-6">
+  <div class="w-4/5 pl-10 sm:w-8/12 pt-0 md:pt-6">
     <div class="text-xl font-extrabold tracking-tight leading-none md:text-5xl lg:text-6xl dark:text-white"><%= @profile.display_name %></div>
     <div class="">
       <%= "#{age(@profile.born)}yo" unless @profile.born.blank? %> • <%= @profile.city %>
       <% if @profile == current_user.profile %>
-        <%= button_to edit_profile_path(current_user.profile), class: "text-md text-blue-700 font-bold hover:text-blue-500 hover:underline whitespace-nowrap" do %>
-          <svg class="w-6 h-6 inline" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"></path><path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd"></path></svg> Edit profile
+        <%= button_to edit_profile_path(current_user.profile), method: :get, class: "text-xs md:text-md text-blue-700 font-bold hover:text-blue-500 hover:underline whitespace-nowrap" do %>
+          <svg class="w-3 h-3 md:w-6 md:h-6 inline" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"></path><path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd"></path></svg> Edit profile
         <% end %>
       <% end %>
     </div>
@@ -32,12 +32,12 @@
 </div>
 
 
-<div class="flex w-8/12 mx-auto">
-  <div class="w-10/12 border-green" style="border: 2px dashed red">
+<div class="flex flex-wrap-reverse w-10/12 mx-auto">
+  <div class="basis-full md:basis-2/3 max-w-3xl border-green">
     <% @profile.cards.each do |card| %>
-      <div class="block max-w p-6 bg-white border border-gray-200 rounded-lg shadow-md ">
-        <h3 class="text-2xl font-bold text-gray-700 dark:text-white"><%= card.title %></h3>
-        <p class="text-gray-700 dark:text-white"><%= card.content %></p>
+      <div class="block max-w bg-white border-gray-200 rounded-md shadow-md ">
+        <h3 class="border rounded-t-md pl-4 bg-black text-xl leading-8 font-semibold text-white dark:text-white"><%= card.title %></h3>
+        <p class="p-4 text-gray-700 dark:text-white"><%= card.content %></p>
       </div>
     <% end %>
 
@@ -50,7 +50,7 @@
     </p>
   </div>
 
-  <div id="details" class="w-2/12>
+  <div id="details" class="mx-auto basis-full md:basis-1/3">
     <%= render "details", profile: @profile %>
   </div>
 </div>
