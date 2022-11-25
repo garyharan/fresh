@@ -2,7 +2,7 @@
 
   <% if @profile.cards.any? { |card| card.kind.to_sym == kind.to_sym } %>
     <div class="block max-w bg-white border-gray-200 rounded-md shadow-md ">
-      <h3 class="border rounded-t-md pl-4 bg-black text-lg leading-8 font-semibold text-white dark:text-white"><%= card.title %></h3>
+      <h3 class="border rounded-t-md pl-4 bg-black text-lg leading-8 font-semibold text-white dark:text-white"><%= t(card.title) %></h3>
       <p class="p-4 text-gray-700 dark:text-white"><%= card.content %></p>
       <% if current_user == @profile.user %>
         <p class="text-right p-4">
