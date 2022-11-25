@@ -1,0 +1,3 @@
+<%= turbo_stream.replace "#{@card.kind}_card" do %>
+  <%= render 'card', card: @card, kind: @card.kind %>
+<% end %>

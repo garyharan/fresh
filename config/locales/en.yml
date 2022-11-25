@@ -30,4 +30,7 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  about_me: About me
+  self_summary: My self-summary
+  what_others_say_about_me: What others say about me
+  things_i_am_not: What I definitely am not

@@ -1,0 +1,15 @@
+<%= turbo_frame_tag "#{kind}_card" do %>
+
+  <div class="py-3 px-4 mx-2 text-xs font-medium text-gray-900 rounded-full border border-gray-200 bg-gray-100">
+      <% if @profile.cards.any? { |card| card.kind.to_sym == kind.to_sym } %>
+        <div class="block max-w bg-white border-gray-200 rounded-md shadow-md ">
+          <h3 class="border rounded-t-md pl-4 bg-black text-lg leading-8 font-semibold text-white dark:text-white"><%= card.title %></h3>
+          <p class="p-4 text-gray-700 dark:text-white"><%= card.content %></p>
+        </div>
+        <%= link_to "Edit this card", edit_card_path(card), method: :get, data: {"turbo-frame": "#{kind}_card"} %>
+      <% else %>
+        <%= link_to "Add the #{t(kind)} card", new_card_path(kind: kind), method: :get, format: :turbo_stream %>
+      <% end %>
+  </div>
+
+<% end %>

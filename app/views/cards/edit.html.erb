@@ -1,0 +1,3 @@
+<%= turbo_frame_tag "#{@card.kind}_card" do %>
+  <%= render 'form', card: @card, kind: @card.kind %>
+<% end %>

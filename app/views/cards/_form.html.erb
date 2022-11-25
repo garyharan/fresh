@@ -1,0 +1,29 @@
+<%= form_with(model: @card, class: "contents", data: { controller: 'card' }) do |form| %>
+  <%= form.hidden_field :kind, data: { card_target: 'kind' } %>
+
+  <div>
+    <%= form.label :title %><br>
+    <%= form.select(:title, Card::KINDS[@card.kind.to_sym].map { |k| [t(k), k] }, {}, class: "block p-2 mb-0 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500") %>
+  </div>
+
+  <% if @card.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(image.errors.count, "error") %> prohibited this image from being saved:</h2>
+
+      <ul>
+        <% @card.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :content %><br>
+    <%= form.text_area :content, value: "asdf", data: { card_target: 'content' } %>
+  </div>
+
+  <div class="inline">
+    <%= form.submit "Add card", class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+  </div>
+<% end %>

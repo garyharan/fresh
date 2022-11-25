@@ -1,0 +1,5 @@
+<%= turbo_frame_tag "#{@card.kind}_card" do %>
+  <div class="mx-auto md:w-2/3 w-full">
+    <%= render "form", card: @card, method: :new %>
+  </div>
+<% end %>

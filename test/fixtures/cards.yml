@@ -1,11 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: Self summary
-  content: I want someone to hold and to live the moments together.
+  type: about_me
+  title: self_summary
+  content: Half French and Half French Canadian but totally bilingual. Fan of cuddling and
   profile: one
 
 two:
-  title: 2 truths and a lie
-  content: I can breath underwater, I can breath real air, I am definitely not a platypus.
+  type: aspirations
+  title: current_goal
+  content: Building a dating web site you may have heard about recently.
   profile: one

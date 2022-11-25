@@ -31,14 +31,10 @@
   </div>
 </div>
 
-
 <div class="flex flex-wrap-reverse w-10/12 mx-auto">
   <div class="basis-full md:basis-2/3 max-w-3xl border-green">
-    <% @profile.cards.each do |card| %>
-      <div class="block max-w bg-white border-gray-200 rounded-md shadow-md ">
-        <h3 class="border rounded-t-md pl-4 bg-black text-xl leading-8 font-semibold text-white dark:text-white"><%= card.title %></h3>
-        <p class="p-4 text-gray-700 dark:text-white"><%= card.content %></p>
-      </div>
+    <% Card::KINDS.keys.each_with_index do |kind, index| %>
+      <%= render 'cards/card', card: @profile.cards.first { |c| c.kind == kind }, kind: kind %>
     <% end %>
 
     <p class="my-5">

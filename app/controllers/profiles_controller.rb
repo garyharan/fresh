@@ -16,7 +16,7 @@ class ProfilesController < ApplicationController
 
   # GET /profiles/1 or /profiles/1.json
   def show
-    @profile = Profile.joins(:cards).find(params[:id])
+    @profile = Profile.find(params[:id])
   end
 
   # GET /profiles/new

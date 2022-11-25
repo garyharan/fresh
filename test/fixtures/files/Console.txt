@@ -1,0 +1,6 @@
+[Log] Hello, Stimulus! –  (application-fc0ff494e0827057f2a8d183f2ec9156457dafc955cdda37fc42053364c6fa3b.js, line 6254)
+<form class="contents" data-controller="card" action="/profiles/2/cards" accept-charset="UTF-8" method="post">…</form>
+
+<form class="contents" data-controller="card" action="/profiles/2/cards" accept-charset="UTF-8" method="post">…</form>
+> document.querySelector('input:visible:enabled:first')
+< SyntaxError: The string did not match the expected pattern.
