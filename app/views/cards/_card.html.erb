@@ -1,6 +1,6 @@
 <%= turbo_frame_tag "#{kind}_card" do %>
+  <% if card = @profile.cards.find { |card| card.kind.to_sym == kind.to_sym } %>
 
-  <% if @profile.cards.any? { |card| card.kind.to_sym == kind.to_sym } %>
     <div class="block max-w bg-white border-gray-200 rounded-md shadow-md ">
       <h3 class="border rounded-t-md pl-4 bg-black text-lg leading-8 font-semibold text-white dark:text-white"><%= t(card.title) %></h3>
       <p class="p-4 text-gray-700 dark:text-white"><%= card.content %></p>
@@ -9,11 +9,17 @@
           <%= link_to edit_card_path(card), method: :get, class: "text-xs md:text-md text-blue-700 font-bold hover:text-blue-500 hover:underline whitespace-nowrap", data: { turbo_frame: "#{kind}_card" } do %>
             <svg class="w-3 h-3 md:w-6 md:h-6 inline" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"></path><path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd"></path></svg> Edit this card
           <% end %>
-        <% end %>
-      </p>
+        </p>
+      <% end %>
     </div>
+
   <% else %>
-    <%= link_to "Add the #{t(kind)} card", new_card_path(kind: kind), method: :get, format: :turbo_stream %>
+
+    <div class="text-center">
+      <%= link_to new_card_path(kind: kind), method: :get, format: :turbo_stream, class: "text-xs md:text-md text-blue-700 font-bold hover:text-blue-500 hover:underline whitespace-nowrap" do %>
+        <svg class="w-6 h-6 inline" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd"></path></svg><span >Add the <%= t(kind) %> card</span>
+      <% end %>
+    </div>
   <% end %>
 
 <% end %>

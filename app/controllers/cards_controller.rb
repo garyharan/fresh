@@ -6,18 +6,6 @@ class CardsController < ApplicationController
   end
   def create
     create_card!
-
-    # respond_to do |format|
-    #   if create_card!
-    #     format.turbo_stream
-    #     format.json { render :show, status: :created, location: @card }
-    #   else
-    #     format.turbo_stream
-    #     format.json do
-    #       render json: @profile.errors, status: :unprocessable_entity
-    #     end
-    #   end
-    # end
   end
 
   def edit

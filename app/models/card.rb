@@ -2,16 +2,15 @@ class Card < ApplicationRecord
   belongs_to :profile
 
   KINDS = {
-    about_me: %i[self_summary what_others_say_about_me things_i_am_not]
+    about_me: %i[self_summary what_others_say_about_me things_i_am_not],
+    aspirations: %i[
+      what_i_do_with_my_life
+      current_goal
+      would_be_known_for
+      dream_job
+    ],
+    talents: %i[really_good_at i_like_to_make my_worst_quality]
   }.freeze
-
-  #   aspirations: %i[
-  #     what_i_do_with_my_life
-  #     current_goal
-  #     would_be_known_for
-  #     dream_job
-  #   ],
-  #   talent: %i[really_good at i_like_to_make my_worst_quality],
   #   traits: %i[
   #     first_thing_people_notice
   #     my_style_described_as
