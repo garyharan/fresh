@@ -1,29 +1,27 @@
 <%= form_with(model: @card, class: "contents", data: { controller: 'card' }) do |form| %>
   <%= form.hidden_field :kind, data: { card_target: 'kind' } %>
 
-  <div>
-    <%= form.label :title %><br>
-    <%= form.select(:title, Card::KINDS[@card.kind.to_sym].map { |k| [t(k), k] }, {}, class: "block p-2 mb-0 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500") %>
-  </div>
+  <div class="block max-w bg-white border-gray-200 rounded-md shadow-md ">
+    <%= form.select(:title, Card::KINDS[@card.kind.to_sym].map { |k| [t(k), k] }, {}, class: "block w-full border rounded-t-md bg-black text-lg leading-8 font-semibold text-white dark:text-white") %>
 
-  <% if @card.errors.any? %>
-    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-      <h2><%= pluralize(image.errors.count, "error") %> prohibited this image from being saved:</h2>
+    <% if @card.errors.any? %>
+      <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+        <h2><%= pluralize(image.errors.count, "error") %> prohibited this image from being saved:</h2>
 
-      <ul>
-        <% @card.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+        <ul>
+          <% @card.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="p-4">
+      <%= form.text_area :content, rows: 6, data: { card_target: 'content' }, class: "block w-full px-0 text-sm text-gray-800 bg-white border-0 border-transparent focus:border-transparent focus:ring-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" %>
     </div>
-  <% end %>
 
-  <div>
-    <%= form.label :content %><br>
-    <%= form.text_area :content, value: "asdf", data: { card_target: 'content' } %>
-  </div>
-
-  <div class="inline">
-    <%= form.submit "Add card", class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+    <div class="p-4 text-right">
+      <%= form.submit class: "text-xs rounded-md py-1 px-2 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+    </div>
   </div>
 <% end %>
