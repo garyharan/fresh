@@ -31,10 +31,10 @@
   </div>
 </div>
 
-<div class="flex  w-10/12 mx-auto">
+<div class="flex w-10/12 mx-auto">
   <div class="basis-full md:basis-2/3 max-w-3xl border-green">
     <% Card::KINDS.keys.each do |kind| %>
-      <div class="w-full max-w-3xl border-green pb-10">
+      <div class="w-full max-w-3xl border-green pb-8">
         <%= render 'cards/card', kind: kind.to_s %>
       </div>
     <% end %>

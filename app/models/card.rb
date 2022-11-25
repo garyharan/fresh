@@ -9,26 +9,26 @@ class Card < ApplicationRecord
       would_be_known_for
       dream_job
     ],
-    talents: %i[really_good_at i_like_to_make my_worst_quality]
+    talents: %i[really_good_at i_like_to_make my_worst_quality],
+    traits: %i[
+      first_thing_people_notice_about_me
+      my_style_described_as
+      favorite_thing_about_me
+      weirdest_quirk
+    ],
+    media: %i[favorite_books favorite_bands favorite_movies favorite_shows],
+    needs: %i[
+      things_i_cant_live_without
+      things_i_want_in_a_partner
+      food_i_cant_live_without
+    ],
+    hobbies: %i[
+      i_spend_lots_of_time_thinking_about
+      hobby_i_want_to_learn
+      i_spent_too_much_time_on
+    ]
   }.freeze
-  #   traits: %i[
-  #     first_thing_people_notice
-  #     my_style_described_as
-  #     favorite_thing_about_me
-  #     my_golden_rule
-  #     weirdest_quirk
-  #   ],
-  #   media: %i[favorite_books favorite_bands favorite_movies favorite_shows],
-  #   needs: %i[
-  #     things_i_cant_live_without
-  #     things_i_want_in_a_partner
-  #     food_i_cant_live_without
-  #   ],
-  #   hobbies: %i[
-  #     i_spend_lots_of_time_thinking_about
-  #     hobby_i_want_to_learn
-  #     i_spent_too_much_time_on
-  #   ],
+
   #   projects: %i[retirement_plan dream_house dream_vacation],
   #   moments: %i[
   #     typical_friday_night
