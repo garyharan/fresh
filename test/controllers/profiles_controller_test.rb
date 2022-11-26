@@ -45,7 +45,6 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
            params: {
              profile: {
                display_name: "Kitty",
-               body: "I love turtles",
                gender_id: Gender.first.id,
                gender_ids: [Gender.first.id, Gender.last.id],
                children: "Have & don't want more",
@@ -66,7 +65,6 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
     profile = Profile.last
 
     assert_equal "Kitty", profile.display_name
-    assert_equal "I love turtles", profile.body
     assert_equal Gender.first.label, profile.gender.label
     assert_equal 2, profile.genders.count
     assert_equal "Have & don't want more", profile.children
@@ -98,13 +96,7 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
 
   test "should update profile" do
     sign_in users(:gathino)
-    patch profile_url(@profile),
-          params: {
-            profile: {
-              body: @profile.body,
-              born: @profile.born
-            }
-          }
+    patch profile_url(@profile), params: { profile: { born: @profile.born } }
     assert_redirected_to profile_url(@profile)
   end
 
