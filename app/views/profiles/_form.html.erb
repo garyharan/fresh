@@ -33,11 +33,6 @@
     <p class="text-sm">We use this to show you people closer to you.  No sense in matching you with someone all the way around the world if you cannot meet them.</p>
   </div>
 
-  <div class="my-5">
-    <%= form.label :body, class: "mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" %>
-    <%= form.text_area :body, rows: 7, class: "block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" %>
-  </div>
-
   <div class="my-5" data-controller="gender">
     <%= form.label :gender, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400" %>
     <%= form.select(:gender_id, Gender.all.map { |g| [g.label, g.id] }, {}, { "data-gender-target": "gender", "data-action": "gender#chooseGender gender#focusSpecifiedGender", class: "block p-2 mb-6 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" }) %>

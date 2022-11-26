@@ -106,7 +106,6 @@ class ProfilesController < ApplicationController
     p =
       params.require(:profile).permit(
         :display_name,
-        :body,
         :gender_id,
         :relationship_style,
         :specified_gender,
