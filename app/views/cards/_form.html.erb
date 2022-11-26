@@ -2,7 +2,8 @@
   <%= form.hidden_field :kind, data: { card_target: 'kind' } %>
 
   <div class="block max-w bg-white border-gray-200 rounded-md shadow-md ">
-    <%= form.select(:title, Card::KINDS[@card.kind.to_sym].map { |k| [t(k), k] }, {}, class: "block w-full border rounded-t-md bg-black text-lg leading-8 font-semibold text-white dark:text-white") %>
+    <h2 class="inline uppercase text-gray-500 text-sm"><%= t(card.kind) %></h2>
+    <%= form.select(:title, Card::KINDS[@card.kind.to_sym].map { |k| [t(k), k] }, {}, class: "block w-full border rounded-t-md pl-4 bg-black text-lg leading-5 font-semibold text-white dark:text-white") %>
 
     <% if @card.errors.any? %>
       <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
@@ -17,7 +18,7 @@
     <% end %>
 
     <div class="p-4">
-      <%= form.text_area :content, rows: 6, data: { card_target: 'content' }, class: "block w-full px-0 text-sm text-gray-800 bg-white border-0 border-transparent focus:border-transparent focus:ring-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" %>
+      <%= form.text_area :content, rows: 6, placeholder: t(:write_something), data: { card_target: 'content' }, class: "block w-full px-0 text-md text-gray-800 bg-white border-0 border-transparent focus:border-transparent focus:ring-0 dark:bg-gray-800 focus:bg-gray-100 focus:ring-0 dark:text-white dark:placeholder-gray-400" %>
     </div>
 
     <div class="p-4 text-right">

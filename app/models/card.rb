@@ -26,7 +26,25 @@ class Card < ApplicationRecord
       i_spend_lots_of_time_thinking_about
       hobby_i_want_to_learn
       i_spent_too_much_time_on
-    ]
+    ],
+    outdoors: %i[
+      my_favorite_outdoor_activity
+      my_favorite_outdoor_place
+      my_favorite_outdoor_memory
+    ],
+    cooking: %i[
+      best_meal_i_make
+      favorite_holiday_food
+      something_i_cooked_once_but_never_again
+    ],
+    eating: %i[
+      munchies
+      restaurant_i_been_to_the_most
+      favorite_restaurant
+      favorite_cuisine
+      snob_about
+    ],
+    dating: %i[message_me_if before_we_date_let_me_know_this first_date]
   }.freeze
 
   #   projects: %i[retirement_plan dream_house dream_vacation],
@@ -42,17 +60,11 @@ class Card < ApplicationRecord
   #     my_biggest_regret
   #     what_made_me_the_saddest_at_the_time
   #   ],
-  #   dating: %i[message_me_if before_we_date_let_me_know_this first_date],
   #   travel: %i[
   #     dreamiest_place_i_visited
   #     place_i_would_not_go_back_to
   #     next_destinations
   #     what_i_get_out_of_traveling
-  #   ],
-  #   outdoors: %i[
-  #     my_favorite_outdoor_activity
-  #     my_favorite_outdoor_place
-  #     my_favorite_outdoor_memory
   #   ],
   #   books: %i[
   #     my_favorite_book
@@ -68,18 +80,6 @@ class Card < ApplicationRecord
   #     favorite_genre
   #     film_that_changed_my_life
   #   ],
-  #   eating: %i[
-  #     munchies
-  #     restaurant_i_been_to_the_most
-  #     favorite_food
-  #     favorite_restaurant
-  #     favorite_cuisine
-  #     snob_about
-  #   ],
-  #   cooking: %i[
-  #     best_meal_i_make
-  #     favorite_holiday_food
-  #     something_i_cooked_once_but_never_again
-  #   ]
+
   # }
 end

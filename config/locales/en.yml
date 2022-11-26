@@ -30,34 +30,64 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
+  write_something: Write something...
+
   about_me: About me
   self_summary: My self-summary
   what_others_say_about_me: What others say about me
   things_i_am_not: What I definitely am not
+
   aspirations: Aspirations
   what_i_do_with_my_life: What I do with my life
   current_goal: Current goal
   would_be_known_for: What I would be known for
   dream_job: My dream job
+
   talents: Talents
   really_good_at: I don't want to brag but...
   i_like_to_make: Things I like to make
   my_worst_quality: My worst quality...
+
   traits: Traits
   first_thing_people_notice_about_me: First thing people notice about me
   my_style_described_as: My style can be described as
   favorite_thing_about_me: Favorite thing about me
   weirdest_quirk: Weirdest quirk
+
   media: Media
   favorite_books: Favorite Books
   favorite_bands: Favorite Bands
   favorite_movies: Favorite Movies
   favorite_shows: Favorite Shows
+
   needs: Needs
   things_i_cant_live_without: 5 things I can't live without
   things_i_want_in_a_partner: Things I am looking for in a partner
   food_i_cant_live_without: Food I would die if I could not have again
+
   hobbies: Hobbies
   i_spend_lots_of_time_thinking_about: I spend a lot of time thinking about
   hobby_i_want_to_learn: A hobby I would like to pick up
   i_spent_too_much_time_on: I spend too much time on
+
+  cooking: Cooking
+  best_meal_i_make: The best meal I can cook
+  favorite_holiday_food: Favorite holiday food
+  something_i_cooked_once_but_never_again: Something I cooked once but never again
+
+  outdoors: Outdoors
+  my_favorite_outdoor_activity: My favorite outdoor activity
+  my_favorite_outdoor_place: My favorite outdoor place
+  my_favorite_outdoor_memory: My favorite outdoor memory
+
+  eating: Eating
+  munchies: Go to snacks
+  restaurant_i_been_to_the_most: The restaurant I went to the most
+  favorite_restaurant: Favorite restaurant
+  favorite_cuisine: Favorite cuisine
+  snob_about: What food I'm a real snob about
+
+  dating: Dating
+  message_me_if: Message me if
+  before_we_date_let_me_know_this: Before we consider dating I need to know
+  first_date: What we could do for our first date
