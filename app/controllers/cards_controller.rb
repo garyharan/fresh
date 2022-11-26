@@ -4,6 +4,7 @@ class CardsController < ApplicationController
   def new
     @card = Card.new kind: params[:kind]
   end
+
   def create
     create_card!
   end

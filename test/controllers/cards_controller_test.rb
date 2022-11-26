@@ -4,21 +4,47 @@ class CardsControllerTest < ActionDispatch::IntegrationTest
   setup do
     sign_in users(:gathino)
 
-    @profile = profiles(:one)
+    @card = cards(:one)
   end
 
-  test "should get create" do
-    get cards_create_url
+  test "should create card" do
+    assert_difference("Card.count") do
+      post cards_url(
+             format: :turbo_stream,
+             params: {
+               card: {
+                 kind: "talents",
+                 title: "really_good_at",
+                 content: "Making grilled cheese"
+               }
+             }
+           )
+    end
+
+    card = Card.last
+
+    assert_equal "talents", card.kind
+    assert_equal "really_good_at", card.title
+    assert_equal "Making grilled cheese", card.content
+
     assert_response :success
   end
 
-  test "should get update" do
-    get cards_update_url
+  test "should update card" do
+    patch card_url(@card, format: :turbo_stream),
+          params: {
+            card: {
+              content: "I need someone who is capable"
+            }
+          }
+
     assert_response :success
   end
 
-  test "should get destroy" do
-    get cards_destroy_url
-    assert_response :success
-  end
+  # test "should destroy card" do
+  #   assert_difference("Card.count", -1) do
+  #     delete card_url(@card, format: :turbo_stream)
+  #   end
+  #   assert_response :success
+  # end
 end
