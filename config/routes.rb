@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   end
 
   resources :cards, only: %i[new edit create update destroy]
-  resources :users, only: %i[edit update]
 
   devise_for :users
   get "geo", to: "geo#show"
