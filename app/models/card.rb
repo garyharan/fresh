@@ -16,6 +16,7 @@ class Card < ApplicationRecord
       favorite_thing_about_me
       weirdest_quirk
     ],
+    projects: %i[retirement_plan dream_house dream_vacation],
     media: %i[favorite_books favorite_bands favorite_movies favorite_shows],
     needs: %i[
       things_i_cant_live_without
@@ -47,7 +48,6 @@ class Card < ApplicationRecord
     dating: %i[message_me_if before_we_date_let_me_know_this first_date]
   }.freeze
 
-  #   projects: %i[retirement_plan dream_house dream_vacation],
   #   moments: %i[
   #     typical_friday_night
   #     perfect_day

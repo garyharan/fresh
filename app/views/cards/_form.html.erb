@@ -3,7 +3,7 @@
 
   <div class="block max-w bg-white border-gray-200 rounded-md shadow-md ">
     <h2 class="inline uppercase text-gray-500 text-sm"><%= t(card.kind) %></h2>
-    <%= form.select(:title, Card::KINDS[@card.kind.to_sym].map { |k| [t(k), k] }, {}, class: "block w-full border rounded-t-md pl-4 bg-black text-lg leading-5 font-semibold text-white dark:text-white") %>
+    <%= form.select(:title, cards_select_options(card.kind), {}, class: "block w-full border rounded-t-md pl-4 bg-black text-lg leading-5 font-semibold text-white dark:text-white") %>
 
     <% if @card.errors.any? %>
       <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">

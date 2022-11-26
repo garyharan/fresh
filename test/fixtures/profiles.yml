@@ -3,7 +3,6 @@
 one:
   display_name: Gathino
   user: gathino
-  body: Kitty is soft
   born: 2022-10-04 15:22:52
   height: 178
   born: 1978-10-6
@@ -20,7 +19,6 @@ one:
 
 two:
   user: velvet
-  body: Kitty is soft
   height: 167
   born: 1982-10-6
   gender: Woman
