@@ -9,14 +9,9 @@ export default class extends Controller {
   }
 
   focusFirstElement() {
-    // this.element.querySelector("input[type=text]").focus()
-    if (this.contentTarget.value == '') {
-      this.titleTarget.focus()
-    } else {
-      var end = this.contentTarget.value.length
-      this.contentTarget.setSelectionRange(end, end);
-      this.contentTarget.focus()
-    }
+    var end = this.contentTarget.value.length
+    this.contentTarget.setSelectionRange(end, end);
+    this.contentTarget.focus()
   }
 
 }
