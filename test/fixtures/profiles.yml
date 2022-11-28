@@ -3,9 +3,8 @@
 one:
   display_name: Gathino
   user: gathino
-  born_on: 2022-10-04 15:22:52
   height: 178
-  born: 1978-10-6
+  born_on: 1978-10-6
   gender: Man
   lat: 45.498398543048125
   lon: -73.4327665245693
