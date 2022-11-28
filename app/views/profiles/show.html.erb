@@ -38,12 +38,12 @@
 </div>
 
 <div class="md:flex">
-  <div id="details" class="md:flex md:order-last mx-auto md:mx-12 w-full md:w-3/12">
+  <div id="details" class="md:flex md:order-last pt-4 md:pt-0 mx-auto md:mx-12 w-full md:w-3/12">
     <%= render "details", profile: @profile %>
   </div>
 
   <div class="md:flex mx-auto w-full md:w-9/12">
-    <div class="w-full p-12">
+    <div class="w-full px-12">
       <% Card::KINDS.keys.each do |kind| %>
         <div class="w-full border-green pb-8">
           <%= render 'cards/card', kind: kind.to_s %>
