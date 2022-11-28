@@ -31,7 +31,7 @@ if Rails.env.development?
       p =
         Profile.create! user_id: u.id,
                         display_name: Faker::Name.name,
-                        born: (18..99).to_a.sample.years.ago,
+                        born_on: (18..99).to_a.sample.years.ago,
                         body: Faker::Lorem.paragraph,
                         gender_id: [1, 2, 3].sample
 

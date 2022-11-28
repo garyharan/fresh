@@ -3,7 +3,7 @@
 one:
   display_name: Gathino
   user: gathino
-  born: 2022-10-04 15:22:52
+  born_on: 2022-10-04 15:22:52
   height: 178
   born: 1978-10-6
   gender: Man
@@ -20,7 +20,7 @@ one:
 two:
   user: velvet
   height: 167
-  born: 1982-10-6
+  born_on: 1982-10-6
   gender: Woman
   lat: 45.498398543048125
   lon: -73.4327665245693
