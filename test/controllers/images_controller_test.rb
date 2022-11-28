@@ -23,6 +23,11 @@ class ImagesControllerTest < ActionDispatch::IntegrationTest
       post profile_images_url(@profile),
            params: {
              image: {
+               photo:
+                 fixture_file_upload(
+                   "test/fixtures/files/captain.jpeg",
+                   "image/jpeg"
+                 ),
                profile_id: @image.profile_id
              }
            }
@@ -39,16 +44,6 @@ class ImagesControllerTest < ActionDispatch::IntegrationTest
   test "should get edit" do
     get edit_profile_image_url(@profile, @image)
     assert_response :success
-  end
-
-  test "should update image" do
-    patch profile_image_url(@profile, @image),
-          params: {
-            image: {
-              profile_id: @image.profile_id
-            }
-          }
-    assert_redirected_to profile_image_url(@profile, @image)
   end
 
   test "should destroy image" do

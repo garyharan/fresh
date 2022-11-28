@@ -2,7 +2,7 @@ class ImagesController < ApplicationController
   before_action :authenticate_user!
 
   before_action :set_profile
-  before_action :set_image, only: %i[show edit update destroy]
+  before_action :set_image, only: %i[show edit destroy]
 
   def index
     @images = @profile.images.order(:position)
@@ -38,23 +38,6 @@ class ImagesController < ApplicationController
         format.json { render :show, status: :created, location: @image }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json do
-          render json: @image.errors, status: :unprocessable_entity
-        end
-      end
-    end
-  end
-
-  def update
-    respond_to do |format|
-      if @image.update(image_params)
-        format.html do
-          redirect_to profile_image_url(@profile, @image),
-                      notice: "Image was successfully updated."
-        end
-        format.json { render :show, status: :ok, location: @image }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
         format.json do
           render json: @image.errors, status: :unprocessable_entity
         end

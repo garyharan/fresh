@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :profiles do
-    resources :images do
+    resources :images, except: :update do
       patch :sort, on: :collection
     end
   end
