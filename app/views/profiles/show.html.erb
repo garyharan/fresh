@@ -1,38 +1,26 @@
-<% content_for(:head) do %>
-  <style>
-    body {
-      background-image: linear-gradient(to bottom, #000 16rem, #fff 16rem);
-    }
-
-    @media only screen and (max-width: 767px) {
-      body {
-        background-image: linear-gradient(to bottom, #000 11rem, #FFF 11rem);
-      }
-    }
-  </style>
-<% end %>
-
-<div class="flex md:order-last w-10/12 mx-auto my-2 md:my-12 text-gray-200">
-  <div id="<%= dom_id @profile %>" class="flex grow-0 justify-end w-44">
-    <div class="ml-auto mr-0">
-      <% if @profile.images.any? %>
-        <%= image_tag(@profile.images.first.photo.variant(:medium), class: "w-24 h-24 md:w-40 md:h-40 rounded-full", alt: @profile.display_name) %>
-      <% else %>
-        <svg class="w-24 h-24 inline border rounded-md" fill="white" stroke="black" xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" style="transform: scale(4);"></path>
-        </svg>
-      <% end %>
-    </div>
-  </div>
-  <div class="w-4/5 pl-10 sm:w-8/12 pt-0 md:pt-6">
-    <div class="text-xl font-extrabold tracking-tight leading-none md:text-5xl lg:text-6xl dark:text-white"><%= @profile.display_name %></div>
-    <div class="">
-      <%= "#{age(@profile.born_on)}yo" unless @profile.born_on.blank? %> • <%= @profile.city %>
-      <% if @profile == current_user.profile %>
-        <%= button_to edit_profile_path(current_user.profile), method: :get, class: "text-xs md:text-md text-blue-700 font-bold hover:text-blue-500 hover:underline whitespace-nowrap" do %>
-          <svg class="w-3 h-3 md:w-6 md:h-6 inline" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"></path><path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd"></path></svg> Edit profile
+<div class="w-full p-0 m-0 bg-black mt-0 p-0">
+  <div class="flex md:order-last w-10/12 mx-auto mb-2 md:mb-12 text-gray-200">
+    <div id="<%= dom_id @profile %>" class="flex grow-0 justify-end w-44">
+      <div class="ml-auto mr-0 relative top-3 md:top-5">
+        <% if @profile.images.any? %>
+          <%= image_tag(@profile.images.first.photo.variant(:medium), class: "w-24 h-24 md:w-40 md:h-40 rounded-full", alt: @profile.display_name) %>
+        <% else %>
+          <svg class="w-24 h-24 inline border rounded-md" fill="white" stroke="black" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" style="transform: scale(4);"></path>
+          </svg>
         <% end %>
-      <% end %>
+      </div>
+    </div>
+    <div class="w-4/5 pl-10 sm:w-8/12 pt-2 md:pt-8">
+      <div class="text-xl font-extrabold tracking-tight leading-none md:text-5xl lg:text-6xl dark:text-white"><%= @profile.display_name %></div>
+      <div class="">
+        <%= "#{age(@profile.born_on)}yo" unless @profile.born_on.blank? %> • <%= @profile.city %>
+        <% if @profile == current_user.profile %>
+          <%= button_to edit_profile_path(current_user.profile), method: :get, class: "text-xs md:text-md text-blue-700 font-bold hover:text-blue-500 hover:underline whitespace-nowrap" do %>
+            <svg class="w-3 h-3 md:w-6 md:h-6 inline" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"></path><path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd"></path></svg> Edit profile
+          <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
