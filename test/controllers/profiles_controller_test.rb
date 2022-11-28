@@ -49,7 +49,7 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
                gender_ids: [Gender.first.id, Gender.last.id],
                children: "Have & don't want more",
                relationship_style: "Non-monogamous",
-               born_on: born,
+               born_on: born_on,
                height: 178,
                drinking: "Occasionally",
                smoking: "Never",
