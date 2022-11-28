@@ -12,7 +12,7 @@
   </style>
 <% end %>
 
-<div class="flex mx-auto my-2 md:my-12 w-10/12 text-gray-200">
+<div class="flex md:order-last w-10/12 mx-auto my-2 md:my-12 text-gray-200">
   <div id="<%= dom_id @profile %>" class="flex grow-0 justify-end w-44">
     <div class="ml-auto mr-0">
       <% if @profile.images.any? %>
@@ -37,20 +37,22 @@
   </div>
 </div>
 
-<div class="flex w-10/12 mx-auto">
-  <div class="basis-full md:basis-2/3 max-w-3xl border-green">
-    <% Card::KINDS.keys.each do |kind| %>
-      <div class="w-full max-w-3xl border-green pb-8">
-        <%= render 'cards/card', kind: kind.to_s %>
-      </div>
-    <% end %>
-
-    <p class="my-5">
-      <%= render "images", profile: @profile %>
-    </p>
+<div class="md:flex">
+  <div id="details" class="md:flex md:order-last mx-auto md:mx-12 w-full md:w-3/12">
+    <%= render "details", profile: @profile %>
   </div>
 
-  <div id="details" class="mx-auto basis-full md:basis-1/3">
-    <%= render "details", profile: @profile %>
+  <div class="md:flex mx-auto w-full md:w-9/12">
+    <div class="w-full p-12">
+      <% Card::KINDS.keys.each do |kind| %>
+        <div class="w-full border-green pb-8">
+          <%= render 'cards/card', kind: kind.to_s %>
+        </div>
+      <% end %>
+
+      <p class="my-5">
+        <%= render "images", profile: @profile %>
+      </p>
+    </div>
   </div>
 </div>
