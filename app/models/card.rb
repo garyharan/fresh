@@ -1,6 +1,8 @@
 class Card < ApplicationRecord
   belongs_to :profile
 
+  validates_presence_of :born_on
+
   KINDS = {
     about_me: %i[self_summary what_others_say_about_me things_i_am_not],
     aspirations: %i[
