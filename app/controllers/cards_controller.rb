@@ -20,6 +20,9 @@ class CardsController < ApplicationController
   end
 
   def destroy
+    @card = Card.find(params[:id])
+
+    @card.destroy!
   end
 
   private

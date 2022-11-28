@@ -41,10 +41,10 @@ class CardsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  # test "should destroy card" do
-  #   assert_difference("Card.count", -1) do
-  #     delete card_url(@card, format: :turbo_stream)
-  #   end
-  #   assert_response :success
-  # end
+  test "should destroy card" do
+    assert_difference("Card.count", -1) do
+      delete card_url(@card, format: :turbo_stream)
+    end
+    assert_response :success
+  end
 end
