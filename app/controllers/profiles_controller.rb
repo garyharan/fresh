@@ -110,7 +110,7 @@ class ProfilesController < ApplicationController
         :relationship_style,
         :specified_gender,
         :show_orientation,
-        :born,
+        :born_on,
         :height,
         :drinking,
         :smoking,

@@ -12,8 +12,13 @@
   <% end %>
 
   <div class="my-5">
-    <%= form.label :display_name, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" %>
+    <%= form.label t(:display_name), class: "block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" %>
     <%= form.text_field :display_name, class: "block shadow rounded-md border text-slate-800 border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label t(:born_on), class: "block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" %>
+    <%= form.date_select :born_on, order: [:day, :month, :year] %>
   </div>
 
   <div class="my-5" data-controller="location" data-location-url-value="<%= geo_url %>">

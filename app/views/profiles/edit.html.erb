@@ -1,4 +1,18 @@
-<div class="mx-auto w-full py-10">
+<% content_for(:head) do %>
+  <style>
+    body {
+      background-image: linear-gradient(to bottom, #000 4rem, #fff 4rem);
+    }
+
+    @media only screen and (max-width: 767px) {
+      body {
+        background-image: linear-gradient(to bottom, #000 4rem, #FFF 4rem);
+      }
+    }
+  </style>
+<% end %>
+
+<div class="mx-auto w-full py-10 px-10">
   <h1 class="font-bold text-4xl">Editing profile</h1>
   <%= render "form", profile: @profile %>
 </div>

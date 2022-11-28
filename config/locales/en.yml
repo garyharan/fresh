@@ -33,6 +33,10 @@ en:
   write_something: Write something...
   select_your_prompt: Select a prompt
 
+  profile: Profile
+  display_name: Display name
+  born_on: Born on
+
   about_me: About me
   self_summary: My self-summary
   what_others_say_about_me: What others say about me

@@ -38,7 +38,7 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
   test "should create profile" do
     sign_in users(:gathino)
 
-    born = 18.years.ago.to_date
+    born_on = 18.years.ago.to_date
 
     assert_difference("Profile.count") do
       post profiles_url,
@@ -49,7 +49,7 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
                gender_ids: [Gender.first.id, Gender.last.id],
                children: "Have & don't want more",
                relationship_style: "Non-monogamous",
-               born: born,
+               born_on: born,
                height: 178,
                drinking: "Occasionally",
                smoking: "Never",
@@ -69,7 +69,7 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
     assert_equal 2, profile.genders.count
     assert_equal "Have & don't want more", profile.children
     assert_equal "Non-monogamous", profile.relationship_style
-    assert_equal born, profile.born
+    assert_equal born_on, profile.born_on
     assert_equal 178, profile.height
     assert_equal "Occasionally", profile.drinking
     assert_equal "Never", profile.smoking
@@ -96,7 +96,12 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
 
   test "should update profile" do
     sign_in users(:gathino)
-    patch profile_url(@profile), params: { profile: { born: @profile.born } }
+    patch profile_url(@profile),
+          params: {
+            profile: {
+              born_on: @profile.born_on
+            }
+          }
     assert_redirected_to profile_url(@profile)
   end
 
