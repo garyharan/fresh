@@ -30,7 +30,7 @@ class ImagesController < ApplicationController
     @image.profile = @profile
 
     respond_to do |format|
-      if @image.save
+      if @image.save! && @image.photo.attach(image_params[:photo])
         format.html do
           redirect_to profile_images_url(@profile),
                       notice: "Image was successfully created."
@@ -85,7 +85,8 @@ class ImagesController < ApplicationController
   end
 
   def image_params
-    params.require(:image).permit(:photos)
+    params.require(:image).require(:photo)
+    params.require(:image).permit(:photo)
   end
 
   def sort_params

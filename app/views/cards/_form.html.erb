@@ -3,7 +3,7 @@
 
   <div class="block max-w bg-white border-gray-200 rounded-md shadow-md ">
     <h2 class="inline uppercase text-gray-500 text-sm"><%= t(card.kind) %></h2>
-    <%= form.select(:title, cards_select_options(card.kind), {}, class: "block w-full border rounded-t-md pl-4 bg-black text-lg leading-5 font-semibold text-white dark:text-white") %>
+    <%= form.select(:title, cards_select_options(card.kind), {}, class: "block w-full border rounded-t-md pl-4 bg-black text-lg leading-5 font-semibold text-white dark:text-white", data: { card_target: 'title' }) %>
 
     <% if @card.errors.any? %>
       <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
@@ -22,7 +22,7 @@
     </div>
 
     <div class="p-4 text-right">
-      <%= form.submit class: "text-xs rounded-md py-1 px-2 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+     <%= form.submit class: "text-xs rounded-md py-1 px-2 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
     </div>
   </div>
 <% end %>
