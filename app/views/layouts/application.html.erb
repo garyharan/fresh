@@ -14,10 +14,10 @@
 
   </head>
 
-  <body class="text-slate-700 mt-0">
+  <body class="text-slate-700 mt-0 mb-0 p-0">
+    <%= render "shared/flashes" %>
     <main class="w-full p-0 m-0">
         <%= render "shared/nav" %>
-        <%= render "shared/flashes" %>
         <%= yield %>
     </main>
   </body>
