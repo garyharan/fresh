@@ -1,7 +1,9 @@
- <div class="w-full my-5 mx-12 md:mx-0 flex" role="group">
-  <% profile.images.drop(1).each do |image| %>
-    <div class="pb-4 pr-4">
-      <%= image_tag image.photo.variant(:medium), class: "h-24 w-24 md:h-auto md:w-full md:block rounded-lg shadow"  %>
-    </div>
-  <% end %>
+<div class="mx-0 w-full px-10 py-3">
+  <div class="grid grid-cols-2 gap-2 md:grid-cols-1">
+    <% profile.images.drop(1).each do |image| %>
+      <div class="">
+        <%= image_tag image.photo.variant(:medium), class: "rounded-lg shadow"  %>
+      </div>
+    <% end %>
+  </div>
 </div>
