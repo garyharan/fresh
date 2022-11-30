@@ -18,7 +18,7 @@ class ImagesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should create image" do
+  test "should create single image" do
     assert_difference("Image.count") do
       post profile_images_url(@profile),
            params: {
@@ -28,6 +28,20 @@ class ImagesControllerTest < ActionDispatch::IntegrationTest
                    "test/fixtures/files/captain.jpeg",
                    "image/jpeg"
                  ),
+               profile_id: @image.profile_id
+             }
+           }
+    end
+
+    assert_redirected_to profile_images_url(@profile)
+  end
+
+  test "should create multiple images" do
+    assert_difference("Image.count", +2) do
+      post profile_images_url(@profile),
+           params: {
+             image: {
+               photo: [fixture_file_upload("test/fixtures/files/captain.jpeg", "image/jpeg"), fixture_file_upload("test/fixtures/files/gathino.png", "image/png")],
                profile_id: @image.profile_id
              }
            }

@@ -26,11 +26,23 @@ class ImagesController < ApplicationController
   end
 
   def create
-    @image = Image.new(image_params)
-    @image.profile = @profile
+    images =
+      if params[:image]["photo"].is_a?(Array)
+        params["image"]["photo"].reject(&:blank?)
+      else
+        [params["image"]["photo"]]
+      end
+
+    @images =
+      images.map do |photo|
+        image = Image.new(profile: @profile)
+        image.photo.attach(photo)
+        image.save!
+        image
+      end
 
     respond_to do |format|
-      if @image.save! && @image.photo.attach(image_params[:photo])
+      if @images.all?(&:valid?)
         format.html do
           redirect_to profile_images_url(@profile),
                       notice: "Image was successfully created."
@@ -39,7 +51,8 @@ class ImagesController < ApplicationController
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json do
-          render json: @image.errors, status: :unprocessable_entity
+          render json: @images.first { |i| i.errors.any? }.errors,
+                 status: :unprocessable_entity
         end
       end
     end
