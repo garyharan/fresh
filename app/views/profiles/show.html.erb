@@ -23,13 +23,13 @@
       </div>
     </div>
     <div class="hidden md:flex">
-      <%= render "likes/like", profile: @profile %>
+      <%= render("likes/like", profile: @profile) unless current_user.profile == @profile %>
     </div>
   </div>
 </div>
 
 <div class="visible md:hidden">
-  <%= render "likes/like", profile: @profile %>
+  <%= render("likes/like", profile: @profile) unless current_user.profile == @profile %>
 </div>
 
 <div class="md:flex">
