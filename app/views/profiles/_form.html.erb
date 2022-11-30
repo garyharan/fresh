@@ -18,7 +18,7 @@
 
   <div class="my-5">
     <%= form.label t(:born_on), class: "block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" %>
-    <%= form.date_select :born_on, order: [:day, :month, :year] %>
+    <%= form.date_select(:born_on, order: [:day, :month, :year], start_year: 1920, end_year: 2004, default: 18.years.ago) %>
   </div>
 
   <div class="my-5" data-controller="location" data-location-url-value="<%= geo_url %>">

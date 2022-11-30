@@ -1,6 +1,8 @@
 class Profile < ApplicationRecord
   belongs_to :user
 
+  has_many :likes
+
   has_many :images, dependent: :destroy
   has_many :cards, dependent: :destroy
 
@@ -34,4 +36,8 @@ class Profile < ApplicationRecord
     "Often",
     "Prefer not to say"
   ]
+
+  def liked_by?(profile)
+    likes.where(author_profile_id: profile.id).any?
+  end
 end

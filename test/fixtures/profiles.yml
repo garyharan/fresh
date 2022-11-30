@@ -30,3 +30,18 @@ two:
   drinking: Occasionally
   relationship_style: Non-monogamous
   children: Have & don't want more
+
+three:
+  user: reject
+  height: 140
+  born_on: 1982-10-6
+  gender: Man
+  lat: 45.498398543048125
+  lon: -73.4327665245693
+  city: Longueuil
+  state: Quebec
+  country: Canada
+  smoking: Often
+  drinking: Occasionally
+  relationship_style: Monogamous
+  children: Not sure yet
