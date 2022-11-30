@@ -11,7 +11,7 @@
         <% end %>
       </div>
     </div>
-    <div class="w-4/5 pl-10 sm:w-8/12 pt-2 md:pt-8">
+    <div class="pl-10 pt-2 md:pt-8">
       <div class="text-xl font-extrabold tracking-tight leading-none md:text-5xl lg:text-6xl dark:text-white"><%= @profile.display_name %></div>
       <div class="">
         <%= "#{age(@profile.born_on)}yo" unless @profile.born_on.blank? %> • <%= @profile.city %>
