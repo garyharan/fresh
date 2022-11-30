@@ -1,7 +1,7 @@
 <%= turbo_frame_tag "#{kind}_card", class: "group" do %>
   <% if card = @profile.cards.find { |card| card.kind.to_sym == kind.to_sym } %>
+    <h2 class="inline uppercase text-gray-500 text-sm"><%= t(card.kind) %></h2>
     <div class="w-full pb-8">
-      <h2 class="inline uppercase text-gray-500 text-sm"><%= t(card.kind) %></h2>
       <div class="block max-w bg-white border-gray-200 rounded-b-md shadow-md">
         <div class="flex border rounded-t-md pl-4 bg-black text-lg leading-8 font-semibold text-white dark:text-white leading-10">
           <div class="grow text-lg leading-8 font-semibold text-white dark:text-white leading-10">

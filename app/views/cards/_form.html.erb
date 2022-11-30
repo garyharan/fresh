@@ -1,8 +1,8 @@
 <%= form_with(model: @card, class: "contents", data: { controller: 'card' }) do |form| %>
   <%= form.hidden_field :kind, data: { card_target: 'kind' } %>
 
+  <h2 class="inline uppercase text-gray-500 text-sm"><%= t(card.kind) %></h2>
   <div class="block max-w bg-white border-gray-200 rounded-md shadow-md ">
-    <h2 class="inline uppercase text-gray-500 text-sm"><%= t(card.kind) %></h2>
     <%= form.select(:title, cards_select_options(card.kind), {}, class: "block w-full border rounded-t-md pl-4 bg-black text-lg leading-5 font-semibold text-white dark:text-white", data: { card_target: 'title' }) %>
 
     <% if @card.errors.any? %>
