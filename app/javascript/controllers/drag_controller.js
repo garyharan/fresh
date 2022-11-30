@@ -52,15 +52,15 @@ export default class extends Controller {
         position: newPosition,
       },
     });
-    // fetch(url, {
-    //   method: "PATCH",
-    //   credentials: "same-origin",
-    //   headers: {
-    //     "X-CSRF-Token": this.getMetaValue("csrf-token"),
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: data,
-    // });
+    fetch(url, {
+      method: "PATCH",
+      credentials: "same-origin",
+      headers: {
+        "X-CSRF-Token": this.getMetaValue("csrf-token"),
+        "Content-Type": "application/json",
+      },
+      body: data,
+    });
   }
   /**
    * Called when the user drags an element over another element.
