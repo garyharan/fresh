@@ -11,7 +11,11 @@ class ProfilesController < ApplicationController
       return
     end
 
-    @profiles = Profile.all
+    if current_user.profile
+      @profiles = Profile.all.where.not(id: current_user.profile.id)
+    else
+      @profiles = Profile.all
+    end
   end
 
   # GET /profiles/1 or /profiles/1.json
