@@ -22,19 +22,13 @@
         <% end %>
       </div>
     </div>
-    <div class="hidden md:flex">
-      <%= render("likes/like", profile: @profile) unless current_user.profile == @profile %>
-    </div>
   </div>
-</div>
-
-<div class="visible md:hidden">
-  <%= render("likes/like", profile: @profile) unless current_user.profile == @profile %>
 </div>
 
 <div class="md:flex">
   <div class="md:flex md:order-last pt-4 md:pt-0 mx-2 w-full md:w-3/12">
     <div>
+      <%= render("likes/like", profile: @profile) unless current_user.profile == @profile %>
       <%= render "details", profile: @profile %>
       <%= render "images", profile: @profile %>
     </div>
