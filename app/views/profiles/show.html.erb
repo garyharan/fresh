@@ -1,7 +1,7 @@
-<div class="w-full p-0 m-0 bg-black mt-0 p-0 mb-0 pb-0">
-  <div class="flex md:order-last w-10/12 mx-auto mb-2 md:mb-12 text-gray-200 group">
-    <div id="<%= dom_id @profile %>" class="flex grow-0 justify-end w-44">
-      <div class="ml-auto mr-0 relative top-3 md:top-5">
+<div class="w-full bg-black">
+  <div class="flex md:order-last w-10/12 mx-auto mb-2 md:mb-12 text-gray-200 group items-end">
+    <div id="<%= dom_id @profile %>" class="flex ml-0 tl-0 grow-0">
+      <div class="ml-0 mr-0 relative top-3 md:top-5 ">
         <% if @profile.images.any? %>
           <%= image_tag(@profile.images.first.photo.variant(:medium), class: "w-24 h-24 md:w-40 md:h-40 rounded-full", alt: @profile.display_name) %>
         <% else %>
@@ -11,7 +11,7 @@
         <% end %>
       </div>
     </div>
-    <div class="pl-10 pt-2 md:pt-8">
+    <div class="pl-3 md:pl-6">
       <div class="text-xl font-extrabold tracking-tight leading-none md:text-5xl lg:text-6xl dark:text-white"><%= @profile.display_name %></div>
       <div class="">
         <%= "#{age(@profile.born_on)}yo" unless @profile.born_on.blank? %> • <%= @profile.city %>
