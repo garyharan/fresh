@@ -1,13 +1,26 @@
 require "test_helper"
 
 class ProfileTest < ActiveSupport::TestCase
-  test "liked_by?(profile) returns true or false" do
-    profile = profiles(:one)
-    like =
-      Like.create! profile_id: profile.id,
-                   author_profile_id: (profiles(:two).id)
+  setup do
+    @gathino = profiles(:one)
+    @velvet = profiles(:two)
+  end
 
-    assert profile.liked_by?(profiles(:two))
-    refute profile.liked_by?(profiles(:three))
+  test "liked_by?(profile) when profile was liked by other profile" do
+    Like.create! profile: @velvet, author_profile: @gathino
+
+    assert @velvet.liked_by?(@gathino)
+  end
+
+  test "liked_by?(profile) when profile was not liked by other profile" do
+    refute @gathino.liked_by?(@velvet)
+  end
+
+  test "#likes and #authored_likes" do
+    Like.create! profile: @gathino, author_profile: @velvet
+    Like.create! profile: @velvet, author_profile: @gathino
+
+    assert_equal 1, @gathino.likes.count
+    assert_equal 1, @gathino.authored_likes.count
   end
 end

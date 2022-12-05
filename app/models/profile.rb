@@ -1,13 +1,19 @@
 class Profile < ApplicationRecord
   belongs_to :user
 
-  has_many :likes
+  has_many :likes, foreign_key: :profile_id, dependent: :destroy
+  has_many :authored_likes,
+           class_name: "Like",
+           foreign_key: :author_profile_id,
+           dependent: :destroy
 
   has_many :images, dependent: :destroy
   has_many :cards, dependent: :destroy
 
   belongs_to :gender, required: false
   has_and_belongs_to_many :genders
+
+  has_and_belongs_to_many :rooms
 
   attr_accessor :specified_gender
 
@@ -38,6 +44,6 @@ class Profile < ApplicationRecord
   ]
 
   def liked_by?(profile)
-    likes.where(author_profile_id: profile.id).any?
+    likes.where(author_profile: profile).any?
   end
 end
