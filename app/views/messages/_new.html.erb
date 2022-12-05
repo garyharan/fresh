@@ -1,0 +1,6 @@
+<%= form_with model: [ room, Message.new ] do |form| %>
+  Your message:<br>
+
+  <%= form.text_area :body, size: "20x5" %>
+  <%= form.submit %>
+<% end %>

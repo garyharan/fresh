@@ -15,8 +15,10 @@ one:
   drinking: Occasionally
   relationship_style: Non-monogamous
   children: Have & don't want more
+  rooms: two
 
 two:
+  display_name: Velvet
   user: velvet
   height: 167
   born_on: 1982-10-6
@@ -30,6 +32,7 @@ two:
   drinking: Occasionally
   relationship_style: Non-monogamous
   children: Have & don't want more
+  rooms: one, two
 
 three:
   user: reject

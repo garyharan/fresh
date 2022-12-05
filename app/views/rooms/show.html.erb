@@ -1,0 +1,18 @@
+<%= turbo_stream_from @room %>
+
+<div class="">
+  <div class="flex">
+    <div class="flex my-5 -space-x-4">
+      <% @room.profiles.map do |profile| %>
+        <%= image_tag(profile.images.first.photo.variant(:thumb), class: "w-10 h-10 border-2 rounded-full", alt: profile.display_name) %>
+      <% end %>
+    </div>
+    <div class="text-md md:text-xl lg:text-2xl font-semibold m-5 pl-10 self-center self-stretch"><%= @room.name %></div>
+  </div>
+</div>
+
+<div class="m-5" id="messages">
+  <%= render @room.messages %>
+</div>
+
+<%= render 'messages/new', room: @room %>

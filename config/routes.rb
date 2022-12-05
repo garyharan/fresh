@@ -9,6 +9,10 @@ Rails.application.routes.draw do
 
   resources :cards, only: %i[new edit create update destroy]
 
+  resources :rooms do
+    resources :messages
+  end
+
   devise_for :users
   get "geo", to: "geo#show"
 
