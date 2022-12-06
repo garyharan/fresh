@@ -25,5 +25,8 @@ application.register("location", LocationController)
 import MessageController from "./message_controller"
 application.register("message", MessageController)
 
+import RoomController from "./room_controller"
+application.register("room", RoomController)
+
 import SortableController from "./sortable_controller"
 application.register("sortable", SortableController)

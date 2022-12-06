@@ -8,7 +8,7 @@
     <%= @room.name %>
   </div>
 </header>
-<main class="flex-1 overflow-y-auto overflow-x-clip w-full py-2">
+<main class="flex-1 overflow-y-auto overflow-x-clip w-full py-2" id="messages">
   <%= render @room.messages %>
 </main>
 <footer class="block shadow p-2">

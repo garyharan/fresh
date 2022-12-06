@@ -10,16 +10,10 @@ export default class extends Controller {
       this.setMessageOwnerAsOtherUser()
     }
 
-    if (this.previousMessageMatchesMessageUser()) {
-      this.element.classList.add("mt-0")
-    } else {
-      this.element.classList.add("mt-2")
-      this.makeTopBorderRounded()
-    }
+    this.element.classList.add("mt-2")
+    this.makeTopBorderRounded()
 
-    if (!this.nextMessageMatchesMessageUser()) {
-      this.setBubbleBottom()
-    }
+    this.setBubbleBottom()
 
     this.element.scrollIntoView()
   }
