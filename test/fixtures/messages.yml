@@ -3,9 +3,9 @@
 one:
   room: one
   user: one
-  content: MyText
+  body: Wanna go for a date?
 
 two:
-  room: two
+  room: one
   user: two
-  content: MyText
+  body: Sure I would love to rekindle our lost love.

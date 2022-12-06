@@ -8,7 +8,7 @@ class Like < ApplicationRecord
 
   def create_room_if_recriprocal
     if profile.liked_by?(author_profile)
-      Room.create(profiles: [profile, author_profile])
+      Room.find_or_create_by_profiles([profile, author_profile])
     end
   end
 end

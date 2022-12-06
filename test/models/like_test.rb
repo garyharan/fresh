@@ -9,8 +9,8 @@ class LikeTest < ActiveSupport::TestCase
     Like.destroy_all
 
     assert_difference "Room.count", 1 do
-      gathino.likes.create profile: gathino
       Like.create! profile: velvet, author_profile: gathino
+      Like.create! profile: gathino, author_profile: velvet
     end
 
     assert_equal 2, Like.count
