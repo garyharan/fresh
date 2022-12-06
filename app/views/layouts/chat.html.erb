@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>❤️ <%= @room.profiles.map(&:display_name).to_sentence %></title>
+    <%= render 'layouts/header' %>
+  </head>
+
+  <body class="text-slate-700" data-user-id="<%= user_signed_in? ? current_user.id : -1 %>">
+    <div class="min-h-screen h-screen flex flex-col">
+
+      <%= yield %>
+
+
+    </div>
+  </body>
+</html>

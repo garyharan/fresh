@@ -1,18 +1,16 @@
 <%= turbo_stream_from @room %>
 
-<div class="">
-  <div class="flex">
-    <div class="flex my-5 -space-x-4">
-      <% @room.profiles.map do |profile| %>
-        <%= image_tag(profile.images.first.photo.variant(:thumb), class: "w-10 h-10 border-2 rounded-full", alt: profile.display_name) %>
-      <% end %>
-    </div>
-    <div class="text-md md:text-xl lg:text-2xl font-semibold m-5 pl-10 self-center self-stretch"><%= @room.name %></div>
+<header class="block text-xs sm:text-md md:text-lg font-medium text-center text-gray-300 bg-black w-full">
+  <div class="flex flex-wrap justify-between items-center w-full p-4">
+    <%= link_to :back do %>
+      <svg class="w-6 h-6 md:w-8 md:h-8 inline" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+    <% end %>
+    <%= @room.name %>
   </div>
-</div>
-
-<div class="m-5" id="messages">
+</header>
+<main class="flex-1 overflow-y-auto overflow-x-clip w-full py-2">
   <%= render @room.messages %>
-</div>
-
-<%= render 'messages/new', room: @room %>
+</main>
+<footer class="block shadow p-2">
+  <%= render 'messages/new', room: @room %>
+</footer>

@@ -2,23 +2,16 @@
 <html>
   <head>
     <title>Fresh - Honest dating</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
-
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
-
-    <%= yield :head %>
-
+    <%= render 'layouts/header' %>
   </head>
 
-  <body class="text-slate-700 mt-0 mb-0 p-0">
-    <%= render "shared/flashes" %>
-    <main class="w-full p-0 m-0">
-        <%= render "shared/nav" %>
-        <%= yield %>
-    </main>
+  <body class="text-slate-700" data-user-id="<%= user_signed_in? ? current_user.id : -1 %>">
+    <div class="flex">
+      <%= render "shared/flashes" %>
+      <main class="w-full p-0 m-0">
+          <%= render "shared/nav" %>
+          <%= yield %>
+      </main>
+    </div>
   </body>
 </html>

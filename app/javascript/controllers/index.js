@@ -22,5 +22,8 @@ application.register("height", HeightController)
 import LocationController from "./location_controller"
 application.register("location", LocationController)
 
+import MessageController from "./message_controller"
+application.register("message", MessageController)
+
 import SortableController from "./sortable_controller"
 application.register("sortable", SortableController)
