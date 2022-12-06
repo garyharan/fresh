@@ -15,6 +15,7 @@ export default class extends Controller {
 
     this.setBubbleBottom()
 
+    this.element.scrollTo(0, this.element.scrollHeight);
     this.element.scrollIntoView()
   }
 
