@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :events
   resources :profiles do
     resources :images, except: :update do
       patch :sort, on: :collection
