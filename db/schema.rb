@@ -11,6 +11,9 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2022_12_10_025103) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -40,17 +43,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_10_025103) do
   end
 
   create_table "cards", force: :cascade do |t|
+    t.string "title"
     t.string "content"
-    t.integer "profile_id", null: false
+    t.bigint "profile_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "title"
     t.string "kind"
     t.index ["profile_id"], name: "index_cards_on_profile_id"
   end
 
-  create_table "events", force: :cascade do |t|
-    t.integer "user_id", null: false
+  create_table "events", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.bigint "user_id", null: false
     t.string "name"
     t.datetime "start_time"
     t.datetime "end_time"
@@ -66,12 +69,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_10_025103) do
   end
 
   create_table "genders_profiles", id: false, force: :cascade do |t|
-    t.integer "gender_id", null: false
-    t.integer "profile_id", null: false
+    t.bigint "gender_id", null: false
+    t.bigint "profile_id", null: false
+    t.index ["gender_id", "profile_id"], name: "index_genders_profiles_on_gender_id_and_profile_id"
   end
 
   create_table "images", force: :cascade do |t|
-    t.integer "profile_id", null: false
+    t.bigint "profile_id", null: false
     t.string "caption"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -87,8 +91,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_10_025103) do
   end
 
   create_table "messages", force: :cascade do |t|
-    t.integer "room_id", null: false
-    t.integer "user_id", null: false
+    t.bigint "room_id", null: false
+    t.bigint "user_id", null: false
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -97,12 +101,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_10_025103) do
   end
 
   create_table "profiles", force: :cascade do |t|
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.string "display_name"
     t.date "born_on"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "gender"
     t.float "lat"
     t.float "lon"
     t.string "city"
@@ -114,15 +117,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_10_025103) do
     t.string "relationship_style"
     t.string "children"
     t.integer "images_count", default: 0
-    t.integer "gender_id"
+    t.bigint "gender_id"
     t.boolean "show_orientation", default: false
     t.index ["gender_id"], name: "index_profiles_on_gender_id"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
   create_table "profiles_rooms", force: :cascade do |t|
-    t.integer "room_id", null: false
-    t.integer "profile_id", null: false
+    t.bigint "room_id", null: false
+    t.bigint "profile_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["profile_id"], name: "index_profiles_rooms_on_profile_id"

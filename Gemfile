@@ -12,7 +12,8 @@ gem "devise"
 gem "sprockets-rails"
 
 # Use sqlite3 as the database for Active Record
-gem "sqlite3", "~> 1.4"
+# gem "sqlite3", "~> 1.4"
+gem "pg"
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
@@ -35,6 +36,9 @@ gem "redis", "~> 4.0"
 
 # To get City or County from profile LAT/LON
 gem "geocoder", "~> 1.8.1"
+
+# To generate QR codes for events
+gem "rqrcode", "~> 2.0"
 
 # Allows us to sort with SortableJS
 gem "acts_as_list"

@@ -1,27 +1,17 @@
-<div id="<%= dom_id event %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">User:</strong>
-    <%= event.user_id %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Name:</strong>
-    <%= event.name %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Start time:</strong>
-    <%= event.start_time %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">End time:</strong>
-    <%= event.end_time %>
-  </p>
-
-  <% if action_name != "show" %>
-    <%= link_to "Show this event", event, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to 'Edit this event', edit_event_path(event), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
-  <% end %>
+<div id="<%= dom_id event %>" class="my-10">
+  <div class="flex flex-col md:flex-row bg-black rounded-lg p-4">
+    <div class="bg-white p-2 mx-auto">
+      <%=  raw RQRCode::QRCode.new(event_url(@event)).as_svg module_size: 11, color: "white" %>
+    </div>
+    <div class="p-6 flex flex-col text-white text-center">
+      <div class="flex-none shrink text-3xl font-bold text-center">
+        <%= event.name %>
+      </div>
+      <div class="flex flex-col justify-center grow text-center mt-10">
+        <div><%= time_tag event.start_time %></div>
+        <div>-</div>
+        <div><%= time_tag event.end_time %></div>
+      </div>
+    </div>
+  </div>
 </div>

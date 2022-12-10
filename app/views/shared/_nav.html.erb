@@ -19,11 +19,13 @@ inactive_tab_classes = "inline-block p-2 md:p-4 rounded-t-lg border-b-2 border-t
                     <span title="My Profile" class="whitespace-nowrap"><svg class="w-6 h-6 inline" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path></svg><span class="hidden lg:inline"> My profile</span>
                   <% end %>
                 </li>
-                <li class="mr-2">
-                  <%= link_to profile_images_path(current_user.profile), class: (action_name == 'index' && controller_name == "images" ? active_tab_classes : inactive_tab_classes) do %>
-                    <span title="My photos" class="whitespace-nowrap"><svg class="w-6 h-6 inline" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd"></path></svg><span class="hidden lg:inline"> My photos</span>
-                  <% end %>
-                </li>
+                <% if current_user.profile %>
+                  <li class="mr-2">
+                    <%= link_to profile_images_path(current_user.profile), class: (action_name == 'index' && controller_name == "images" ? active_tab_classes : inactive_tab_classes) do %>
+                      <span title="My photos" class="whitespace-nowrap"><svg class="w-6 h-6 inline" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd"></path></svg><span class="hidden lg:inline"> My photos</span>
+                    <% end %>
+                  </li>
+              <% end %>
             <% end %>
         </ul>
         <% if user_signed_in? %>
