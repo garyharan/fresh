@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :events
   resources :profiles do
     resources :images, except: :update do
       patch :sort, on: :collection
@@ -13,6 +12,8 @@ Rails.application.routes.draw do
   resources :rooms do
     resources :messages
   end
+
+  resources :groups
 
   devise_for :users
   get "geo", to: "geo#show"

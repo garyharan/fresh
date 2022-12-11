@@ -38,14 +38,14 @@ inactive_tab_classes = "inline-block p-2 md:p-4 rounded-t-lg border-b-2 border-t
                     </div>
                     <div class="target hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
                         <ul class="py-1 text-sm font-light text-gray-700 dark:text-gray-200">
-                            <% if current_user.event_planner? %>
+                            <% if current_user.group_owner? %>
                               <li class="whitespace-nowrap">
-                                <%= link_to(events_path, class: "block flex flex-row-reverse py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white") do %>
+                                <%= link_to(groups_path, class: "block flex flex-row-reverse py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white") do %>
                                   <div class="px-2">
                                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
                                   </div>
                                   <div class="grow">
-                                    My events
+                                    My Groups
                                   </div>
                                 <% end %>
                               </li>

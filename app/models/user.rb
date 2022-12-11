@@ -9,7 +9,7 @@ class User < ApplicationRecord
          :lockable
 
   has_one :profile, dependent: :destroy
-  has_many :events
+  has_many :groups
 
   POSSIBLE_DISTANCES = [5, 10, 25, 50, 100, 250, Float::INFINITY]
   POSSIBLE_FRESHNESS = [7, 14, 30, 60, 90, Float::INFINITY]

@@ -52,16 +52,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_10_025103) do
     t.index ["profile_id"], name: "index_cards_on_profile_id"
   end
 
-  create_table "events", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.string "name"
-    t.datetime "start_time"
-    t.datetime "end_time"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_events_on_user_id"
-  end
-
   create_table "genders", force: :cascade do |t|
     t.string "label"
     t.datetime "created_at", null: false
@@ -72,6 +62,22 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_10_025103) do
     t.bigint "gender_id", null: false
     t.bigint "profile_id", null: false
     t.index ["gender_id", "profile_id"], name: "index_genders_profiles_on_gender_id_and_profile_id"
+  end
+
+  create_table "groups", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_groups_on_user_id"
+  end
+
+  create_table "groups_users", id: false, force: :cascade do |t|
+    t.bigint "group_id"
+    t.bigint "user_id"
+    t.index ["group_id"], name: "index_groups_users_on_group_id"
+    t.index ["user_id"], name: "index_groups_users_on_user_id"
   end
 
   create_table "images", force: :cascade do |t|
@@ -163,7 +169,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_10_025103) do
     t.integer "maximum_age"
     t.integer "distance"
     t.integer "freshness"
-    t.boolean "event_planner", default: false
+    t.boolean "group_owner", default: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -173,7 +179,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_10_025103) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "cards", "profiles"
-  add_foreign_key "events", "users"
+  add_foreign_key "groups", "users"
   add_foreign_key "images", "profiles"
   add_foreign_key "messages", "rooms"
   add_foreign_key "messages", "users"

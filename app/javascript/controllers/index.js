@@ -13,9 +13,6 @@ application.register("drag", DragController)
 import DropdownController from "./dropdown_controller"
 application.register("dropdown", DropdownController)
 
-import EventFormController from "./event_form_controller"
-application.register("event-form", EventFormController)
-
 import FlashController from "./flash_controller"
 application.register("flash", FlashController)
 
