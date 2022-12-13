@@ -7,6 +7,7 @@ Rails.application.configure do
   config.web_console.whiny_requests = false
 
   config.hosts << "garyharan.local"
+  config.hosts << /.*\.ngrok\.io/
 
   # In the development environment your application's code is reloaded any time
   # it changes. This slows down response time but is perfect for development

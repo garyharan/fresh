@@ -3,7 +3,7 @@
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
   <% end %>
 
-  <% if current_user.groups.any? %>
+  <% if user_signed_in? && current_user.groups.any? %>
 
     <div id="groups" class="m-10">
       <h2 class="text-2xl font-bold mb-4">Your groups</h2>

@@ -1,15 +1,19 @@
 <div id="<%= dom_id group %>" class="my-10">
   <div class="flex flex-col md:flex-row bg-black rounded-lg p-4">
     <div class="bg-white p-2 mx-auto">
-      <%= raw RQRCode::QRCode.new(group_url(group)).as_svg module_size: 11, color: "white" %>
+      <%= link_to public_group_url(group) do %>
+        <%= raw RQRCode::QRCode.new(public_group_url(group)).as_svg module_size: 11, color: "white" %>
+      <% end %>
     </div>
     <div class="p-6 flex flex-col justify-evenly text-white text-center">
       <div class="text-3xl font-bold text-center">
         <%= group.name %>
       </div>
-      <div class="text-center mt-10">
-        <div><%= group.description %></div>
-      </div>
+      <% if group.description %>
+        <div class="text-center mt-10">
+          <div><%= group.description %></div>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

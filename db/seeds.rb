@@ -21,7 +21,7 @@ else
 end
 
 if Rails.env.development?
-  if User.count.zero?
+  if User.count < 10
     (0..10).each do |number|
       u =
         User.create! email: Faker::Internet.email,

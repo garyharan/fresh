@@ -13,10 +13,14 @@ Rails.application.routes.draw do
     resources :messages
   end
 
-  resources :groups
+  resources :groups do
+    resources :memberships, only: %i[new create destroy]
+  end
 
   devise_for :users
   get "geo", to: "geo#show"
 
   root "root#index"
+
+  get "/:group_id", to: "memberships#new"
 end

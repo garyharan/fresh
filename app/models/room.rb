@@ -8,11 +8,8 @@ class Room < ApplicationRecord
   end
 
   def self.find_or_create_by_profiles(profiles)
-    room =
-      Room
-        .includes(:profiles)
-        .find { |room| room.profiles.sort == profiles.sort }
-
+    # find the room where the profile attached belongs to both profiles
+    room = Room.includes(:profiles).where(profiles: { id: profiles.map(&:id) }).first
     room || Room.create(profiles: profiles)
   end
 end
