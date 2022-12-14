@@ -3,9 +3,8 @@ class Group < ApplicationRecord
 
   self.implicit_order_column = "created_at"
 
-  has_and_belongs_to_many :members,
-                          class_name: "User",
-                          join_table: :groups_users
-
   validates_presence_of :name
+
+  has_many :memberships, dependent: :destroy
+  has_many :users, through: :memberships
 end

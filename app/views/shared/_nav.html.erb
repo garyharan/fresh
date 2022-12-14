@@ -40,7 +40,7 @@ inactive_tab_classes = "inline-block p-2 md:p-4 rounded-t-lg border-b-2 border-t
                     </div>
                     <div class="target hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
                         <ul class="py-1 text-sm font-light text-gray-700 dark:text-gray-200">
-                            <% if current_user.group_owner? || current_user.groups.any? %>
+                            <% if current_user.group_owner? || current_user.memberships.any? %>
                               <li class="whitespace-nowrap">
                                 <%= link_to(groups_path, class: "block flex flex-row-reverse py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white") do %>
                                   <div class="px-2">
