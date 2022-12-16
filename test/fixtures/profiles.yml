@@ -6,8 +6,8 @@ one:
   height: 178
   born_on: 1978-10-6
   gender: Man
-  lat: 45.498398543048125
-  lon: -73.4327665245693
+  latitude: 45.498398543048125
+  longitude: -73.4327665245693
   city: Longueuil
   state: Quebec
   country: Canada
@@ -22,8 +22,8 @@ two:
   height: 167
   born_on: 1982-10-6
   gender: Woman
-  lat: 45.498398543048125
-  lon: -73.4327665245693
+  latitude: 45.498398543048125
+  longitude: -73.4327665245693
   city: Longueuil
   state: Quebec
   country: Canada
@@ -37,8 +37,8 @@ three:
   height: 140
   born_on: 1982-10-6
   gender: Man
-  lat: 45.498398543048125
-  lon: -73.4327665245693
+  latitude: 45.498398543048125
+  longitude: -73.4327665245693
   city: Longueuil
   state: Quebec
   country: Canada
