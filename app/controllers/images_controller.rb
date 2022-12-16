@@ -43,10 +43,10 @@ class ImagesController < ApplicationController
 
     respond_to do |format|
       if @images.all?(&:valid?)
-        format.html do
-          redirect_to profile_images_url(@profile),
-                      notice: "Image was successfully created."
+        format.turbo_stream do
+          @images = @profile.images.order(:position)
         end
+        format.html { redirect_to profile_images_url(@profile) }
         format.json { render :show, status: :created, location: @image }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -62,10 +62,8 @@ class ImagesController < ApplicationController
     @image.destroy
 
     respond_to do |format|
-      format.html do
-        redirect_to profile_images_path(@profile),
-                    notice: "Image was successfully destroyed."
-      end
+      format.turbo_stream { @images = @profile.images.order(:position) }
+      format.html { redirect_to profile_images_path(@profile) }
       format.json { head :no_content }
     end
   end

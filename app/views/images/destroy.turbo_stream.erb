@@ -1,1 +1,5 @@
-<%= turbo_stream.update "images", partial: "images/images" %>
+<turbo-stream action="update" target="images">
+  <template>
+    <%= render 'images/images', images: @images %>
+  </template>
+</turbo-stream>

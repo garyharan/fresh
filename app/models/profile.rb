@@ -15,7 +15,19 @@ class Profile < ApplicationRecord
 
   has_and_belongs_to_many :rooms
 
+  geocoded_by :location
+  after_validation :geocode, if: ->(obj){ obj.location_changed? }
+
+  attr_accessor :onboarding_step
   attr_accessor :specified_gender
+
+  def location
+    [city, state, country].compact.join(', ')
+  end
+
+  def location_changed?
+    city_changed? || state_changed? || country_changed?
+  end
 
   POSSIBLE_GENDERS = ["Woman", "Man", "Non-Binary and/or Two Spirit Person"]
   POSSIBLE_CHILDREN_CONFIGURATIONS = [

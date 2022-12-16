@@ -13,14 +13,10 @@ export default class extends Controller {
   ]
 
   connect() {
-    this.displayFilledValues()
   }
 
   askLocation(event) {
-    event.preventDefault()
-
     if ('geolocation' in navigator) {
-      this.locationFieldTarget.value = "loading..."
       this.hideButton()
 
       navigator.geolocation.getCurrentPosition((success) => {
@@ -41,12 +37,6 @@ export default class extends Controller {
     this.cityTarget.value = json["city"]
     this.stateTarget.value = json["state"]
     this.countryTarget.value = json["country"]
-
-    this.displayFilledValues()
-  }
-
-  displayFilledValues() {
-    this.locationFieldTarget.value = this.cityTarget.value + ", " + this.stateTarget.value + ", " + this.countryTarget.value
   }
 
   explainGeoRequirement() {
@@ -55,10 +45,10 @@ export default class extends Controller {
   }
 
   hideButton() {
-    this.locationButtonTarget.style.display = "none"
+    this.locationButtonTarget.classList.add("hidden")
   }
 
   showButton() {
-    this.locationButtonTarget.style.display = "inline"
+    this.locationButtonTarget.classList.remove("hidden")
   }
 }

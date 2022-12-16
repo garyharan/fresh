@@ -1,26 +1,12 @@
-<div class="flex">
-  <div class="w-full m-2 md:m-8">
-    <ul id="images" data-controller="sortable" data-url="<%= sort_profile_images_path(current_user.profile) %>" class="space-y-3 list-inside text-gray-500 dark:text-gray-400">
 
-      <% @images.each do |image| %>
-        <% next if image == "" || !image.photo.attached? %>
+<div class="flex flex-col">
+  <div class="w-100% m-2 md:m-8">
+    <%= turbo_frame_tag "images" do %>
+      <%= render 'images/images', images: @images %>
+    <% end %>
 
-        <li id="<%= dom_id image %>" class="flex w-full items-center draggable cursor-grab gap-4">
-            <div class="">
-              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
-            </div>
-            <div class="flex-grow justify-self-center">
-              <%= image_tag image.photo.variant(:thumb), class: "rounded-lg" %>
-            </div>
-            <div class="justify-self-right">
-              <%= button_to "🗑️", profile_image_path(@profile.id, image), method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "delete_button" %>
-            </div>
-        </li>
-      <% end %>
-    </ul>
-
-    <div id="add_images" class="my-10">
-      <%= render "form", image: @image %>
-    </div>
+  </div>
+  <div id="add_images" class="m-2 md:m-8">
+    <%= render "form", image: @image %>
   </div>
 </div>

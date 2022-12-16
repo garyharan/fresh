@@ -1,0 +1,11 @@
+<turbo-stream action="update" target="images">
+  <template>
+    <%= render 'images/images', images: @images %>
+  </template>
+</turbo-stream>
+
+<turbo-stream action="update" target="images_form">
+  <template>
+    <%= render "images/form", image: @image %>
+  </template>
+</turbo-stream>

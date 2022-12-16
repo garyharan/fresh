@@ -11,78 +11,114 @@
     </div>
   <% end %>
 
-  <div class="my-5">
+  <div class="m-5">
     <%= form.label t(:display_name), class: "block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" %>
     <%= form.text_field :display_name, class: "block shadow rounded-md border text-slate-800 border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
-  <div class="my-5">
+  <div class="m-5">
     <%= form.label t(:born_on), class: "block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" %>
-    <%= form.date_select(:born_on, order: [:day, :month, :year], start_year: 1920, end_year: 2004, default: 18.years.ago) %>
-  </div>
-
-  <div class="my-5" data-controller="location" data-location-url-value="<%= geo_url %>">
-    <%= form.label :location, class: "mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" %>
-    <div class="relative">
-        <div class="flex absolute top-2 left-0 items-center pl-3 pointer-events-none font-extrabold text-2xl">⌖</div>
-        <input type="text" class="block p-4 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" data-location-target="locationField" />
-        <%= form.hidden_field :lat, "data-location-target": "lat" %>
-        <%= form.hidden_field :lon, "data-location-target": "lon" %>
-        <%= form.hidden_field :city, "data-location-target": "city" %>
-        <%= form.hidden_field :state, "data-location-target": "state" %>
-        <%= form.hidden_field :country, "data-location-target": "country" %>
-        <button data-location-target="locationButton" data-action="location#askLocation" class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-          Find Location
-        </button>
+    <div class="flex flex-row justify-center">
+      <%= form.date_select(:born_on, {
+        order: [:day, :month, :year], start_year: 1920, end_year: 2004, default: 18.years.ago,
+        with_css_classes:
+          {
+            day:   "inline-flex min-w-fit h-12 border border-r-0 focus:border-x-2 items-center px-3 focus:outline-none rounded-l-md border-gray-300 bg-gray-50 text-gray-500 text-sm w-1/3",
+            month: "inline-flex grow border focus:border-x-2 bg-gray-50 border-gray-300 text-gray-900 text-xs md:text-sm leading-6 focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500",
+            year:  "m-0 bg-gray-50 border border-l-0 focus:border-l-2 rounded-r-md border-gray-300 text-gray-900 text-xs md:text-sm leading-6 focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          }
+        }
+      ) %>
     </div>
-    <p class="text-sm">We use this to show you people closer to you.  No sense in matching you with someone all the way around the world if you cannot meet them.</p>
   </div>
 
-  <div class="my-5" data-controller="gender">
-    <%= form.label :gender, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400" %>
-    <%= form.select(:gender_id, Gender.all.map { |g| [g.label, g.id] }, {}, { "data-gender-target": "gender", "data-action": "gender#chooseGender gender#focusSpecifiedGender", class: "block p-2 mb-6 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" }) %>
+  <div class="m-5">
+    <%= form.label :location, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" %>
+    <div class="flex flex-col md:flex-row justify-center gap-2">
+      <%= form.text_field :city, "data-location-target": "city", placeholder: t(:city), class: "block shadow grow min-w-fit rounded-md border text-slate-800 border-gray-200 outline-none" %>
+      <%= form.text_field :state, "data-location-target": "state", placeholder: t(:province_or_state), class: "block shadow grow min-w-fit rounded-md border text-slate-800 border-gray-200 outline-none" %>
+      <%= form.text_field :country, "data-location-target": "country", placeholder: t(:country), class: "block shadow grow min-w-fit rounded-md border text-slate-800 border-gray-200 outline-none" %>
+    </div>
   </div>
 
-  <div class="my-5">
-    <%= form.label "Orientation", class: "block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400" %>
-    <p class="">I am interested in</p>
-    <%= form.collection_check_boxes(:gender_ids, Gender.all, :id, :label) do |box|
-      box.label(class: "mr-2 text-sm font-medium text-gray-900 dark:text-gray-400") do
-        box.check_box(class: "check_box ml-2") + " " + box.text.pluralize
-      end
-    end %>
-
-    <hr>
-    <%= form.check_box :show_orientation, class: "ml-2" %>
-    <%= form.label :show_orientation, "Display my interest on my profile" %>
+  <div class="m-5" data-controller="gender">
+    <h2 class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">I am a</h2>
+    <ul class="grid gap-2 w-full md:grid-cols-3">
+      <% Gender.all.each_with_index do |option, index| %>
+        <li>
+          <%= form.radio_button :gender_id, option.id, class: "hidden peer", id: "gender_option_#{index}" %>
+          <%= form.label :gender_id, option.label, for: "gender_option_#{index}", class: "inline-flex justify-between items-center p-3 pl-5 w-full text-gray-500 bg-white rounded-full border border-gray-200 cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700" %>
+        </li>
+      <% end %>
+    </ul>
   </div>
 
-
-  <div class="my-5">
-    <%= form.label :children, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400" %>
-    <%= form.select(:children, Profile::POSSIBLE_CHILDREN_CONFIGURATIONS, {}, class: "block p-2 mb-0 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500") %>
+  <div class="m-5">
+    <h2 class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">I am interested in</h2>
+    <ul class="grid gap-2 w-full md:grid-cols-3">
+      <%= form.collection_check_boxes(:gender_ids, Gender.all, :id, :label) do |box| %>
+        <li>
+          <%= box.check_box class: "hidden peer", id: "profile_gender_ids_#{box.object.id}" %>
+          <%= box.label for: "profile_gender_ids_#{box.object.id}", class: "inline-flex justify-between items-center p-3 pl-5 w-full text-gray-500 bg-white rounded-full border border-gray-200 cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700" do %>
+            <%= box.object.label.pluralize %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
   </div>
 
-  <div class="my-5">
-    <%= form.label :relationship_style, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400" %>
-    <%= form.select(:relationship_style, Profile::POSSIBLE_RELATIONSHIP_STYLES, {}, { "data-gender-target": "gender", "data-action": "gender#chooseGender gender#focusSpecifiedGender", class: "block p-2 mb-0 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" }) %>
-    <p class="text-xs">By presenting your relationship style you can have matches that are looking for the same thing you are.</p>
+  <div class="m-5">
+    <h2 class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Children</h2>
+    <ul class="grid gap-2 w-full md:grid-cols-3">
+      <% Profile::POSSIBLE_CHILDREN_CONFIGURATIONS.each_with_index do |option, index| %>
+        <li>
+          <%= form.radio_button :children, option, class: "hidden peer", id: "children_option_#{index}" %>
+          <%= form.label :children, option, for: "children_option_#{index}", class: "inline-flex justify-between items-center p-3 pl-5 w-full text-gray-500 bg-white rounded-full border border-gray-200 cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700" %>
+        </li>
+      <% end %>
+    </ul>
   </div>
 
-  <div class="my-5" data-controller="height" data-height-units-value="imperial">
+  <div class="m-5">
+    <h2 class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Relationship Style</h2>
+    <ul class="grid gap-2 w-full md:grid-cols-3">
+      <% Profile::POSSIBLE_RELATIONSHIP_STYLES.each_with_index do |option, index| %>
+        <li>
+          <%= form.radio_button :relationship_style, option, class: "hidden peer", id: "relationship_style_option_#{index}" %>
+          <%= form.label :relationship_style, option, for: "relationship_style_option_#{index}", class: "inline-flex justify-between items-center p-3 pl-5 w-full text-gray-500 bg-white rounded-full border border-gray-200 cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700" %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="m-5" data-controller="height" data-height-units-value="imperial">
     <%= form.label :height, class: "mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" %>
     <%= form.range_field :height, min: 90, max: 243, class: "w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700", "data-height-target": "slider", "data-action": "height#update" %>
     <p data-height-target="display" class="inline text-slate-800 border-gray-200 outline-none px-3 py-2 mt-2 w-1/3"></p>
   </div>
 
-  <div class="my-5 w-full">
-    <%= form.label :smoking, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" %>
-    <%= form.select(:smoking, Profile::POSSIBLE_SMOKING_OPTIONS, {}, {class: "block p-2 mb-6 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"}) %>
+  <div class="m-5">
+    <h2 class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Smoking</h2>
+    <ul class="grid gap-2 w-full md:grid-cols-3">
+      <% Profile::POSSIBLE_SMOKING_OPTIONS.each_with_index do |option, index| %>
+        <li>
+          <%= form.radio_button :smoking, option, class: "hidden peer", id: "smoking_option_#{index}" %>
+          <%= form.label :smoking, option, for: "smoking_option_#{index}", class: "inline-flex justify-between items-center p-3 pl-5 w-full text-gray-500 bg-white rounded-full border border-gray-200 cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700" %>
+        </li>
+      <% end %>
+    </ul>
   </div>
 
-  <div class="my-5 w-full">
-    <%= form.label :drinking, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" %>
-    <%= form.select(:drinking, Profile::POSSIBLE_DRINKING_OPTIONS, {}, {class: "block p-2 mb-6 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"}) %>
+  <div class="m-5">
+    <h2 class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Drinking</h2>
+    <ul class="grid gap-2 w-full md:grid-cols-3">
+      <% Profile::POSSIBLE_DRINKING_OPTIONS.each_with_index do |option, index| %>
+        <li>
+          <%= form.radio_button :drinking, option, class: "hidden peer", id: "drinking_option_#{index}" %>
+          <%= form.label :drinking, option, for: "drinking_option_#{index}", class: "inline-flex justify-between items-center p-3 pl-5 w-full text-gray-500 bg-white rounded-full border border-gray-200 cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700" %>
+        </li>
+      <% end %>
+    </ul>
   </div>
 
   <div class="flex justify-between h-48">

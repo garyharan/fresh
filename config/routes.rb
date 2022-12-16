@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'onboarding/zero'
+  get 'onboarding/one'
+  get 'onboarding/two'
+  get 'onboarding/three'
+  get 'onboarding/four'
+
   resources :profiles do
     resources :images, except: :update do
       patch :sort, on: :collection

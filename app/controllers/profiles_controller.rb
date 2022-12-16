@@ -119,8 +119,6 @@ class ProfilesController < ApplicationController
         :drinking,
         :smoking,
         :children,
-        :lat,
-        :lon,
         :city,
         :state,
         :country,

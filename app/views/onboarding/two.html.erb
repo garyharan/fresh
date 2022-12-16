@@ -1,0 +1,66 @@
+<div class="w-fit md:w-9/12 mx-auto mt-10">
+  <%= render 'steps' %>
+
+  <%= form_with(model: @profile) do |form| %>
+    <div class="m-5">
+      <%= form.label "I am interested in dating", class: "block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400" %>
+      <div class="flex flex-col md:flex-row md:justify-between">
+        <%= form.collection_check_boxes(:gender_ids, Gender.all, :id, :label) do |box|
+          tag.div class: "w-fit" do
+            box.label(class: "inline-flex relative items-center mb-5 cursor-pointer") do
+              box.check_box(class: "sr-only peer") + tag.div(class: "w-11 h-6 mr-3 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600") + box.text.pluralize
+            end
+          end
+        end %>
+      </div>
+    </div>
+
+    <div class="m-5">
+      <h2 class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Children</h2>
+      <ul class="grid gap-2 w-full md:grid-cols-3">
+        <% Profile::POSSIBLE_CHILDREN_CONFIGURATIONS.each_with_index do |option, index| %>
+          <li>
+            <%= form.radio_button :children, option, class: "hidden peer", id: "children_option_#{index}" %>
+            <%= form.label :children, option, for: "children_option_#{index}", class: "inline-flex justify-between items-center p-3 pl-5 w-full text-gray-500 bg-white rounded-full border border-gray-200 cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700" %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+
+    <div class="m-5">
+      <h2 class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Relationship Style</h2>
+      <ul class="grid gap-2 w-full md:grid-cols-3">
+        <% Profile::POSSIBLE_RELATIONSHIP_STYLES.each_with_index do |option, index| %>
+          <li>
+            <%= form.radio_button :relationship_style, option, class: "hidden peer", id: "relationship_style_option_#{index}" %>
+            <%= form.label :relationship_style, option, for: "relationship_style_option_#{index}", class: "inline-flex justify-between items-center p-3 pl-5 w-full text-gray-500 bg-white rounded-full border border-gray-200 cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700" %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+
+  <div class="m-5">
+    <h2 class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Smoking</h2>
+    <ul class="grid gap-2 w-full md:grid-cols-3">
+      <% Profile::POSSIBLE_SMOKING_OPTIONS.each_with_index do |option, index| %>
+        <li>
+          <%= form.radio_button :smoking, option, class: "hidden peer", id: "smoking_option_#{index}" %>
+          <%= form.label :smoking, option, for: "smoking_option_#{index}", class: "inline-flex justify-between items-center p-3 pl-5 w-full text-gray-500 bg-white rounded-full border border-gray-200 cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700" %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="m-5">
+    <h2 class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Drinking</h2>
+    <ul class="grid gap-2 w-full md:grid-cols-3">
+      <% Profile::POSSIBLE_DRINKING_OPTIONS.each_with_index do |option, index| %>
+        <li>
+          <%= form.radio_button :drinking, option, class: "hidden peer", id: "drinking_option_#{index}" %>
+          <%= form.label :drinking, option, for: "drinking_option_#{index}", class: "inline-flex justify-between items-center p-3 pl-5 w-full text-gray-500 bg-white rounded-full border border-gray-200 cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700" %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+</div>

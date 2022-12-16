@@ -1,0 +1,15 @@
+  <div>
+    <h2 class="sr-only">Steps</h2>
+
+    <div class="relative after:absolute after:inset-x-0 after:top-1/2 after:block after:h-0.5 after:-translate-y-1/2 after:rounded-lg after:bg-gray-100" >
+      <ol class="relative z-10 flex justify-center text-sm font-medium text-gray-500">
+        <% [onboarding_one_url, onboarding_two_url, onboarding_three_url].each_with_index do |step, index| %>
+          <li class="flex items-center bg-white p-2">
+            <%= link_to step, class: "h-6 w-6 rounded-full text-center text-[10px] font-bold leading-6 #{step == request.url ? 'bg-blue-600 text-white' : 'bg-gray-100'}" do %>
+              <%= index + 1 %>
+            <% end %>
+          </li>
+        <% end %>
+      </ol>
+    </div>
+  </div>
