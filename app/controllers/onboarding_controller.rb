@@ -43,7 +43,13 @@ class OnboardingController < ApplicationController
   end
 
   def set_profile
-    @profile = current_user.profile || Profile.create!(user: current_user)
+    @profile = current_user.profile || create_profile
+  end
+
+  def create_profile
+    @profile = Profile.new(user: current_user)
+    @profile.save(validate: false)
+    @profile
   end
 
   def step_one_profile_params
