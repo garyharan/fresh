@@ -30,13 +30,6 @@ export default class extends Controller {
     });
   }
 
-  getSortOrder() {
-    var draggableImages = this.element.querySelectorAll(".draggable_image")
-    var domIds = Array.from(draggableImages).map((item) => { return item.id })
-    debugger
-    return domIds
-  }
-
   getMetaValue(name) {
     const element = document.head.querySelector(`meta[name="${name}"]`);
     return element.getAttribute("content");
