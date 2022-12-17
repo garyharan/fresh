@@ -1,7 +1,7 @@
 class RoomsController < ApplicationController
   before_action :authenticate_user!
 
-  layout "chat"
+  layout "chat", only: :show
 
   # GET /rooms or /rooms.json
   def index
