@@ -9,3 +9,9 @@
     <%= render "images/form", image: @image %>
   </template>
 </turbo-stream>
+
+<turbo-stream action="update" target="onboarding_final_step">
+  <template>
+    <%= render 'onboarding/final_step_button', images: @images %>
+  </template>
+</turbo-stream>

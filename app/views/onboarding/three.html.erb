@@ -1,6 +1,8 @@
-<div class="w-full md:w-9/12 mx-auto mt-10">
+<div class="w-full md:w-9/12 mx-auto mt-10" data-controller="onboarding">
   <%= render 'steps' %>
 
   <%= render 'images/images', images: @images %>
   <%= render 'images/form' %>
+
+  <%= render 'onboarding/final_step_button', images: @images %>
 </div>

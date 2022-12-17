@@ -1,4 +1,4 @@
-<%= turbo_frame_tag "images_form" do %>
+<%= turbo_frame_tag "images_form", data: { controller: 'photos' } do %>
   <%= form_with(model: Image.new, url: [@profile, Image.new], class: "contents") do |form| %>
     <% if @image&.errors&.any? %>
       <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
@@ -12,13 +12,15 @@
       </div>
     <% end %>
 
-    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="large_size">
+    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="large_size" data-photos-target="uploadSection">
       <div class="m-2">Upload photos</div>
-      <%= form.file_field :photo, multiple: true, onchange: "this.form.querySelector('[type=submit]').click()", class: "block w-full text-lg text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" %>
+      <%= form.file_field :photo, multiple: true, data: { action: "change->photos#submit" }, class: "block w-full text-lg text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" %>
     </label>
 
     <div class="inline hidden">
-      <%= form.submit "Upload", class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+      <%= form.submit "Upload", class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer", data: { "photos-target": "submitButton" } %>
     </div>
   <% end %>
+
+  <img src="<%= asset_path 'pulse-multiple.svg' %>" class="w-8 h-8 mx-auto mt-10 hidden" data-photos-target="spinner" />
 <% end %>

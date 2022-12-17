@@ -28,6 +28,9 @@ application.register("location", LocationController)
 import MessageController from "./message_controller"
 application.register("message", MessageController)
 
+import PhotosController from "./photos_controller"
+application.register("photos", PhotosController)
+
 import RoomController from "./room_controller"
 application.register("room", RoomController)
 
