@@ -3,7 +3,6 @@ class OnboardingController < ApplicationController
   before_action :set_profile
 
   def one
-    return update_one if request.request_method == "PATCH"
   end
 
   def update_one
@@ -19,6 +18,18 @@ class OnboardingController < ApplicationController
   end
 
   def two
+  end
+
+  def update_two
+    respond_to do |format|
+      @profile.attributes = profile_params
+      @profile.step = 2
+      if @profile.save
+        format.html { redirect_to onboarding_three_url }
+      else
+        format.html { render :two, status: :unprocessable_entity }
+      end
+    end
   end
 
   def three

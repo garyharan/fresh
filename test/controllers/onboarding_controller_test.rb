@@ -21,13 +21,25 @@ class OnboardingControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update step one" do
-    patch onboarding_one_url, params: { profile: { display_name: "Cão" } }
+    patch onboarding_update_one_url, params: { profile: { display_name: "Cão" } }
+    assert_redirected_to onboarding_two_url
     assert @user.profile.display_name == "Cão"
+  end
+
+  test "should fail to update step one gracefully" do
+    patch onboarding_update_one_url, params: { profile: { display_name: "" } }
+    assert_response :unprocessable_entity
   end
 
   test "should get two" do
     get onboarding_two_url
     assert_response :success
+  end
+
+  test "should update step two" do
+    patch onboarding_update_two_url, params: { profile: { children: "Not sure yet" } }
+    assert_redirected_to onboarding_three_url
+    assert @user.profile.children == "Not sure yet"
   end
 
   test "should get three" do
