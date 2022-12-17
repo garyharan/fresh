@@ -13,6 +13,15 @@ class RoomsController < ApplicationController
     @room = Room.find(params[:id])
   end
 
+  def unread
+    @room = Room.find(params[:id])
+    @messages = @room.messages.where(id: params[:last_message_id].to_i..)
+
+    respond_to do |format|
+      format.turbo_stream
+    end
+  end
+
   private
 
   # Only allow a list of trusted parameters through.

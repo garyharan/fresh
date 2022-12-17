@@ -19,6 +19,9 @@ Rails.application.routes.draw do
   resources :cards, only: %i[new edit create update destroy]
 
   resources :rooms do
+    member do
+      get 'unread'
+    end
     resources :messages
   end
 

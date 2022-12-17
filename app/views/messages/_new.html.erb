@@ -1,5 +1,5 @@
 <div class="mx-4">
-  <%= form_with model: [ room, Message.new ], class: "", data: { controller: "room" } do |form| %>
+  <%= form_with model: [ room, Message.new ] do |form| %>
     <%= form.label :body, class: "mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white" do %>
       Your message
     <% end %>
