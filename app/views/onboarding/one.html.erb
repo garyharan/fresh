@@ -2,17 +2,7 @@
   <%= render 'steps' %>
 
   <%= form_with(model: @profile, url: onboarding_one_path) do |form| %>
-    <% if @profile.errors.any? %>
-      <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-        <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
-
-        <ul>
-          <% @profile.errors.each do |error| %>
-            <li><%= error.full_message %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
+    <%= render 'shared/form_errors_notice', record: @profile %>
 
     <%= render 'profiles/form_section_1', form: form %>
 

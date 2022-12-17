@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  get 'onboarding/zero'
   get 'onboarding/one'
+  patch 'onboarding/one'
+
   get 'onboarding/two'
   get 'onboarding/three'
   get 'onboarding/four'

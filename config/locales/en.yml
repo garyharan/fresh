@@ -108,6 +108,8 @@ en:
   memberships_cta_title: "Accept your invitation to %{group_name} and start matching with other members."
   memberships_cta_description: Groups like this one match people who attended an event, are part of a club or have a similar interest.
 
+  location: Location
+
   city: City
   province_or_state: Province or State
   country: Country

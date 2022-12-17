@@ -18,8 +18,9 @@ class Profile < ApplicationRecord
   geocoded_by :location
   after_validation :geocode, if: ->(obj){ obj.location_changed? }
 
-  attr_accessor :onboarding_step
-  attr_accessor :specified_gender
+  validates_with ProfileValidator
+
+  attr_accessor :step
 
   def location
     [city, state, country].compact.join(', ')
