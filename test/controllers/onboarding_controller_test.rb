@@ -42,6 +42,11 @@ class OnboardingControllerTest < ActionDispatch::IntegrationTest
     assert @user.profile.children == "Not sure yet"
   end
 
+  test "should fail to update step two gracefully" do
+    patch onboarding_update_two_url, params: { profile: { children: "" } }
+    assert_response :unprocessable_entity
+  end
+
   test "should get three" do
     get onboarding_three_url
     assert_response :success
