@@ -1,3 +1,3 @@
-<div id="<%= dom_id message  %>" class="flex p-3 mx-2 leading-loose" data-user-id="<%= message.user.id %>" data-message-id="<%= message.id %>" data-controller="message" ondblclick="this.remove()">
+<div id="<%= dom_id message  %>" class="flex p-3 mx-2 leading-loose" data-user-id="<%= message.user.id %>" data-message-id="<%= message.id %>" data-controller="message">
   <%= raw message.body.gsub(/\n/, '<br>') %>
 </div>
