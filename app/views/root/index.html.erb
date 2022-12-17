@@ -1,10 +1,24 @@
-<div class="">
-  <h1 class="home_header">Fresh dating</h1>
-  <p class="text-inherit">
-    We show you the people you'd most likely be compatible with. No expensive paywalls. No lies. No carrot dangling in front of you.
-  </p>
-</div>
-<div class="text-slate-200 m-4 flex">
-  <%= button_to "Sign Up", new_user_registration_path, method: :get, class: "px-3 py-1 text-sm bg-slate-200 dark:bg-slate-700 text-cyan-800 dark:text-white border border-cyan-300 dark:border-slate-600 hover:border-indigo-300 dark:hover:border-slate-400 rounded-full shadow-sm" %>
-  <%= button_to "Sign In", new_user_session_path, method: :get, class: "ml-3 px-3 py-1 text-sm bg-slate-200 dark:bg-slate-700 text-cyan-800 dark:text-white border border-cyan-300 dark:border-slate-600 hover:border-indigo-300 dark:hover:border-slate-400 rounded-full shadow-sm" %>
-</div>
+<section class="flex justify-between gap-1 p-4">
+  <div>
+    <h1 id="title" title="Fresh.Dating"><span class="text-md md:text-3xl">❤</span><span class="text-md md:text-3xl hidden md:inline">Fresh.Dating</span></h1>
+  </div>
+  <div class="">
+    Already a member? <%= link_to 'Sign in', new_user_session_path, class: '' %>
+  </div>
+</section>
+
+<section class="bg-white dark:bg-gray-900">
+    <div class="py-8 px-4 mx-auto  sm:py-16 lg:px-6">
+        <div class="max-w-screen-md mx-auto text-center">
+            <h2 class="mb-4 text-5xl tracking-tight font-extrabold text-gray-900 dark:text-white">A refreshingly honest, remarkably effective, dating experience.</h2>
+            <p class="mb-8 font-light text-gray-500 text-2xl dark:text-gray-400">
+              Finding love is hard, but it doesn't have to be. Sadly lots of dating sites makes things worse with false promises and innefective upsells. Fresh.Dating is different.
+            </p>
+            <div class="flex flex-col">
+                <a href="#" class="inline-flex items-center justify-center px-4 py-2.5 text-base font-medium text-center text-white bg-green-500 rounded-lg hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900">
+                    Get started
+                </a>
+            </div>
+        </div>
+    </div>
+</section>

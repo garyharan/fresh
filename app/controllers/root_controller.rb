@@ -1,7 +1,10 @@
 class RootController < ApplicationController
   before_action :redirect_if_logged_in
-  
-  def index; end
+
+  layout "root"
+
+  def index
+  end
 
   private
 
