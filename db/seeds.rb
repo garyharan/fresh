@@ -32,7 +32,17 @@ if Rails.env.development?
         Profile.create! user_id: u.id,
                         display_name: Faker::Name.name,
                         born_on: (18..99).to_a.sample.years.ago,
-                        gender_id: [1, 2, 3].sample
+                        gender_id: [1, 2, 3].sample,
+                        city: ['Longueuil', 'Montreal', 'Laval'].sample,
+                        state: 'Quebec',
+                        country: 'Canada',
+                        gender_ids: Gender.all.sample(2).map(&:id),
+                        children: Profile::POSSIBLE_CHILDREN_CONFIGURATIONS.sample,
+                        relationship_style: Profile::POSSIBLE_RELATIONSHIP_STYLES.sample,
+                        drinking: Profile::POSSIBLE_DRINKING_OPTIONS.sample,
+                        smoking: Profile::POSSIBLE_SMOKING_OPTIONS.sample,
+                        height: (150..200).to_a.sample
+
 
       image = p.images.create
       image.photo.attach(

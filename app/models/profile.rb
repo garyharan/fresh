@@ -30,7 +30,6 @@ class Profile < ApplicationRecord
     city_changed? || state_changed? || country_changed?
   end
 
-  POSSIBLE_GENDERS = ["Woman", "Man", "Non-Binary and/or Two Spirit Person"]
   POSSIBLE_CHILDREN_CONFIGURATIONS = [
     "Want someday",
     "Don't want",
