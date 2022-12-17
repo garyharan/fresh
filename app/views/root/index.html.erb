@@ -2,23 +2,27 @@
   <div>
     <h1 id="title" title="Fresh.Dating"><span class="text-md md:text-3xl">❤</span><span class="text-md md:text-3xl hidden md:inline">Fresh.Dating</span></h1>
   </div>
-  <div class="">
-    Already a member? <%= link_to 'Sign in', new_user_session_path, class: '' %>
+  <div class="text-xs md:text-sm pt-4">
+    <span class="hidden sm:inline">Already a member?</span> <%= link_to 'Sign in', new_user_session_path, class: 'text-green-400 hover:text-green-500 hover:underline' %>
   </div>
 </section>
 
 <section class="bg-white dark:bg-gray-900">
-    <div class="py-8 px-4 mx-auto  sm:py-16 lg:px-6">
+    <div class="px-2 mx-auto sm:py-16 lg:px-6">
         <div class="max-w-screen-md mx-auto text-center">
-            <h2 class="mb-4 text-5xl tracking-tight font-extrabold text-gray-900 dark:text-white">A refreshingly honest, remarkably effective, dating experience.</h2>
+
+            <h2 class="mb-4 text-5xl tracking-tight font-extrabold text-gray-900 dark:text-white">A refreshingly honest, remarkably thoughtful, dating experience.</h2>
+
             <p class="mb-8 font-light text-gray-500 text-2xl dark:text-gray-400">
               Finding love is hard, but it doesn't have to be. Sadly lots of dating sites makes things worse with false promises and innefective upsells. Fresh.Dating is different.
             </p>
+
             <div class="flex flex-col">
-                <a href="#" class="inline-flex items-center justify-center px-4 py-2.5 text-base font-medium text-center text-white bg-green-500 rounded-lg hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900">
-                    Get started
-                </a>
+              <%= link_to root_beta_path, class: "inline-flex items-center justify-center px-4 py-2.5 text-xl font-medium text-center text-white bg-green-500 rounded-lg hover:bg-green-600 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900" do %>
+                Get started
+              <% end %>
             </div>
+
         </div>
     </div>
 </section>
