@@ -29,8 +29,6 @@ class ProfilesController < ApplicationController
 
   # GET /profiles/1/edit
   def edit
-    @profile.specified_gender =
-      @profile.gender unless Profile::POSSIBLE_GENDERS.include?(@profile.gender)
   end
 
   # POST /profiles or /profiles.json
@@ -112,7 +110,6 @@ class ProfilesController < ApplicationController
         :display_name,
         :gender_id,
         :relationship_style,
-        :specified_gender,
         :show_orientation,
         :born_on,
         :height,
