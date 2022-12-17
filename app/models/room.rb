@@ -10,6 +10,13 @@ class Room < ApplicationRecord
   def self.find_or_create_by_profiles(profiles)
     # find the room where the profile attached belongs to both profiles
     room = Room.includes(:profiles).where(profiles: { id: profiles.map(&:id) }).first
-    room || Room.create(profiles: profiles)
+    room || Room.create_with_profiles(profiles)
+  end
+
+  def self.create_with_profiles(profiles)
+    room = Room.create
+    room.profiles = profiles
+    room.save!
+    room
   end
 end
