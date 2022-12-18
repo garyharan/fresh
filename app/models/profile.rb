@@ -20,6 +20,13 @@ class Profile < ApplicationRecord
 
   validates_with ProfileValidator
 
+  def complete? # XXX: This is a bit of a hack
+    saved_step = step
+    complete = valid?
+    step = saved_step
+    complete
+  end
+
   attr_accessor :step
 
   def location
