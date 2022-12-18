@@ -29,7 +29,12 @@ Rails.application.routes.draw do
     resources :memberships, only: %i[new create destroy]
   end
 
-  devise_for :users
+  devise_for :users, controllers: {
+    registrations: 'users/registrations',
+    sessions: 'users/sessions',
+    passwords: 'users/passwords'
+  }
+
   get "geo", to: "geo#show"
 
   root "root#index"
