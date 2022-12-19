@@ -12,10 +12,30 @@ class ProfilesController < ApplicationController
     end
 
     if current_user.profile
-      @profiles = Profile.all.where.not(id: current_user.profile.id)
-    else
-      @profiles = Profile.all
+      @profiles = Profile.all.where.not(id: current_user.profile.id).where(gender: [current_user.profile.genders])
     end
+  end
+
+  def recommended
+    @profiles = Profile.all.where.not(id: current_user.profile.id).where(gender: [current_user.profile.genders])
+
+    respond_to do |format|
+      format.turbo_stream { render layout: false }
+      format.html { render layout: 'application'}
+    end
+  end
+
+  def all
+    @profiles = Profile.all.where.not(id: current_user.profile.id)
+
+    respond_to do |format|
+      format.turbo_stream { render layout: false }
+      format.html { render layout: 'application'}
+    end
+  end
+
+  def groups
+    @groups = current_user.groups
   end
 
   # GET /profiles/1 or /profiles/1.json

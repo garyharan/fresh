@@ -9,6 +9,11 @@ Rails.application.routes.draw do
   get 'onboarding/four'
 
   resources :profiles do
+    collection do
+      get :recommended
+      get :all
+      get :groups
+    end
     resources :images, except: :update do
       patch :sort, on: :collection
     end
