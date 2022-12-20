@@ -25,27 +25,33 @@ if Rails.env.development? || Rails.env.test?
     (0..10).each do |number|
       u =
         User.new email: Faker::Internet.email,
-                    password: "asd0fadsfh",
-                    confirmation_token: Devise.friendly_token
+                 password: "asd0fadsfh",
+                 confirmation_token: Devise.friendly_token
       u.skip_confirmation!
       u.save(validate: false)
 
       p =
         Profile.new user_id: u.id,
-                       display_name: Faker::Name.name,
-                       born_on: (18..99).to_a.sample.years.ago,
-                       gender_id: Gender.all.to_a[number % 3].id,
-                       gender_ids: Gender.all.sample(2).map(&:id),
-                       city: ['Longueuil', 'Montreal', 'Laval'].sample,
-                       state: 'Quebec',
-                       country: 'Canada',
-                       children: Profile::POSSIBLE_CHILDREN_CONFIGURATIONS.sample,
-                       relationship_style: Profile::POSSIBLE_RELATIONSHIP_STYLES.sample,
-                       drinking: Profile::POSSIBLE_DRINKING_OPTIONS.sample,
-                       smoking: Profile::POSSIBLE_SMOKING_OPTIONS.sample,
-                       height: (150..200).to_a.sample
+                    display_name: Faker::Name.name,
+                    born_on: (18..99).to_a.sample.years.ago,
+                    gender_id: Gender.all.to_a[number % 3].id,
+                    attractions_attributes:
+                      Gender
+                        .all
+                        .sample(2)
+                        .reduce([]) { |arr, gender|
+                          arr << { gender_id: gender.id }
+                        },
+                    city: %w[Longueuil Montreal Laval].sample,
+                    state: "Quebec",
+                    country: "Canada",
+                    children: Profile::POSSIBLE_CHILDREN_CONFIGURATIONS.sample,
+                    relationship_style:
+                      Profile::POSSIBLE_RELATIONSHIP_STYLES.sample,
+                    drinking: Profile::POSSIBLE_DRINKING_OPTIONS.sample,
+                    smoking: Profile::POSSIBLE_SMOKING_OPTIONS.sample,
+                    height: (150..200).to_a.sample
       p.save(validate: false)
-
 
       image = p.images.create
       image.photo.attach(

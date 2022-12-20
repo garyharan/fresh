@@ -2,7 +2,8 @@ class ProfilesController < ApplicationController
   before_action :authenticate_user!
 
   before_action :new_profile, only: :new
-  before_action :set_profile, only: %i[edit update destroy]
+  before_action :set_profile,
+                only: %i[recommended all groups edit update destroy]
 
   # GET /profiles or /profiles.json
   def index
@@ -12,25 +13,33 @@ class ProfilesController < ApplicationController
     end
 
     if current_user.profile
-      @profiles = Profile.all.where.not(id: current_user.profile.id).where(gender: [current_user.profile.genders])
+      @profiles =
+        Profile
+          .all
+          .where.not(id: current_user.profile.id)
+          .where(gender: [current_user.profile.genders])
     end
   end
 
   def recommended
-    @profiles = Profile.all.where.not(id: current_user.profile.id).where(gender: [current_user.profile.genders])
+    @profiles = Profile.recommended(@profile)
 
     respond_to do |format|
       format.turbo_stream { render layout: false }
-      format.html { render layout: 'application'}
+      format.html { render layout: "application" }
     end
   end
 
   def all
-    @profiles = Profile.all.where.not(id: current_user.profile.id)
+    @profiles =
+      Profile
+        .all
+        .where.not(id: current_user.profile.id)
+        .near(@profile.longitude, @profile.latitude)
 
     respond_to do |format|
       format.turbo_stream { render layout: false }
-      format.html { render layout: 'application'}
+      format.html { render layout: "application" }
     end
   end
 

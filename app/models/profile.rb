@@ -11,17 +11,55 @@ class Profile < ApplicationRecord
   has_many :cards, dependent: :destroy
 
   belongs_to :gender, required: false
-  has_and_belongs_to_many :genders
+  has_many :attractions
+  has_many :genders, through: :attractions
+  accepts_nested_attributes_for :attractions, allow_destroy: true
 
   has_and_belongs_to_many :rooms
 
   geocoded_by :location
-  after_validation :geocode, if: ->(obj){ obj.location_changed? }
+  after_validation :geocode, if: ->(obj) { obj.location_changed? }
 
   validates_with ProfileValidator
 
+  scope :of_gender, ->(gender) { where(gender: gender) }
+
+  scope :attracted_to_gender,
+        ->(gender) {
+          where.not(display_name: nil) # just to pass through
+        }
+
+  def self.recommended(profile)
+    raise ::ArgumentError, "Profile must be complete" unless profile.complete?
+
+    self.find_by_sql(
+      [
+        "
+          SELECT profiles.*, (
+            6371.0 * 2 * asin(sqrt(power(sin((? - profiles.latitude) * pi() / 180 / 2), 2) + cos(? * pi() / 180) * cos(profiles.latitude * pi() / 180) * power(sin((? - profiles.longitude) * pi() / 180 / 2), 2)))
+          ) AS distance,
+          ? - height AS height_difference
+          FROM
+            profiles
+          INNER JOIN attractions
+          ON attractions.profile_id = profiles.id
+          WHERE attractions.gender_id = ?
+          AND profiles.id != ?
+          ORDER BY distance, distance ASC
+        ",
+        profile.latitude,
+        profile.latitude,
+        profile.longitude,
+        profile.height,
+        profile.gender.id,
+        profile.id
+      ]
+    )
+  end
+
   def complete? # XXX: This is a bit of a hack
     saved_step = step
+    step = 4
     complete = valid?
     step = saved_step
     complete
@@ -30,7 +68,7 @@ class Profile < ApplicationRecord
   attr_accessor :step
 
   def location
-    [city, state, country].compact.join(', ')
+    [city, state, country].compact.join(", ")
   end
 
   def location_changed?

@@ -2,6 +2,7 @@
   <div class="m-5">
     <h2 class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">I am interested in <%= error_messages_for(@profile, :gender_ids) %></h2>
 
+
     <ul class="grid gap-2 xl:grid-cols-3">
       <%= form.collection_check_boxes(:gender_ids, Gender.all, :id, :label) do |box| %>
         <li>

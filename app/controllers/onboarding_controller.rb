@@ -39,7 +39,18 @@ class OnboardingController < ApplicationController
   private
 
   def profile_params
-    params.require(:profile).permit(:display_name, :born_on, :lat, :lon, :city, :state, :country, :gender_id, :orientation_id, :show_orientation)
+    params.require(:profile).permit(
+      :display_name,
+      :born_on,
+      :lat,
+      :lon,
+      :city,
+      :state,
+      :country,
+      :gender_id,
+      :orientation_id,
+      :show_orientation
+    )
   end
 
   def set_profile
@@ -53,10 +64,26 @@ class OnboardingController < ApplicationController
   end
 
   def step_one_profile_params
-    params.require(:profile).permit(:display_name, :gender_id, :born_on, :latitude, :longitude, :city, :state, :country)
+    params.require(:profile).permit(
+      :display_name,
+      :gender_id,
+      :born_on,
+      :latitude,
+      :longitude,
+      :city,
+      :state,
+      :country
+    )
   end
 
   def step_two_profile_params
-    params.require(:profile).permit(:children, :relationship_style, :height, :drinking, :smoking, gender_ids: [])
+    params.require(:profile).permit(
+      :children,
+      :relationship_style,
+      :height,
+      :drinking,
+      :smoking,
+      gender_ids: []
+    )
   end
 end
