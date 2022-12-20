@@ -9,7 +9,9 @@ class RootController < ApplicationController
   private
 
   def redirect_if_logged_in
-    if current_user.profile&.complete?
+    return unless user_signed_in?
+
+    if current_user&.profile&.complete?
       redirect_to profiles_path
     else
       redirect_to onboarding_one_path
