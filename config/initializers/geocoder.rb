@@ -4,7 +4,7 @@ Geocoder.configure(
   # lookup: :google,
   # api_key: Rails.application.credentials.google_maps.api_key,
   language: :en,
-  units: :km
+  units: :km,
 
   # Cache configuration
   cache_options: {
