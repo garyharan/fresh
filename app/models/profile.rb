@@ -32,31 +32,36 @@ class Profile < ApplicationRecord
   def self.recommended(profile)
     raise ::ArgumentError, "Profile must be complete" unless profile.complete?
 
-    self.find_by_sql(
-      [
-        "
-          SELECT profiles.*, (
-            6371.0 * 2 * asin(sqrt(power(sin((? - profiles.latitude) * pi() / 180 / 2), 2) + cos(? * pi() / 180) * cos(profiles.latitude * pi() / 180) * power(sin((? - profiles.longitude) * pi() / 180 / 2), 2)))
-          ) AS distance,
-          ? - height AS height_difference,
-          ((? - born_on) / 365) AS age_difference
-          FROM
-            profiles
-          INNER JOIN attractions
-          ON attractions.profile_id = profiles.id
-          WHERE attractions.gender_id = ?
-          AND profiles.id != ?
-          ORDER BY age_difference, distance, distance ASC
-        ",
-        profile.latitude,
-        profile.latitude,
-        profile.longitude,
-        profile.height,
-        profile.born_on,
-        profile.gender.id,
-        profile.id
-      ]
-    )
+    where.not(profiles: { id: profile.id })
+    .where(gender_id: profile.attractions.map { |a| a.gender_id }.to_a )
+    .merge(
+      Profile.joins(:attractions).where(
+        attractions: { gender_id: profile.gender_id }
+      )
+    ).select(
+      "
+        profiles.*, (
+          6371.0 * 2 * asin(
+            sqrt(
+              power(
+                sin(
+                  (#{profile.latitude} - profiles.latitude) * pi() / 180 / 2
+                ),
+                2
+              ) + cos(
+                #{profile.latitude} * pi() / 180
+              ) * cos(
+                profiles.latitude * pi() / 180
+              ) * power(
+                sin((#{profile.longitude} - profiles.longitude) * pi() / 180 / 2), 2
+              )
+            )
+          )
+        ) AS distance,
+        #{profile.height} - height AS height_difference,
+        (('#{profile.born_on}' - born_on) / 365) AS age_difference
+      "
+    ).order(:age_difference, :distance)
   end
 
   def complete? # XXX: This is a bit of a hack
