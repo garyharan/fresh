@@ -2,6 +2,7 @@ require "test_helper"
 
 class ProfilesControllerTest < ActionDispatch::IntegrationTest
   setup do
+    Rails.application.load_seed
     @profile = profiles(:one)
 
     @profile.images.first.photo.attach(
@@ -53,8 +54,6 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
                height: 178,
                drinking: "Occasionally",
                smoking: "Never",
-               lat: 45.49847190802318,
-               lon: -73.43272587208975,
                city: "Saint-Hubert",
                state: "Quebec",
                country: "Canada"
@@ -73,8 +72,6 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
     assert_equal 178, profile.height
     assert_equal "Occasionally", profile.drinking
     assert_equal "Never", profile.smoking
-    assert_equal 45.49847190802318, profile.lat
-    assert_equal -73.43272587208975, profile.lon
     assert_equal "Saint-Hubert", profile.city
     assert_equal "Quebec", profile.state
     assert_equal "Canada", profile.country
