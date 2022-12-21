@@ -18,6 +18,9 @@
             <%= age(profile.born_on) %> years old <%= profile.gender.label unless profile.gender.blank? %>
           </p>
           <p>
+            <% if profile.respond_to?(:age_difference)%>
+              <%= profile.age_difference %> years age difference
+            <% end %>
             <% if profile.respond_to?(:distance) %>
               <%= profile.distance %>km away
             <% end %>

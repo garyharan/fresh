@@ -38,19 +38,21 @@ class Profile < ApplicationRecord
           SELECT profiles.*, (
             6371.0 * 2 * asin(sqrt(power(sin((? - profiles.latitude) * pi() / 180 / 2), 2) + cos(? * pi() / 180) * cos(profiles.latitude * pi() / 180) * power(sin((? - profiles.longitude) * pi() / 180 / 2), 2)))
           ) AS distance,
-          ? - height AS height_difference
+          ? - height AS height_difference,
+          ((? - born_on) / 365) AS age_difference
           FROM
             profiles
           INNER JOIN attractions
           ON attractions.profile_id = profiles.id
           WHERE attractions.gender_id = ?
           AND profiles.id != ?
-          ORDER BY distance, distance ASC
+          ORDER BY age_difference, distance, distance ASC
         ",
         profile.latitude,
         profile.latitude,
         profile.longitude,
         profile.height,
+        profile.born_on,
         profile.gender.id,
         profile.id
       ]
