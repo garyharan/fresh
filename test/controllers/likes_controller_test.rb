@@ -13,7 +13,7 @@ class LikesControllerTest < ActionDispatch::IntegrationTest
     like =
       Like.create(
         profile_id: profiles(:two).id,
-        author_profile_id: profiles(:one).id
+        user: profiles(:one).user
       )
     assert_difference "Like.count", -1 do
       delete profile_like_url(profiles(:two), like, format: :turbo_stream)
