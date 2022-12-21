@@ -18,7 +18,7 @@ class RoomsControllerTest < ActionDispatch::IntegrationTest
       content_type: "image/png"
     )
 
-    @room = Room.find_or_create_by_profiles [@profile1, @profiles2]
+    @room = Room.find_or_create_by_profiles [@profile1, @profile2]
   end
 
   test "should get index" do
