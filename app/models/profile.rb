@@ -30,8 +30,15 @@ class Profile < ApplicationRecord
     raise ::ArgumentError, "Profile must be complete" unless profile.complete?
 
     where
-      .not(profiles: { id: profile.id })
-      .where(gender_id: profile.attractions.map { |a| a.gender_id }.to_a)
+      .not(
+        profiles: {
+          id: [
+            profile.id,
+            profile.user.liked_profiles.pluck(:id),
+            profile.user.passed_profiles.pluck(:id)
+          ].flatten
+        }
+      )
       .merge(
         Profile.joins(:attractions).where(
           attractions: {
