@@ -7,12 +7,37 @@ Geocoder::Lookup::Test.set_default_stub(
   [
     {
       "coordinates" => [45.498372796415964, -73.43277933544931],
-      "address" => "4840 Terrasse de Port-Royal, Saint-Hubert, Quebec",
+      "address" => "Saint-Hubert, Quebec, Canada",
       "city" => "Saint-Hubert",
       "state" => "Quebec",
       "state_code" => "QC",
       "country" => "Canada",
       "country_code" => "CA"
+    }
+  ]
+)
+
+Geocoder::Lookup::Test.add_stub(
+  "Montreal, Quebec, Canada", [
+    {
+      "coordinates": [45.5031824, -73.5698065],
+      "address": "Montreal, Quebec, Canada",
+      "city": "Montreal",
+      "state": "Quebec",
+      "country": "Canada",
+      "country_code": "CA"
+    }
+  ]
+)
+Geocoder::Lookup::Test.add_stub(
+  "Laval, Quebec, Canada", [
+    {
+      "coordinates": [45.5757802, -73.7530656],
+      "address": "Laval, Quebec, Canada",
+      "city": "Laval",
+      "state": "Quebec",
+      "country": "Canada",
+      "country_code": "CA"
     }
   ]
 )
