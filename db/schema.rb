@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_21_165153) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_21_192912) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -127,6 +127,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_21_165153) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
+  create_table "passes", force: :cascade do |t|
+    t.bigint "profile_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profile_id"], name: "index_passes_on_profile_id"
+    t.index ["user_id"], name: "index_passes_on_user_id"
+  end
+
   create_table "profiles", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "display_name"
@@ -207,6 +216,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_21_165153) do
   add_foreign_key "memberships", "users"
   add_foreign_key "messages", "rooms"
   add_foreign_key "messages", "users"
+  add_foreign_key "passes", "profiles"
+  add_foreign_key "passes", "users"
   add_foreign_key "profiles", "users"
   add_foreign_key "profiles_rooms", "profiles"
   add_foreign_key "profiles_rooms", "rooms"

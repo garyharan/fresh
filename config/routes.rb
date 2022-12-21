@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
-  get   'onboarding/one'
-  patch 'onboarding/update_one'
+  get "onboarding/one"
+  patch "onboarding/update_one"
 
-  get 'onboarding/two'
-  patch 'onboarding/update_two'
+  get "onboarding/two"
+  patch "onboarding/update_two"
 
-  get 'onboarding/three'
-  get 'onboarding/four'
+  get "onboarding/three"
+  get "onboarding/four"
 
   resources :profiles do
     collection do
@@ -19,14 +19,13 @@ Rails.application.routes.draw do
     end
 
     resources :likes, only: %i[create destroy]
+    resources :passes, only: %i[create destroy]
   end
 
   resources :cards, only: %i[new edit create update destroy]
 
   resources :rooms do
-    member do
-      get 'unread'
-    end
+    member { get "unread" }
     resources :messages
   end
 
@@ -34,11 +33,12 @@ Rails.application.routes.draw do
     resources :memberships, only: %i[new create destroy]
   end
 
-  devise_for :users, controllers: {
-    registrations: 'users/registrations',
-    sessions: 'users/sessions',
-    passwords: 'users/passwords'
-  }
+  devise_for :users,
+             controllers: {
+               registrations: "users/registrations",
+               sessions: "users/sessions",
+               passwords: "users/passwords"
+             }
 
   get "geo", to: "geo#show"
 

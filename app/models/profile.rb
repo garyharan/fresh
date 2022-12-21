@@ -2,10 +2,7 @@ class Profile < ApplicationRecord
   belongs_to :user
 
   has_many :likes, foreign_key: :profile_id, dependent: :destroy
-  has_many :authored_likes,
-           class_name: "Like",
-           foreign_key: :author_profile_id,
-           dependent: :destroy
+  has_many :passes, foreign_key: :profile_id, dependent: :destroy
 
   has_many :images, dependent: :destroy
   has_many :cards, dependent: :destroy
@@ -32,14 +29,18 @@ class Profile < ApplicationRecord
   def self.recommended(profile)
     raise ::ArgumentError, "Profile must be complete" unless profile.complete?
 
-    where.not(profiles: { id: profile.id })
-    .where(gender_id: profile.attractions.map { |a| a.gender_id }.to_a )
-    .merge(
-      Profile.joins(:attractions).where(
-        attractions: { gender_id: profile.gender_id }
+    where
+      .not(profiles: { id: profile.id })
+      .where(gender_id: profile.attractions.map { |a| a.gender_id }.to_a)
+      .merge(
+        Profile.joins(:attractions).where(
+          attractions: {
+            gender_id: profile.gender_id
+          }
+        )
       )
-    ).select(
-      "
+      .select(
+        "
         profiles.*, (
           6371.0 * 2 * asin(
             sqrt(
@@ -61,7 +62,8 @@ class Profile < ApplicationRecord
         #{profile.height} - height AS height_difference,
         (('#{profile.born_on}' - born_on) / 365) AS age_difference
       "
-    ).order(:age_difference, :distance)
+      )
+      .order(:age_difference, :distance)
   end
 
   def complete? # XXX: This is a bit of a hack

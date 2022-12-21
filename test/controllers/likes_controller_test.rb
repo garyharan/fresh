@@ -10,11 +10,8 @@ class LikesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get destroy" do
-    like =
-      Like.create(
-        profile_id: profiles(:two).id,
-        user: profiles(:one).user
-      )
+    like = Like.create(profile: profiles(:two), user: profiles(:one).user)
+
     assert_difference "Like.count", -1 do
       delete profile_like_url(profiles(:two), like, format: :turbo_stream)
     end

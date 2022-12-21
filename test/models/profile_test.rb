@@ -8,21 +8,13 @@ class ProfileTest < ActiveSupport::TestCase
   end
 
   test "liked_by?(profile) when profile was liked by other profile" do
-    Like.create! profile: @velvet, author_profile: @gathino
+    like = Like.create! profile: @velvet, user: @gathino.user
 
-    assert @velvet.liked_by?(@gathino)
+    assert @velvet.liked_by?(@gathino.user)
   end
 
   test "liked_by?(profile) when profile was not liked by other profile" do
-    refute @gathino.liked_by?(@velvet)
-  end
-
-  test "#likes and #authored_likes" do
-    Like.create! profile: @gathino, author_profile: @velvet
-    Like.create! profile: @velvet, author_profile: @gathino
-
-    assert_equal 1, @gathino.likes.count
-    assert_equal 1, @gathino.authored_likes.count
+    refute @gathino.liked_by?(@velvet.user)
   end
 
   test "accepts_nested_attributes_for :attractions" do
@@ -79,10 +71,7 @@ class ProfileTest < ActiveSupport::TestCase
                     @mariet,
                     "because Mariet is not interested in men"
 
-    @gathino.update(
-      gender: man,
-      genders: [man, woman, enby]
-    )
+    @gathino.update(gender: man, genders: [man, woman, enby])
     @velvet.update(gender: enby, genders: [man, enby])
 
     assert_includes Profile.recommended(@velvet), @gathino
