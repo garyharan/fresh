@@ -5,7 +5,6 @@ one:
   user: gathino
   height: 178
   born_on: 1978-10-6
-  gender: Man
   latitude: 45.498398543048125
   longitude: -73.4327665245693
   city: Longueuil
@@ -21,7 +20,6 @@ two:
   user: velvet
   height: 167
   born_on: 1982-10-6
-  gender: Woman
   latitude: 45.498398543048125
   longitude: -73.4327665245693
   city: Longueuil
