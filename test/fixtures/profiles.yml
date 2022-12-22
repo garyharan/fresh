@@ -33,6 +33,7 @@ two:
   children: Have & don't want more
 
 three:
+  display_name: Mariet
   user: mariet
   height: 140
   born_on: 1982-10-6
