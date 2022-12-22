@@ -13,6 +13,9 @@ application.register("clipboard", ClipboardController)
 import DropdownController from "./dropdown_controller"
 application.register("dropdown", DropdownController)
 
+import EntranceController from "./entrance_controller"
+application.register("entrance", EntranceController)
+
 import FlashController from "./flash_controller"
 application.register("flash", FlashController)
 

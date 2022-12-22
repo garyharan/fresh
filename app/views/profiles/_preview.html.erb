@@ -1,83 +1,85 @@
-<div class="mx-auto text-center shadow rounded-lg bg-white mx-4 my-3 md:my-6 overflow-clip">
+<div style="opacity: 0; transition: opacity 1s;" data-controller="entrance">
+  <div class="mx-auto text-center shadow rounded-lg bg-white mx-4 my-3 md:my-6 overflow-clip">
 
-  <div class="flex flex-col md:flex-row m-4 text-sm font-medium text-gray-500 rounded-lg">
+    <div class="flex flex-col md:flex-row m-4 text-sm font-medium text-gray-500 rounded-lg">
 
 
-    <div class="flex flex-col m-4 order-last md:order-first">
-      <div class="text-3xl font-bold text-slate-600 text-left">
-        <%= @profile.display_name %>
-      </div>
-
-      <div class="text-left">
-        <svg class="w-4 h-4 inline mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg><%= age(@profile.born_on) %>yo
-
-        <svg class="w-4 h-4 inline mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path></svg><%= @profile.location %>
-      </div>
-    </div>
-
-    <div class="md:grow hidden md:flex">
-    </div>
-
-    <div class="order-first md:order-last flex flex-cols justify-center">
-      <div class="m-4 mr-0">
-        <%= render('passes/pass', profile: @profile) %>
-      </div>
-      <div class="m-4">
-        <%= render('likes/like', profile: @profile) %>
-      </div>
-    </div>
-  </div>
-
-</div>
-
-<div class="mx-auto mx-4 my-3 md:my-6">
-  <div class="mx-0 w-full px-10 py-3">
-    <div class="grid grid-cols-5 gap-2">
-      <% @profile.images.each do |image| %>
-        <div class="">
-          <%= image_tag image.photo.variant(:medium), class: "rounded-lg shadow"  %>
+      <div class="flex flex-col m-4 order-last md:order-first">
+        <div class="text-3xl font-bold text-slate-600 text-left">
+          <%= @profile.display_name %>
         </div>
-      <% end %>
+
+        <div class="text-left">
+          <svg class="w-4 h-4 inline mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg><%= age(@profile.born_on) %>yo
+
+          <svg class="w-4 h-4 inline mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path></svg><%= @profile.location %>
+        </div>
+      </div>
+
+      <div class="md:grow hidden md:flex">
+      </div>
+
+      <div class="order-first md:order-last flex flex-cols justify-center">
+        <div class="m-4 mr-0">
+          <%= render('passes/pass', profile: @profile) %>
+        </div>
+        <div class="m-4">
+          <%= render('likes/like', profile: @profile) %>
+        </div>
+      </div>
     </div>
+
   </div>
-</div>
 
-<div class="mx-auto mx-4 my-3 md:my-6 overflow-clip flex flex-col sm:flex-row gap-4">
-
-  <div class="md:flex md:flex-col mx-auto w-full md:w-9/12">
-    <% if @profile.cards.any? %>
-      <% Card::KINDS.keys.each do |kind| %>
-        <% if card = @profile.cards.find { |card| card.kind.to_sym == kind.to_sym } %>
-          <div>
-            <div class="w-full pb-8">
-              <div class="block max-w bg-white border-gray-200 rounded-b-md shadow-md">
-                <div class="flex border rounded-t-md pl-4 bg-black text-lg leading-8 font-semibold text-white dark:text-white leading-10">
-                  <div class="grow text-lg leading-8 font-semibold text-white dark:text-white leading-10">
-                    <%= t(card.title) %>
-                  </div>
-                </div>
-                <p class="p-4 text-gray-700 dark:text-white"><%= card.content %></p>
-              </div>
-            </div>
+  <div class="mx-auto mx-4 my-3 md:my-6">
+    <div class="mx-0 w-full px-10 py-3">
+      <div class="grid grid-cols-5 gap-2">
+        <% @profile.images.each do |image| %>
+          <div class="">
+            <%= image_tag image.photo.variant(:medium), class: "rounded-lg shadow"  %>
           </div>
         <% end %>
-      <% end %>
-    <% end %>
+      </div>
+    </div>
   </div>
 
-  <div class="order-first sm:order-last mx-0 sm:mx-2 w-full md:w-3/12">
+  <div class="mx-auto mx-4 my-3 md:my-6 overflow-clip flex flex-col sm:flex-row gap-4">
 
-    <div class="block max-w bg-white border-gray-200 rounded-b-md shadow-md">
-      <div class="flex border rounded-t-md pl-4 bg-black text-lg leading-8 font-semibold text-white dark:text-white leading-10">
-        <div class="grow text-lg leading-8 font-semibold text-white dark:text-white leading-10">
-          Details
+    <div class="md:flex md:flex-col mx-auto w-full md:w-9/12">
+      <% if @profile.cards.any? %>
+        <% Card::KINDS.keys.each do |kind| %>
+          <% if card = @profile.cards.find { |card| card.kind.to_sym == kind.to_sym } %>
+            <div>
+              <div class="w-full pb-8">
+                <div class="block max-w bg-white border-gray-200 rounded-b-md shadow-md">
+                  <div class="flex border rounded-t-md pl-4 bg-black text-lg leading-8 font-semibold text-white dark:text-white leading-10">
+                    <div class="grow text-lg leading-8 font-semibold text-white dark:text-white leading-10">
+                      <%= t(card.title) %>
+                    </div>
+                  </div>
+                  <p class="p-4 text-gray-700 dark:text-white"><%= card.content %></p>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="order-first sm:order-last mx-0 sm:mx-2 w-full md:w-3/12">
+
+      <div class="block max-w bg-white border-gray-200 rounded-b-md shadow-md">
+        <div class="flex border rounded-t-md pl-4 bg-black text-lg leading-8 font-semibold text-white dark:text-white leading-10">
+          <div class="grow text-lg leading-8 font-semibold text-white dark:text-white leading-10">
+            Details
+          </div>
+        </div>
+
+        <div class="p-4">
+          <%= render "details", profile: @profile %>
         </div>
       </div>
 
-      <div class="p-4">
-        <%= render "details", profile: @profile %>
-      </div>
     </div>
-
   </div>
 </div>
