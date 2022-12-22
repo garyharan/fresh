@@ -4,8 +4,7 @@ class ProfilesController < ApplicationController
   before_action :force_profile_completion, only: %i[index recommended all groups]
 
   before_action :new_profile, only: :new
-  before_action :set_profile,
-                only: %i[recommended all groups edit update destroy]
+  before_action :set_profile, only: %i[edit update destroy]
 
   # GET /profiles or /profiles.json
   def index
@@ -19,7 +18,7 @@ class ProfilesController < ApplicationController
   end
 
   def recommended
-    @profiles = Profile.recommended(@profile)
+    @profile = Profile.recommended(current_user.profile).limit(1).first
 
     respond_to do |format|
       format.turbo_stream { render layout: false }
