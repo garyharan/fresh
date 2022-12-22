@@ -27,6 +27,7 @@ class ProfilesController < ApplicationController
   end
 
   def all
+    @profile = current_user.profile
     @profiles =
       Profile
         .all
