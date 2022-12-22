@@ -21,9 +21,11 @@ class Profile < ApplicationRecord
 
   scope :of_gender, ->(gender) { where(gender: gender) }
 
-  scope :attracted_to_gender,
-        ->(gender) {
-          where.not(display_name: nil) # just to pass through
+  scope :attracted_to_genders,
+        ->(genders) {
+          joins(:attractions).where(
+            gender_id: [genders.pluck(:id)]
+          )
         }
 
   def self.recommended(profile)
@@ -39,10 +41,11 @@ class Profile < ApplicationRecord
           ].flatten
         }
       )
+      .merge(attracted_to_genders(profile.genders))
       .merge(
         Profile.joins(:attractions).where(
           attractions: {
-            gender_id: profile.gender_id
+            gender: profile.gender
           }
         )
       )
@@ -67,7 +70,7 @@ class Profile < ApplicationRecord
           )
         ) AS distance,
         #{profile.height} - height AS height_difference,
-        (('#{profile.born_on}' - born_on) / 365) AS age_difference
+        (ABS(('#{profile.born_on}' - born_on) / 365)) AS age_difference
       "
       )
       .order(:age_difference, :distance)
