@@ -1,17 +1,14 @@
 class ProfilesController < ApplicationController
   before_action :authenticate_user!
 
+  before_action :force_profile_completion, only: %i[index recommended all groups]
+
   before_action :new_profile, only: :new
   before_action :set_profile,
                 only: %i[recommended all groups edit update destroy]
 
   # GET /profiles or /profiles.json
   def index
-    if current_user.profile.blank?
-      redirect_to new_profile_url
-      return
-    end
-
     if current_user.profile
       @profiles =
         Profile
@@ -151,5 +148,9 @@ class ProfilesController < ApplicationController
         gender_ids: []
       )
     p
+  end
+
+  def force_profile_completion
+    redirect_to new_profile_url unless current_user.profile&.complete?
   end
 end
