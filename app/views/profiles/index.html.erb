@@ -1,6 +1,3 @@
-<section class="dark:bg-gray-900">
-  <%= turbo_frame_tag "profiles" do %>
-    <%= render 'profile_nav' %>
-    <%= render 'profiles' %>
-  <% end %>
-</section>
+<%= turbo_frame_tag "profile" do %>
+  <%= render 'preview' %>
+<% end %>

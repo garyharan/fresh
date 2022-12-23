@@ -19,11 +19,11 @@
       <div class="md:grow hidden md:flex">
       </div>
 
-      <div class="order-first md:order-last flex flex-cols justify-center">
-        <div class="m-4 mr-0">
+      <div class="order-first md:order-last flex flex-col md:flex-row justify-center">
+        <div class="mt-6 md:mr-6">
           <%= render('passes/pass', profile: @profile) %>
         </div>
-        <div class="m-4">
+        <div class="mt-6">
           <%= render('likes/like', profile: @profile) %>
         </div>
       </div>
@@ -36,7 +36,7 @@
       <div class="grid grid-cols-5 gap-2">
         <% @profile.images.each do |image| %>
           <div class="">
-            <%= image_tag image.photo.variant(:medium), class: "rounded-lg shadow"  %>
+            <%= image_tag image.photo.variant(:medium), class: "rounded-lg shadow bg-white"  %>
           </div>
         <% end %>
       </div>

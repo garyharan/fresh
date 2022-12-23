@@ -8,12 +8,10 @@ class ProfilesController < ApplicationController
 
   # GET /profiles or /profiles.json
   def index
-    if current_user.profile
-      @profiles =
-        Profile
-          .all
-          .where.not(id: current_user.profile.id)
-          .where(gender: [current_user.profile.genders])
+    @profile = Profile.recommended(current_user.profile).limit(1).first
+
+    respond_to do |format|
+      format.html { render layout: "application" }
     end
   end
 
