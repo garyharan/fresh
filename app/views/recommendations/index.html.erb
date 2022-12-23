@@ -21,14 +21,17 @@
           <div class="md:grow hidden md:flex">
           </div>
 
-          <div class="order-first md:order-last flex flex-col md:flex-row justify-center">
-            <div class="p-4 md:p-5">
-              <%= render partial: 'pass', locals: { profile: @profile } %>
+          <%= turbo_frame_tag 'like_or_pass' do %>
+            <div class="order-first md:order-last flex flex-col md:flex-row justify-center">
+              <div class="p-4 md:p-5">
+                <%= render partial: 'pass', locals: { profile: @profile } %>
+              </div>
+              <div class="pb-0 md:p-5">
+                <%= render partial: 'like', locals: { profile: @profile } %>
+              </div>
             </div>
-            <div class="pb-0 md:p-5">
-              <%= render partial: 'like', locals: { profile: @profile } %>
-            </div>
-          </div>
+          <% end %>
+
         </div>
 
       </div>

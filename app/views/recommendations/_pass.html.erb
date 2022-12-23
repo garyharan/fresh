@@ -1,6 +1,15 @@
-<%= form_with(url: pass_recommendation_path(profile)) do |form| %>
-  <%= button_tag(type: :submit, class: "inline-flex items-center mx-auto w-36 py-2 px-4 text-sm text-center font-medium text-slate-700 border rounded-full hover:underline hover:font-bold focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 group") do %>
-    <svg class="w-6 h-6 mr-6 inline" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-    Pass
+<%= turbo_frame_tag "recommendation_pass_#{profile.id}", class: "group" do %>
+  <% if profile.liked_by?(current_user) %>
+    <p class="m-3">
+      <svg class="w-6 h-6 inline" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5 2a1 1 0 011 1v1h1a1 1 0 010 2H6v1a1 1 0 01-2 0V6H3a1 1 0 010-2h1V3a1 1 0 011-1zm0 10a1 1 0 011 1v1h1a1 1 0 110 2H6v1a1 1 0 11-2 0v-1H3a1 1 0 110-2h1v-1a1 1 0 011-1zM12 2a1 1 0 01.967.744L14.146 7.2 17.5 9.134a1 1 0 010 1.732l-3.354 1.935-1.18 4.455a1 1 0 01-1.933 0L9.854 12.8 6.5 10.866a1 1 0 010-1.732l3.354-1.935 1.18-4.455A1 1 0 0112 2z" clip-rule="evenodd"></path></svg>
+      It's a match!
+    </p>
+  <% else %>
+    <%= form_with(url: pass_recommendation_path(profile)) do |form| %>
+      <%= button_tag(type: :submit, class: "inline-flex items-center mx-auto w-36 py-2 px-4 text-sm text-center font-medium text-slate-700 border rounded-full hover:underline hover:font-bold focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 group") do %>
+        <svg class="w-6 h-6 mr-6 inline" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+        Pass
+      <% end %>
+    <% end %>
   <% end %>
 <% end %>

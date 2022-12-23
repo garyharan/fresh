@@ -13,8 +13,13 @@ class RecommendationsController < ApplicationController
   end
 
   def like
+    @like = Like.create! profile: @profile, user: current_user
   end
 
+  def unlike
+    @like = Like.find_by profile: @profile, user: current_user
+    @like.destroy
+  end
   def pass
     @pass = Pass.create! profile: @profile, user: current_user
   end
@@ -22,6 +27,6 @@ class RecommendationsController < ApplicationController
   private
 
   def set_profile
-    @profile = Profile.find(params[:id])
+    @profile = Profile.find(params[:id]) if params[:id]
   end
 end

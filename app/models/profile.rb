@@ -118,7 +118,12 @@ class Profile < ApplicationRecord
     "Prefer not to say"
   ]
 
-  def liked_by?(user)
-    likes.where(user: user).any?
+  def liked_by?(model)
+    case model
+    when User
+      likes.where(user: model).any?
+    when Profile
+      likes.where(user: model.user).any?
+    end
   end
 end
