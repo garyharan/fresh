@@ -21,18 +21,6 @@ class ProfileTest < ActiveSupport::TestCase
     refute @gathino.liked_by?(@velvet.user)
   end
 
-  test 'accepts_nested_attributes_for :attractions' do
-    p = @gathino
-    p.attractions.destroy_all
-    p.update(
-      attractions_attributes: [
-        { gender_id: Gender.first.id },
-        { gender_id: Gender.last.id },
-      ],
-    )
-    assert_equal 2, p.attractions.count
-  end
-
   test '#of_gender returns all the profile of a specific gender' do
     man = Gender.find_by(label: 'Man')
 
@@ -73,6 +61,15 @@ class ProfileTest < ActiveSupport::TestCase
     @velvet.update(gender: @enby, genders: [@man, @enby])
 
     assert_includes Profile.recommended(@velvet), @gathino
+    assert_includes Profile.recommended(@gathino), @velvet
+  end
+
+  test '#recommended shows you profiles of people you did not like yet even if they liked you' do
+    @gathino.update(gender: @man, genders: [@woman, @enby])
+    @velvet.update(gender: @enby, genders: [@man, @enby])
+
+    Like.create! profile: @gathino, user: @velvet.user
+
     assert_includes Profile.recommended(@gathino), @velvet
   end
 

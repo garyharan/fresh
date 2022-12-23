@@ -10,7 +10,6 @@ class Profile < ApplicationRecord
   belongs_to :gender, required: false
   has_many :attractions, dependent: :destroy
   has_many :genders, through: :attractions
-  accepts_nested_attributes_for :attractions, allow_destroy: true
 
   has_and_belongs_to_many :rooms
 
