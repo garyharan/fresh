@@ -1,45 +1,16 @@
 class ProfilesController < ApplicationController
   before_action :authenticate_user!
 
-  before_action :force_profile_completion, only: %i[index recommended all groups]
+  before_action :force_profile_completion, only: %i[index]
 
   before_action :new_profile, only: :new
   before_action :set_profile, only: %i[edit update destroy]
 
   # GET /profiles or /profiles.json
   def index
-    @profile = Profile.recommended(current_user.profile).limit(1).first
-
     respond_to do |format|
       format.html { render layout: "application" }
     end
-  end
-
-  def recommended
-    @profile = Profile.recommended(current_user.profile).limit(1).first
-
-    respond_to do |format|
-      format.turbo_stream { render layout: false }
-      format.html { render layout: "application" }
-    end
-  end
-
-  def all
-    @profile = current_user.profile
-    @profiles =
-      Profile
-        .all
-        .where.not(id: current_user.profile.id)
-        .near(@profile.longitude, @profile.latitude)
-
-    respond_to do |format|
-      format.turbo_stream { render layout: false }
-      format.html { render layout: "application" }
-    end
-  end
-
-  def groups
-    @groups = current_user.groups
   end
 
   # GET /profiles/1 or /profiles/1.json
@@ -146,9 +117,5 @@ class ProfilesController < ApplicationController
         gender_ids: []
       )
     p
-  end
-
-  def force_profile_completion
-    redirect_to new_profile_url unless current_user.profile&.complete?
   end
 end

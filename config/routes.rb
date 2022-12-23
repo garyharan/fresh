@@ -8,6 +8,13 @@ Rails.application.routes.draw do
   get "onboarding/three"
   get "onboarding/four"
 
+  resources :recommendations do
+    member do
+      post :like
+      post :pass
+    end
+  end
+
   resources :profiles do
     collection do
       get :recommended
