@@ -20,7 +20,11 @@
             </div>
           <% end %>
         </div>
-        <p class="p-4 text-gray-700 dark:text-white"><%= card.content %></p>
+
+        <div class="p-4 text-gray-700 dark:text-white flex flex-col gap-4">
+          <%= simple_format card.content %>
+        </div>
+
         <% if current_user == @profile.user %>
           <p class="text-right pt-0 pl-0 pb-3 pr-3 hidden group-hover:block group-hover:md:hidden">
             <%= link_to(card, method: :delete, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "text-xs pr-6 md:text-md text-red-700 font-bold hover:text-red-500 hover:underline whitespace-nowrap") do %>
