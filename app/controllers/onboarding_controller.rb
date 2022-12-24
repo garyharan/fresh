@@ -2,6 +2,8 @@ class OnboardingController < ApplicationController
   before_action :authenticate_user!
   before_action :set_profile
 
+  layout 'onboarding'
+
   def one
   end
 
