@@ -3,3 +3,9 @@
     <%= render 'cards/card', card: @card, kind: @card.kind %>
   </template>
 </turbo-stream>
+
+<turbo-stream action="update" target="onboarding_fifth_step_button">
+  <template>
+    <%= render 'onboarding/fifth_step_button' %>
+  </template>
+</turbo-stream>

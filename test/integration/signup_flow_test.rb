@@ -5,7 +5,7 @@ class SignupFlowTest < ActionDispatch::IntegrationTest
     Rails.application.load_seed
   end
 
-  test "the truth" do
+  test "signup flow" do
     visit "/"
 
     click_link "Get started"
@@ -58,16 +58,28 @@ class SignupFlowTest < ActionDispatch::IntegrationTest
 
     # step 3
     assert page.has_content? "Upload photos"
-    assert page.has_content? "Upload at least one photo to finish"
+    assert page.has_content? "Upload at least one photo to continue"
+
     find("input[multiple='multiple']").set(Rails.root + "test/fixtures/files/gathino.png")
     refute page.has_content? "Upload at least one photo to finish"
 
+    click_on "Next"
 
     # step 4
-    click_on "Finish my profile"
+    assert page.has_content? "About me"
+    assert page.has_content? "Fill out the About me section to finish"
+    click_on "Add the About me card"
+    fill_in(id: "card_content", with: "I am a very nice person")
+    click_on "Create Card"
+    assert page.has_content? "I am a very nice person"
+    refute page.has_content? "Fill out the About me section to finish"
+
+    # step 5
+    click_on "Finish"
 
     assert page.has_content? "Buster"
     assert page.has_content? "44yo • Saint-Hubert" # add +1 every 6th of October
-    assert page.has_content? "Add the About me card"
+    assert page.has_content? "I am a very nice person"
+    assert page.has_content? "Add the Aspirations card"
   end
 end

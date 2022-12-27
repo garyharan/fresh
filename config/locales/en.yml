@@ -128,7 +128,9 @@ en:
   month_12: December
 
   images_dragging_instructions: The top most image is the one that will show up as a thumbnail when people search for your profile.  You can change the order of the images by dragging them.
-  images_upload_at_least_one_to_finish: Upload at least one photo to finish.
+  images_upload_at_least_one_to_finish: Upload at least one photo to continue.
+
+  fill_first_card_to_finish: Fill out the About me section to finish.
 
 
   profiles:

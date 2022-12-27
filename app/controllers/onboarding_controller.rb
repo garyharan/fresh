@@ -5,6 +5,7 @@ class OnboardingController < ApplicationController
   layout 'onboarding'
 
   def one
+    @profile.step = 1
   end
 
   def update_one
@@ -20,12 +21,12 @@ class OnboardingController < ApplicationController
   end
 
   def two
+    @profile.step = 2
   end
 
   def update_two
     respond_to do |format|
       @profile.attributes = step_two_profile_params
-      @profile.step = 2
       if @profile.save
         format.html { redirect_to onboarding_three_url }
       else
@@ -36,6 +37,12 @@ class OnboardingController < ApplicationController
 
   def three
     @images = @profile.images.order(:position)
+    @profile.step = 3
+  end
+
+
+  def four
+    @profile.step = 4
   end
 
   private

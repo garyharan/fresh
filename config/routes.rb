@@ -4,7 +4,6 @@ Rails.application.routes.draw do
 
   get "onboarding/two"
   patch "onboarding/update_two"
-
   get "onboarding/three"
   get "onboarding/four"
 
