@@ -45,7 +45,7 @@
     <p data-height-target="display" class="inline text-slate-800 border-gray-200 outline-none px-3 py-2 mt-2 w-1/3"></p>
   </div>
 
-  <div class="m-5">
+  <div class="m-5" id="possible_smoking_options">
     <h2 class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Smoking <%= error_messages_for(@profile, :smoking) %></h2>
     <ul class="grid gap-2 w-full md:grid-cols-3">
       <% Profile::POSSIBLE_SMOKING_OPTIONS.each_with_index do |option, index| %>
@@ -57,7 +57,7 @@
     </ul>
   </div>
 
-  <div class="m-5">
+  <div class="m-5" id="possible_drinking_options">
     <h2 class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Drinking <%= error_messages_for(@profile, :drinking) %></h2>
     <ul class="grid gap-2 w-full md:grid-cols-3">
       <% Profile::POSSIBLE_DRINKING_OPTIONS.each_with_index do |option, index| %>

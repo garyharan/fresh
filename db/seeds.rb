@@ -35,13 +35,7 @@ if Rails.env.development? || Rails.env.test?
                     display_name: Faker::Name.name,
                     born_on: (18..99).to_a.sample.years.ago,
                     gender_id: Gender.all.to_a[number % 3].id,
-                    attractions_attributes:
-                      Gender
-                        .all
-                        .sample(2)
-                        .reduce([]) { |arr, gender|
-                          arr << { gender_id: gender.id }
-                        },
+                    genders: Gender.all.sample(2),
                     city: %w[Longueuil Montreal Laval].sample,
                     state: "Quebec",
                     country: "Canada",
