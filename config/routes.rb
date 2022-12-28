@@ -50,5 +50,5 @@ Rails.application.routes.draw do
 
   root "root#index"
 
-  get "/:group_id", to: "memberships#new"
+  get "/:group_slug", to: "memberships#new"
 end

@@ -40,6 +40,9 @@ gem "geocoder", "~> 1.8.1"
 # To generate QR codes for events
 gem "rqrcode", "~> 2.0"
 
+# to generate unique slugs for groups
+gem "nanoid"
+
 # Allows us to sort with SortableJS
 gem "acts_as_list"
 
