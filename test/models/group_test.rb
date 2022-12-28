@@ -4,7 +4,7 @@ class GroupTest < ActiveSupport::TestCase
   test 'should not save group without name' do
     group = Group.new user: users(:gathino)
 
-    assert_no_changes 'Group.count' do
+    assert_no_difference 'Group.count' do
       group.save
     end
 
