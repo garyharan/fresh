@@ -1,6 +1,7 @@
 class MembershipsController < ApplicationController
-  before_action :save_group_for_signup_flow, only: :create
+  before_action :save_group_for_signup_flow
   before_action :authenticate_user!, only: :create
+
   before_action :set_group
 
   def new
@@ -19,7 +20,7 @@ class MembershipsController < ApplicationController
   private
 
   def set_group
-    @group = Group.find(params[:group_id])
+    @group = Group.find_by(slug: params[:group_slug])
   end
 
   def save_group_for_signup_flow

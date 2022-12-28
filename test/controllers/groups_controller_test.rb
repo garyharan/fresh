@@ -2,9 +2,11 @@ require "test_helper"
 
 class GroupsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    sign_in users(:gathino)
-
+    @user = users(:gathino)
     @group = groups(:one)
+    @user.groups.push(@group)
+
+    sign_in @user
   end
 
   test "should get index" do

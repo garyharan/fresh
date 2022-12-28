@@ -133,5 +133,9 @@ en:
   fill_first_card_to_finish: Fill out the About me section to finish.
 
 
+  groups:
+    invite_title: "You've been invited to join <span class='font-bold'>%{group_name}</span>"
+    invite_description: "The group is described as <span class='font-bold'>%{group_description}</span>"
+
   profiles:
     no_cards: This user has no cards on their profile yet.

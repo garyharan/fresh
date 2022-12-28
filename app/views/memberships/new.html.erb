@@ -1,19 +1,13 @@
+<section class="max-w-screen-md mx-auto text-center mt-4 md:mt-12 lg:mt-24">
+  <div class="mb-5">
+    <h2 class="text-2xl"><%= raw t('groups.invite_title', group_name: @group.name) %></h2>
+  </div>
 
-    <section class="bg-white dark:bg-gray-900">
-        <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
-            <div class="max-w-screen-md">
-                <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white"><%= t(:memberships_cta_title, group_name: @group.name) %></h2>
-                <% if @group.description %>
-                  <p class="mb-8 font-light text-gray-500 sm:text-xl dark:text-gray-400">
-                    <%= @group.description %>
-                  </p>
-                <% end %>
-                <div class="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
-                    <%= button_to group_memberships_path(@group, Membership.new), method: :post, class: "inline-flex items-center justify-center px-4 py-2.5 text-base font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900" do %>
-                        <svg class="mr-2 -ml-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
-                        Accept your invitation and join <%= @group.name %> now
-                    <% end %>
-                </div>
-            </div>
-        </div>
-    </section>
+  <div class="border bg-white w-fit p-10 mx-auto shadow rounded-lg">
+    <p>By accepting this invitation you'll be tagged as part of the group. This gives you access to filtering options where you can see all group members in the discovery page.</p>
+  </div>
+
+  <div class="mt-10">
+      <%= button_to group_memberships_path(@group, Membership.new), method: :post, class: "inline-flex items-center justify-center px-4 py-2.5 text-base font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900" do %> <svg class="mr-2 -ml-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg> Accept your invitation and join <%= @group.name %> now <% end %>
+  </div>
+</section>
