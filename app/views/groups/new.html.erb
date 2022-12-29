@@ -1,5 +1,7 @@
-<div class="mx-auto md:w-2/3 w-full">
-  <h1 class="font-bold text-4xl">New group</h1>
+<div class="mx-auto md:w-2/3 pt-10 w-full">
+  <h1 class="font-bold text-4xl">Create your group</h1>
 
   <%= render "form", group: @group %>
+
+  <%= render 'shared/contextual_help', message: t('group_context') %>
 </div>

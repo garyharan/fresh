@@ -46,7 +46,11 @@ class OnboardingController < ApplicationController
   end
 
   def finish
-    redirect_to current_user.profile
+    if session[:group_id].present?
+      redirect_to new_group_membership_path(session[:group_id])
+    else
+      redirect_to current_user.profile
+    end
   end
 
   private

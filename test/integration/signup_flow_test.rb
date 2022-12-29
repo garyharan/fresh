@@ -5,7 +5,7 @@ class SignupFlowTest < ActionDispatch::IntegrationTest
     Rails.application.load_seed
   end
 
-  test "signup flow" do
+  test "generic signup flow" do
     visit "/"
 
     click_link "Get started"
@@ -15,6 +15,49 @@ class SignupFlowTest < ActionDispatch::IntegrationTest
 
     click_on "Sign up and set up your profile"
 
+    fill_out_onboarding_steps
+
+    # step 5
+    click_on "Finish"
+
+    assert page.has_content? "Buster"
+    assert page.has_content? "44yo • Saint-Hubert" # add +1 every 6th of October
+    assert page.has_content? "I am a very nice person"
+    assert page.has_content? "Add the Aspirations card"
+  end
+
+  test "signup flow with group membership" do
+    # create a group
+    group = Group.new(name: "Test Group", description: "Test Group Description", slug: "test-group", user: User.first)
+
+    group.save(validate: false)
+    visit "/#{group.slug}"
+
+    click_on "Accept your invitation and join Test Group now"
+
+    assert page.has_content? "Try"
+
+    fill_in(id: "user_email", with: "interesting@man.org")
+    fill_in(id: "user_password", with: "&12912345678")
+
+    click_on "Sign up and set up your profile"
+
+    fill_out_onboarding_steps
+
+    click_on "Finish"
+
+    assert page.has_content? "join"
+
+    click_on "Accept your invitation and join Test Group now"
+
+    assert page.has_content? "Test Group"
+
+    debugger
+
+    sleep 5
+  end
+
+  def fill_out_onboarding_steps
     # step 1
     assert page.has_content? "Display name"
     fill_in(id: "profile_display_name", with: "Buster")
@@ -73,13 +116,5 @@ class SignupFlowTest < ActionDispatch::IntegrationTest
     click_on "Create Card"
     assert page.has_content? "I am a very nice person"
     refute page.has_content? "Fill out the About me section to finish"
-
-    # step 5
-    click_on "Finish"
-
-    assert page.has_content? "Buster"
-    assert page.has_content? "44yo • Saint-Hubert" # add +1 every 6th of October
-    assert page.has_content? "I am a very nice person"
-    assert page.has_content? "Add the Aspirations card"
   end
 end

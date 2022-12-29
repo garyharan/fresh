@@ -5,7 +5,11 @@ class MembershipsController < ApplicationController
   end
 
   def new
-    @group = Group.find_by(slug: params[:group_slug])
+    if params[:group_slug]
+      @group = Group.find_by(slug: params[:group_slug])
+    else
+      @group = Group.find(params[:group_id])
+    end
   end
 
   def create
@@ -13,7 +17,7 @@ class MembershipsController < ApplicationController
 
     if user_signed_in?
       @membership = @group.memberships.create!(profile: current_user.profile)
-      redirect_to group_membership_path(@group)
+      redirect_to recommendations_path(group: @group)
     else
       save_group_for_signup_flow
       flash[:notice] = "You need to sign up or log in to join this group."

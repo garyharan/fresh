@@ -1,19 +1,23 @@
-<div id="<%= dom_id group %>" class="my-10">
-  <div class="flex flex-col md:flex-row bg-black rounded-lg p-4">
-    <div class="bg-white p-2 mx-auto">
-      <%= link_to public_group_url(group) do %>
-        <%= raw RQRCode::QRCode.new(public_group_url(group)).as_svg module_size: 11, color: "white" %>
-      <% end %>
-    </div>
-    <div class="p-6 flex flex-col justify-evenly text-white text-center">
-      <div class="text-3xl font-bold text-center">
-        <%= group.name %>
-      </div>
-      <% if group.description %>
-        <div class="text-center mt-10">
-          <div><%= group.description %></div>
+<div id="<%= dom_id(group) %>">
+  <%= link_to group, class: "block border bg-white dark:bg-gray-900 rounded-lg shadow-lg p-4 mb-4 hover:bg-gray-100" do %>
+    <div class="flex justify-between items-center">
+      <div class="flex items-center">
+        <div class="ml-4">
+          <div class="text-lg leading-5 font-medium text-gray-900 dark:text-white">
+            <%= group.name %>
+          </div>
+          <div class="text-sm leading-5 text-gray-500 dark:text-gray-400">
+            <%= group.description %>
+          </div>
         </div>
-      <% end %>
+      </div>
+      <div class="flex items-center">
+        <div class="ml-4">
+          <div class="text-sm leading-5 text-gray-500 dark:text-gray-400">
+            <%= group.memberships.count %> members
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
+  <% end %>
 </div>

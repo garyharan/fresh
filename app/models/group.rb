@@ -2,6 +2,7 @@ class Group < ApplicationRecord
   belongs_to :user
 
   validates_presence_of :name
+  validates_presence_of :description
 
   has_many :memberships, dependent: :destroy
   has_many :users, through: :memberships

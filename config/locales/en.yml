@@ -37,6 +37,10 @@ en:
   display_name: Display name
   born_on: Born on
 
+  name: Name
+  description: Description
+  group_context: A group is a convenient way to provide its members a way to search and match with one another. You can invite the members by providing them with an invite link or displaying the provided group QR code during a meet-up.
+
   about_me: About me
   self_summary: My self-summary
   what_others_say_about_me: What others say about me
@@ -137,6 +141,8 @@ en:
   groups:
     invite_title: "You've been invited to join <span class='font-bold'>%{group_name}</span>"
     invite_description: "The group is described as <span class='font-bold'>%{group_description}</span>"
+    are_you_a_community_organizer: Are you a community organizer?
+    create_a_group: Create a group
 
   profiles:
     no_cards: This user has no cards on their profile yet.

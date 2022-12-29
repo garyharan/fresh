@@ -1,36 +1,29 @@
 <div class="w-full">
-  <% if notice.present? %>
-    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-  <% end %>
+  <% if user_signed_in? && current_user.managed_groups.any? %>
 
-  <% if user_signed_in? && current_user.groups.any? %>
+    <div id="groups" class="m-4 lg:m-10">
+      <h2 class="text-2xl font-bold mb-4">Groups you are a member of</h2>
 
-    <div id="groups" class="m-10">
-      <h2 class="text-2xl font-bold mb-4">Your groups</h2>
-
-      <% @groups.each do |group| %>
-        <%= link_to group, class: "block border bg-white dark:bg-gray-900 rounded-lg shadow-lg p-4 mb-4 hover:bg-gray-100" do %>
-          <div class="flex justify-between items-center">
-            <div class="flex items-center">
-              <div class="ml-4">
-                <div class="text-lg leading-5 font-medium text-gray-900 dark:text-white">
-                  <%= group.name %>
-                </div>
-                <div class="text-sm leading-5 text-gray-500 dark:text-gray-400">
-                  <%= group.description %>
-                </div>
-              </div>
-            </div>
-            <div class="flex items-center">
-              <div class="ml-4">
-                <div class="text-sm leading-5 text-gray-500 dark:text-gray-400">
-                  <%= group.memberships.count %> members
-                </div>
-              </div>
-            </div>
-          </div>
-        <% end %>
+      <% if @groups.any? %>
+        <%= render @groups %>
+      <% else %>
+        <p>You are not a member of any groups yet.</p>
       <% end %>
+    </div>
+
+    <div id="managed_groups" class="m-4 lg:m-10">
+      <h2 class="text-2xl font-bold mb-4">Groups you manage</h2>
+
+      <% if @managed_groups.any? %>
+        <%= render @managed_groups %>
+      <% else %>
+        <p>You are not managing any groups yet.</p>
+      <% end %>
+
+      <div class="w-full mt-10 text-right">
+        <%= t('groups.are_you_a_community_organizer') %> <%= link_to t('groups.create_a_group'), new_group_path, method: :get, class: "text-green-400 hover:text-green-500 hover:underline" %>
+
+      </div>
     </div>
 
   <% else %>

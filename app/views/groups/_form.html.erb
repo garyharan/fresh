@@ -2,26 +2,20 @@
   <% if group.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
       <h2><%= pluralize(group.errors.count, "error") %> prohibited this group from being saved:</h2>
-
-      <ul>
-        <% group.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
     </div>
   <% end %>
 
   <div class="my-5">
-    <%= form.label :name %>
-    <%= form.text_field :name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <h2 class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"> <%= t(:name) %> <%= error_messages_for(@group, :name) %> </h2>
+    <%= form.text_field :name, class: "#{@group.errors[:name].any? ? 'border-red-500 bg-red-50' : 'border-gray-200'} block shadow rounded-md border text-slate-800 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="my-5">
-    <%= form.label :description %>
-    <%= form.text_area :description, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <h2 class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"> <%= t(:description) %> <%= error_messages_for(@group, :description) %> </h2>
+    <%= form.text_area :description, class: "#{@group.errors[:description].any? ? 'border-red-500 bg-red-50' : 'border-gray-200'} block shadow rounded-md border text-slate-800 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
-  <div class="inline">
+  <div class="my-5 w-full text-right">
     <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
   </div>
 <% end %>
