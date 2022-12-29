@@ -132,6 +132,7 @@ en:
 
   fill_first_card_to_finish: Fill out the About me section to finish.
 
+  members: Members
 
   groups:
     invite_title: "You've been invited to join <span class='font-bold'>%{group_name}</span>"

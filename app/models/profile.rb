@@ -11,6 +11,9 @@ class Profile < ApplicationRecord
   has_many :attractions, dependent: :destroy
   has_many :genders, through: :attractions
 
+  has_many :memberships, dependent: :destroy
+  has_many :groups, through: :memberships
+
   has_and_belongs_to_many :rooms
 
   geocoded_by :location
@@ -73,6 +76,10 @@ class Profile < ApplicationRecord
       "
       )
       .order(:age_difference, :distance)
+  end
+
+  def self.in_group(group)
+    joins(:memberships).where(memberships: { group: group })
   end
 
   def complete? # XXX: This is a bit of a hack

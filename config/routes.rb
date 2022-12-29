@@ -15,11 +15,6 @@ Rails.application.routes.draw do
   end
 
   resources :profiles do
-    collection do
-      get :recommended
-      get :all
-      get :groups
-    end
     resources :images, except: :update do
       patch :sort, on: :collection
     end
@@ -36,7 +31,7 @@ Rails.application.routes.draw do
   end
 
   resources :groups do
-    resources :memberships, only: %i[new create destroy]
+    resources :memberships
   end
 
   devise_for :users,

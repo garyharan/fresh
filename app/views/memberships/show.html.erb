@@ -1,0 +1,21 @@
+<section class="max-w-screen-md mx-auto text-center mt-4 md:mt-12 lg:mt-24">
+  <div class="mb-5">
+    <h2 class="text-2xl"><%= @group.name %> <%= t('members') %></h2>
+  </div>
+
+  <div class="mt-10">
+    <div class="flex flex-wrap justify-center">
+      <% @memberships.each do |membership| %>
+        <div class="w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 p-2">
+          <div class="bg-white rounded-lg shadow-lg p-4">
+            <div class="flex flex-col items-center">
+              <div class="w-16 h-16 rounded-full overflow-hidden">
+                <%= membership.profile.display_name %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>

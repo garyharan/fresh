@@ -5,7 +5,7 @@ class RecommendationsController < ApplicationController
   before_action :set_profile, only: %i[like pass]
 
   def index
-    @profile = Profile.recommended(current_user.profile).limit(1).first
+    @profile = recommended_profile
 
     respond_to do |format|
       format.html { render layout: false }
@@ -28,5 +28,13 @@ class RecommendationsController < ApplicationController
 
   def set_profile
     @profile = Profile.find(params[:id]) if params[:id]
+  end
+
+  def recommended_profile
+    Profile.recommended(current_user.profile).limit(1).first
+  end
+
+  def recommended_profile_by_group
+    Profile.recommended(current_user.profile).limit(1).first
   end
 end

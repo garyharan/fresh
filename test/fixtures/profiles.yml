@@ -45,3 +45,19 @@ three:
   drinking: Occasionally
   relationship_style: Monogamous
   children: Not sure yet
+
+four:
+  display_name: Eva
+  user: eva
+  height: 140
+  born_on: 1974-2-14
+  gender: Woman
+  latitude: 45.498398543048125
+  longitude: -73.4327665245693
+  city: Longueuil
+  state: Quebec
+  country: Canada
+  smoking: Never
+  drinking: Occasionally
+  relationship_style: Non-monogamous
+  children: None

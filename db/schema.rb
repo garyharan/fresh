@@ -1,5 +1,4 @@
 # This file is auto-generated from the current state of the database. Instead
-
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
 #
@@ -11,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_27_235835) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_28_172517) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -111,13 +110,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_27_235835) do
   end
 
   create_table "memberships", force: :cascade do |t|
-    t.bigint "user_id", null: false
     t.bigint "group_id", null: false
     t.boolean "revoked", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "profile_id"
     t.index ["group_id"], name: "index_memberships_on_group_id"
-    t.index ["user_id"], name: "index_memberships_on_user_id"
+    t.index ["profile_id"], name: "index_memberships_on_profile_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -216,7 +215,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_27_235835) do
   add_foreign_key "cards", "profiles"
   add_foreign_key "groups", "users"
   add_foreign_key "images", "profiles"
-  add_foreign_key "memberships", "users"
   add_foreign_key "messages", "rooms"
   add_foreign_key "messages", "users"
   add_foreign_key "passes", "profiles"
