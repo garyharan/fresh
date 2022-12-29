@@ -45,6 +45,10 @@ class OnboardingController < ApplicationController
     @profile.step = 4
   end
 
+  def finish
+    redirect_to current_user.profile
+  end
+
   private
 
   def profile_params

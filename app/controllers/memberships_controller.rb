@@ -1,7 +1,4 @@
 class MembershipsController < ApplicationController
-  before_action :save_group_for_signup_flow
-  before_action :authenticate_user!, only: :create
-
   def show
     @group = Group.find(params[:group_id])
     @memberships = @group.memberships.where.not(profile: current_user.profile)
@@ -14,12 +11,13 @@ class MembershipsController < ApplicationController
   def create
     @group = Group.find(params[:group_id])
 
-    @membership = @group.memberships.new(profile: current_user.profile)
-
-    if @membership.save
-      redirect_to group_membership_url(@group, @membership)
+    if user_signed_in?
+      @membership = @group.memberships.create!(profile: current_user.profile)
+      redirect_to group_membership_path(@group)
     else
-      render :new
+      save_group_for_signup_flow
+      flash[:notice] = "You need to sign up or log in to join this group."
+      redirect_to new_user_registration_path
     end
   end
 

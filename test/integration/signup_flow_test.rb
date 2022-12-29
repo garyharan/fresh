@@ -13,7 +13,7 @@ class SignupFlowTest < ActionDispatch::IntegrationTest
     fill_in "Your email", with: "user@host.com"
     fill_in "A password", with: "$1625df123"
 
-    click_on "Next you will setup a profile"
+    click_on "Sign up and set up your profile"
 
     # step 1
     assert page.has_content? "Display name"
