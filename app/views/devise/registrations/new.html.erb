@@ -4,16 +4,27 @@
     Try <h1 id="title" title="Fresh.Dating"><span class="text-md md:text-3xl">❤</span><span class="text-md md:text-3xl hidden md:inline">Fresh.Dating</span></h1> now
   </div>
 
-  <div class="border bg-white w-fit p-10 mx-auto shadow rounded-lg">
+  <div class="border bg-white w-fit mx-auto shadow rounded-lg">
+    <ul class="hidden text-sm font-medium text-center text-gray-500 rounded-lg divide-x divide-gray-200 shadow-inner sm:flex dark:divide-gray-700 dark:text-gray-400">
+      <li class="w-full">
+        <%= link_to "Sign up", new_user_registration_path, class: "inline-block p-3 w-full bg-white text-gray-900 rounded-tl-lg" %>
+      </li>
+      <li class="w-full">
+        <%= link_to "Sign in", new_user_session_path, class: "inline-block p-3 w-full bg-slate-100 rounded-rt-lg hover:text-gray-700 hover:bg-gray-50 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700" %>
+      </li>
+    </ul>
+
+    <%= render "shared/flashes" %>
+
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: false }) do |f| %>
-      <div class="flex flex-col">
+      <div class="flex flex-col p-10">
         <%= render "devise/shared/error_messages", resource: resource %>
 
         <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Your email", class: "text-slate-600 m-3 placeholder-gray-400" %>
         <%= f.password_field :password, autocomplete: "new-password", placeholder: "A password", class: "text-slate-600 m-3 placeholder-gray-400" %>
 
         <div class="actions">
-          <%= f.submit "Next you will setup a profile", class: "px-8 py-2 my-4 text-sm text-white bg-green-500 rounded-full hover:bg-green-600 cursor-pointer" %>
+          <%= f.submit "Sign up and set up your profile", class: "px-8 py-2 my-4 text-sm text-white bg-green-500 rounded-full hover:bg-green-600 cursor-pointer" %>
         </div>
       </div>
     <% end %>
