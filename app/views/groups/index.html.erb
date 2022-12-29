@@ -5,7 +5,7 @@
       <h2 class="text-2xl font-bold mb-4">Groups you are a member of</h2>
 
       <% if @groups.any? %>
-        <%= render @groups %>
+        <%= render @groups, message: 'membership' %>
       <% else %>
         <p>You are not a member of any groups yet.</p>
       <% end %>
@@ -15,7 +15,7 @@
       <h2 class="text-2xl font-bold mb-4">Groups you manage</h2>
 
       <% if @managed_groups.any? %>
-        <%= render @managed_groups %>
+        <%= render @managed_groups, message: 'group_edit' %>
       <% else %>
         <p>You are not managing any groups yet.</p>
       <% end %>

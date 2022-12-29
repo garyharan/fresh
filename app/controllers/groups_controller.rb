@@ -1,6 +1,6 @@
 class GroupsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_group, only: %i[show edit update destroy]
+  before_action :set_group, only: %i[edit update destroy]
 
   def index
     @groups = current_user.profile.memberships.map(&:group)
@@ -8,6 +8,7 @@ class GroupsController < ApplicationController
   end
 
   def show
+    @group = Group.find(params[:id])
   end
 
   def new

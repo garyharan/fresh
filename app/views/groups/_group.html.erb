@@ -1,5 +1,5 @@
 <div id="<%= dom_id(group) %>">
-  <%= link_to group, class: "block border bg-white dark:bg-gray-900 rounded-lg shadow-lg p-4 mb-4 hover:bg-gray-100" do %>
+  <%= link_to (message == 'membership' ? profiles_path(group_id: group.id) : group), class: "block border bg-white dark:bg-gray-900 rounded-lg shadow-lg p-4 mb-4 hover:bg-gray-100" do %>
     <div class="flex justify-between items-center">
       <div class="flex items-center">
         <div class="ml-4">

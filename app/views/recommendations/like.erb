@@ -20,7 +20,7 @@
 
   <turbo-stream action="replace" target="recommended_profile">
     <template>
-      <%= turbo_frame_tag "recommended_profile", src: recommendations_path %>
+      <%= turbo_frame_tag "recommended_profile", src: recommendations_path(group_id: @group.id) %>
     </template>
   </turbo-stream>
 
