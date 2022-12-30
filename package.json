@@ -8,7 +8,7 @@
     "sortablejs": "^1.15.0"
   },
   "scripts": {
-    "build": "esbuild app/javascript/*.* --bundle --outdir=app/assets/builds --public-path=assets"
+    "build": "esbuild app/javascript/*.* --bundle -sourcemap --outdir=app/assets/builds --public-path=assets"
   },
   "devDependencies": {
     "@types/sortablejs": "^1.15.0"
