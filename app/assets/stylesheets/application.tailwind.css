@@ -2,3 +2,37 @@
 @tailwind components;
 @tailwind utilities;
 
+#title {
+  background-image: linear-gradient(
+    -225deg,
+    #ff1361 0%,
+    #7b09f5 50%,
+    #ff1361 100%
+  );
+
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+
+  color: #fff;
+  margin-left: 0.2em;
+
+  line-height: 3.3rem;
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation: textclip 2s linear;
+  display: inline-block;
+
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
+}
+
