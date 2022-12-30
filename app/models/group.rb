@@ -5,7 +5,7 @@ class Group < ApplicationRecord
   validates_presence_of :description
 
   has_many :memberships, dependent: :destroy
-  has_many :users, through: :memberships
+  has_many :profiles, through: :memberships
 
   before_create :set_slug
 

@@ -79,7 +79,7 @@ class Profile < ApplicationRecord
   end
 
   def self.in_group(group)
-    joins(:memberships).where(memberships: { group: group })
+    Profile.joins(:memberships).where(memberships: { group_id: group.id })
   end
 
   def complete? # XXX: This is a bit of a hack

@@ -30,9 +30,8 @@ class ProfileTest < ActiveSupport::TestCase
   test '.in_group returns all the profiles in a specific group' do
     @group = Group.create!(name: 'Test Group', description: "Testing", user: @gathino.user)
 
-    @group.memberships.create(user: @gathino.user)
-    @group.memberships.create(user: @velvet.user)
-
+    @group.memberships.create(profile: @gathino)
+    @group.memberships.create(profile: @velvet)
 
     assert_includes Profile.in_group(@group), @gathino
     assert_includes Profile.in_group(@group), @velvet

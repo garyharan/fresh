@@ -1,6 +1,10 @@
 <turbo-stream action="replace" target="recommended_profile">
   <template>
-    <%= turbo_frame_tag "recommended_profile", src: recommendations_path %>
+      <% if params[:group_id] %>
+        <%= turbo_frame_tag "recommended_profile", src: recommendations_path(group_id: params[:group_id]) %>
+      <% else %>
+        <%= turbo_frame_tag "recommended_profile", src: recommendations_path %>
+      <% end %>
   </template>
 </turbo-stream>
 

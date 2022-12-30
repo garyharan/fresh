@@ -1,18 +1,25 @@
 require "test_helper"
 
 class RecommendationsControllerTest < ActionDispatch::IntegrationTest
+  setup do
+    @gathino = users(:gathino)
+    @velvet  = users(:velvet)
+
+    sign_in @gathino
+  end
+
   test "should get index" do
-    get recommendations_index_url
+    get recommendations_url
     assert_response :success
   end
 
   test "should get like" do
-    get recommendations_like_url
+    post like_recommendation_url id: @velvet.profile.id
     assert_response :success
   end
 
   test "should get pass" do
-    get recommendations_pass_url
+    post pass_recommendation_url id: @velvet.profile.id
     assert_response :success
   end
 end

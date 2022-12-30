@@ -138,6 +138,8 @@ en:
 
   members: Members
 
+  member_in_group: "Member of %{group_name}"
+
   groups:
     invite_title: "You've been invited to join <span class='font-bold'>%{group_name}</span>"
     invite_description: "The group is described as <span class='font-bold'>%{group_description}</span>"

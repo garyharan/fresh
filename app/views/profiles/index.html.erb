@@ -1,1 +1,1 @@
-<%= turbo_frame_tag "recommended_profile", src: recommendations_path %>
+<%= turbo_frame_tag "recommended_profile", src: (params[:group_id].present? ? recommendations_path(group_id: params[:group_id]) : recommendations_path) %>
