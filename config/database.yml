@@ -2,17 +2,19 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: <%= ENV['FRESH_USER'] %>
-  password: <%= ENV['FRESH_DATABASE_PASSWORD'] %>
 
 development:
   <<: *default
+  username: <%= ENV['FRESH_USER'] %>
+  password: <%= ENV['FRESH_DATABASE_PASSWORD'] %>
   database: fresh_development
 
 test:
   <<: *default
+  username: <%= ENV['FRESH_USER'] %>
+  password: <%= ENV['FRESH_DATABASE_PASSWORD'] %>
   database: fresh_testing
 
 production:
   <<: *default
-  database: fresh_production
+  url: <%= ENV['FRESH_DATABASE_URL'] %>
