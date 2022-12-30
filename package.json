@@ -4,7 +4,7 @@
     "@hotwired/turbo-rails": "^7.2.0",
     "@rails/activestorage": "^7.0.4",
     "esbuild": "^0.15.10",
-    "flowbite": "^1.5.3",
+    "flowbite": "^1.5.5",
     "sortablejs": "^1.15.0"
   },
   "scripts": {
