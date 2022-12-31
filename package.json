@@ -14,5 +14,8 @@
   },
   "devDependencies": {
     "@types/sortablejs": "^1.15.0"
+  },
+  "engines": {
+    "node": ">= 18.0.0"
   }
 }
