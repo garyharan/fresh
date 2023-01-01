@@ -1,16 +1,8 @@
 #!/usr/bin/env bash
 
-echo "Installing npm"
-npm install
-
-echo "Installing bundler"
-bundle install
-
-echo "yarn build"
-yarn build
-
-echo "Assets commands"
 bundle exec rails tailwindcss:clobber
 bundle exec rails tailwindcss:build
+yarn build
+yarn build:css
 bundle exec rake assets:precompile
 bundle exec rake assets:clean
