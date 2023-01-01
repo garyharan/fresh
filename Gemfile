@@ -34,6 +34,9 @@ gem "jbuilder"
 # Use Redis adapter to run Action Cable in production
 gem "redis", "~> 4.0"
 
+# R2 Cloudflare https://developers.cloudflare.com/r2/examples/aws-sdk-ruby/
+gem "aws-sdk-s3"
+
 # To get City or County from profile LAT/LON
 gem "geocoder", "~> 1.8.1"
 
