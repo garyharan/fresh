@@ -24,11 +24,11 @@ class RecommendationsController < ApplicationController
   private
 
   def set_group
-    @group = Group.find(params[:group_id]) if params[:group_id]
+    @group = Group.find(params[:group_id]) if params[:group_id].present?
   end
 
   def set_profile
-    @profile = Profile.find(params[:id]) if params[:id]
+    @profile = Profile.find(params[:id]) if params[:id].present?
   end
 
   def recommended_profile
