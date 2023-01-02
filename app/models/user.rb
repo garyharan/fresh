@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :rememberable,
          :validatable,
          :trackable,
-         :confirmable,
+         #:confirmable,
          :lockable
 
   has_one :profile, dependent: :destroy
