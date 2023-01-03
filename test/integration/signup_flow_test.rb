@@ -52,8 +52,6 @@ class SignupFlowTest < ActionDispatch::IntegrationTest
 
     assert page.has_content? "Test Group"
 
-    debugger
-
     sleep 5
   end
 
