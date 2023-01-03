@@ -1,103 +1,102 @@
 <%= turbo_frame_tag 'recommended_profile' do %>
+  <div class="mx-auto" style="max-width: 1024px;">
+
+    <% if @profile %>
+
+      <div style="opacity: 0; transition: opacity 1s;" data-controller="entrance">
+        <div class="mx-auto text-center shadow rounded-lg bg-white mx-4 my-3 md:my-6 overflow-clip">
+
+          <div class="flex flex-col md:flex-row m-4 text-sm font-medium text-gray-500 rounded-lg">
 
 
+            <div class="flex flex-col m-4 order-last md:order-first">
+              <div class="text-3xl font-bold text-slate-600 text-left">
+                <%= @profile.display_name %>
+              </div>
 
-  <% if @profile %>
+              <div class="text-left">
+                <svg class="w-4 h-4 inline mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg><%= age(@profile.born_on) %>yo
 
-    <div style="opacity: 0; transition: opacity 1s;" data-controller="entrance">
-      <div class="mx-auto text-center shadow rounded-lg bg-white mx-4 my-3 md:my-6 overflow-clip">
+                <svg class="w-4 h-4 inline mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path></svg><%= @profile.location %>
+              </div>
 
-        <div class="flex flex-col md:flex-row m-4 text-sm font-medium text-gray-500 rounded-lg">
+              <% if @group %>
+                <div class="flex">
+                  <div class="bg-black text-white text-xs mt-1 py-1 px-2 bg-yellow-300 bg-opacity-80 shadow text-slate-700 rounded-full">
+                    <svg class="w-6 h-6 inline" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                    <%= t('member_in_group', group_name: @group.name) %>
+                  </div>
+                </div>
+              <% end %>
 
-
-          <div class="flex flex-col m-4 order-last md:order-first">
-            <div class="text-3xl font-bold text-slate-600 text-left">
-              <%= @profile.display_name %>
             </div>
 
-            <div class="text-left">
-              <svg class="w-4 h-4 inline mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg><%= age(@profile.born_on) %>yo
-
-              <svg class="w-4 h-4 inline mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path></svg><%= @profile.location %>
+            <div class="md:grow hidden md:flex">
             </div>
 
-            <% if @group %>
-              <div class="flex">
-                <div class="bg-black text-white text-xs mt-1 py-1 px-2 bg-yellow-300 bg-opacity-80 shadow text-slate-700 rounded-full">
-                  <svg class="w-6 h-6 inline" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-                  <%= t('member_in_group', group_name: @group.name) %>
+            <div class="order-first md:order-last flex flex-col md:flex-row justify-center">
+              <div class="p-4 md:p-5">
+                <%= render partial: 'pass', locals: { profile: @profile } %>
+              </div>
+              <div class="pb-0 md:p-5">
+                <%= render partial: 'like', locals: { profile: @profile } %>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="mx-auto mx-4 my-3 md:my-6">
+          <div class="mx-0 w-full px-10 py-3">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-2 flex justify-center">
+              <% @profile.images.each do |image| %>
+                <div class="">
+                  <%= image_tag image.photo.variant(:medium), class: "rounded-lg shadow bg-white"  %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+        <div class="mx-auto mx-4 my-3 md:my-6 overflow-clip flex flex-col sm:flex-row gap-4">
+
+          <div class="md:flex md:flex-col mx-auto w-full md:w-9/12">
+            <% if @profile.cards.any? %>
+              <%= render 'cards' %>
+            <% else %>
+              <div class="text-center">
+                <div class="text-2xl font-bold text-slate-600">
+                  <%= t('profiles.no_cards') %>
                 </div>
               </div>
             <% end %>
-
           </div>
 
-          <div class="md:grow hidden md:flex">
-          </div>
+          <div class="order-first sm:order-last mx-0 sm:mx-2 w-full md:w-3/12">
 
-          <div class="order-first md:order-last flex flex-col md:flex-row justify-center">
-            <div class="p-4 md:p-5">
-              <%= render partial: 'pass', locals: { profile: @profile } %>
-            </div>
-            <div class="pb-0 md:p-5">
-              <%= render partial: 'like', locals: { profile: @profile } %>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-
-      <div class="mx-auto mx-4 my-3 md:my-6">
-        <div class="mx-0 w-full px-10 py-3">
-          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-2 flex justify-center">
-            <% @profile.images.each do |image| %>
-              <div class="">
-                <%= image_tag image.photo.variant(:medium), class: "rounded-lg shadow bg-white"  %>
+            <div class="block max-w bg-white border-gray-200 rounded-b-md shadow-md">
+              <div class="flex border rounded-t-md pl-4 bg-black text-lg leading-8 font-semibold text-white dark:text-white leading-10">
+                <div class="grow text-lg leading-8 font-semibold text-white dark:text-white leading-10">
+                  Details
+                </div>
               </div>
-            <% end %>
+
+              <div class="p-4">
+                <%= render "profiles/details", profile: @profile %>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
 
-      <div class="mx-auto mx-4 my-3 md:my-6 overflow-clip flex flex-col sm:flex-row gap-4">
+    <% else %>
 
-        <div class="md:flex md:flex-col mx-auto w-full md:w-9/12">
-          <% if @profile.cards.any? %>
-            <%= render 'cards' %>
-          <% else %>
-            <div class="text-center">
-              <div class="text-2xl font-bold text-slate-600">
-                <%= t('profiles.no_cards') %>
-              </div>
-            </div>
-          <% end %>
-        </div>
-
-        <div class="order-first sm:order-last mx-0 sm:mx-2 w-full md:w-3/12">
-
-          <div class="block max-w bg-white border-gray-200 rounded-b-md shadow-md">
-            <div class="flex border rounded-t-md pl-4 bg-black text-lg leading-8 font-semibold text-white dark:text-white leading-10">
-              <div class="grow text-lg leading-8 font-semibold text-white dark:text-white leading-10">
-                Details
-              </div>
-            </div>
-
-            <div class="p-4">
-              <%= render "profiles/details", profile: @profile %>
-            </div>
-          </div>
-
-        </div>
+      <div class="flex flex-col items-center justify-center h-screen max-w-prose mx-auto">
+        <div class="text-2xl text-gray-500 text-center">No profile to recommend right this moment. More people are joining every day.  Come back tomorrow. </div>
       </div>
-    </div>
 
-  <% else %>
-
-    <div class="flex flex-col items-center justify-center h-screen max-w-prose mx-auto">
-      <div class="text-2xl text-gray-500 text-center">No profile to recommend right this moment. More people are joining every day.  Come back tomorrow. </div>
-    </div>
-
-  <% end %>
+    <% end %>
+  </div>
 <% end %>
-
