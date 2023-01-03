@@ -47,7 +47,7 @@ Rails.application.routes.draw do
 
   root "root#index"
 
-  get 'dashboard/index'
+  get 'dashboard', to: 'dashboard#index'
 
   get "/:group_slug", to: "memberships#new"
 end
