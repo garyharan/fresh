@@ -4,7 +4,8 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @user = users(:gathino)
     @group = groups(:one)
-    @user.groups.push(@group)
+
+    @user.profile.groups.push(@group)
 
     sign_in @user
   end
@@ -26,13 +27,13 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create group" do
     assert_difference("Group.count") do
-      post groups_url, params: { group: { name: "New Group" } }
+      post groups_url, params: { group: { name: "New Group", description: "Novelty galore" } }
     end
 
     group = Group.last
 
     assert_equal "New Group", group.name
-    assert_redirected_to group_url(group)
+    assert_redirected_to groups_url
   end
 
   test "should update group" do
