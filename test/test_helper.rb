@@ -20,7 +20,8 @@ class ActionDispatch::IntegrationTest
   end
 end
 
-Capybara.default_driver = :selenium_chrome
+#Capybara.default_driver = :selenium_chrome
+Capybara.default_driver = :selenium_chrome_headless
 
 Geocoder.configure(lookup: :test, ip_lookup: :test)
 Geocoder::Lookup::Test.set_default_stub(
