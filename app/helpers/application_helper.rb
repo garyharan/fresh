@@ -15,4 +15,17 @@ module ApplicationHelper
         end
       )
   end
+
+  def profile_percentages(profiles)
+    factor = 1.0 / profiles.size
+
+    profiles.inject(Hash.new(0)) do |hash, profile|
+      if profile.gender.present?
+        hash[profile.gender.label] += factor
+      else
+        hash["Unknown"] += factor
+      end
+      hash
+    end
+  end
 end
