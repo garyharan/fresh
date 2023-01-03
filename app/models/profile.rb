@@ -116,6 +116,7 @@ class Profile < ApplicationRecord
     "Never",
     "Occasionally",
     "Often",
+    "Vape only",
     "Prefer not to say"
   ]
   POSSIBLE_DRINKING_OPTIONS = [
