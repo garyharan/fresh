@@ -11,6 +11,7 @@ class RoomsController < ApplicationController
   # GET /rooms/1 or /rooms/1.json
   def show
     @room = Room.find(params[:id])
+    @interlocutors = @room.profiles.where.not(id: current_user.profile.id)
   end
 
   def unread
