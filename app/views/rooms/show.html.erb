@@ -8,7 +8,7 @@
       <% end %>
       <% @interlocutors.each do |profile| %>
         <%= link_to profile, class: "flex grow ml-20" do %>
-          <%= image_tag(profile.images.first.photo.variant(:thumb), class: "w-10 h-10 border-2 rounded-full bg-white", alt: profile.display_name) %>
+          <%= image_tag(profile.images.first.photo.variant(:thumb), class: "w-10 h-10 border-2 rounded-full bg-white", alt: profile.display_name) if profile.images.any? && profile.images.first.photo.present? %>
           <div class="text-xl leading-loose ml-2">
             <%= profile.display_name %>
           </div>
