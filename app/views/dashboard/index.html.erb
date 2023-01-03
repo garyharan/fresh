@@ -1,0 +1,49 @@
+<div class="m-10">
+  <h1 class="font-bold text-4xl">Dashboard</h1>
+</div>
+
+<div class="flex flex-row flex-wrap">
+  <div class="m-10">
+    <div>
+      <h2 class="font-bold text-2xl">Users</h2>
+      <p class="text-gray-500 text-4xl text-bold">
+        <%= User.count %>
+      </p>
+    </div>
+  </div>
+
+  <div class="m-10">
+    <div>
+      <h2 class="font-bold text-2xl">Profiles</h2>
+      <p class="text-gray-500 text-4xl text-bold">
+        <%= Profile.count %> <span class="text-gray-500 text-sm"></span>
+      </p>
+    </div>
+  </div>
+
+  <div class="m-10">
+    <div>
+      <h2 class="font-bold text-2xl">Passes</h2>
+      <p class="text-gray-500 text-4xl text-bold">
+        <%= Pass.count %>
+      </p>
+    </div>
+  </div>
+
+  <div class="m-10">
+    <div>
+      <h2 class="font-bold text-2xl">Likes</h2>
+      <p class="text-gray-500 text-4xl text-bold">
+        <%= Like.count %>
+      </p>
+    </div>
+  </div>
+
+  <div class="m-10">
+    <div>
+      <h2 class="font-bold text-2xl">Rooms</h2>
+      <p class="text-gray-500 text-4xl text-bold">
+        <%= Room.count %>
+      </p>
+    </div>
+</div>

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   get "onboarding/one"
+  get 'dashboard/index'
+
   patch "onboarding/update_one"
   get "onboarding/two"
   patch "onboarding/update_two"
@@ -44,6 +46,8 @@ Rails.application.routes.draw do
   get "geo", to: "geo#show"
 
   root "root#index"
+
+  get 'dashboard/index'
 
   get "/:group_slug", to: "memberships#new"
 end
