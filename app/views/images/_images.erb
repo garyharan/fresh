@@ -19,7 +19,7 @@
             <%= image_tag image.photo.variant(:thumb), class: "rounded-lg" %>
           </div>
           <div class="justify-self-right">
-            <%= button_to "🗑️", profile_image_path(@profile.id, image), method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "delete_button" %>
+            <%= button_to "🗑️", profile_image_path(@profile.id, image), method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "delete_button", style: "display: none;" %>
           </div>
       </li>
     <% end %>
