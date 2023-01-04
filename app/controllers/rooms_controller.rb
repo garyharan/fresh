@@ -1,6 +1,7 @@
 class RoomsController < ApplicationController
   before_action :authenticate_user!
 
+  before_action :set_room, only: %i[ show unread ]
   layout "chat", only: :show
 
   # GET /rooms or /rooms.json
@@ -10,12 +11,10 @@ class RoomsController < ApplicationController
 
   # GET /rooms/1 or /rooms/1.json
   def show
-    @room = Room.find(params[:id])
     @interlocutors = @room.profiles.where.not(id: current_user.profile.id)
   end
 
   def unread
-    @room = Room.find(params[:id])
     @messages = @room.messages.where(id: params[:last_message_id].to_i..)
 
     respond_to do |format|
@@ -24,6 +23,11 @@ class RoomsController < ApplicationController
   end
 
   private
+
+  # limit to only rooms that you are a part of
+  def set_room
+    @room = current_user.profile.rooms.find(params[:id])
+  end
 
   # Only allow a list of trusted parameters through.
   def room_params
