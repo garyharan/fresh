@@ -17,3 +17,31 @@ practice and it has dire consequences on online dating:
 
 Fresh.Dating will encourage people not to waste their time.  It will tell you in all honesty if you have no one active
 near you.
+
+## Setup instructions
+
+To run the app locally you will need:
+
+* Postgresql
+* Redis
+* Yarn
+* Rails
+* Ruby of course
+
+A few commands you will need to run:
+
+* bundle
+* rails db:create:all
+* rails db:seed
+
+And the rest is pretty common Rails setup yack shaving.
+
+## Testing the app locally
+
+You can run the integration tests by running `rails test test/integration/`.
+
+If you want to add a test and see the browser while you are adding steps to the
+test you can switch the configuration in `test_helper.rb` to use
+the `selenium_chrome` driver instead of the `selenium_chrome_headless` driver
+
+Happy hacking!
