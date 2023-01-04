@@ -28,6 +28,9 @@ application.register("location", LocationController)
 import MessageController from "./message_controller"
 application.register("message", MessageController)
 
+import ModalController from "./modal_controller"
+application.register("modal", ModalController)
+
 import PhotosController from "./photos_controller"
 application.register("photos", PhotosController)
 
