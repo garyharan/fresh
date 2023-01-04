@@ -95,7 +95,7 @@
             <div data-carousel-target="previousButton" class="flex items-center justify-center text-gray-300 hover:text-white h-full cursor-pointer"> <svg class="w-6 h-6 m-1 md:w-12 md:h-12 md:m-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.707-10.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L9.414 11H13a1 1 0 100-2H9.414l1.293-1.293z" clip-rule="evenodd"></path></svg> </div>
 
             <div class="grow h-full flex justify-center">
-              <% Profile.find(12).images.each do |image| %>
+              <% @profile.images.each do |image| %>
                 <%= image_tag image.photo, loading: "lazy", class: "photo_container hidden max-h-screen rounded-lg shadow object-contain cursor-pointer"  %>
               <% end %>
             </div>
