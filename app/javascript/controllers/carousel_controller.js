@@ -1,16 +1,29 @@
 import { Controller } from "@hotwired/stimulus"
 
-// Connects to data-controller="modal"
+// Connects to data-controller="carousel"
 export default class extends Controller {
   static targets = [ "openButton", "nextButton", "previousButton", "overlay" ]
 
   connect() {
+    console.log("carousel")
     this.photos = this.element.querySelectorAll(".photo_container")
 
     this.nextButtonTarget.addEventListener("click", this.displayNext.bind(this))
     this.previousButtonTarget.addEventListener("click", this.displayPrevious.bind(this))
 
+    window.addEventListener("keydown", this.handleKeydown.bind(this))
+
     this.setupThumbnails()
+  }
+
+  handleKeydown(event) {
+    if (event.key === "ArrowRight") {
+      this.displayNext(event)
+    } else if (event.key === "ArrowLeft") {
+      this.displayPrevious(event)
+    } else if (event.key === "Escape") {
+      this.close(event)
+    }
   }
 
   setupThumbnails() {

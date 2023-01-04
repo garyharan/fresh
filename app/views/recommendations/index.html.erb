@@ -89,10 +89,10 @@
         </div>
       </div>
 
-      <div data-controller="modal" class="m-0 select-none">
-        <div data-modal-target="overlay" class="flex flex-col hidden fixed top-0 right-0 h-screen w-screen bg-slate-900 bg-opacity-95" data-action="click->modal#close">
+      <div data-controller="carousel" class="m-0 select-none">
+        <div data-carousel-target="overlay" class="flex flex-col hidden fixed top-0 right-0 h-screen w-screen bg-slate-900 bg-opacity-95" data-action="click->carousel#close">
           <div class="flex flex-row h-full justify-center items-center">
-            <div data-modal-target="previousButton" class="flex items-center justify-center text-gray-300 hover:text-white h-full cursor-pointer"> <svg class="w-6 h-6 m-1 md:w-12 md:h-12 md:m-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.707-10.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L9.414 11H13a1 1 0 100-2H9.414l1.293-1.293z" clip-rule="evenodd"></path></svg> </div>
+            <div data-carousel-target="previousButton" class="flex items-center justify-center text-gray-300 hover:text-white h-full cursor-pointer"> <svg class="w-6 h-6 m-1 md:w-12 md:h-12 md:m-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.707-10.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L9.414 11H13a1 1 0 100-2H9.414l1.293-1.293z" clip-rule="evenodd"></path></svg> </div>
 
             <div class="grow h-full flex justify-center">
               <% Profile.find(12).images.each do |image| %>
@@ -100,7 +100,7 @@
               <% end %>
             </div>
 
-            <div data-modal-target="nextButton" class="flex items-center justify-center text-gray-300 hover:text-white h-full cursor-pointer"> <svg class="w-6 h-6 m-1 md:w-12 md:h-12 md:m-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z" clip-rule="evenodd"></path></svg> </div>
+            <div data-carousel-target="nextButton" class="flex items-center justify-center text-gray-300 hover:text-white h-full cursor-pointer"> <svg class="w-6 h-6 m-1 md:w-12 md:h-12 md:m-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z" clip-rule="evenodd"></path></svg> </div>
           </div>
         </div>
       </div>

@@ -7,6 +7,9 @@ import { application } from "./application"
 import CardController from "./card_controller"
 application.register("card", CardController)
 
+import CarouselController from "./carousel_controller"
+application.register("carousel", CarouselController)
+
 import ClipboardController from "./clipboard_controller"
 application.register("clipboard", ClipboardController)
 
@@ -27,9 +30,6 @@ application.register("location", LocationController)
 
 import MessageController from "./message_controller"
 application.register("message", MessageController)
-
-import ModalController from "./modal_controller"
-application.register("modal", ModalController)
 
 import PhotosController from "./photos_controller"
 application.register("photos", PhotosController)
