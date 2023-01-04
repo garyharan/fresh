@@ -3,9 +3,7 @@ class MessagesController < ApplicationController
   before_action :set_room
 
   def create
-    @message =
-      Message.create! message_params.merge(user: current_user, room: @room)
-    redirect_to @room
+    @message = Message.create! message_params.merge(user: current_user, room: @room)
   end
 
   private

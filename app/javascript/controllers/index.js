@@ -10,6 +10,9 @@ application.register("card", CardController)
 import CarouselController from "./carousel_controller"
 application.register("carousel", CarouselController)
 
+import ClearableController from "./clearable_controller"
+application.register("clearable", ClearableController)
+
 import ClipboardController from "./clipboard_controller"
 application.register("clipboard", ClipboardController)
 
