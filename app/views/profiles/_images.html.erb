@@ -2,7 +2,7 @@
   <div class="grid grid-cols-2 gap-2 md:grid-cols-1">
     <% profile.images.drop(1).each_with_index do |image, index| %>
       <div class="">
-        <%= image_tag image.photo.variant(:medium), class: "rounded-lg shadow", index: (index + 1)  %>
+        <%= image_tag image.photo.variant(:medium), class: "rounded-lg shadow cursor-zoom-in", index: (index + 1)  %>
       </div>
     <% end %>
   </div>

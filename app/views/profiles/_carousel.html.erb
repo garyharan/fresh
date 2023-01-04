@@ -5,7 +5,7 @@
 
       <div class="grow h-full flex justify-center">
         <% @profile.images.each do |image| %>
-          <%= image_tag image.photo, loading: "lazy", class: "photo_container hidden max-h-screen rounded-lg shadow object-contain cursor-pointer"  %>
+          <%= image_tag image.photo, loading: "lazy", class: "photo_container hidden max-h-screen rounded-lg shadow object-contain cursor-zoom-out"  %>
         <% end %>
       </div>
 
