@@ -46,6 +46,24 @@ class ProfileTest < ActiveSupport::TestCase
     assert_includes Profile.attracted_to_genders(@gathino.genders), @velvet
   end
 
+  test '#with_coordinates does not show people without latitude and longitude' do
+    @gathino.update(gender_id: @man.id, genders: [@woman])
+    @velvet.update(gender_id: @woman.id, genders: [@man])
+    @mariet.update(gender_id: @woman.id, genders: [@man], latitude: nil, longitude: nil)
+
+    assert_includes Profile.with_coordinates, @velvet
+    refute_includes Profile.with_coordinates, @mariet
+  end
+
+  test '#recommended only shows people with latitude and longitude' do
+    @gathino.update(gender_id: @man.id, genders: [@woman])
+    @velvet.update(gender_id: @woman.id, genders: [@man])
+    @mariet.update(gender_id: @woman.id, genders: [@man], latitude: nil, longitude: nil)
+
+    assert_includes Profile.recommended(@gathino), @velvet
+    refute_includes Profile.recommended(@gathino), @mariet
+  end
+
   test '#recommended matches you to people you would be attracted to and vice-versa' do
     @gathino.update(gender_id: @man.id, genders: [@woman])
     @velvet.update(gender_id: @woman.id, genders: [@man])

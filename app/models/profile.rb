@@ -30,6 +30,8 @@ class Profile < ApplicationRecord
           )
         }
 
+  scope :with_coordinates, -> { self.where.not(latitude: nil, longitude: nil) }
+
   def self.recommended(profile)
     raise ::ArgumentError, "Profile must be complete" unless profile.complete?
 
@@ -43,6 +45,7 @@ class Profile < ApplicationRecord
           ].flatten
         }
       )
+      .merge(with_coordinates)
       .merge(attracted_to_genders(profile.genders))
       .merge(
         Profile.joins(:attractions).where(
