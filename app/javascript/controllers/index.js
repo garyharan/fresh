@@ -16,6 +16,9 @@ application.register("clipboard", ClipboardController)
 import DropdownController from "./dropdown_controller"
 application.register("dropdown", DropdownController)
 
+import EditableController from "./editable_controller"
+application.register("editable", EditableController)
+
 import EntranceController from "./entrance_controller"
 application.register("entrance", EntranceController)
 
