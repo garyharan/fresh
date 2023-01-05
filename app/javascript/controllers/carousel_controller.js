@@ -5,7 +5,6 @@ export default class extends Controller {
   static targets = [ "openButton", "nextButton", "previousButton", "overlay" ]
 
   connect() {
-    console.log("carousel")
     this.photos = this.element.querySelectorAll(".photo_container")
 
     this.nextButtonTarget.addEventListener("click", this.displayNext.bind(this))
@@ -17,6 +16,10 @@ export default class extends Controller {
   }
 
   handleKeydown(event) {
+    if (this.overlayTarget.classList.contains("hidden")) {
+      return
+    }
+
     if (event.key === "ArrowRight") {
       this.displayNext(event)
     } else if (event.key === "ArrowLeft") {
