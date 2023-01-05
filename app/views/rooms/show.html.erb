@@ -1,7 +1,8 @@
-<div data-controller="room" data-room-unread-url-value="<%= unread_room_path(@room) %>">
-  <%= turbo_stream_from @room %>
+<%= turbo_stream_from @room %>
 
-  <header class="block text-xs sm:text-md md:text-lg font-medium text-center text-gray-300 bg-black w-full fixed">
+<div data-controller="room" data-room-unread-url-value="<%= unread_room_path(@room) %>" class="min-h-screen flex flex-col">
+
+  <div class="text-xs sm:text-md md:text-lg font-medium text-center text-gray-300 bg-black w-full ">
     <div class="flex flex-wrap justify-between items-center w-full p-2 pl-4 h-18">
       <%= link_to root_url do %>
        <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
@@ -15,13 +16,13 @@
         <% end %>
       <% end %>
     </div>
-  </header>
+  </div>
 
-  <main id="messages" class="flex-1 overflow-y-auto overflow-x-clip w-full my-20" id="messages" data-room-target="messages">
+  <div id="messages" class="flex-1 z-30 grow overflow-y-auto overflow-x-clip w-full" id="messages" data-room-target="messages">
     <%= render @room.messages %>
-  </main>
+  </div>
 
-  <footer class="block shadow p-2 h-20 fixed bottom-0 w-full bg-white">
+  <div class="shadow h-fit p-2 w-full bg-white">
     <%= render 'messages/new', room: @room %>
-  </footer>
+  </div>
 </div>
