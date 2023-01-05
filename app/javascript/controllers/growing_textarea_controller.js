@@ -5,10 +5,12 @@ export default class extends Controller {
   connect() {
     this.element.addEventListener("keyup", this.handleResize.bind(this))
     this.element.addEventListener("keydown", this.handleSubmission.bind(this))
+
+    this.originalHeight = this.element.style.height
   }
 
   handleResize() {
-    this.element.rows = this.element.value.split("\n").length
+    this.element.style.height = this.element.scrollHeight + "px"
   }
 
   handleSubmission(event) {
@@ -26,6 +28,6 @@ export default class extends Controller {
 
   resetField() {
     this.element.value = ""
-    this.element.rows = 1
+    this.element.style.height = this.originalHeight
   }
 }
