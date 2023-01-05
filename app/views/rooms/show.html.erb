@@ -18,11 +18,11 @@
     </div>
   </div>
 
-  <div id="messages" class="flex-1 z-30 grow overflow-y-auto overflow-x-clip w-full" id="messages" data-room-target="messages">
+  <div id="messages" class="flex-1 z-30 py-2 grow overflow-y-auto overflow-x-clip w-full" id="messages" data-room-target="messages">
     <%= render @room.messages %>
   </div>
 
-  <div class="shadow h-fit p-2 w-full bg-white">
+  <div class="h-fit p-2 w-full bg-white">
     <%= render 'messages/new', room: @room %>
   </div>
 </div>
