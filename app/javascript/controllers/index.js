@@ -10,9 +10,6 @@ application.register("card", CardController)
 import CarouselController from "./carousel_controller"
 application.register("carousel", CarouselController)
 
-import ClearableController from "./clearable_controller"
-application.register("clearable", ClearableController)
-
 import ClipboardController from "./clipboard_controller"
 application.register("clipboard", ClipboardController)
 
@@ -24,6 +21,9 @@ application.register("entrance", EntranceController)
 
 import FlashController from "./flash_controller"
 application.register("flash", FlashController)
+
+import GrowingTextareaController from "./growing_textarea_controller"
+application.register("growing-textarea", GrowingTextareaController)
 
 import HeightController from "./height_controller"
 application.register("height", HeightController)
