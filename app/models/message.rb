@@ -6,4 +6,9 @@ class Message < ApplicationRecord
   has_many :users, :through => :reads, :source => :user
 
   broadcasts_to :room
+
+  def self.unread_by(user)
+    self.joins("LEFT OUTER JOIN reads ON reads.message_id = messages.id AND reads.user_id = #{user.id}")
+      .where("reads.id IS NULL")
+  end
 end
