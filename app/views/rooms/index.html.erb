@@ -13,11 +13,13 @@
           <div class="grow text-md md:text-xl lg:text-2xl font-semibold m-0 pl-2">
             <div class="flex flex-col justify-center grow h-full">
               <div> <%= room.profiles.where.not(id: current_user.profile.id).first.display_name %> </div>
-              <div class="text-sm text-gray-500 flex flex-row mt-2">
-                <div class="inline-flex w-4 h-4 mr-2 text-xs font-bold text-white bg-blue-500 border-2 border-white rounded-full dark:border-gray-900">
+              <% if room.messages.unread_by(current_user).count > 0 %>
+                <div class="text-sm text-gray-500 flex flex-row mt-2">
+                  <div class="inline-flex w-4 h-4 mr-2 text-xs font-bold text-white bg-blue-500 border-2 border-white rounded-full dark:border-gray-900">
+                  </div>
+                  <div class="text-xs sm:text-sm"><%= t("messages.unread_count", count: room.messages.unread_by(current_user).count) %></div>
                 </div>
-                <div class="text-xs sm:text-sm"><%= t("messages.unread_count", count: room.messages.unread_by(current_user).count) %></div>
-              </div>
+              <% end %>
             </div>
           </div>
 
