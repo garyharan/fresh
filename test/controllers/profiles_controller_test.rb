@@ -60,7 +60,8 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
                smoking: 'Never',
                city: 'Saint-Hubert',
                state: 'Quebec',
-               country: 'Canada'
+               country: 'Canada',
+               pot: '1'
              }
            }
     end
@@ -79,6 +80,7 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
     assert_equal 'Saint-Hubert', profile.city
     assert_equal 'Quebec', profile.state
     assert_equal 'Canada', profile.country
+    assert_equal true, profile.pot
     assert_redirected_to profile_url(profile)
   end
 

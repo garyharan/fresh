@@ -114,6 +114,7 @@ class ProfilesController < ApplicationController
         :city,
         :state,
         :country,
+        :pot,
         gender_ids: []
       )
     p
