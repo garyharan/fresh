@@ -5,6 +5,7 @@ export default class extends Controller {
   connect() {
     this.sortable = new Sortable(this.element, {
       draggable: ".draggable",
+      handle: ".handle",
       onEnd: this.update.bind(this)
     });
 

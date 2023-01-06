@@ -11,8 +11,8 @@
   <ul data-controller="sortable" data-url="<%= sort_profile_images_path(current_user.profile) %>" class="space-y-3 list-inside text-gray-500 dark:text-gray-400">
     <% @images.each do |image| %>
       <% next if image == "" || !image.photo.attached? %>
-      <li id="<%= dom_id image %>" class="flex w-full items-center draggable cursor-grab gap-4">
-          <div class="">
+      <li id="<%= dom_id image %>" class="flex w-full items-center draggable  gap-4">
+          <div class="cursor-grab handle">
             <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
           </div>
           <div class="flex-grow justify-self-center">
