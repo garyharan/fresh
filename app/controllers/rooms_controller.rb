@@ -12,14 +12,7 @@ class RoomsController < ApplicationController
   # GET /rooms/1 or /rooms/1.json
   def show
     @interlocutors = @room.profiles.where.not(id: current_user.profile.id)
-  end
-
-  def unread
-    @messages = @room.messages.where(id: params[:last_message_id].to_i..)
-
-    respond_to do |format|
-      format.turbo_stream
-    end
+    @messages = @room.messages.last(30)
   end
 
   private

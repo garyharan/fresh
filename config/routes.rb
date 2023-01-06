@@ -28,9 +28,10 @@ Rails.application.routes.draw do
   resources :cards, only: %i[new edit create update destroy]
 
   resources :rooms do
-    member { get "unread" }
     resources :messages
   end
+
+  resources :reads, only: :create
 
   resources :groups do
     resources :memberships

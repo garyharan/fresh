@@ -37,6 +37,9 @@ application.register("message", MessageController)
 import PhotosController from "./photos_controller"
 application.register("photos", PhotosController)
 
+import ReadableController from "./readable_controller"
+application.register("readable", ReadableController)
+
 import RoomController from "./room_controller"
 application.register("room", RoomController)
 
