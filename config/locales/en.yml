@@ -30,6 +30,9 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
+  messages:
+    unread_count: "You have %{count} unread messages"
+
   write_something: Write something...
   select_your_prompt: Select a prompt
 
