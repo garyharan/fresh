@@ -141,6 +141,8 @@ GEM
       addressable (~> 2.8)
     letter_opener (1.8.1)
       launchy (>= 2.2, < 3)
+    libv8-node (16.10.0.0-arm64-darwin)
+    libv8-node (16.10.0.0-x86_64-linux)
     loofah (2.19.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -154,6 +156,8 @@ GEM
     method_source (1.0.0)
     mini_magick (4.12.0)
     mini_mime (1.1.2)
+    mini_racer (0.6.3)
+      libv8-node (~> 16.10.0.0)
     minitest (5.16.3)
     minitest-mock_expectations (1.2.0)
     msgpack (1.6.0)
@@ -296,6 +300,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   letter_opener
+  mini_racer
   minitest-mock_expectations
   nanoid
   pg
