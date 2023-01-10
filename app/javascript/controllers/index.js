@@ -34,6 +34,9 @@ application.register("location", LocationController)
 import MessageController from "./message_controller"
 application.register("message", MessageController)
 
+import PasswordResetEmailController from "./password_reset_email_controller"
+application.register("password-reset-email", PasswordResetEmailController)
+
 import PhotosController from "./photos_controller"
 application.register("photos", PhotosController)
 

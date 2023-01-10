@@ -1,4 +1,4 @@
-<section class="max-w-screen-md mx-auto text-center mt-4 md:mt-12 lg:mt-24">
+<section class="max-w-screen-md mx-auto text-center mt-4 md:mt-12 lg:mt-24" data-controller="password-reset-email">
 
   <div class="mb-5">
     <h1 id="title" title="Fresh.Dating"><span class="text-md md:text-3xl">❤</span><span class="text-md md:text-3xl hidden md:inline">Fresh.Dating</span></h1>
@@ -20,7 +20,7 @@
 
         <%= render "devise/shared/error_messages", resource: resource %>
 
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Your email", class: "text-slate-600 m-3 placeholder-gray-400" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Your email", class: "text-slate-600 m-3 placeholder-gray-400", data: { "password-reset-email-target": "email" } %>
         <%= f.password_field :password, autocomplete: "new-password", placeholder: "A password", class: "text-slate-600 m-3 placeholder-gray-400" %>
 
         <div class="actions">
@@ -31,6 +31,6 @@
   </div>
 
   <div class="mt-4">
-    <%= link_to "Forgot your password?", new_password_path(resource_name), class: "text-xs text-green-400 hover:text-green-500 hover:underline" %>
+    <%= link_to "Forgot your password?", new_password_path(resource_name), class: "text-xs text-green-400 hover:text-green-500 hover:underline", data: { "password-reset-email-target": "link" } %>
   </div>
 </section>
