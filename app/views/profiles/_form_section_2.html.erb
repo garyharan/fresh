@@ -1,13 +1,13 @@
 <div class="flex flex-col w-full">
   <div class="m-5">
-    <h2 class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">I am interested in <%= error_messages_for(@profile, :gender_ids) %></h2>
+    <h2 class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">I am interested in <%= error_messages_for(@profile, :attractions) %></h2>
 
 
     <ul class="grid gap-2 xl:grid-cols-3">
       <%= form.collection_check_boxes(:gender_ids, Gender.all, :id, :label) do |box| %>
         <li>
           <%= box.check_box class: "hidden peer", id: "profile_gender_ids_#{box.object.id}" %>
-          <%= box.label for: "profile_gender_ids_#{box.object.id}", class: "#{@profile.errors[:gender_ids].any? ? 'border-red-500 bg-red-50' : 'bg-white border-gray-200'} inline-flex justify-between items-center p-3 pl-5 w-full text-gray-500 rounded-full border cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700" do %>
+          <%= box.label for: "profile_gender_ids_#{box.object.id}", class: "#{@profile.errors[:attractions].any? ? 'border-red-500 bg-red-50' : 'bg-white border-gray-200'} inline-flex justify-between items-center p-3 pl-5 w-full text-gray-500 rounded-full border cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700" do %>
             <%= box.object.label.pluralize %>
           <% end %>
         </li>

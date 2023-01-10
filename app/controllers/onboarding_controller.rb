@@ -27,6 +27,7 @@ class OnboardingController < ApplicationController
   def update_two
     respond_to do |format|
       @profile.attributes = step_two_profile_params
+      @profile.step = 2
       if @profile.save
         format.html { redirect_to onboarding_three_url }
       else
