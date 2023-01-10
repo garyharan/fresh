@@ -7,6 +7,7 @@ ruby "3.1.2"
 gem "rails", "~> 7.0.4"
 
 gem "devise"
+gem 'sendgrid-ruby' # Required for sending password resets and confirmations
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
