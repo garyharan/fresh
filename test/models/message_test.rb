@@ -15,12 +15,23 @@ class MessageTest < ActiveSupport::TestCase
   end
 
   test ".unread_by returns messages that are unread" do
-    assert_equal [@unread], Message.unread(@gathino)
+    assert_equal [@unread], Message.unread_by(@gathino)
   end
 
   test ".unread_by does not return messages that are read" do
     @messages.each do |message|
-      refute_equal [message], Message.unread(@gathino)
+      refute_equal [message], Message.unread_by(@gathino)
+    end
+  end
+
+  test ".after_create sends a notification to the recipient" do
+    @gathino = users(:gathino)
+    @velvet  = users(:velvet)
+
+    @room = Room.find_or_create_by_profiles([@gathino.profile, @velvet.profile])
+
+    assert_called(UnreadChannel, :broadcast_to, times: 1) do
+      @message = Message.create! room: @room, user: @velvet, body: "Hello there"
     end
   end
 end

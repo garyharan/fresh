@@ -92,4 +92,7 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+
+  # allow assert_called
+  gem "minitest-mock_expectations"
 end

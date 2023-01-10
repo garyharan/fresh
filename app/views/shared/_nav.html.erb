@@ -43,10 +43,7 @@ inactive_tab_classes = "inline-block p-2 md:p-4 rounded-t-lg border-b-2 border-t
                   <li class="mx-4">
                     <%= link_to rooms_path, class: "relative inline-flex" do %>
                       <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z" clip-rule="evenodd"></path></svg>
-                      <% if Message.unread_by(current_user).any? %>
-                        <div class="absolute inline-flex items-center justify-center text-xxs w-2 h-2 bg-blue-500 rounded-full -top-0 -right-0 dark:border-gray-900" title="<%= t("messages.unread_count", count: Message.unread_by(current_user).count) %>">
-                        </div>
-                      <% end %>
+                      <div id="unread_badge" class="<%= Message.unread_by(current_user).any? ? 'inline-flex' : 'hidden' %> absolute items-center justify-center text-xxs w-2 h-2 bg-blue-500 rounded-full -top-0 -right-0 dark:border-gray-900" title=""></div>
                     <% end %>
                   </li>
                 <% end %>

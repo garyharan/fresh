@@ -3,6 +3,8 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="read-receipts"
 export default class extends Controller {
   connect() {
+    console.log("Readable:" + this.isMessageFromAnotherUser() + " " + this.isMessageMarkedAsReadAlready())
+
     if (this.isMessageFromAnotherUser()) {
       if (!this.isMessageMarkedAsReadAlready()) {
         this.markAsRead()
@@ -13,6 +15,7 @@ export default class extends Controller {
   markAsRead(event) {
     var messageID = this.element.getAttribute("data-message-id")
     var userID = this.currentUserID()
+    console.log("marking message " + messageID + " as read by user " + userID)
 
     let data = JSON.stringify({
       "message_id": messageID

@@ -1,5 +1,4 @@
 
 one:
-  profiles: [gathino, velvet]
   name: Rekindle
-
+  profiles: [one, two]

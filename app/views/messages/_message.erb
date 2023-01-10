@@ -4,7 +4,7 @@
   data-user-id="<%= message.user.id %>"
   data-message-id="<%= message.id %>"
   data-readable-url="<%= reads_url %>"
-  data-readable-readers="<%= message.users.map(&:id).join(',') %>"
+  data-readable-readers="<%= message.readers.map(&:id).join(',') %>"
   data-controller="message readable">
   <%= raw message.body.gsub(/\n/, '<br>') %>
 </div>
