@@ -43,8 +43,14 @@ application.register("photos", PhotosController)
 import ReadableController from "./readable_controller"
 application.register("readable", ReadableController)
 
+import ReplaceClassesController from "./replace_classes_controller"
+application.register("replace-classes", ReplaceClassesController)
+
 import RoomController from "./room_controller"
 application.register("room", RoomController)
+
+import SettingsFormController from "./settings_form_controller"
+application.register("settings-form", SettingsFormController)
 
 import SortableController from "./sortable_controller"
 application.register("sortable", SortableController)

@@ -24,7 +24,11 @@ export default class extends Controller {
   }
 
   toImperial(cm) {
-    var inches = parseInt(cm * 0.3937)
-    return Math.floor(inches / 12) + "'" + (inches % 12) + '"'
+    if (cm < 1000) {
+      var inches = parseInt(cm * 0.3937)
+      return Math.floor(inches / 12) + "'" + (inches % 12) + '"'
+    } else {
+      return Math.floor(cm / 1000 * 0.621371) + " miles"
+    }
   }
 }

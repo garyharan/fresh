@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :settings, only: [:index, :update]
+
   get "onboarding/one"
   get 'dashboard/index'
 

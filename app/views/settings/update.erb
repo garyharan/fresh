@@ -1,0 +1,7 @@
+<%= turbo_stream.update "settings" do %>
+  <%= render 'settings/distance_form' %>
+
+  <div class="ml-4 text-green-500 text-bold block transform transition-all duration-500 ease-in opacity-20" data-controller="replace-classes" data-replace="opacity-20,opacity-100">
+    Saved!
+  </div>
+<% end %>
