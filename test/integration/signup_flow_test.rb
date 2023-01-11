@@ -52,7 +52,7 @@ class SignupFlowTest < ActionDispatch::IntegrationTest
 
     assert page.has_content? "Test Group"
 
-    sleep 5
+    sleep 2
   end
 
   def fill_out_onboarding_steps
