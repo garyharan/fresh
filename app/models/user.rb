@@ -10,6 +10,9 @@ class User < ApplicationRecord
 
   has_one :profile, dependent: :destroy
 
+  include Identifiable
+  identifiable_by :invite_code
+
   has_many :managed_groups, class_name: "Group", foreign_key: :user_id
   has_many :memberships, dependent: :destroy
   has_many :groups, through: :memberships

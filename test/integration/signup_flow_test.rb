@@ -28,8 +28,9 @@ class SignupFlowTest < ActionDispatch::IntegrationTest
 
   test "signup flow with an invitation" do
     @inviter = users(:gathino)
+    @inviter.update!(invite_code: "1234567890")
 
-    visit "/invitation/#{@inviter.id}"
+    visit "/invitation/#{@inviter.invite_code}"
 
     assert page.has_content? "You were invited to join in on the fun."
 

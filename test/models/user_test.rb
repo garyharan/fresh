@@ -18,4 +18,10 @@ class UserTest < ActiveSupport::TestCase
 
     assert_equal [profiles(:two)], gathino.passed_profiles
   end
+
+  test "saves a unique invite_code on create" do
+    user = User.create! email: "john@doe.com", password: "password"
+
+    assert_not_nil user.invite_code
+  end
 end

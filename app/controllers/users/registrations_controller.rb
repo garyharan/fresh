@@ -8,6 +8,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   private
 
   def save_inviter
-    resource.update(inviter_id: session[:inviter_id])
+    inviter = User.find_by(invite_code: session[:invite_code])
+    resource.update(inviter_id: inviter.id)
   end
 end
