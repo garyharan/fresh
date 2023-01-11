@@ -26,6 +26,27 @@ class SignupFlowTest < ActionDispatch::IntegrationTest
     assert page.has_content? "Add the Aspirations card"
   end
 
+  test "signup flow with an invitation" do
+    @inviter = users(:gathino)
+
+    visit "/invitation/#{@inviter.id}"
+
+    assert page.has_content? "You were invited to join in on the fun."
+
+    fill_in "Your email", with: "user@host.com"
+    fill_in "A password", with: "$1625df123"
+
+    click_on "Sign up and set up your profile"
+
+    fill_out_onboarding_steps
+
+    # step 5
+    click_on "Finish"
+
+    assert page.has_content? "Buster"
+    assert_equal @inviter.id, Profile.find_by(display_name: "Buster").user.inviter_id
+  end
+
   test "signup flow with group membership" do
     # create a group
     group = Group.new(name: "Test Group", description: "Test Group Description", slug: "test-group", user: User.first)

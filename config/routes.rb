@@ -51,4 +51,6 @@ Rails.application.routes.draw do
   get 'dashboard', to: 'dashboard#index'
 
   get "/:group_slug", to: "memberships#new"
+
+  get "/invitation/:user_id", to: "invitations#save"
 end
