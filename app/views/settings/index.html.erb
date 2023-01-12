@@ -15,7 +15,7 @@
       <section class="w-full md:w-64 z-10 relative top-px md:left-px" aria-label="Sidebar">
         <div class="pl-3 md:pl-4 pt-4 overflow-y-auto rounded">
           <ul class="flex flex-row md:flex-col md:space-y-2 md:space-x-0">
-            <li>
+            <!-- <li>
               <a href="#" class="flex items-center p-2 border-t border-r border-l md:border-0 md:border-l md:border-t md:border-b md:pr-0 rounded-t-lg md:rounded-none md:rounded-l-lg md:rounded-l-lg text-base font-normal text-gray-900 bg-white">
                 <svg class="w-6 h-6 m-2 text-gray-500 dark:text-gray-400 group-hover:text-gray-900" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path></svg>
                 <span class="hidden md:inline">Distance</span>
@@ -27,17 +27,28 @@
                 <span class="hidden md:inline">Invite a friend</span>
               </a>
             </li>
+            -->
+            <li class="hidden">
+              <a href="#" class="flex items-center p-2 border-t border-r border-l md:border-0 md:border-l md:border-t md:border-b md:pr-0 rounded-t-lg md:rounded-none md:rounded-l-lg md:rounded-l-lg text-base font-normal text-gray-900 bg-white">
+                <svg class="w-6 h-6 m-2 text-gray-500 dark:text-gray-400 group-hover:text-gray-900" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path></svg>
+                <span class="hidden md:inline">Distance</span>
+              </a>
+            </li>
             <li>
+              <a href="#" class="flex items-center p-2 border-t border-r border-l md:border-0 md:border-l md:border-t md:border-b md:pr-0 rounded-t-lg md:rounded-none md:rounded-l-lg md:rounded-l-lg text-base font-normal text-gray-900 bg-white">
+                <svg class="w-6 h-6 m-2 text-gray-500 group-hover:text-gray-900" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a6 6 0 016 6H2a6 6 0 016-6zM16 7a1 1 0 10-2 0v1h-1a1 1 0 100 2h1v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V7z"></path></svg>
+                <span class="hidden md:inline">Invite a friend</span>
+              </a>
             </li>
           </ul>
         </div>
       </section>
+
       <section class="bg-white w-full rounded-lg p-3 border">
-
         <%= turbo_frame_tag :settings do %>
-          <%= render 'settings/distance_form' %>
+          <%#= render 'settings/distance_form' %>
+          <%= render 'settings/invite_a_friend' %>
         <% end %>
-
       </section>
     </div>
   </div>

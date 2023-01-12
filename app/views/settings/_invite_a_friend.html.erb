@@ -1,0 +1,11 @@
+<div class="m-2">
+  <h2 class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Invite a friend</h2>
+
+  <p>The more the merrier.  Share this link with friends.</p>
+
+  <div data-controller="clipboard" data-clipboard-success-content="Copied!" class="mt-1 flex rounded-md shadow-sm">
+    <input class="py-3 px-2 outline-none flex-1 block rounded-none rounded-l-md sm:text-sm border border-gray-300" type="text" value="<%= "#{root_url}invitation#{current_user.invite_code}" %>" data-clipboard-target="source" />
+
+    <button class="inline-flex items-center px-3 focus:outline-none rounded-r-md border border-l-0 border-gray-300 bg-gray-50 text-gray-500 text-sm" type="button" data-action="clipboard#copy" data-clipboard-target="tag">Copy to clipboard</button>
+  </div>
+</div>
