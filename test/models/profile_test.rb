@@ -111,4 +111,15 @@ class ProfileTest < ActiveSupport::TestCase
     @gathino.user.likes.create! profile: @velvet
     refute_includes Profile.recommended(@gathino), @velvet
   end
+
+  test "destroys rooms when profile is destroyed" do
+    room          = Room.find_or_create_by_profiles([@gathino, @velvet])
+    unlinked_room = Room.find_or_create_by_profiles([@velvet, @mariet])
+
+    assert_difference 'Room.count', -1 do
+      @gathino.destroy
+    end
+
+    assert unlinked_room.persisted?
+  end
 end

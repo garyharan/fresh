@@ -15,6 +15,9 @@ class Profile < ApplicationRecord
   has_many :groups, through: :memberships
 
   has_and_belongs_to_many :rooms
+  before_destroy do
+    rooms.each { |room| room .destroy }
+  end
 
   geocoded_by :location
   after_validation :geocode, if: ->(obj) { obj.location_changed? }
