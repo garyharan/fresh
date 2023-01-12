@@ -11,15 +11,15 @@ export default class extends Controller {
     event.preventDefault()
     event.stopPropagation()
 
-    let input = this.sourceTarget
-    let text  = this.tagTarget.innerText
+    let input        = this.sourceTarget
+    let originalText = this.tagTarget.innerText
 
     input.select()
     input.setSelectionRange(0, input.value.length)
     navigator.clipboard.writeText(input.value)
 
     window.setTimeout(() => {
-      this.tagTarget.innerText = text
+      this.tagTarget.innerText = originalText
     }, 3000);
 
     this.tagTarget.innerText = this.element.getAttribute("data-clipboard-success-content")
