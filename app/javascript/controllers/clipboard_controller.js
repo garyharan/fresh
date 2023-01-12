@@ -22,6 +22,6 @@ export default class extends Controller {
       this.tagTarget.innerText = text
     }, 3000);
 
-    this.tagTarget.innerText = "Copied!"
+    this.tagTarget.innerText = this.element.getAttribute("data-clipboard-success-content")
   }
 }
