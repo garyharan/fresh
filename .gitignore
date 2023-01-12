@@ -38,6 +38,7 @@
 !/app/assets/builds/.keep
 
 .DS_Store
+prod
 
 /node_modules
 sendgrid.env
