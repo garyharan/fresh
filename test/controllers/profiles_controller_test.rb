@@ -27,6 +27,14 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test 'should get passed profiles' do
+    sign_in @profile.user
+
+    get passed_profiles_url
+
+    assert_response :success
+  end
+
   test 'should redirect to profile creation page if you do not have a profile yet' do
     sign_in users(:no_profile_yet)
 

@@ -23,6 +23,10 @@ Rails.application.routes.draw do
       patch :sort, on: :collection
     end
 
+    collection do
+      get :passed
+    end
+
     resources :likes, only: %i[create destroy]
     resources :passes, only: %i[create destroy]
   end

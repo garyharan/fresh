@@ -13,6 +13,10 @@ class ProfilesController < ApplicationController
     end
   end
 
+  def passed
+    @profiles = Profile.joins(:passes).where(passes: { user_id: current_user.id }).order("passes.created_at DESC")
+  end
+
   # GET /profiles/1 or /profiles/1.json
   def show
     @profile = Profile.find(params[:id])
