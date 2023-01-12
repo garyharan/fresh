@@ -23,7 +23,7 @@
       <div>
         <h2 class="font-bold">Link to share with members</h2>
 
-        <div class="flex flex-rows w-full" data-controller="clipboard">
+        <div class="flex flex-rows w-full">
           <div data-controller="clipboard" data-clipboard-success-content="Copied!" class="mt-1 flex rounded-md shadow-sm w-full">
 
             <%= text_field_tag "", public_group_url(@group), class: "py-3 px-2 outline-none flex-1 block rounded-none rounded-l-md sm:text-sm border border-gray-300", data: { 'clipboard-target': "source" } %>
@@ -34,9 +34,8 @@
               </svg>
               <span data-clipboard-target="tag">Copy to clipboard</span>
             <% end %>
-
           </div>
-      </div>
+        </div>
 
       <div class="">
         <h2 class="mt-10 font-bold">Manage this event</h2>
