@@ -1,8 +1,8 @@
 <div class="w-full">
   <div class="mx-auto" style="max-width: 1024px;">
     <div class="flex flex-row md:order-last mx-auto pb-2 text-center">
-      <h1 class="font-bold text-3xl mt-8 mx-4">
-        Passed profiles
+      <h1 class="font-bold text-3xl mt-8 mx-4 ">
+        All profiles
       </h1>
     </div>
   </div>
@@ -11,7 +11,10 @@
 <div class="w-full">
   <div class="mx-auto" style="max-width: 1024px;">
     <ul class="space-y-2">
-      <%= render @profiles %>
+      <% @profiles.each do |profile| %>
+        <%= render partial: 'profiles/profile', locals: { profile: profile } %>
+      <% end %>
     </ul>
   </div>
 </div>
+

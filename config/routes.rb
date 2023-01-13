@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    resources :profiles
+  end
   resources :settings, only: [:index, :update]
 
   get "onboarding/one"

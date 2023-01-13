@@ -35,6 +35,8 @@ gem "jbuilder"
 # Use Redis adapter to run Action Cable in production
 gem "redis", "~> 4.0"
 
+gem 'kaminari'
+
 # R2 Cloudflare https://developers.cloudflare.com/r2/examples/aws-sdk-ruby/
 gem "aws-sdk-s3"
 
