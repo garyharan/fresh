@@ -1,19 +1,44 @@
 <div class="w-full">
   <div class="mx-auto" style="max-width: 1024px;">
-    <div class="flex flex-row md:order-last mx-auto pb-2 text-center">
-      <h1 class="font-bold text-3xl mt-8 mx-4 ">
-        All profiles
-      </h1>
+    <div class="flex flex-row mx-auto pb-2 place-items-end">
+
+      <div class="place-self-left grow">
+        <h1 class="font-bold text-3xl mt-8 mx-4">All profiles</h1>
+      </div>
+
+      <div class="flex flex-row text-center md:order-last mx-auto pb-2 text-center h-12">
+        <% unless @profiles.first_page? %>
+          <%= link_to path_to_previous_page(@profiles), class: "flex items-center w-24 px-10 bg-white rounded-l-lg border hover:bg-slate-50 #{@profiles.last_page? ? 'border rounded-lg mr-24' : 'border border-r-0'}" do %>
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M11 19l-7-7 7-7m8 14l-7-7 7-7"></path>
+            </svg>
+          <% end %>
+        <% end %>
+
+        <% unless @profiles.last_page? %>
+          <%= link_to path_to_next_page(@profiles), class: "flex items-center w-24 px-10 bg-white hover:bg-slate-50 #{@profiles.first_page? ? 'border rounded-lg ml-24' : 'border border-l-0'}" do %>
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 5l7 7-7 7M5 5l7 7-7 7"></path>
+            </svg>
+          <% end %>
+        <% end %>
+      </div>
+
+
+
     </div>
   </div>
 </div>
 
 <div class="w-full">
   <div class="mx-auto" style="max-width: 1024px;">
+
+
     <ul class="space-y-2">
       <% @profiles.each do |profile| %>
         <%= render partial: 'profiles/profile', locals: { profile: profile } %>
       <% end %>
+
     </ul>
   </div>
 </div>

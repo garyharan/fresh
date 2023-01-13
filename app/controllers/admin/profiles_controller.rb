@@ -3,7 +3,7 @@ class Admin::ProfilesController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @profiles = Profile.page(params[:page]).per(10)
+    @profiles = Profile.order(created_at: :desc).page(params[:page]).per(10)
   end
 
   private
