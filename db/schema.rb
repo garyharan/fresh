@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_13_193429) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_14_191052) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -158,6 +158,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_13_193429) do
     t.bigint "gender_id"
     t.boolean "show_orientation", default: false
     t.boolean "pot", default: false
+    t.boolean "public", default: false
+    t.string "public_code"
     t.index ["gender_id"], name: "index_profiles_on_gender_id"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
