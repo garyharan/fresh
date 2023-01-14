@@ -54,3 +54,6 @@ application.register("settings-form", SettingsFormController)
 
 import SortableController from "./sortable_controller"
 application.register("sortable", SortableController)
+
+import TabbedNavigationController from "./tabbed_navigation_controller"
+application.register("tabbed-navigation", TabbedNavigationController)

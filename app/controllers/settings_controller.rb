@@ -5,8 +5,12 @@ class SettingsController < ApplicationController
   before_action :set_profile
 
   def index
-    @user    = current_user
-    @profile = current_user.profile
+  end
+
+  def public
+  end
+
+  def invite
   end
 
   def update

@@ -2,7 +2,12 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :profiles
   end
+
   resources :settings, only: [:index, :update]
+  namespace :settings do
+    get :invite
+    get :public
+  end
 
   get "onboarding/one"
   get 'dashboard/index'
