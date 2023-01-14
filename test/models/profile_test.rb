@@ -122,4 +122,13 @@ class ProfileTest < ActiveSupport::TestCase
 
     assert unlinked_room.persisted?
   end
+
+  test "adds unique public_code on creation" do
+    user = User.create! email: "john@doe.com", password: "password"
+    profile = Profile.new user: user, display_name: "John Doe", born_on: 18.years.ago, gender: Gender.first, city: "Saint-Hubert", state: "QC", country: "Canada"
+    profile.step = 1
+    profile.save!
+
+    assert_not_nil profile.public_code
+  end
 end

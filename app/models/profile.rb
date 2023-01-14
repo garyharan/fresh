@@ -19,6 +19,9 @@ class Profile < ApplicationRecord
     rooms.each { |room| room .destroy }
   end
 
+  include Identifiable
+  identifiable_by :public_code
+
   geocoded_by :location
   after_validation :geocode, if: ->(obj) { obj.location_changed? }
 
