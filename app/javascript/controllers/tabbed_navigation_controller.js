@@ -3,11 +3,7 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="tabbed-navigation"
 export default class extends Controller {
   connect() {
-    console.log("Hello, Stimulus!", this.element)
-
-    this.tabLinks = this.element.querySelectorAll("a")
-
-    console.log(this.tabLinks)
+    this.tabLinks = this.element.querySelectorAll("li a")
 
     if (this.tabLinks.length <= 1) {
       return
