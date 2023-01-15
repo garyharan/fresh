@@ -48,6 +48,28 @@ class SignupFlowTest < ActionDispatch::IntegrationTest
     assert_equal @inviter.id, Profile.find_by(display_name: "Buster").user.inviter_id
   end
 
+  test "signup flow from a public profile" do
+    @public_profile = users(:gathino).profile
+    @public_profile.update!(public: true)
+    @public_profile.update!(public_code: "gathino")
+
+    visit "/public_profiles/#{@public_profile.public_code}"
+
+    click_link "Sign up to like this profile"
+
+    fill_in "Your email", with: "user@host.com"
+    fill_in "A password", with: "$1625df123"
+
+    click_on "Sign up and set up your profile"
+
+    fill_out_onboarding_steps
+
+    click_on "Finish"
+
+    assert page.has_content? @public_profile.display_name
+    assert page.has_content? "Like"
+  end
+
   test "signup flow with group membership" do
     # create a group
     group = Group.new(name: "Test Group", description: "Test Group Description", slug: "test-group", user: User.first)

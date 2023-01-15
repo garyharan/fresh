@@ -3,6 +3,7 @@ class PublicProfilesController < ApplicationController
 
   def show
     if @profile&.public?
+      save_public_profile_id!
       render :show
     else
       render :file => "#{Rails.root}/public/404.html",  layout: false, status: :not_found
@@ -13,5 +14,9 @@ class PublicProfilesController < ApplicationController
 
   def set_profile
     @profile = Profile.find_by(public_code: params[:id])
+  end
+
+  def save_public_profile_id!
+    session[:public_profile_id] = @profile.id unless user_signed_in?
   end
 end
