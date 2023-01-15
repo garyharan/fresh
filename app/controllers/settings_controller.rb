@@ -10,6 +10,10 @@ class SettingsController < ApplicationController
   def public
   end
 
+  def toggle_public
+    @profile.update(public: !@profile.public)
+  end
+
   def invite
   end
 

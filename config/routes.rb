@@ -5,8 +5,10 @@ Rails.application.routes.draw do
 
   resources :settings, only: [:index, :update]
   namespace :settings do
-    get :invite
     get :public
+    post :toggle_public
+
+    get :invite
   end
 
   get "onboarding/one"
