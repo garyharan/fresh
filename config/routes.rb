@@ -41,6 +41,8 @@ Rails.application.routes.draw do
     resources :passes, only: %i[create destroy]
   end
 
+  resources :public_profiles, only: %i[show]
+
   resources :cards, only: %i[new edit create update destroy]
 
   resources :rooms do

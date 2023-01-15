@@ -1,0 +1,2 @@
+module PublicProfilesHelper
+end

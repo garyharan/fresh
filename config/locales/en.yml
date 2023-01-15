@@ -156,3 +156,6 @@ en:
 
   profiles:
     no_cards: This user has no cards on their profile yet.
+  likes:
+    like:
+      signup_to_like: Sign up to like this profile
