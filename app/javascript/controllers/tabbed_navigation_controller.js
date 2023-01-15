@@ -4,10 +4,9 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   connect() {
     this.tabLinks = this.element.querySelectorAll("li a")
+    this.tabFrames = this.element.querySelectorAll("turbo-frame")
 
-    if (this.tabLinks.length <= 1) {
-      return
-    }
+    if (this.tabLinks.length <= 1) { return }
 
     this.activeClasses   = Array.from(this.tabLinks[0].classList)
     this.inactiveClasses = Array.from(this.tabLinks[1].classList)
