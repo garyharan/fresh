@@ -12,7 +12,12 @@ class RoomsController < ApplicationController
   # GET /rooms/1 or /rooms/1.json
   def show
     @interlocutors = @room.profiles.where.not(id: current_user.profile.id)
-    @messages = @room.messages
+    @messages = @room.messages.page(params[:page]).per(10)
+
+    respond_to do |format|
+      format.html
+      format.turbo_stream
+    end
   end
 
   private

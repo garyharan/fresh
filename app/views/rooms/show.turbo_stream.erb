@@ -1,0 +1,18 @@
+<turbo-stream action="prepend" target="messages">
+  <template>
+    <% @messages.each do |message| %>
+      <%= render partial: 'messages/message', locals: { message: message, repress_scroll: true } %>
+    <% end %>
+  </template>
+</turbo-stream>
+
+<% if @messages.last_page? %>
+  <turbo-stream action="remove" target="pagination">
+  </turbo-stream>
+<% else %>
+  <turbo-stream action="update" target="pagination">
+    <template>
+      <%= button_to("Load more", path_to_next_page(@messages)) %>
+    </template>
+  </turbo-stream>
+<% end %>

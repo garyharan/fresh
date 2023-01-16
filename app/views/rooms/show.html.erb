@@ -20,8 +20,16 @@
     </div>
   </div>
 
-  <div id="messages" class="flex-1 py-2 grow overflow-y-auto overflow-x-clip w-full" id="messages" data-room-target="messages">
-    <%= render @messages %>
+  <div class="flex-1 py-2 grow overflow-y-auto overflow-x-clip w-full" data-room-target="messages">
+    <%= turbo_frame_tag "pagination" do %>
+      <%= button_to("Load more", path_to_next_page(@messages)) unless @messages.last_page? %>
+    <% end %>
+
+    <%= turbo_frame_tag "messages" do %>
+      <% @messages.each do |message| %>
+        <%= render partial: 'messages/message', locals: { message: message, repress_scroll: true } %>
+      <% end %>
+    <% end %>
   </div>
 
   <div class="h-fit p-2 w-full z-30 bg-white shrink-0 sticky bottom-0">

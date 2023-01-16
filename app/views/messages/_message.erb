@@ -5,6 +5,8 @@
   data-message-id="<%= message.id %>"
   data-readable-url="<%= reads_url %>"
   data-readable-readers="<%= message.readers.map(&:id).join(',') %>"
-  data-controller="message readable">
+  data-controller="message readable"
+  data-repress-scroll="<%= repress_scroll %>"
+>
   <%= raw message.body.gsub(/\n/, '<br>') %>
 </div>

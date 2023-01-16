@@ -46,6 +46,9 @@ Rails.application.routes.draw do
   resources :cards, only: %i[new edit create update destroy]
 
   resources :rooms do
+    member do
+      post :show
+    end
     resources :messages
   end
 
