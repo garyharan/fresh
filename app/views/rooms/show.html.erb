@@ -22,7 +22,7 @@
 
   <div class="flex-1 py-2 grow overflow-y-auto overflow-x-clip w-full" data-room-target="messages">
     <%= turbo_frame_tag "pagination" do %>
-      <%= button_to("Load more", path_to_next_page(@messages)) unless @messages.last_page? %>
+      <%= render "next_page_button" %>
     <% end %>
 
     <%= turbo_frame_tag "messages" do %>
