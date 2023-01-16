@@ -19,7 +19,14 @@
 
         <button class="px-3 py-2 md:py-0 focus:outline-none rounded-b-md md:rounded-none md:rounded-r-md border border-t-0 md:border-t md:border-l-0 border-gray-300 bg-gray-50 text-gray-500 text-sm" type="button" data-action="clipboard#copy" data-clipboard-target="tag">Copy to clipboard</button>
       </div>
-    </div>
+
+      <p class="mt-2  text-gray-500">Anyone with this link can view your profile.</p>
+
+      <p class="mt-2">You can also share your profile by using the following QR code:</p>
+
+      <div class="mt-2">
+        <image src="<%= RQRCode::QRCode.new("#{root_url}public_profiles/#{current_user.profile.public_code}").as_png(fill: "#FFF").to_data_url %>">
+      </div>
   <% end %>
 
 </div>
