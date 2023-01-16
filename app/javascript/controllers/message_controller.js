@@ -15,7 +15,7 @@ export default class extends Controller {
 
     this.setBubbleBottom()
 
-    if (this.element.getAttribute("data-respress-scroll") === "false") {
+    if (!this.element.getAttribute("data-respress-scroll") === "true") {
       this.scrollToMessage()
     }
   }

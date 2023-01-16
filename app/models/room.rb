@@ -2,7 +2,7 @@ class Room < ApplicationRecord
   has_and_belongs_to_many :profiles
   accepts_nested_attributes_for :profiles
 
-  has_many :messages, class_name: "Message", dependent: :destroy
+  has_many :messages, -> { order(created_at: :desc) }, class_name: "Message", dependent: :destroy
 
   def name
     profiles.map(&:display_name).to_sentence
