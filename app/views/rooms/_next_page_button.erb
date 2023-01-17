@@ -1,4 +1,4 @@
 <div class="flex place-content-center">
-  <%= button_to("Load more", path_to_next_page(@messages), class: "rounded border shadow border-slate-300 hover:border-slate-500 p-2 px-4 rounded-full mx-auto") unless @messages.last_page? || @messages.empty? %>
+  <%= button_to("Load more", room_path(@room, before: @messages.first.id), class: "rounded border shadow border-slate-300 hover:border-slate-500 p-2 px-4 rounded-full mx-auto") unless @messages.empty? %>
 </div>
 

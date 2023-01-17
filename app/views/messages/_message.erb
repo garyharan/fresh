@@ -1,8 +1,10 @@
 <div
   id="<%= dom_id message  %>"
+  title="<%= message.created_at.to_formatted_s(:rfc822)  %>"
   class="flex p-3 mx-2 leading-loose"
   data-user-id="<%= message.user.id %>"
   data-message-id="<%= message.id %>"
+  data-created-at="<%= message.created_at %>"
   data-readable-url="<%= reads_url %>"
   data-readable-readers="<%= message.readers.map(&:id).join(',') %>"
   data-controller="message readable"

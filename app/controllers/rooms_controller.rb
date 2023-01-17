@@ -4,6 +4,8 @@ class RoomsController < ApplicationController
   before_action :set_room, only: %i[ show unread ]
   layout "chat", only: :show
 
+  PER_PAGE = 10
+
   # GET /rooms or /rooms.json
   def index
     @rooms = current_user.profile.rooms
@@ -12,7 +14,12 @@ class RoomsController < ApplicationController
   # GET /rooms/1 or /rooms/1.json
   def show
     @interlocutors = @room.profiles.where.not(id: current_user.profile.id)
-    @messages = @room.messages.page(params[:page]).per(10)
+
+    if params[:before].present?
+      @messages = @room.messages.where("id < ?", params[:before].to_i).order(:id).last(PER_PAGE)
+    else
+      @messages = @room.messages.order(:id).last(PER_PAGE)
+    end
 
     respond_to do |format|
       format.html
