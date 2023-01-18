@@ -4,14 +4,14 @@ inactive_tab_classes = "inline-block p-2 md:p-4 rounded-t-lg border-b-2 border-t
 %>
 <div class="text-xs sm:text-md md:text-lg font-medium text-center text-gray-300 bg-black w-full">
     <div class="flex flex-wrap justify-between items-center w-full">
-        <div class="flex my-2 mx-4">
+        <div class="flex my-2 mx-1 md:mx-4">
             <%= link_to root_url do %>
               <h1 id="title" title="Fresh.Dating"><span class="text-md md:text-3xl">❤</span><span class="text-md md:text-3xl hidden md:inline">Fresh.Dating</span></h1>
             <% end %>
         </div>
         <ul class="flex md:order-1">
             <% if %w[profiles images groups rooms].include? controller_name %>
-                <li class="mr-2">
+                <li class="">
                   <%= link_to profiles_path, class: (%w(index passed).include?(action_name) && controller_name == 'profiles' && params[:group_id].nil? ? active_tab_classes : inactive_tab_classes) do %>
                     <span title="Discover" class="whitespace-nowrap"><svg class="w-6 h-6 inline" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9 9a2 2 0 114 0 2 2 0 01-4 0z"></path><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a4 4 0 00-3.446 6.032l-2.261 2.26a1 1 0 101.414 1.415l2.261-2.261A4 4 0 1011 5z" clip-rule="evenodd"></path></svg> <span class="hidden lg:inline">Discover</span></span>
                   <% end %>
@@ -23,13 +23,13 @@ inactive_tab_classes = "inline-block p-2 md:p-4 rounded-t-lg border-b-2 border-t
                     <% end %>
                   </li>
                 <% end %>
-                <li class="mr-2">
+                <li class="">
                   <%= link_to current_user.profile, class: (@profile == current_user.profile && action_name == 'show' ? active_tab_classes : inactive_tab_classes) do %>
                     <span title="My Profile" class="whitespace-nowrap"><svg class="w-6 h-6 inline" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path></svg><span class="hidden lg:inline"> My profile</span>
                   <% end %>
                 </li>
                 <% if current_user.profile %>
-                  <li class="mr-2">
+                  <li class="">
                     <%= link_to profile_images_path(current_user.profile), class: (action_name == 'index' && controller_name == "images" ? active_tab_classes : inactive_tab_classes) do %>
                       <span title="My photos" class="whitespace-nowrap"><svg class="w-6 h-6 inline" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd"></path></svg><span class="hidden lg:inline"> My photos</span>
                     <% end %>
@@ -38,9 +38,9 @@ inactive_tab_classes = "inline-block p-2 md:p-4 rounded-t-lg border-b-2 border-t
             <% end %>
         </ul>
         <% if user_signed_in? %>
-            <ul class="flex justify-self-end flex order-2">
+            <ul class="flex justify-self-end order-2">
                 <% if current_user&.profile&.rooms&.any?%>
-                  <li class="mx-4">
+                  <li class="md:mx-4">
                     <%= link_to rooms_path, class: "relative inline-flex #{controller_name == 'rooms' ? 'text-blue-600 border-b-2 border-blue-600 p-2' : 'p-2'}" do %>
                       <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z" clip-rule="evenodd"></path></svg>
                       <div id="unread_badge" class="<%= Message.unread_by(current_user).any? ? 'inline-flex' : 'hidden' %> absolute items-center justify-center text-xxs w-2 h-2 bg-blue-500 rounded-full top-2 right-1 dark:border-gray-900" title=""></div>
