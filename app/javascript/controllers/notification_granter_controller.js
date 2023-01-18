@@ -7,19 +7,32 @@ export default class extends Controller {
     "grantedInstructions",
     "deniedInstructions",
     "safari",
-    "chrome"
+    "chrome",
+    "unsupportedBrowserInfo"
   ]
 
   connect() {
-    this.update()
-
-    this.element.addEventListener("click", this.requestPermission.bind(this))
+    if (this.browserSupportsNotifications()) {
+      this.update()
+      this.element.addEventListener("click", this.requestPermission.bind(this))
+    } else {
+      this.showUnsupportedBrowserInfo()
+      this.buttonTarget.classList.add("hidden")
+    }
   }
 
-  requestPermission() {
+  browserSupportsNotifications() {
+    return "Notification" in window
+  }
+
+  requestPermission(event) {
     Notification.requestPermission().then((permission) => {
       this.update()
     })
+  }
+
+  showUnsupportedBrowserInfo() {
+    this.unsupportedBrowserInfoTarget.classList.remove("hidden")
   }
 
   update() {

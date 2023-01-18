@@ -2,9 +2,13 @@
   <div class="w-full m-2 h-96 h-fit" data-controller="notification-granter">
     <h2 class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Notifications preferences</h2>
 
-    <div class="hidden flex justify-center w-full h-24" data-notification-granter-target="button">
+    <div data-notification-granter-target="unsupportedBrowserInfo" class="hidden">
+      This browser does not yet support web notifications.
+    </div>
+
+    <div class="flex justify-center w-full h-24" data-notification-granter-target="button">
       <div class="m-10">
-        <%= link_to "Enable Notifications", "javascript:void(null)", class: "rounded-lg bg-blue-400 text-white p-2 md:p-3 text-sm md:text-base whitespace-nowrap shadow" %>
+        <%= link_to "Enable Notifications", "javascript:void(null)", class: "rounded-lg bg-blue-400 text-white p-2 md:p-3 text-sm md:text-base whitespace-nowrap shadow", data: { action: "notification-granter#requestPermission" } %>
       </div>
     </div>
 
