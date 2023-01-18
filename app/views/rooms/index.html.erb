@@ -1,3 +1,14 @@
+<div class="w-full pt-10 pl-10 pr-10 pb-0" data-controller="notification-granter">
+  <%= link_to "Enable Notifications", "javascript:void(null)", class: "rounded-lg bg-blue-400 text-white p-3 shadow hidden", data: { "notification-granter-target": "button" } %>
+  <div data-notification-granter-target="deniedInstructions" class="hidden">
+    <p class="text-gray-500 text-sm hidden" data-notification-granter-target="safari">On Safari you can enable notifications by going to Preferences > Websites > Notifications > Changing Fresh.Dating option to "Allow".</p>
+    <p class="text-gray-500 text-sm hidden" data-notification-granter-target="chrome">On Google Chrome you can enable notifications by going to Preferences > Site Settings > Notifications > Click on <svg class="inline w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 12.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 18.75a.75.75 0 110-1.5.75.75 0 010 1.5z"></path></svg> and choosing "Allow".</p>
+
+    </p>
+  </div>
+</div>
+
+
 <div class="w-full">
   <div id="rooms" class="min-w-full">
     <% @rooms.each do |room| %>

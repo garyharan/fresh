@@ -34,6 +34,9 @@ application.register("location", LocationController)
 import MessageController from "./message_controller"
 application.register("message", MessageController)
 
+import NotificationGranterController from "./notification_granter_controller"
+application.register("notification-granter", NotificationGranterController)
+
 import PasswordResetEmailController from "./password_reset_email_controller"
 application.register("password-reset-email", PasswordResetEmailController)
 

@@ -1,4 +1,6 @@
 class Message < ApplicationRecord
+  include Rails.application.routes.url_helpers
+
   belongs_to :room
   belongs_to :user
 
@@ -22,6 +24,7 @@ class Message < ApplicationRecord
   private
 
   def notify_recipient
+    NotificationChannel.broadcast_to(recipient, { new_message: self.id, room: room.id, sender: user.id, sender_name: user.profile.display_name, body: body, url: room_path(room) })
     UnreadChannel.broadcast_to(recipient, { unread_count: Message.unread_by(recipient).count })
   end
 

@@ -5,7 +5,7 @@
   data-user-id="<%= message.user.id %>"
   data-message-id="<%= message.id %>"
   data-created-at="<%= message.created_at %>"
-  data-readable-url="<%= reads_url %>"
+  data-readable-url="<%= reads_path %>"
   data-readable-readers="<%= message.readers.map(&:id).join(',') %>"
   data-controller="message readable"
   data-repress-scroll="<%= defined?(repress_scroll) ? repress_scroll : false %>"
