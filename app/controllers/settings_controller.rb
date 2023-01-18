@@ -17,6 +17,9 @@ class SettingsController < ApplicationController
   def invite
   end
 
+  def notifications
+  end
+
   def update
     if params[:user].present?
       update_user!

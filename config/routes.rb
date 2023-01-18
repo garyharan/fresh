@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     post :toggle_public
 
     get :invite
+    get :notifications
   end
 
   get "onboarding/one"

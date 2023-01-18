@@ -4,13 +4,13 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = [
     "button",
+    "grantedInstructions",
     "deniedInstructions",
     "safari",
     "chrome"
   ]
 
   connect() {
-    console.log(this.buttonTarget)
     this.update()
 
     this.element.addEventListener("click", this.requestPermission.bind(this))
@@ -23,14 +23,15 @@ export default class extends Controller {
   }
 
   update() {
-    console.log("Updating: " + Notification.permission)
-
     switch (Notification.permission) {
       case "granted":
         this.buttonTarget.classList.add("hidden")
+        this.grantedInstructionsTarget.classList.remove("hidden")
+        this.showBrowserSpecificInstructions()
         break;
       case "denied":
         this.showDeniedInstructions()
+        this.showBrowserSpecificInstructions()
         break;
       case "default":
         this.buttonTarget.classList.remove("hidden")
@@ -41,9 +42,9 @@ export default class extends Controller {
   showDeniedInstructions() {
     this.deniedInstructionsTarget.classList.remove("hidden")
 
-    console.log("This is safari: " + this.isSafari())
-    console.log("This is chrome: " + this.isChrome())
+  }
 
+  showBrowserSpecificInstructions() {
     if (this.isSafari()) {
       this.safariTarget.classList.remove("hidden")
     } else if (this.isChrome()) {
