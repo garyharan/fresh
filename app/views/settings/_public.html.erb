@@ -1,32 +1,30 @@
-<div class="m-2 h-96 min-h-fit">
-  <h2 class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Share my profile publicly</h2>
+<h2 class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Share my profile publicly</h2>
 
-  <p class="my-4">Get your profile out there.  Allow others to see your profile by making it available for Facebook groups and other places.</p>
+<p class="my-4">Get your profile out there.  Allow others to see your profile by making it available for Facebook groups and other places.</p>
 
-  <%= form_with(model: current_user.profile, url: settings_toggle_public_path, method: :post, data: { turbo: true, controller: "settings-form" }) do |form| %>
-    <label class="relative inline-flex items-center cursor-pointer">
-      <%= form.check_box :public, class: "sr-only peer" %>
-      <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
-      <span class="ml-3 text-xs md:text-base font-medium text-gray-900 dark:text-gray-300">Unlock public URL for my Profile</span>
-    </label>
+<%= form_with(model: current_user.profile, url: settings_toggle_public_path, method: :post, data: { turbo: true, controller: "settings-form" }) do |form| %>
+  <label class="relative inline-flex items-center cursor-pointer">
+    <%= form.check_box :public, class: "sr-only peer" %>
+    <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+    <span class="ml-3 text-xs md:text-base font-medium text-gray-900 dark:text-gray-300">Unlock public URL for my Profile</span>
+  </label>
 
+<% end %>
+
+<% if @profile.public? %>
+  <div>
+    <div data-controller="clipboard" data-clipboard-success-content="Copied!" class="mt-1 flex flex-col md:flex-row rounded-md shadow-sm">
+      <input class="py-3 px-2 outline-none flex-1 block rounded-none md:rounded-l-md text-xs sm:text-sm border border-gray-300" type="text" value="<%= "#{root_url}public_profiles/#{current_user.profile.public_code}" %>" data-clipboard-target="source"/>
+
+      <button class="px-3 py-2 md:py-0 focus:outline-none rounded-b-md md:rounded-none md:rounded-r-md border border-t-0 md:border-t md:border-l-0 border-gray-300 bg-gray-50 text-gray-500 text-sm" type="button" data-action="clipboard#copy" data-clipboard-target="tag">Copy to clipboard</button>
+    </div>
+
+    <p class="mt-2  text-gray-500">Anyone with this link can view your profile.</p>
+
+    <p class="mt-2">You can also share your profile by using the following QR code:</p>
+
+    <div class="mt-2">
+      <image src="<%= RQRCode::QRCode.new("#{root_url}public_profiles/#{current_user.profile.public_code}").as_png(fill: "#FFF").to_data_url %>">
+    </div>
   <% end %>
 
-  <% if @profile.public? %>
-    <div>
-      <div data-controller="clipboard" data-clipboard-success-content="Copied!" class="mt-1 flex flex-col md:flex-row rounded-md shadow-sm">
-        <input class="py-3 px-2 outline-none flex-1 block rounded-none md:rounded-l-md text-xs sm:text-sm border border-gray-300" type="text" value="<%= "#{root_url}public_profiles/#{current_user.profile.public_code}" %>" data-clipboard-target="source"/>
-
-        <button class="px-3 py-2 md:py-0 focus:outline-none rounded-b-md md:rounded-none md:rounded-r-md border border-t-0 md:border-t md:border-l-0 border-gray-300 bg-gray-50 text-gray-500 text-sm" type="button" data-action="clipboard#copy" data-clipboard-target="tag">Copy to clipboard</button>
-      </div>
-
-      <p class="mt-2  text-gray-500">Anyone with this link can view your profile.</p>
-
-      <p class="mt-2">You can also share your profile by using the following QR code:</p>
-
-      <div class="mt-2">
-        <image src="<%= RQRCode::QRCode.new("#{root_url}public_profiles/#{current_user.profile.public_code}").as_png(fill: "#FFF").to_data_url %>">
-      </div>
-  <% end %>
-
-</div>

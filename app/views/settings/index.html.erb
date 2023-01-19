@@ -1,50 +1,12 @@
-<div class="w-full bg-black">
-  <div class="mx-auto" style="max-width: 1024px;">
-    <div class="flex flex-row md:order-last w-10/12 mx-auto pb-2 md:mb-12 text-gray-200 text-center">
-      <svg class="w-10 h-10 mr-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M6 13.5V3.75m0 9.75a1.5 1.5 0 010 3m0-3a1.5 1.5 0 000 3m0 3.75V16.5m12-3V3.75m0 9.75a1.5 1.5 0 010 3m0-3a1.5 1.5 0 000 3m0 3.75V16.5m-6-9V3.75m0 3.75a1.5 1.5 0 010 3m0-3a1.5 1.5 0 000 3m0 9.75V10.5"></path>
-      </svg>
-      <h1 class="font-bold text-3xl">
-        Settings
-      </h1>
-    </div>
-  </div>
-</div>
+<%= render "settings/title" %>
 
 <div class="w-full">
   <div class="flex w-10/12 mx-auto" style="max-width: 1024px;">
     <div class="pt-4 mx-2 mx-auto flex flex-col md:flex-row w-full">
-      <section class="w-full md:w-64 z-10 relative top-px md:left-px" aria-label="Sidebar">
-        <div class="pl-3 md:pl-4 pt-4 overflow-y-auto rounded">
+      <%= render "settings/nav" %>
 
-          <ul class="flex flex-row md:flex-col md:space-y-2 md:space-x-0" data-controller="tabbed-navigation">
-            <li>
-              <%= link_to settings_public_path, class: "flex items-center p-2 border-t border-r border-l md:border-0 md:border-l md:border-t md:border-b md:pr-0 rounded-t-lg md:rounded-none md:rounded-l-lg md:rounded-l-lg text-base font-normal text-gray-900 bg-white", data: { "turbo-frame": "settings_frame" } do %>
-               <svg class="w-6 h-6 m-2" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z"></path>
-</svg>
-                <span class="hidden md:inline">Public</span>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to settings_invite_path, class: "flex items-center p-2 border-t border-r border-l md:border-0 md:border-l md:border-t md:border-b md:border-l md:pr-0 rounded-t-lg md:rounded-none md:rounded-l-lg text-base font-normal text-gray-900 hover:bg-gray-100", data: { "turbo-frame": "settings_frame" } do %>
-                <svg class="w-6 h-6 m-2 text-gray-500 group-hover:text-gray-900" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a6 6 0 016 6H2a6 6 0 016-6zM16 7a1 1 0 10-2 0v1h-1a1 1 0 100 2h1v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V7z"></path></svg>
-                <span class="hidden md:inline">Invite a friend</span>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to settings_notifications_path, class: "flex items-center p-2 border-t border-r border-l md:border-0 md:border-l md:border-t md:border-b md:border-l md:pr-0 rounded-t-lg md:rounded-none md:rounded-l-lg text-base font-normal text-gray-900 hover:bg-gray-100", data: { "turbo-frame": "settings_frame" } do %>
-                <svg class="w-6 h-6 m-2" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9.348 14.651a3.75 3.75 0 010-5.303m5.304 0a3.75 3.75 0 010 5.303m-7.425 2.122a6.75 6.75 0 010-9.546m9.546 0a6.75 6.75 0 010 9.546M5.106 18.894c-3.808-3.808-3.808-9.98 0-13.789m13.788 0c3.808 3.808 3.808 9.981 0 13.79M12 12h.008v.007H12V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"></path></svg>
-                <span class="hidden md:inline">Notifications</span>
-              <% end %>
-            </li>
-          </ul>
-
-        </div>
-      </section>
-
-      <section class="bg-white w-full rounded-lg p-3 border" data-tabbed-navigation="settings">
-        <%= turbo_frame_tag :settings_frame, src: settings_public_path %>
+      <section class="bg-white w-full rounded-lg p-3 border">
+        <%= render "settings/public" %>
       </section>
     </div>
   </div>
