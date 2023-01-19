@@ -40,7 +40,7 @@ export default class extends Controller {
   save(event) {
     let data = JSON.stringify({
       "user": {
-        "distance": this.inputTarget.value
+        "maximum_distance": this.inputTarget.value
       }
     });
 

@@ -6,14 +6,14 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
     sign_in @user
 
-    @user.distance = 10
+    @user.maximum_distance = 10
     @user.save!
 
-    patch user_url(@user), params: { user: { distance: 100 } }
+    patch user_url(@user), params: { user: { maximum_distance: 100 } }
 
     assert_response :success
 
-    assert @user.reload.distance == 100
+    assert @user.reload.maximum_distance == 100
   end
 
   test "should require sign in" do

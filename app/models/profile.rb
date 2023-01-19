@@ -60,7 +60,7 @@ class Profile < ApplicationRecord
           }
         )
       )
-      .near([profile.latitude, profile.longitude], profile.user.distance)
+      .near([profile.latitude, profile.longitude], profile.user.maximum_distance / 10_000)
       .select("
         profiles.*,
         #{profile.height} - height AS height_difference,
