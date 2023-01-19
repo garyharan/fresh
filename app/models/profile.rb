@@ -60,31 +60,12 @@ class Profile < ApplicationRecord
           }
         )
       )
-      .select(
-        "
-        profiles.*, (
-          6371.0 * 2 * asin(
-            sqrt(
-              power(
-                sin(
-                  (#{profile.latitude} - profiles.latitude) * pi() / 180 / 2
-                ),
-                2
-              ) + cos(
-                #{profile.latitude} * pi() / 180
-              ) * cos(
-                profiles.latitude * pi() / 180
-              ) * power(
-                sin((#{profile.longitude} - profiles.longitude) * pi() / 180 / 2), 2
-              )
-            )
-          )
-        ) AS distance,
+      .near([profile.latitude, profile.longitude], profile.user.distance)
+      .select("
+        profiles.*,
         #{profile.height} - height AS height_difference,
         (ABS(('#{profile.born_on}' - born_on) / 365)) AS age_difference
-      "
-      )
-      .order(:age_difference, :distance)
+      ").order(:age_difference)
   end
 
   def self.in_group(group)

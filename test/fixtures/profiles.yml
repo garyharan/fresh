@@ -38,9 +38,9 @@ three:
   height: 140
   born_on: 1982-10-6
   gender: Non-Binary and/or Two Spirit Person
-  latitude: 45.498398543048125
-  longitude: -73.4327665245693
-  city: Longueuil
+  latitude: 45.5757802
+  longitude: -73.7530656
+  city: Laval
   state: Quebec
   country: Canada
   smoking: Often
@@ -56,7 +56,7 @@ four:
   gender: Woman
   latitude: 45.498398543048125
   longitude: -73.4327665245693
-  city: Longueuil
+  city: Laval
   state: Quebec
   country: Canada
   smoking: Never

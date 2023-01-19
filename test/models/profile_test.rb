@@ -112,6 +112,15 @@ class ProfileTest < ActiveSupport::TestCase
     refute_includes Profile.recommended(@gathino), @velvet
   end
 
+  test "#recommended does not show people beyond the distance you chose" do
+    @gathino.user.update(distance: 10)
+    @gathino.update(gender: @man, genders: [@woman])
+    @velvet.update(gender: @woman, genders: [@man])
+    @mariet.update(gender: @woman, genders: [@man])
+
+    assert Profile.recommended(@gathino).none? { |p| p.distance > 10 }
+  end
+
   test "destroys rooms when profile is destroyed" do
     room          = Room.find_or_create_by_profiles([@gathino, @velvet])
     unlinked_room = Room.find_or_create_by_profiles([@velvet, @mariet])
