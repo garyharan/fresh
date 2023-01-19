@@ -3,19 +3,24 @@
 gathino:
   email: gathino@gmail.com
   confirmed_at: 2022-10-04 22:22:28.355003
+  last_sign_in_at: <%= 1.day.ago %>
 
 velvet:
   email: velvet@gmail.com
   confirmed_at: 2022-10-04 22:22:28.355003
+  last_sign_in_at: <%= 1.day.ago %>
 
 no_profile_yet:
   email: no_profile_yet@gmail.com
   confirmed_at: 2022-10-04 22:22:28.355003
+  last_sign_in_at: <%= 1.day.ago %>
 
 mariet:
   email: mariet@outlook.com
   confirmed_at: 2022-10-04 22:22:28.355003
+  last_sign_in_at: <%= 1.day.ago %>
 
 eva:
   email: eva@connect4.com
   confirmed_at: 2022-11-25 18:30:00.000000
+  last_sign_in_at: <%= 1.day.ago %>

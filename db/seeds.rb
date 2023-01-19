@@ -28,6 +28,7 @@ if Rails.env.development? || Rails.env.test?
                  password: "asd0fadsfh",
                  confirmation_token: Devise.friendly_token
       u.skip_confirmation! if u.respond_to? :skip_confirmation!
+      u.last_sign_in_at = DateTime.now
       u.save(validate: false)
 
       p =
