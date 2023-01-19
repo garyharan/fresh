@@ -1,0 +1,30 @@
+<h2 class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Maximum distance for matches</h2>
+
+<%= form_for @user, method: :patch, data: { controller: "distance" } do |form| %>
+
+  <div class="m-5" data-controller="height" data-height-units-value="imperial">
+    <h2 class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"><%= error_messages_for(@user, :distance) %></h2>
+    <%= form.range_field :distance, min: 3_000, max: 400_000, class: "#{@user.errors[:distance].any? ? 'bg-red-50 border-red-500' : 'bg-gray-200'} w-full h-2 rounded-lg appearance-none cursor-pointer dark:bg-gray-700", "data-height-target": "slider", "data-distance-target": "input" %>
+    <div class="flex flex-row justify-content-center mt-4">
+
+      <p data-height-target="display" class="inline-flex text-slate-800 border-gray-200 outline-none"></p>
+
+      <span data-distance-target="saved" class="text-xs text-green-600 inline-flex place-content-center opacity-0 transition-opacity duration-1000">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+        saved!
+      </span>
+
+      <span data-distance-target="error" class="text-xs text-red-600 inline-flex opacity-0 transition-opacity duration-1000">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+        An error occurred preventing us to save your maximum distance.
+      </span>
+    </div>
+  </div>
+
+<% end %>
+
+

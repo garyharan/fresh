@@ -23,6 +23,10 @@ class SettingsController < ApplicationController
   def notifications
   end
 
+  def distance
+    @user = current_user
+  end
+
   def update
     if params[:user].present?
       update_user!

@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
     get :invite
     get :notifications
+
+    get :distance
   end
 
   get "onboarding/one"
@@ -28,6 +30,8 @@ Rails.application.routes.draw do
       post :pass
     end
   end
+
+  resources :users, only: :update
 
   resources :profiles do
     resources :images, except: :update do

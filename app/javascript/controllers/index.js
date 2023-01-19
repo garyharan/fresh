@@ -13,6 +13,9 @@ application.register("carousel", CarouselController)
 import ClipboardController from "./clipboard_controller"
 application.register("clipboard", ClipboardController)
 
+import DistanceController from "./distance_controller"
+application.register("distance", DistanceController)
+
 import DropdownController from "./dropdown_controller"
 application.register("dropdown", DropdownController)
 
