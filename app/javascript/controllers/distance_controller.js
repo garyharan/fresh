@@ -2,11 +2,31 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="distance"
 export default class extends Controller {
-  static targets = [ "input", "saved", "error" ]
+  static targets = [ "display", "input", "saved", "error" ]
+
+  static values = {
+    units: String
+  }
 
   connect() {
-    this.inputTarget.addEventListener("input", this.reset.bind(this))
+    this.inputTarget.addEventListener("input", this.update.bind(this))
     this.inputTarget.addEventListener("change", this.save.bind(this))
+
+    this.update()
+  }
+
+  update(event) {
+    this.reset()
+
+    this.displayTarget.textContent = this.toHumanReadableDistance(this.inputTarget.value)
+  }
+
+  toHumanReadableDistance(distance) {
+    if (this.unitsValue == "metric") {
+      return `${Math.floor(distance / 10_000)} km`
+    } else {
+      return `${Math.floor(distance * 0.000062137119224)} miles`
+    }
   }
 
   reset() {
