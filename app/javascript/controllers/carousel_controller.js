@@ -31,7 +31,6 @@ export default class extends Controller {
 
   setupThumbnails() {
     document.querySelectorAll("img[index]").forEach(thumbnail => {
-      console.log(thumbnail.getAttribute("index"))
       thumbnail.addEventListener("click", this.displayPhoto.bind(this, thumbnail.getAttribute("index")))
     });
   }
