@@ -27,6 +27,10 @@ class SettingsController < ApplicationController
     @user = current_user
   end
 
+  def partnerships
+    @partnerships = current_user.profile.partnerships
+  end
+
   def update
     if params[:user].present?
       update_user!

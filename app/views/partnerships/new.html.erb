@@ -1,0 +1,29 @@
+<div class="mx-auto md:w-2/3 w-full">
+  <div class="bg-white rounded-lg p-4 mt-4">
+    <%= render "profiles/header", profile: @partnership.partner %>
+
+    <div class="py-4">
+      You were invited to both display your partnership on the profile page.
+    </div>
+
+    <%= form_with(model: @partnership, class: "contents", data: { turbo: false }) do |form| %>
+      <% if @partnership.errors.any? %>
+        <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+          <h2><%= pluralize(@partnership.errors.count, "error") %> prohibited this partnership from being saved:</h2>
+
+          <ul>
+            <% @partnership.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <%= form.hidden_field :partner_id, value: @partnership.partner.id %>
+
+      <div class="inline">
+        <%= form.submit "Show your love to the world", class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -118,6 +118,7 @@ class ProfileTest < ActiveSupport::TestCase
     @velvet.update(gender: @woman, genders: [@man])
     @mariet.update(gender: @woman, genders: [@man])
 
+    debugger
     assert Profile.recommended(@gathino).none? { |p| p.distance > 10 }
   end
 

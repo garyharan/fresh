@@ -1,0 +1,25 @@
+<% if profile.partnerships.any? %>
+  <div class="text-center ">
+    <p>In a relationship with:</p>
+
+    <% profile.partnerships.each do |partnership| %>
+      <%= link_to profile_path(partnership.partner), class: "flex md:flex-row px-2 mb-10 bg-white rounded-lg shadow text-xs" do %>
+
+        <div class="flex md:flex-col md:mt-4 items-center basis-1/2 grow">
+          <div class="w-12 h-12">
+            <%= image_tag(partnership.partner.images.first.photo.variant(:thumb), class: "w-12 h-12 rounded-full") if profile&.images&.first&.photo&.attached? %>
+          </div>
+
+          <div class="flex flex-col my-3 ml-3 text-lg grow">
+            <div>
+              <%= partnership.partner.display_name %>
+            </div>
+            <div class="text-xs text-slate-400 grow">
+              <%= "#{age(partnership.partner.born_on)}yo" unless partnership.partner.born_on.blank? %> • <%= partnership.partner.city %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

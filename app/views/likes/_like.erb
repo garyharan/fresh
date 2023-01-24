@@ -4,6 +4,7 @@
     <div class="flex items-center justify-center">
       <div class="inline-flex mt-0 mb-4" role="group">
         <% if user_signed_in? %>
+
           <% if @profile.liked_by?(current_user.profile) %>
             <div class="flex flex-col gap-3 justify-center text-center">
               <%= link_to(profile_like_path(profile.id, profile.likes.find_by(user: current_user).id), method: :delete, data: { turbo_method: :delete }, class: "inline-flex items-center mx-auto w-36 py-2 px-4 text-sm font-medium text-white rounded-full hover:underline hover:font-bold focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 group bg-gray-600") do %>
@@ -19,6 +20,8 @@
 
                 <p>It's a match!</p>
               <% end %>
+
+              <%= render partial: "profiles/partnerships", locals: { profile: @profile } %>
             </div>
           <% else %>
             <%= form_for([profile, Like.new]) do |form| %>

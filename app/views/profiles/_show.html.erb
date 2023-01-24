@@ -28,7 +28,7 @@
 </div>
 
 <div class="md:flex mx-auto" style="max-width: 1024px;">
-  <div class="md:flex md:order-last pt-4 md:pt-0 mx-2 w-full md:w-3/12">
+  <div class="md:flex md:order-last pt-4 md:pt-0 mx-2 md:w-3/12">
     <div>
       <%= render("likes/like", profile: @profile) %>
       <div class="place-items-center text-center">
@@ -36,6 +36,8 @@
       </div>
       <%= render "profiles/images", profile: @profile %>
       <%= render "profiles/carousel" %>
+
+      <%= render "profiles/relationships", profile: @profile %>
     </div>
   </div>
 

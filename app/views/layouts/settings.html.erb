@@ -10,17 +10,17 @@
     <div class="flex flex-col">
       <%= render "shared/flashes" %>
 
-      <main class="w-full p-0 m-0">
+      <main class="w-full">
         <%= render "shared/nav" %>
 
         <%= render "settings/title" %>
 
-        <div class="w-full">
-          <div class="flex w-10/12 mx-auto" style="max-width: 1024px;">
-            <div class="mx-2 mx-auto flex flex-col md:flex-row w-full">
+        <div class="m-2">
+          <div class="flex mx-auto" style="max-width: 1024px;">
+            <div class="md:mx-2 mx-auto flex flex-col md:flex-row w-full">
               <%= render "settings/nav" %>
 
-              <div class="md:p-8 bg-white w-full p-2 h-96 min-h-fit md:p-8 rounded-lg border">
+              <div class="md:p-8 bg-white w-full p-2 min-h-fit rounded-lg border">
                 <%= yield %>
               </div>
             </div>

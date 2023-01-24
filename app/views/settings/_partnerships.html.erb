@@ -1,0 +1,17 @@
+<% if @partnerships.any? %>
+
+  <p>You are currently listed as having a relationship with the following people: </p>
+
+  <% @partnerships.each do |partnership| %>
+    <div class="flex flex-col md:flex-row items-center shadow p-3 rounded-lg">
+      <%= link_to partnership.partner, data: { turbo_frame: "_top" }, class: "grow justify-content-center"  do %>
+        <%= render partial: 'profiles/header', locals: { profile: partnership.partner } %>
+      <% end %>
+
+      <div><%= button_to "Remove", partnership_path(partnership), method: :delete, data: { turbo: :false,  confirm: "Are you sure you want to remove this relationship?" }, class: "text-xs bg-red-300 rounded-full m-2 p-2 px-4 border shadow" %></div>
+    </div>
+  <% end %>
+
+<% else %>
+  <p>You have no partnerships at the present time</p>
+<% end %>

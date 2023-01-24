@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :partnerships
   namespace :admin do
     resources :profiles
   end
@@ -12,6 +13,8 @@ Rails.application.routes.draw do
     get :notifications
 
     get :distance
+
+    get :partnerships
   end
 
   get "onboarding/one"
@@ -47,6 +50,8 @@ Rails.application.routes.draw do
   end
 
   resources :public_profiles, only: %i[show]
+
+  resources :partnerships
 
   resources :cards, only: %i[new edit create update destroy]
 
