@@ -243,8 +243,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_21_185425) do
   add_foreign_key "images", "profiles"
   add_foreign_key "messages", "rooms"
   add_foreign_key "messages", "users"
-  add_foreign_key "partnerships", "profiles"
-  add_foreign_key "partnerships", "profiles", column: "partner_id"
   add_foreign_key "passes", "profiles"
   add_foreign_key "passes", "users"
   add_foreign_key "profiles", "users"

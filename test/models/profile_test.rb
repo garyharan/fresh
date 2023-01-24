@@ -113,13 +113,12 @@ class ProfileTest < ActiveSupport::TestCase
   end
 
   test "#recommended does not show people beyond the distance you chose" do
-    @gathino.user.update(distance: 10)
+    @gathino.user.update(distance: 10_000)
     @gathino.update(gender: @man, genders: [@woman])
     @velvet.update(gender: @woman, genders: [@man])
     @mariet.update(gender: @woman, genders: [@man])
 
-    debugger
-    assert Profile.recommended(@gathino).none? { |p| p.distance > 10 }
+    assert Profile.recommended(@gathino).none? { |p| p.distance > 10_000 }
   end
 
   test "destroys rooms when profile is destroyed" do

@@ -1,7 +1,7 @@
 class Profile < ApplicationRecord
   belongs_to :user
 
-  has_many :partnerships
+  has_many :partnerships, dependent: :destroy
   has_many :partners, :through => :partnerships
 
   has_many :likes, foreign_key: :profile_id, dependent: :destroy
