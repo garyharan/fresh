@@ -48,6 +48,22 @@ class SignupFlowTest < ActionDispatch::IntegrationTest
     assert_equal @inviter.id, Profile.find_by(display_name: "Buster").user.inviter_id
   end
 
+  test "signup with an invalid invitation code" do
+    visit "/invitation/invalid"
+
+    fill_in "Your email", with: "user@host.com"
+    fill_in "A password", with: "$1625df123"
+
+    click_on "Sign up and set up your profile"
+
+    fill_out_onboarding_steps
+
+    # step 5
+    click_on "Finish"
+
+    assert page.has_content? "Buster"
+  end
+
   test "signup flow from a public profile" do
     @public_profile = users(:gathino).profile
     @public_profile.update!(public: true)
