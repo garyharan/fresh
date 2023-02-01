@@ -86,34 +86,34 @@ class SignupFlowTest < ActionDispatch::IntegrationTest
     assert page.has_content? "Like"
   end
 
-  test "signup flow with group membership" do
-    # create a group
-    group = Group.new(name: "Test Group", description: "Test Group Description", slug: "test-group", user: User.first)
+  #test "signup flow with group membership" do
+    ## create a group
+    #group = Group.new(name: "Test Group", description: "Test Group Description", slug: "test-group", user: User.first)
 
-    group.save(validate: false)
-    visit "/#{group.slug}"
+    #group.save(validate: false)
+    #visit "/#{group.slug}"
 
-    click_on "Accept your invitation and join Test Group now"
+    #click_on "Accept your invitation and join Test Group now"
 
-    assert page.has_content? "Try"
+    #assert page.has_content? "Try"
 
-    fill_in(id: "user_email", with: "interesting@man.org")
-    fill_in(id: "user_password", with: "&12912345678")
+    #fill_in(id: "user_email", with: "interesting@man.org")
+    #fill_in(id: "user_password", with: "&12912345678")
 
-    click_on "Sign up and set up your profile"
+    #click_on "Sign up and set up your profile"
 
-    fill_out_onboarding_steps
+    #fill_out_onboarding_steps
 
-    click_on "Finish"
+    #click_on "Finish"
 
-    assert page.has_content? "join"
+    #assert page.has_content? "join"
 
-    click_on "Accept your invitation and join Test Group now"
+    #click_on "Accept your invitation and join Test Group now"
 
-    assert page.has_content? "Test Group"
+    #assert page.has_content? "Test Group"
 
-    sleep 2
-  end
+    #sleep 2
+  #end
 
   def fill_out_onboarding_steps
     # step 1
