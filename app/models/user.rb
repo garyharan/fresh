@@ -10,6 +10,8 @@ class User < ApplicationRecord
 
   has_one :profile, dependent: :destroy
 
+  has_secure_token :authentication_token
+
   include Identifiable
   identifiable_by :invite_code
 
@@ -26,5 +28,10 @@ class User < ApplicationRecord
 
   def passed_profiles
     Profile.joins(:passes).where(passes: { user_id: id })
+  end
+
+  def self.valid_credentials?(email, password)
+    user = User.find_for_authentication(:email => email)
+    user&.valid_password?(password) ? user : nil
   end
 end

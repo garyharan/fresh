@@ -69,11 +69,27 @@ Rails.application.routes.draw do
   end
 
   devise_for :users,
-             controllers: {
-               registrations: "users/registrations",
-               sessions: "users/sessions",
-               passwords: "users/passwords"
-             }
+    controllers: {
+      registrations: "users/registrations",
+      sessions: "users/sessions",
+      passwords: "users/passwords"
+    }
+
+  namespace :api, defaults: {format: :json} do
+    namespace :v1 do
+      resource :auth, only: [:create, :destroy]
+      resources :notification_tokens, only: :create
+    end
+  end
+
+  namespace :turbo do
+    namespace :ios do
+      resource :path_configuration, only: :show
+    end
+    namespace :android do
+      resource :path_configuration, only: :show
+    end
+  end
 
   get "geo", to: "geo#show"
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_21_185425) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_08_142715) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -227,6 +227,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_21_185425) do
     t.string "invite_code"
     t.boolean "admin", default: false
     t.integer "maximum_distance", default: 500000
+    t.string "authentication_token"
+    t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["invite_code"], name: "index_users_on_invite_code", unique: true
