@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  include DeviceVariants
   include ActiveStorage::SetCurrent
 
   def after_sign_in_path_for(resource)
