@@ -7,7 +7,6 @@ class SettingsController < ApplicationController
   layout "settings"
 
   def index
-    redirect_to settings_public_path
   end
 
   def public

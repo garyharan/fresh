@@ -19,7 +19,7 @@ class SettingsControllerTest < ActionDispatch::IntegrationTest
   test "should get settings" do
     sign_in @user
     get settings_url
-    assert_redirected_to settings_public_url
+    assert_response :success
   end
 
   test "should toggle public settings" do

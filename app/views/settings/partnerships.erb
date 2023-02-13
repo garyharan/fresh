@@ -1,4 +1,6 @@
-<h2 class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Partnerships</h2>
+<% content_for(:title) { "Partnerships" } %>
+
+<p>Show the world if you are with someone.</p>
 
 <%= turbo_frame_tag "partnerships" do %>
   <%= render partial: "partnerships", locals: { partnerships: @profile.partnerships } %>

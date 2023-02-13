@@ -28,4 +28,8 @@ module ApplicationHelper
       hash
     end
   end
+
+  def turbo_native?
+    request.variant.include?(:turbo_native)
+  end
 end

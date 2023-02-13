@@ -1,7 +1,7 @@
 <!DOCTYPE html><!DOCTYPE html>
 <html>
   <head>
-    <title>Fresh - Honest dating</title>
+    <title><%= content_for?(:title) ? yield(:title) : "Settings" %></title>
     <%= render 'layouts/header' %>
   </head>
 
@@ -11,22 +11,19 @@
       <%= render "shared/flashes" %>
 
       <main class="w-full">
-        <%= render "shared/nav" %>
+        <% unless turbo_native? %>
+          <%= render "shared/nav" if current_page?(settings_path) %>
+          <%= render "settings/title" %>
+        <% end %>
 
-        <%= render "settings/title" %>
 
         <div class="m-2">
           <div class="flex mx-auto" style="max-width: 1024px;">
             <div class="md:mx-2 mx-auto flex flex-col md:flex-row w-full">
-              <%= render "settings/nav" %>
-
-              <div class="md:p-8 bg-white w-full p-2 min-h-fit rounded-lg border">
-                <%= yield %>
-              </div>
+              <%= yield %>
             </div>
           </div>
         </div>
-
       </main>
     </div>
   </body>
