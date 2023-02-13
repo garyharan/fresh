@@ -8,7 +8,7 @@
   ]
 %>
 
-<section class="w-full md:w-64 relative top-px md:left-px" aria-label="Sidebar">
+<section class="w-full relative top-px md:left-px" aria-label="Sidebar">
   <% urls.each do |url| %>
     <%= link_to url[:url], class: "flex flex-row items-center bg-white p-2 my-4 border rounded-lg text-lg font-normal text-gray-900" do %>
       <div class="flex w-full">
@@ -25,5 +25,3 @@
     <% end %>
   <% end %>
 </section>
-
-
