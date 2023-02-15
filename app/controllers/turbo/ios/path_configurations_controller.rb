@@ -6,14 +6,19 @@ module Turbo
           settings: {
             tabs: [
               {
-                title: "Home",
+                title: "Recommended",
                 path: root_path,
-                ios_system_image_name: "house"
+                ios_system_image_name: "magnifyingglass.circle.fill"
               },
               {
-                title: "Posts",
-                path: posts_path,
-                ios_system_image_name: "square.and.pencil"
+                "title": "Chat",
+                "path": "/rooms",
+                "ios_system_image_name": "bubble.left.fill"
+              },
+              {
+                "title": "Settings",
+                "path": "/settings",
+                "ios_system_image_name": "gearshape"
               }
             ]
           },

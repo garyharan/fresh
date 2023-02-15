@@ -12,6 +12,8 @@ class User < ApplicationRecord
 
   has_secure_token :authentication_token
 
+  has_many :notification_tokens
+
   include Identifiable
   identifiable_by :invite_code
 
