@@ -4,7 +4,10 @@ module Api
       skip_before_action :authenticate_token!, only: [:create], raise: false
 
       def create
-        if (user = User.valid_credentials?(params[:email], params[:password]))
+        email = params["user"]["email"]
+        password = params["user"]["password"]
+
+        if (user = User.valid_credentials?(email, password))
           sign_in user
           render json: {token: user.authentication_token}
         else
