@@ -8,4 +8,9 @@ class Api::V1::RegistrationsControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :success
   end
+
+  test "should respond with json token" do
+    post api_v1_registrations_url, params: { user: { email: 'test@example.com', password: 'password123' } }
+    assert_not_nil json_response['token']
+  end
 end

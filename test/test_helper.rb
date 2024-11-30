@@ -18,6 +18,10 @@ class ActionDispatch::IntegrationTest
     Capybara.reset_sessions!
     Capybara.use_default_driver
   end
+
+  def json_response
+    @json_response ||= JSON.parse(response.body)
+  end
 end
 
 use_headless_chrome = ENV['HEADLESS_CHROME']
