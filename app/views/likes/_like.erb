@@ -21,7 +21,7 @@
                 <p>It's a match!</p>
               <% end %>
 
-              <%= render partial: "profiles/partnerships", locals: { profile: @profile } %>
+              <%= render partial: "profiles/partnerships", locals: { profile: @profile }, formats: :html %>
             </div>
           <% else %>
             <%= form_for([profile, Like.new]) do |form| %>

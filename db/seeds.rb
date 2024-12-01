@@ -1,21 +1,13 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+require 'yaml'
 
 puts "Adding genders" if Rails.env.production? || Rails.env.staging?
 
 if Gender.count.zero?
-  Gender.create(
-    [
-      { label: "Woman" },
-      { label: "Man" },
-      { label: "Non-Binary and/or Two Spirit Person" }
-    ]
-  )
+  genders = YAML.load_file(Rails.root.join('test/fixtures/genders.yml'))
+  genders.each do |key, fixture|
+    gender = Gender.create label: fixture['label']
+    puts "CREATING GENDER: #{gender.inspect}"
+  end
 else
   puts "Already filled genders"
 end

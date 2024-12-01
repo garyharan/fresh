@@ -1,0 +1,12 @@
+
+man:
+  id: 1
+  label: Man
+
+woman:
+  id: 2
+  label: Woman
+
+other:
+  id: 3
+  label: Non-Binary and/or Two Spirit Person

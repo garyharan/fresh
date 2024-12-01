@@ -18,7 +18,6 @@ class Message < ApplicationRecord
     self.joins("LEFT OUTER JOIN reads ON reads.message_id = messages.id AND reads.user_id = #{user.id}")
       .where("reads.id IS NULL")
       .where("messages.user_id != ?", user.id)
-      .where(rooms: [user.profile.rooms])
   end
 
   private
