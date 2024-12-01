@@ -1,9 +1,10 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  id: 1
   display_name: Gathino
-  user: gathino
-  gender: Man
+  user_id: 1
+  gender_id: <%= Gender.find_by_label("Man").id %>
   height: 178
   born_on: 1978-10-6
   latitude: 45.498398543048125
@@ -17,9 +18,10 @@ one:
   children: Have & don't want more
 
 two:
+  id: 2
   display_name: Velvet
-  user: velvet
-  gender: Woman
+  user_id: 2
+  gender_id: <%= Gender.find_by_label("Woman").id %>
   height: 167
   born_on: 1982-10-6
   latitude: 45.498398543048125
@@ -33,11 +35,12 @@ two:
   children: Have & don't want more
 
 three:
+  id: 3
   display_name: Mariet
-  user: mariet
+  user_id: 4
+  gender_id: <%= Gender.find_by_label("Non-Binary and/or Two Spirit Person").id %>
   height: 140
   born_on: 1982-10-6
-  gender: Non-Binary and/or Two Spirit Person
   latitude: 45.5757802
   longitude: -73.7530656
   city: Laval
@@ -49,11 +52,12 @@ three:
   children: Not sure yet
 
 four:
+  id: 4
   display_name: Eva
-  user: eva
+  user_id: 5
+  gender_id: <%= Gender.find_by_label("Woman").id %>
   height: 140
   born_on: 1974-2-14
-  gender: Woman
   latitude: 45.498398543048125
   longitude: -73.4327665245693
   city: Laval

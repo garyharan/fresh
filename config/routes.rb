@@ -77,8 +77,12 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: {format: :json} do
     namespace :v1 do
-      resource :auth, only: [:create, :destroy]
-      resource :registrations, only: :create
+      devise_for :users, controllers: {
+        sessions: 'api/v1/sessions',
+        registrations: 'api/v1/registrations'
+      }
+      # resource :auth, only: [:create, :destroy]
+      # resource :registrations, only: :create
       resources :notification_tokens, only: :create
     end
   end

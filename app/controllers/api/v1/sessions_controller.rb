@@ -1,7 +1,8 @@
 module Api
   module V1
-    class AuthsController < ApplicationController
+    class SessionsController < ApplicationController
       skip_before_action :authenticate_token!, only: [:create], raise: false
+      include Devise::Controllers::Helpers
 
       def create
         email = params["user"]["email"]

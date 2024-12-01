@@ -1,11 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  room: one
-  user: gathino
+  room_id: 1
+  user_id: 1
   body: Wanna go for a date?
 
 two:
-  room: one
-  user: velvet
+  room_id: 1
+  user_id: 2
   body: Sure I would love to rekindle our lost love.

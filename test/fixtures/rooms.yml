@@ -1,4 +1,4 @@
 
 one:
+  id: 1
   name: Rekindle
-  profiles: [one, two]

@@ -1,13 +1,14 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
+  id: 1
   kind: about_me
   title: self_summary
   content: Half French and Half French Canadian but totally bilingual. Fan of cuddling and
-  profile: one
+  profile_id: 1
 
 two:
+  id: 2
   kind: aspirations
   title: current_goal
   content: Building a dating web site you may have heard about recently.
-  profile: one
+  profile_id: 1

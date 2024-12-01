@@ -7,6 +7,9 @@ require 'capybara/rails'
 require 'capybara/minitest'
 require 'capybara/minitest/spec'
 
+Rails.application.load_seed
+Rails.application.routes_reloader.execute_unless_loaded #https://github.com/heartcombo/devise/issues/5705
+
 class ActionDispatch::IntegrationTest
   # Make the Capybara DSL available in all integration tests
   include Capybara::DSL
