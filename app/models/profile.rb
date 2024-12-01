@@ -14,9 +14,6 @@ class Profile < ApplicationRecord
   has_many :attractions, dependent: :destroy
   has_many :genders, through: :attractions
 
-  has_many :memberships, dependent: :destroy
-  has_many :groups, through: :memberships
-
   has_and_belongs_to_many :rooms
   before_destroy do
     rooms.each { |room| room .destroy }

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_11_30_211118) do
+ActiveRecord::Schema[8.0].define(version: 2024_12_01_201429) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
@@ -72,18 +72,6 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_30_211118) do
     t.bigint "gender_id", null: false
     t.bigint "profile_id", null: false
     t.index ["gender_id", "profile_id"], name: "index_genders_profiles_on_gender_id_and_profile_id"
-  end
-
-  create_table "groups", force: :cascade do |t|
-    t.uuid "uuid", default: -> { "gen_random_uuid()" }, null: false
-    t.bigint "user_id", null: false
-    t.string "name"
-    t.text "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "slug"
-    t.index ["slug"], name: "index_groups_on_slug", unique: true
-    t.index ["user_id"], name: "index_groups_on_user_id"
   end
 
   create_table "groups_users", id: false, force: :cascade do |t|
@@ -241,7 +229,6 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_30_211118) do
   add_foreign_key "attractions", "genders"
   add_foreign_key "attractions", "profiles"
   add_foreign_key "cards", "profiles"
-  add_foreign_key "groups", "users"
   add_foreign_key "images", "profiles"
   add_foreign_key "messages", "rooms"
   add_foreign_key "messages", "users"

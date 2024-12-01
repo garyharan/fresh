@@ -64,10 +64,6 @@ Rails.application.routes.draw do
 
   resources :reads, only: :create
 
-  resources :groups do
-    resources :memberships
-  end
-
   devise_for :users,
     controllers: {
       registrations: "users/registrations",
@@ -103,6 +99,4 @@ Rails.application.routes.draw do
   get 'dashboard', to: 'dashboard#index'
 
   get "/invitation/:invite_code", to: "invitations#save"
-
-  get "/:group_slug", to: "memberships#new"
 end

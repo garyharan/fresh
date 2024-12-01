@@ -17,10 +17,6 @@ class User < ApplicationRecord
   include Identifiable
   identifiable_by :invite_code
 
-  has_many :managed_groups, class_name: "Group", foreign_key: :user_id
-  has_many :memberships, dependent: :destroy
-  has_many :groups, through: :memberships
-
   has_many :likes, foreign_key: :user_id, dependent: :destroy
   has_many :passes, foreign_key: :user_id, dependent: :destroy
 
