@@ -68,10 +68,6 @@ class Profile < ApplicationRecord
       ").order(:age_difference)
   end
 
-  def self.in_group(group)
-    Profile.joins(:memberships).where(memberships: { group_id: group.id })
-  end
-
   def complete? # XXX: This is a bit of a hack
     saved_step = step
     step = 4

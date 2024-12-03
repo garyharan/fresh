@@ -27,17 +27,6 @@ class ProfileTest < ActiveSupport::TestCase
     assert(Profile.of_gender(man).all? { |p| p.gender.label == 'Man' })
   end
 
-  test '.in_group returns all the profiles in a specific group' do
-    @group = Group.create!(name: 'Test Group', description: "Testing", user: @gathino.user)
-
-    @group.memberships.create(profile: @gathino)
-    @group.memberships.create(profile: @velvet)
-
-    assert_includes Profile.in_group(@group), @gathino
-    assert_includes Profile.in_group(@group), @velvet
-    refute_includes Profile.in_group(@group), @mariet
-  end
-
   test '#attracted_to_gender returns all the profiles that are attracted to give genders' do
     @gathino.update(gender_id: @man.id, genders: [@woman])
     @velvet.update(gender_id: @woman.id, genders: [@man])

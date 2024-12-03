@@ -1,6 +1,6 @@
 class PartnershipsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_partnership, only: %i[ update destroy ]
+  before_action :set_partnership, only: %i[ destroy ]
 
   def new
     @user = User.find_by(invite_code: params[:code])

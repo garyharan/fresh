@@ -5,9 +5,9 @@
 # below each fixture, per the syntax in the comments below
 #
 one:
-  profile: one
-  partner: two
+  profile_id: 1
+  partner_id: 2
 
 two:
-  profile: two
-  partner: one
+  profile_id: 2
+  partner_id: 1
