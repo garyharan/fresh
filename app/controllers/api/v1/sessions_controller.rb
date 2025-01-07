@@ -8,7 +8,7 @@ module Api
         email = params["user"]["email"]
         password = params["user"]["password"]
 
-        if (user = User.valid_credentials?(email, password))
+        if user = User.valid_credentials?(email, password)
           sign_in user
           render json: {token: user.authentication_token}
         else

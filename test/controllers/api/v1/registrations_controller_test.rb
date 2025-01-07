@@ -13,4 +13,17 @@ class Api::V1::RegistrationsControllerTest < ActionDispatch::IntegrationTest
     post api_v1_user_registration_url, params: { user: { email: 'test@example.com', password: 'password123' } }
     assert_not_nil json_response['token']
   end
+
+  test "should log in user after registration" do
+    post api_v1_user_registration_url, params: { user: { email: 'test@example.com', password: 'password123' } }
+    assert_not_nil json_response['token']
+  end
+
+  test "should not log in someone if the password and email do not match" do
+    post api_v1_user_registration_url, params: { user: { email: 'test@example.com', password: 'password123' } }
+    assert_not_nil json_response['token']
+
+    post api_v1_user_session_url, params: { user: { email: 'test@example.com', password: 'wrong_password' } }
+    assert_response :unauthorized
+  end
 end

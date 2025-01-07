@@ -3,11 +3,16 @@ class Api::V1::RegistrationsController < ApplicationController
   include Devise::Controllers::Helpers
 
   def create
-    user = User.find_by(email: user_params[:email])
+    email = user_params["email"]
+    password = user_params["password"]
 
-    if user
-      debugger
-      render json: { error: 'User already exists' }, status: :unprocessable_entity
+    if user = User.find_by(email: email)
+      if User.valid_credentials?(email, password)
+        sign_in user
+        render json: { token: user.authentication_token }
+      else
+        render json: { error: error_message }, status: :unauthorized
+      end
     else
       user = User.new(user_params)
       if user.save
