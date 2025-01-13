@@ -75,9 +75,11 @@ Rails.application.routes.draw do
         sessions: 'api/v1/sessions',
         registrations: 'api/v1/registrations'
       }
-      # resource :auth, only: [:create, :destroy]
-      # resource :registrations, only: :create
       resources :notification_tokens, only: :create
+
+      resource :profile do
+        get :status
+      end
     end
   end
 
