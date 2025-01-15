@@ -1,4 +1,5 @@
 class RootController < ApplicationController
+  allow_unauthenticated_access
   before_action :redirect_if_logged_in
 
   layout "root"
@@ -9,9 +10,9 @@ class RootController < ApplicationController
   private
 
   def redirect_if_logged_in
-    return unless user_signed_in?
+    return unless authenticated?
 
-    if current_user&.profile&.complete?
+    if Current.user&.profile&.complete?
       redirect_to profiles_path
     else
       redirect_to onboarding_one_path

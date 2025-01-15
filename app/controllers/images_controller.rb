@@ -1,6 +1,4 @@
 class ImagesController < ApplicationController
-  before_action :authenticate_user!
-
   before_action :set_profile
   before_action :set_image, only: %i[show edit destroy]
 
@@ -71,7 +69,7 @@ class ImagesController < ApplicationController
   private
 
   def set_profile
-    @profile = current_user.profile
+    @profile = Current.user.profile
   end
 
   def set_image

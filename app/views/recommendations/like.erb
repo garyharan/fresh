@@ -1,4 +1,4 @@
-<% if current_user.profile.liked_by?(@profile.user) %>
+<% if Current.user.profile.liked_by?(@profile.user) %>
 
   <turbo-stream action="replace" target="recommendation_like_<%= @profile.id %>">
     <template>

@@ -1,6 +1,4 @@
 class SettingsController < ApplicationController
-  before_action :authenticate_user!
-
   before_action :set_user
   before_action :set_profile
 
@@ -23,11 +21,11 @@ class SettingsController < ApplicationController
   end
 
   def distance
-    @user = current_user
+    @user = Current.user
   end
 
   def partnerships
-    @partnerships = current_user.profile.partnerships
+    @partnerships = Current.user.profile.partnerships
   end
 
   def update
@@ -47,10 +45,10 @@ class SettingsController < ApplicationController
   end
 
   def set_user
-    @user = current_user
+    @user = Current.user
   end
 
   def set_profile
-    @profile = current_user.profile
+    @profile = Current.user.profile
   end
 end

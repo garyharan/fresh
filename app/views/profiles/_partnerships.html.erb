@@ -1,11 +1,11 @@
 <%= turbo_frame_tag "partnerships" do %>
-  <% if current_user.profile.relationship_style == "Non-monogamous" %>
+  <% if Current.user.profile.relationship_style == "Non-monogamous" %>
 
-    <% if current_user.profile.partnerships.find_by(partner_id: @profile.id) %>
+    <% if Current.user.profile.partnerships.find_by(partner_id: @profile.id) %>
 
       <p>You are already in a partnership with this user.</p>
 
-      <%= link_to partnership_path(current_user.profile.partnerships.find_by(partner_id: @profile.id)), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove this partner from your profile?" }, class: "inline-flex items-center mx-auto min-w-36 py-2 px-4 text-sm font-medium text-white rounded-full hover:underline hover:font-bold focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 group bg-gray-600" do %>
+      <%= link_to partnership_path(Current.user.profile.partnerships.find_by(partner_id: @profile.id)), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove this partner from your profile?" }, class: "inline-flex items-center mx-auto min-w-36 py-2 px-4 text-sm font-medium text-white rounded-full hover:underline hover:font-bold focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 group bg-gray-600" do %>
         <svg class="w-4 h-4 inline mr-2" fill="white" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" d="M22 10.5h-6m-2.25-4.125a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zM4 19.235v-.11a6.375 6.375 0 0112.75 0v.109A12.318 12.318 0 0110.374 21c-2.331 0-4.512-.645-6.374-1.766z"></path>
         </svg>

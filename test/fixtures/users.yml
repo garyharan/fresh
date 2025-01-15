@@ -1,35 +1,31 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+<% password_digest = BCrypt::Password.create("password") %>
+
 gathino:
   id: 1
-  email: gathino@gmail.com
-  confirmed_at: 2022-10-04 22:22:28.355003
-  last_sign_in_at: <%= 1.day.ago %>
+  email_address: gathino@gmail.com
+  password_digest: <%= password_digest %>
   distance: 10_000_000
 
 velvet:
   id: 2
-  email: velvet@gmail.com
-  confirmed_at: 2022-10-04 22:22:28.355003
-  last_sign_in_at: <%= 1.day.ago %>
+  email_address: velvet@gmail.com
+  password_digest: <%= password_digest %>
   distance: 10_000_000
 
 no_profile_yet:
   id: 3
-  email: no_profile_yet@gmail.com
-  confirmed_at: 2022-10-04 22:22:28.355003
-  last_sign_in_at: <%= 1.day.ago %>
+  email_address: no_profile_yet@gmail.com
+  password_digest: <%= password_digest %>
   distance: 10_000_000
 
 mariet:
   id: 4
-  email: mariet@outlook.com
-  confirmed_at: 2022-10-04 22:22:28.355003
-  last_sign_in_at: <%= 1.day.ago %>
+  email_address: mariet@outlook.com
+  password_digest: <%= password_digest %>
   distance: 10_000_000
 
 eva:
   id: 5
-  email: eva@connect4.com
-  confirmed_at: 2022-11-25 18:30:00.000000
-  last_sign_in_at: <%= 1.day.ago %>
+  email_address: eva@connect4.com
+  password_digest: <%= password_digest %>
   distance: 10_000_000

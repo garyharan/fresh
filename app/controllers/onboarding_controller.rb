@@ -1,5 +1,4 @@
 class OnboardingController < ApplicationController
-  before_action :authenticate_user!
   before_action :set_profile
 
   layout 'onboarding'
@@ -52,7 +51,7 @@ class OnboardingController < ApplicationController
     elsif session[:group_id].present?
       redirect_to new_group_membership_path(session[:group_id])
     else
-      redirect_to current_user.profile
+      redirect_to Current.user.profile
     end
   end
 
@@ -74,11 +73,11 @@ class OnboardingController < ApplicationController
   end
 
   def set_profile
-    @profile = current_user.profile || create_profile
+    @profile = Current.user.profile || create_profile
   end
 
   def create_profile
-    @profile = Profile.new(user: current_user)
+    @profile = Profile.new(user: Current.user)
     @profile.save(validate: false)
     @profile
   end

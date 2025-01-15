@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Fresh - Honest dating</title>
+    <% unless mobile? %>
+      <title>Fresh - Honest dating</title>
+    <% end %>
     <%= render 'layouts/header' %>
   </head>
 

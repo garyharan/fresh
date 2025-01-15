@@ -1,6 +1,24 @@
 require "test_helper"
 
 class UsersControllerTest < ActionDispatch::IntegrationTest
+  test "should create a user" do
+    assert_difference('User.count', 1) do
+      post users_url, params: { user: { email_address: 'test@example.com', password: 'password' } }
+    end
+
+    assert_response :success
+  end
+
+  test "should not create a user if email already exists" do
+    User.create!(email_address: 'test@example.com', password: 'password')
+
+    assert_no_difference('User.count') do
+      post users_url, params: { user: { email_address: 'test@example.com', password: 'password' } }
+    end
+
+    assert_response :unprocessable_entity
+  end
+
   test "should update distance" do
     @user = users(:gathino)
 

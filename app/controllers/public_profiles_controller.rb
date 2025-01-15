@@ -17,6 +17,6 @@ class PublicProfilesController < ApplicationController
   end
 
   def save_public_profile_id!
-    session[:public_profile_id] = @profile.id unless user_signed_in?
+    session[:public_profile_id] = @profile.id unless Current.user
   end
 end

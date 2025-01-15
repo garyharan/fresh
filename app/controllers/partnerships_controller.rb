@@ -1,5 +1,4 @@
 class PartnershipsController < ApplicationController
-  before_action :authenticate_user!
   before_action :set_partnership, only: %i[ destroy ]
 
   def new
@@ -28,17 +27,17 @@ class PartnershipsController < ApplicationController
   private
 
     def create_partnerships!
-      @partnership = current_user.profile.partnerships.create!(partnership_params)
-      @inverse_partnership = @partnership.partner.partnerships.create!(partner: current_user.profile)
+      @partnership = Current.user.profile.partnerships.create!(partnership_params)
+      @inverse_partnership = @partnership.partner.partnerships.create!(partner: Current.user.profile)
     end
 
     def destroy_partnerships!
-      @partnership.partner.partnerships.find_by(partner: current_user.profile).destroy
+      @partnership.partner.partnerships.find_by(partner: Current.user.profile).destroy
       @partnership.destroy
     end
 
     def set_partnership
-      @partnership = current_user.profile.partnerships.find(params[:id])
+      @partnership = Current.user.profile.partnerships.find(params[:id])
     end
 
     def partnership_params

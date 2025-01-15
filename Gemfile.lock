@@ -121,12 +121,6 @@ GEM
     debug (1.9.2)
       irb (~> 1.10)
       reline (>= 0.3.8)
-    devise (4.9.4)
-      bcrypt (~> 3.0)
-      orm_adapter (~> 0.1)
-      railties (>= 4.1.0)
-      responders
-      warden (~> 1.2.3)
     drb (2.2.1)
     erubi (1.13.0)
     faker (3.5.1)
@@ -208,7 +202,6 @@ GEM
       racc (~> 1.4)
     nokogiri (1.16.7-x86_64-linux)
       racc (~> 1.4)
-    orm_adapter (0.5.0)
     pg (1.5.9)
     prism (1.2.0)
     psych (5.2.0)
@@ -265,9 +258,6 @@ GEM
     regexp_parser (2.9.3)
     reline (0.5.12)
       io-console (~> 0.5)
-    responders (3.1.1)
-      actionpack (>= 5.2)
-      railties (>= 5.2)
     rexml (3.3.9)
     rqrcode (2.2.0)
       chunky_png (~> 1.0)
@@ -315,8 +305,6 @@ GEM
       concurrent-ruby (~> 1.0)
     uri (1.0.2)
     useragent (0.16.10)
-    warden (1.2.9)
-      rack (>= 2.0.9)
     web-console (4.2.1)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -342,10 +330,10 @@ PLATFORMS
 DEPENDENCIES
   acts_as_list
   aws-sdk-s3
+  bcrypt (~> 3.1)
   bootsnap
   capybara
   debug
-  devise
   faker
   geocoder
   image_processing

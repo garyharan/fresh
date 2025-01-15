@@ -8,7 +8,7 @@
     </div>
   <% end %>
 
-  <ul data-controller="sortable" data-url="<%= sort_profile_images_path(current_user.profile) %>" class="space-y-3 list-inside text-gray-500 dark:text-gray-400">
+  <ul data-controller="sortable" data-url="<%= sort_profile_images_path(Current.user.profile) %>" class="space-y-3 list-inside text-gray-500 dark:text-gray-400">
     <% @images.each do |image| %>
       <% next if image == "" || !image.photo.attached? %>
       <li id="<%= dom_id image %>" class="flex w-full items-center draggable  gap-4">

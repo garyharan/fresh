@@ -8,19 +8,15 @@ if Gender.count.zero?
     gender = Gender.create label: fixture['label']
     puts "CREATING GENDER: #{gender.inspect}"
   end
-else
-  puts "Already filled genders"
 end
 
 if Rails.env.development? || Rails.env.test?
   if User.count < 10
     (0..10).each do |number|
       u =
-        User.new email: Faker::Internet.email,
-                 password: "asd0fadsfh",
-                 confirmation_token: Devise.friendly_token
+        User.new email_address: Faker::Internet.email,
+                 password_digest: BCrypt::Password.create("testtest")
       u.skip_confirmation! if u.respond_to? :skip_confirmation!
-      u.last_sign_in_at = DateTime.now
       u.save(validate: false)
 
       p =
@@ -49,7 +45,5 @@ if Rails.env.development? || Rails.env.test?
         filename: "#{number}.png"
       )
     end
-  else
-    puts "Users already exist"
   end
 end

@@ -6,7 +6,7 @@
     <%= render 'layouts/header' %>
   </head>
 
-  <body class="text-slate-700" data-user-id="<%= user_signed_in? ? current_user.id : -1 %>">
+  <body class="text-slate-700" data-user-id="<%= authenticated? ? Current.user.id : -1 %>">
     <div class="min-h-screen h-screen flex flex-col">
 
       <%= yield %>

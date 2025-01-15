@@ -8,7 +8,6 @@ require 'capybara/minitest'
 require 'capybara/minitest/spec'
 
 Rails.application.load_seed
-Rails.application.routes_reloader.execute_unless_loaded #https://github.com/heartcombo/devise/issues/5705
 
 class ActionDispatch::IntegrationTest
   # Make the Capybara DSL available in all integration tests
@@ -24,6 +23,14 @@ class ActionDispatch::IntegrationTest
 
   def json_response
     @json_response ||= JSON.parse(response.body)
+  end
+
+  def sign_in(user)
+    post session_url, params: { email_address: user.email_address, password: "password" }
+  end
+
+  def sign_out
+    delete session_url
   end
 end
 
@@ -84,8 +91,4 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
-end
-
-class ActionDispatch::IntegrationTest
-  include Devise::Test::IntegrationHelpers
 end

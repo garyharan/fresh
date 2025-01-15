@@ -1,19 +1,19 @@
 <%= turbo_frame_tag "like_#{@profile.id}", class: "group" do %>
-  <% unless current_user&.profile == @profile %>
+  <% unless Current.user&.profile == @profile %>
 
     <div class="flex items-center justify-center">
       <div class="inline-flex mt-0 mb-4" role="group">
-        <% if user_signed_in? %>
+        <% if authenticated? %>
 
-          <% if @profile.liked_by?(current_user.profile) %>
+          <% if @profile.liked_by?(Current.user.profile) %>
             <div class="flex flex-col gap-3 justify-center text-center">
-              <%= link_to(profile_like_path(profile.id, profile.likes.find_by(user: current_user).id), method: :delete, data: { turbo_method: :delete }, class: "inline-flex items-center mx-auto w-36 py-2 px-4 text-sm font-medium text-white rounded-full hover:underline hover:font-bold focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 group bg-gray-600") do %>
+              <%= link_to(profile_like_path(profile.id, profile.likes.find_by(user: Current.user).id), method: :delete, data: { turbo_method: :delete }, class: "inline-flex items-center mx-auto w-36 py-2 px-4 text-sm font-medium text-white rounded-full hover:underline hover:font-bold focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 group bg-gray-600") do %>
                 <svg class="w-3 h-3 md:w-6 md:h-6 inline mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path></svg>
                 Remove like
               <% end %>
 
-              <% if current_user.profile.liked_by?(@profile.user) %>
-                <%= link_to(Room.find_or_create_by_profiles([current_user.profile, @profile]), class: "inline-flex items-center mx-auto w-36 py-2 px-4 text-sm font-medium text-white rounded-full hover:underline hover:font-bold focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 group bg-black") do %>
+              <% if Current.user.profile.liked_by?(@profile.user) %>
+                <%= link_to(Room.find_or_create_by_profiles([Current.user.profile, @profile]), class: "inline-flex items-center mx-auto w-36 py-2 px-4 text-sm font-medium text-white rounded-full hover:underline hover:font-bold focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 group bg-black") do %>
                   <svg class="w-3 h-3 md:w-6 md:h-6 inline mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z" clip-rule="evenodd"></path></svg>
                   Chat now!
                 <% end %>

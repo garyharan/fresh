@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resource :session
+  resources :passwords, param: :token
+
+  resources :users, only: [:new, :create, :update]
+
   resources :partnerships
   namespace :admin do
     resources :profiles
@@ -34,8 +39,6 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users, only: :update
-
   resources :profiles do
     resources :images, except: :update do
       patch :sort, on: :collection
@@ -62,19 +65,8 @@ Rails.application.routes.draw do
 
   resources :reads, only: :create
 
-  devise_for :users,
-    controllers: {
-      registrations: "users/registrations",
-      sessions: "users/sessions",
-      passwords: "users/passwords"
-    }
-
   namespace :api, defaults: {format: :json} do
     namespace :v1 do
-      devise_for :users, controllers: {
-        sessions: 'api/v1/sessions',
-        registrations: 'api/v1/registrations'
-      }
       resources :notification_tokens, only: :create
 
       resource :profile do

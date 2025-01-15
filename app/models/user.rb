@@ -1,16 +1,9 @@
 class User < ApplicationRecord
-  devise :database_authenticatable,
-         :registerable,
-         :recoverable,
-         :rememberable,
-         :validatable,
-         :trackable,
-         :confirmable,
-         :lockable
-
+  has_secure_password
+  has_many :sessions, dependent: :destroy
   has_one :profile, dependent: :destroy
 
-  has_secure_token :authentication_token
+  normalizes :email_address, with: ->(e) { e.strip.downcase }
 
   has_many :notification_tokens
 
@@ -26,10 +19,5 @@ class User < ApplicationRecord
 
   def passed_profiles
     Profile.joins(:passes).where(passes: { user_id: id })
-  end
-
-  def self.valid_credentials?(email, password)
-    user = User.find_for_authentication(:email => email)
-    user&.valid_password?(password) ? user : nil
   end
 end

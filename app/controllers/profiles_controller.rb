@@ -1,6 +1,4 @@
 class ProfilesController < ApplicationController
-  before_action :authenticate_user!
-
   before_action :force_profile_completion, only: %i[index]
 
   before_action :new_profile, only: :new
@@ -14,7 +12,7 @@ class ProfilesController < ApplicationController
   end
 
   def passed
-    @profiles = Profile.joins(:passes).where(passes: { user_id: current_user.id }).order("passes.created_at DESC")
+    @profiles = Profile.joins(:passes).where(passes: { user_id: Current.user.id }).order("passes.created_at DESC")
   end
 
   # GET /profiles/1 or /profiles/1.json
@@ -82,23 +80,23 @@ class ProfilesController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_profile
-    @profile = current_user.profile
+    @profile = Current.user.profile
   end
 
   def new_profile
-    username = current_user.email.split("@")[0]
+    username = Current.user.email.split("@")[0]
     @profile = Profile.new display_name: username
   end
 
   def create_profile!
     @profile = Profile.new(profile_params)
-    @profile.user_id = current_user.id
+    @profile.user_id = Current.user.id
 
     @profile.save!
   end
 
   def update_profile!
-    @profile = current_user.profile
+    @profile = Current.user.profile
 
     @profile.update(profile_params)
   end

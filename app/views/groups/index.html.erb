@@ -1,5 +1,5 @@
 <div class="w-full">
-  <% if user_signed_in? && current_user.managed_groups.any? %>
+  <% if authenticated? && Current.user.managed_groups.any? %>
 
     <div id="groups" class="m-4 lg:m-10">
       <h2 class="text-2xl font-bold mb-4">Groups you are a member of</h2>

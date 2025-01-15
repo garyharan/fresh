@@ -29,13 +29,13 @@ class CardsController < ApplicationController
 
   def create_card!
     @card = Card.new(card_params)
-    @card.profile = current_user.profile
+    @card.profile = Current.user.profile
 
     @card.save!
   end
 
   def set_profile
-    @profile = current_user.profile
+    @profile = Current.user.profile
   end
 
   def card_params

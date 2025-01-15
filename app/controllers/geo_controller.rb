@@ -1,6 +1,4 @@
 class GeoController < ApplicationController
-  before_action :authenticate_user!
-
   def show
     @geo = GeoLocator.new(geo_params[:lat], geo_params[:lon]).find
 

@@ -1,5 +1,4 @@
 class RecommendationsController < ApplicationController
-  before_action :authenticate_user!
   before_action :force_profile_completion
 
   before_action :set_group
@@ -14,11 +13,11 @@ class RecommendationsController < ApplicationController
   end
 
   def like
-    @like = Like.create! profile: @profile, user: current_user
+    @like = Like.create! profile: @profile, user: Current.user
   end
 
   def pass
-    @pass = Pass.create! profile: @profile, user: current_user
+    @pass = Pass.create! profile: @profile, user: Current.user
   end
 
   private
@@ -32,10 +31,10 @@ class RecommendationsController < ApplicationController
   end
 
   def recommended_profile
-    Profile.recommended(current_user.profile).first
+    Profile.recommended(Current.user.profile).first
   end
 
   def recommended_profile_in_group
-    Profile.recommended(current_user.profile).in_group(@group).first
+    Profile.recommended(Current.user.profile).in_group(@group).first
   end
 end

@@ -7,19 +7,19 @@
         <div class="flex justify-between relative">
 
           <div class="min-w-fit my-auto grow-0">
-            <% room.profiles.where.not(id: current_user.profile.id).map do |profile| %>
+            <% room.profiles.where.not(id: Current.user.profile.id).map do |profile| %>
               <%= image_tag(profile.images.first.photo.variant(:medium), class: "w-12 h-12 sm:w-24 sm:h-24 md:w-32 md:h-32 border-2 rounded-full", alt: profile.display_name) if profile.images.any? && profile.images.first.photo.present? %>
             <% end %>
           </div>
 
           <div class="grow text-md md:text-xl lg:text-2xl font-semibold m-0 pl-2">
             <div class="flex flex-col justify-center grow h-full">
-              <div> <%= room.profiles.where.not(id: current_user.profile.id).first.display_name %> </div>
-              <% if room.messages.unread_by(current_user).count > 0 %>
+              <div> <%= room.profiles.where.not(id: Current.user.profile.id).first.display_name %> </div>
+              <% if room.messages.unread_by(Current.user).count > 0 %>
                 <div class="text-sm text-gray-500 flex flex-row mt-2">
                   <div class="inline-flex w-4 h-4 mr-2 text-xs font-bold text-white bg-blue-500 border-2 border-white rounded-full dark:border-gray-900">
                   </div>
-                  <div class="text-xs sm:text-sm"><%= t("messages.unread_count", count: room.messages.unread_by(current_user).count) %></div>
+                  <div class="text-xs sm:text-sm"><%= t("messages.unread_count", count: room.messages.unread_by(Current.user).count) %></div>
                 </div>
               <% end %>
             </div>

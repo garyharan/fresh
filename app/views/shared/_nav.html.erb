@@ -18,26 +18,26 @@
                     <% end %>
                   </li>
                   <li class="">
-                    <%= link_to current_user.profile, class: (@profile == current_user.profile && action_name == 'show' ? active_tab_classes : inactive_tab_classes) do %>
+                    <%= link_to Current.user.profile, class: (@profile == Current.user.profile && action_name == 'show' ? active_tab_classes : inactive_tab_classes) do %>
                       <span title="My Profile" class="whitespace-nowrap"><svg class="w-6 h-6 inline" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path></svg><span class="hidden lg:inline"> My profile</span>
                     <% end %>
                   </li>
-                  <% if current_user.profile %>
+                  <% if Current.user.profile %>
                     <li class="">
-                      <%= link_to profile_images_path(current_user.profile), class: (action_name == 'index' && controller_name == "images" ? active_tab_classes : inactive_tab_classes) do %>
+                      <%= link_to profile_images_path(Current.user.profile), class: (action_name == 'index' && controller_name == "images" ? active_tab_classes : inactive_tab_classes) do %>
                         <span title="My photos" class="whitespace-nowrap"><svg class="w-6 h-6 inline" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd"></path></svg><span class="hidden lg:inline"> My photos</span>
                       <% end %>
                     </li>
                 <% end %>
               <% end %>
           </ul>
-          <% if user_signed_in? %>
+          <% if authenticated? %>
               <ul class="flex justify-self-end order-2">
-                  <% if current_user&.profile&.rooms&.any?%>
+                  <% if Current.user&.profile&.rooms&.any?%>
                     <li class="md:mx-4">
                       <%= link_to rooms_path, class: "relative inline-flex #{controller_name == 'rooms' ? 'text-blue-600 border-b-2 border-blue-600 p-2' : 'p-2'}" do %>
                         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z" clip-rule="evenodd"></path></svg>
-                        <div id="unread_badge" class="<%= Message.unread_by(current_user).any? ? 'inline-flex' : 'hidden' %> absolute items-center justify-center text-xxs w-2 h-2 bg-blue-500 rounded-full top-2 right-1 dark:border-gray-900" title=""></div>
+                        <div id="unread_badge" class="<%= Message.unread_by(Current.user).any? ? 'inline-flex' : 'hidden' %> absolute items-center justify-center text-xxs w-2 h-2 bg-blue-500 rounded-full top-2 right-1 dark:border-gray-900" title=""></div>
                       <% end %>
                     </li>
                   <% end %>
@@ -49,7 +49,7 @@
                       </div>
                       <div class="target hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
                           <ul class="py-1 text-sm text-gray-700 dark:text-gray-200">
-                            <% if current_user.admin? %>
+                            <% if Current.user.admin? %>
                               <li class="whitespace-nowrap">
                                 <%= link_to admin_profiles_path, class: "block flex px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600" do %>
                                   <div class="grow">
@@ -76,7 +76,7 @@
                               <% end %>
                             </li>
                             <li class="whitespace-nowrap">
-                              <%= link_to(destroy_user_session_path, class: "block flex py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white", data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to sign out?" }) do %>
+                              <%= link_to(session_path, class: "block flex py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white", data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to sign out?" }) do %>
                                 <div class="grow">
                                   Sign out
                                 </div>

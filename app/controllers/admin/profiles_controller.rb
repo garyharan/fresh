@@ -1,5 +1,4 @@
 class Admin::ProfilesController < ApplicationController
-  before_action :authenticate_user!
   before_action :authenticate_admin!
 
   def index
@@ -9,6 +8,6 @@ class Admin::ProfilesController < ApplicationController
   private
 
   def authenticate_admin!
-    redirect_to root_path, alert: 'Not authorized.' unless current_user.admin?
+    redirect_to root_path, alert: 'Not authorized.' unless Current.user.admin?
   end
 end
