@@ -7,7 +7,11 @@
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
   <% end %>
 
-  <h1 class="font-bold text-4xl">Create your account</h1>
+  <% if hotwire_native? %>
+    <% content_for(:title, "Create your account") %>
+  <% else %>
+    <h1 class="font-bold text-4xl">Create your account</h1>
+  <% end %>
 
   <%= form_with model: @user, url: users_path, method: :post, class: "contents" do |form| %>
     <div class="my-5">

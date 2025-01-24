@@ -2,8 +2,6 @@ class RootController < ApplicationController
   allow_unauthenticated_access
   before_action :redirect_if_logged_in
 
-  layout "root"
-
   def index
   end
 
