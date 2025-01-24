@@ -1,10 +1,9 @@
 // Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
 import "@hotwired/turbo-rails"
-import "./controllers"
-import "./controllers/bridge"
 import "flowbite"
 
 import Sortable from 'sortablejs'
 window.Sortable = Sortable
 
 import "./channels"
+import "./controllers"

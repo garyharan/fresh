@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import Bridge__ButtonController from "./bridge/button_controller"
+application.register("bridge--button", Bridge__ButtonController)
+
 import CardController from "./card_controller"
 application.register("card", CardController)
 
@@ -12,6 +15,9 @@ application.register("carousel", CarouselController)
 
 import ClipboardController from "./clipboard_controller"
 application.register("clipboard", ClipboardController)
+
+import DebugController from "./debug_controller"
+application.register("debug", DebugController)
 
 import DistanceController from "./distance_controller"
 application.register("distance", DistanceController)
@@ -30,6 +36,9 @@ application.register("growing-textarea", GrowingTextareaController)
 
 import HeightController from "./height_controller"
 application.register("height", HeightController)
+
+import HelloController from "./hello_controller"
+application.register("hello", HelloController)
 
 import LocationController from "./location_controller"
 application.register("location", LocationController)

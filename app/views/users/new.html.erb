@@ -22,11 +22,11 @@
       <%= form.password_field :password, required: true, autocomplete: "current-password", placeholder: "Enter your password", maxlength: 72, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
     </div>
 
-    <div class="col-span-6 sm:flex sm:items-center sm:gap-4">
+    <div class="col-span-6 sm:flex sm:items-center sm:gap-4 hotwire-native:hidden">
       <div class="inline">
-        <%= form.submit "Create Account", class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer", data: {
+        <%= form.submit "Sign up", class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer", data: {
           controller: "bridge--button",
-          bridge_title: "Create Account"
+          bridge_title: "Sign up"
         } %>
       </div>
     </div>
