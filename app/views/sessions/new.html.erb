@@ -1,4 +1,4 @@
-<div class="bg-red-100">
+<div class="hn:bg-red-100">
   <% if alert = flash[:alert] %>
     <p class="py-2 px-3 bg-red-50 mb-5 text-red-500 font-medium rounded-lg inline-block" id="alert"><%= alert %></p>
   <% end %>
@@ -7,7 +7,7 @@
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
   <% end %>
 
-  <% if mobile? %>
+  <% if hotwire_native? %>
     <% content_for(:title, "Sign In") %>
   <% else %>
     <h1 class="font-bold text-4xl">Sign in</h1>

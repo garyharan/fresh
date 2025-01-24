@@ -19,9 +19,22 @@ module.exports = {
     },
   },
   plugins: [
+    function ({ addVariant }) {
+      addVariant('hotwire-native', ({ modifySelectors, separator }) => {
+        modifySelectors(({ className }) => {
+          return `body[data-hotwire-native] &`;
+        });
+      });
+
+      addVariant('not-hotwire-native', ({ modifySelectors, separator }) => {
+        modifySelectors(({ className }) => {
+          return `body:not([data-hotwire-native]) &`;
+        });
+      });
+    },
     require('@tailwindcss/forms'),
     require('@tailwindcss/aspect-ratio'),
     require('@tailwindcss/typography'),
-    require('flowbite/plugin'),
+    require('flowbite/plugin')
   ]
 }

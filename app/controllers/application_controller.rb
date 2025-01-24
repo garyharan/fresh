@@ -3,10 +3,10 @@ class ApplicationController < ActionController::Base
   include DeviceVariants
   include ActiveStorage::SetCurrent
 
-  helper_method :mobile?
+  helper_method :hotwire_native?
 
-  def mobile?
-    request.user_agent.include?('Hotwire')
+  def hotwire_native?
+    request.user_agent =~ /Hotwire Native/
   end
 
   def after_sign_in_path_for(resource)
