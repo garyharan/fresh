@@ -1,17 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <% unless mobile? %>
-      <title>Fresh - Honest dating</title>
-    <% end %>
     <%= render 'layouts/header' %>
   </head>
-
-  <body class="text-slate-700">
-    <div class="flex flex-col">
-      <main class="w-full p-0 m-0">
-        <%= yield %>
-      </main>
-    </div>
+  <body class="text-slate-700 mx-4 p-4">
+    <%= yield %>
   </body>
 </html>
