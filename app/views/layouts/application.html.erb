@@ -4,7 +4,7 @@
     <%= render 'layouts/header' %>
   </head>
 
-  <body class="text-slate-700" data-user-id="<%= authenticated? ? Current.user.id : -1 %>" <%= hotwire_native? ? "data-hotwire-native=true" : "" %>>
+  <body class="text-slate-700" data-controller="debug" data-user-id="<%= authenticated? ? Current.user.id : -1 %>" <%= hotwire_native? ? "data-hotwire-native=true" : "" %>>
       <%= render "shared/nav" unless hotwire_native?%>
 
       <main class="m-4">
