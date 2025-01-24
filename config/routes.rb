@@ -65,6 +65,10 @@ Rails.application.routes.draw do
 
   resources :reads, only: :create
 
+  resources :configurations, only: [] do
+    get :ios_v1, on: :collection
+  end
+
   namespace :api, defaults: {format: :json} do
     namespace :v1 do
       resources :notification_tokens, only: :create
