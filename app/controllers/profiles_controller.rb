@@ -6,9 +6,6 @@ class ProfilesController < ApplicationController
 
   # GET /profiles or /profiles.json
   def index
-    respond_to do |format|
-      format.html { render layout: "application" }
-    end
   end
 
   def passed
@@ -84,7 +81,7 @@ class ProfilesController < ApplicationController
   end
 
   def new_profile
-    username = Current.user.email.split("@")[0]
+    username = Current.user.email_address.split("@")[0]
     @profile = Profile.new display_name: username
   end
 

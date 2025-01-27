@@ -122,7 +122,7 @@ class ProfileTest < ActiveSupport::TestCase
   end
 
   test "adds unique public_code on creation" do
-    user = User.create! email: "john@doe.com", password: "password"
+    user = User.create! email_address: "john@doe.com", password: "password"
     profile = Profile.new user: user, display_name: "John Doe", born_on: 18.years.ago, gender: Gender.first, city: "Saint-Hubert", state: "QC", country: "Canada"
     profile.step = 1
     profile.save!

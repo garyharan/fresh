@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "profile/show"
   resource :session
   resources :passwords, param: :token
 
@@ -39,6 +40,7 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'profile', to: 'profile#show'
   resources :profiles do
     resources :images, except: :update do
       patch :sort, on: :collection

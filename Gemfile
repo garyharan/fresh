@@ -9,7 +9,7 @@ gem 'sendgrid-ruby' # Required for sending password resets and confirmations
 
 gem "sprockets-rails"
 
-gem "pg"
+gem "sqlite3"
 gem "puma"
 
 gem "importmap-rails"
@@ -40,9 +40,6 @@ gem "nanoid"
 
 # Allows us to sort with SortableJS
 gem "acts_as_list"
-
-# Error reporting
-# gem "honeybadger", "~> 5.0"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
