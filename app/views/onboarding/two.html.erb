@@ -1,7 +1,7 @@
 <div class="w-full md:w-9/12 mx-auto mt-10">
   <%= render 'steps' %>
 
-  <%= form_with(model: @profile, url: onboarding_update_two_path) do |form| %>
+  <%= form_with(model: @profile, url: onboarding_update_two_path, data: { "turbo-action": "replace" }) do |form| %>
     <%= render 'shared/form_errors_notice', record: @profile %>
 
     <%= render 'profiles/form_section_2', form: form %>

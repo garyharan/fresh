@@ -2,7 +2,9 @@
   <% if @images.any? %>
     <div class="grid justify-items-stretch">
       <div class="w-fit justify-self-center mr-4 mt-10">
-        <%= button_to "Next", onboarding_four_path, method: :get, class: "justify-self-end text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-64 px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" %>
+        <%= form_with url: onboarding_four_path, method: :get, data: { turbo_action: "replace" }, class: "justify-self-end" do %>
+          <%= submit_tag "Next", class: "text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-64 px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" %>
+        <% end %>
       </div>
     </div>
   <% else %>

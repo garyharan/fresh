@@ -1,36 +1,26 @@
-<div class="hn:bg-red-100">
-  <% if alert = flash[:alert] %>
-    <p class="py-2 px-3 bg-red-50 mb-5 text-red-500 font-medium rounded-lg inline-block" id="alert"><%= alert %></p>
-  <% end %>
+<% if hotwire_native? %>
+  <% content_for(:title, "Sign In") %>
+<% else %>
+  <h1 class="font-bold text-4xl">Sign in</h1>
+<% end %>
 
-  <% if notice = flash[:notice] %>
-    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-  <% end %>
+<%= form_with url: session_url, class: "contents", data: { "turbo-action": "replace"} do |form| %>
+  <div class="my-5">
+    <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address], class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
 
-  <% if hotwire_native? %>
-    <% content_for(:title, "Sign In") %>
-  <% else %>
-    <h1 class="font-bold text-4xl">Sign in</h1>
-  <% end %>
+  <div class="my-5">
+    <%= form.password_field :password, required: true, autocomplete: "current-password", placeholder: "Enter your password", class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
 
-  <%= form_with url: session_url, class: "contents" do |form| %>
-    <div class="my-5">
-      <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address], class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
-    </div>
+  <div class="inline hotwire-native:hidden">
+    <%= form.submit "Sign in", class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer", data: {
+      controller: "bridge--button",
+      bridge_title: "Sign in"
+    } %>
+  </div>
 
-    <div class="my-5">
-      <%= form.password_field :password, required: true, autocomplete: "current-password", placeholder: "Enter your password", class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
-    </div>
-
-    <div class="inline hotwire-native:hidden">
-      <%= form.submit "Sign in", class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer", data: {
-        controller: "bridge--button",
-        bridge_title: "Sign in"
-      } %>
-    </div>
-
-    <div class="mt-4 text-sm text-gray-500 sm:mt-0">
-      <%= link_to "Forgot password?", new_password_path, class: "text-gray-700 underline" %>
-    </div>
-  <% end %>
-</div>
+  <div class="mt-4 text-sm text-gray-500 sm:mt-0">
+    <%= link_to "Forgot password?", new_password_path, class: "text-gray-700 underline" %>
+  </div>
+<% end %>

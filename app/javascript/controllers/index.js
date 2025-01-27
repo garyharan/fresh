@@ -28,6 +28,9 @@ application.register("dropdown", DropdownController)
 import EntranceController from "./entrance_controller"
 application.register("entrance", EntranceController)
 
+import FieldErrorsController from "./field_errors_controller"
+application.register("field-errors", FieldErrorsController)
+
 import FlashController from "./flash_controller"
 application.register("flash", FlashController)
 

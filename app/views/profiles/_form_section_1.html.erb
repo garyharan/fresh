@@ -19,7 +19,7 @@
   <div class="m-5">
     <h2 class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"><%= t(:born_on) %> <%= error_messages_for(@profile, :born_on) %>
     </h2>
-    <div class="flex flex-row justify-center">
+    <div class="flex flex-row justify-center my-2" data-controller="field-errors">
       <%= form.date_select(:born_on, {
         order: [:day, :month, :year], start_year: 1920, end_year: 2004, default: 18.years.ago, prompt: { day: 'Day', month: 'Month', year: 'Year'},
         with_css_classes:
