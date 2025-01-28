@@ -11,7 +11,9 @@
 <div class="w-full">
   <div class="mx-auto" style="max-width: 1024px;">
     <ul class="space-y-2">
-      <%= render @profiles %>
+      <% @profiles.each do |profile| %>
+        <%= render profile %>
+      <% end %>
     </ul>
   </div>
 </div>

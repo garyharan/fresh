@@ -1,5 +1,5 @@
 <li>
-  <%= link_to profile, class: "flex flex-col md:flex-row items-center p-2 m-2 shadow bg-white border hover:border-slate-300 rounded-lg" do %>
+  <%= link_to profile_path(profile), class: "flex flex-col md:flex-row items-center p-2 m-2 shadow bg-red-300 border hover:border-slate-300 rounded-lg" do %>
     <%= render partial: "profiles/header", locals: { profile: profile } %>
 
     <div class="flex grow basis-1/2 justify-end items-stretch text-center">

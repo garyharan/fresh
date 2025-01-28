@@ -40,7 +40,6 @@ Rails.application.routes.draw do
     end
   end
 
-  get 'profile', to: 'profile#show'
   resources :profiles do
     resources :images, except: :update do
       patch :sort, on: :collection
@@ -53,6 +52,7 @@ Rails.application.routes.draw do
     resources :likes, only: %i[create destroy]
     resources :passes, only: %i[create destroy]
   end
+  get 'profile', to: 'profile#show'
 
   resources :public_profiles, only: %i[show]
 
