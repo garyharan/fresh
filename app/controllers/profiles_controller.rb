@@ -48,8 +48,7 @@ class ProfilesController < ApplicationController
     respond_to do |format|
       if update_profile!
         format.html do
-          redirect_to profile_url(@profile),
-                      notice: "Profile was successfully updated."
+          redirect_to edit_profile_url(@profile), notice: "Profile was successfully updated."
         end
         format.json { render :show, status: :ok, location: @profile }
       else

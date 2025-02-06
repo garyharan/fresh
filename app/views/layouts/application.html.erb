@@ -4,10 +4,14 @@
     <%= render 'layouts/header' %>
   </head>
 
-  <body class="text-slate-700" data-user-id="<%= authenticated? ? Current.user.id : -1 %>" <%= hotwire_native? ? "data-hotwire-native=true" : "" %>>
-      <%= render "shared/nav" unless hotwire_native?%>
+  <body
+    class="text-slate-700 mb-0 pb-0"
+    data-user-id="<%= authenticated? ? Current.user.id : -1 %>"
+    <%= hotwire_native? ? 'data-hotwire-native=true' : '' %>
+  >
+      <%= render "shared/nav" unless hotwire_native? %>
 
-      <main class="hotwire-native:m-0">
+      <main class="hotwire-native:m-0" <%= hotwire_native? || true ? 'data-controller="bridge--vibrate"' : '' %>>
         <%= render "shared/flashes" %>
         <%= yield %>
       </main>

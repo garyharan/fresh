@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Draggable Item</title>
+    <style>
+        #draggable {
+            width: 100px;
+            height: 100px;
+            background-color: royalblue;
+            color: white;
+            text-align: center;
+            line-height: 100px;
+            position: absolute;
+            cursor: grab;
+            user-select: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="draggable" draggable="true">Drag Me</div>
+
+    <script>
+        const item = document.getElementById("draggable");
+
+        let offsetX = 0, offsetY = 0;
+
+        item.addEventListener("touchstart", (e) => {
+            const touch = e.touches[0];
+            offsetX = touch.clientX - item.getBoundingClientRect().left;
+            offsetY = touch.clientY - item.getBoundingClientRect().top;
+            item.style.position = "absolute";
+        });
+
+        item.addEventListener("touchmove", (e) => {
+            e.preventDefault(); // Prevents page scrolling in Safari
+            const touch = e.touches[0];
+            item.style.left = touch.clientX - offsetX + "px";
+            item.style.top = touch.clientY - offsetY + "px";
+        });
+    </script>
+
+</body>
+</html>

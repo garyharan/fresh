@@ -7,7 +7,10 @@ export default class extends BridgeComponent {
     super.connect()
 
     const title = this.bridgeElement.bridgeAttribute("title")
-    this.send("connect", {title}, () => {
+    const position = this.bridgeElement.bridgeAttribute("position")
+    const vibrate = this.bridgeElement.bridgeAttribute("vibrate")
+
+    this.send("connect", {title, position, vibrate}, () => {
       this.bridgeElement.click()
     })
   }

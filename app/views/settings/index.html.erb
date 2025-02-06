@@ -25,4 +25,17 @@
       </div>
     <% end %>
   <% end %>
+  <%= link_to session_path, method: :delete, class: "flex flex-row items-center bg-white p-2 my-4 border rounded-lg text-lg font-normal text-gray-900", data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to sign out?"} do %>
+    <div class="flex w-full">
+      <div class="flex-none">
+        <svg class="w-6 h-6 m-2" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25a2.25 2.25 0 00-2.25-2.25h-3a2.25 2.25 0 00-2.25 2.25V9m-3 0h12m-6 0v10.5m0 0H9.75m3 0h3.75"></path></svg>
+      </div>
+      <div class="grow my-auto">
+        Logout
+      </div>
+      <div class="flex-none my-auto">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"></path></svg>
+      </div>
+    </div>
+  <% end %>
 </section>

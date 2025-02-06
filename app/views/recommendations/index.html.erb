@@ -1,13 +1,13 @@
 <%= turbo_frame_tag 'recommended_profile' do %>
-  <div class="mx-auto" style="max-width: 1024px;">
 
+
+  <div class="mx-2" style="">
     <% if @profile %>
 
       <div style="opacity: 0; transition: opacity 1s;" data-controller="entrance">
-        <div class="mx-auto text-center shadow rounded-lg bg-white mx-4 my-3 md:my-6 overflow-clip">
+        <div class="mx-auto text-center shadow rounded-lg bg-white mx-4 my-0 md:my-6 overflow-clip">
 
           <div class="flex flex-col md:flex-row m-4 text-sm font-medium text-gray-500 rounded-lg">
-
 
             <div class="flex flex-col m-4 order-last md:order-first">
               <div class="text-3xl font-bold text-slate-600 text-left">
@@ -31,16 +31,8 @@
 
             </div>
 
-            <div class="md:grow hidden md:flex">
-            </div>
-
             <div class="order-first md:order-last flex flex-col md:flex-row justify-center">
-              <div class="p-4 md:p-5">
-                <%= render partial: 'pass', locals: { profile: @profile } %>
-              </div>
-              <div class="pb-0 md:p-5">
-                <%= render partial: 'like', locals: { profile: @profile } %>
-              </div>
+
             </div>
 
           </div>
@@ -95,6 +87,27 @@
 
       <%= render "profiles/carousel" %>
 
+      <div class="flex flex-row justify-between space-x-4">
+        <%= form_with url: pass_recommendation_path(@profile), method: :post, local: true, class: 'w-full' do |form| %>
+          <%= form.submit 'Pass', class: 'inline-flex grow-3 items-center justify-center w-full px-4 py-2.5 text-xl font-medium text-center text-red-500 bg-white border border-red-500 rounded-xl hover:bg-red-100 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900', data: {
+            controller: "bridge--button",
+            bridge_title: "Pass",
+            bridge_position: "left",
+            bridge_vibrate: true
+          } %>
+        <% end %>
+
+        <div class="grow-1"></div>
+
+        <%= form_with url: like_recommendation_path(@profile), method: :post, local: true, class: "w-full" do |form| %>
+          <%= form.submit 'Like', class: 'inline-flex grow-3 w-full items-center justify-center px-4 py-2.5 text-xl font-medium text-center text-white bg-green-500 rounded-lg hover:bg-green-600 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900', data: {
+            controller: "bridge--button",
+            bridge_title: "Like",
+            bridge_position: "right",
+            bridge_vibrate: true
+          } %>
+        <% end %>
+      </div>
     <% else %>
 
       <div class="flex flex-col items-center justify-center h-screen mx-2 md:mx-auto max-w-prose">
@@ -114,5 +127,6 @@
       </div>
 
     <% end %>
+
   </div>
 <% end %>
