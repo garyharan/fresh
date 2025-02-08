@@ -11,7 +11,7 @@ if Gender.count.zero?
 end
 
 if Rails.env.development? || Rails.env.test?
-  if User.count < 10
+  if User.count < 20
     (0..10).each do |number|
       u =
         User.new email_address: Faker::Internet.email,
@@ -33,17 +33,25 @@ if Rails.env.development? || Rails.env.test?
                       Profile::POSSIBLE_RELATIONSHIP_STYLES.sample,
                     drinking: Profile::POSSIBLE_DRINKING_OPTIONS.sample,
                     smoking: Profile::POSSIBLE_SMOKING_OPTIONS.sample,
-                    height: (150..200).to_a.sample
+                    height: (150..200).to_a.sample,
+                    longitude: [-73.7530656, -73.43277933544931, -73.5698065].sample,
+                    latitude: [45.5757802, 45.5031824, 45.498372796415964].sample
+
       p.save(validate: false)
 
-      image = p.images.create
-      image.photo.attach(
-        io:
-          File.open(
-            Rails.root.join("test/fixtures/files/seed/", "#{number}.png")
-          ),
-        filename: "#{number}.png"
-      )
+      4.times do
+        image = p.images.create
+        image.photo.attach(
+          io:
+            File.open(
+              Rails.root.join("test/fixtures/files/seed/", "#{number}.png")
+            ),
+          filename: "#{number}.png"
+        )
+      end
+
+      p.cards.create kind: 'about_me', title: 'self_summary', content: "Half French and Half French Canadian but totally bilingual. Fan of cuddling and much more..."
+      p.cards.create kind: 'aspirations', title: 'current_goal', content: "Take over DOGE and give the government back to its people"
     end
   end
 end
