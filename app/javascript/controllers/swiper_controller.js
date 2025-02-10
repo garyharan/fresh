@@ -42,8 +42,12 @@ export default class extends Controller {
     const hitTriggerPoint = Math.abs(newX) > triggerPoint
 
     if (hitTriggerPoint) {
-      // document.getElementById("debug").innerText = "Triggered!!" + new Date().toISOString()
-      console.info("triggered like or pass!")
+      document.getElementById("debug").innerText = "We hit trigger point"
+      if (newX - triggerPoint > 0) {
+        window.dispatchEvent(new Event("like"))
+      } else {
+        window.dispatchEvent(new Event("pass"))
+      }
     } else {
       this.element.style.transition = "left 0.3s, transform 0.3s";
       this.element.style.left = `${this.boundingClientRect.left}px`;
