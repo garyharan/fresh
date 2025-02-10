@@ -37,6 +37,9 @@ application.register("field-errors", FieldErrorsController)
 import FlashController from "./flash_controller"
 application.register("flash", FlashController)
 
+import GalleryController from "./gallery_controller"
+application.register("gallery", GalleryController)
+
 import GrowingTextareaController from "./growing_textarea_controller"
 application.register("growing-textarea", GrowingTextareaController)
 

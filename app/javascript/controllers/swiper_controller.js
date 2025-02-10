@@ -10,6 +10,7 @@ export default class extends Controller {
 
     this.element.addEventListener("touchstart", this.start.bind(this))
     this.element.addEventListener("touchmove", this.move.bind(this))
+    this.element.addEventListener("touchend", this.end.bind(this))
   }
 
   start(event) {
@@ -20,22 +21,37 @@ export default class extends Controller {
   }
 
   move(event) {
-    event.preventDefault(); // Prevents page scrolling in Safari
+    event.preventDefault(); // Prevents page scrolling
     const touch = event.touches[0];
 
     const newX = touch.clientX - this.offsetX;
-    const newY = touch.clientY - this.offsetY;
 
     const screenWidth = window.innerWidth;
     const deltaX = newX - this.boundingClientRect.left;
-    const rotation = (deltaX / screenWidth) * 30; // Scale to ±15 degrees
+    const rotation = (deltaX / screenWidth) * 15;
     this.element.style.left = `${newX}px`;
-    this.element.style.top = `${newY}px`;
     this.element.style.transform = `rotate(${rotation}deg)`;
+  }
 
-    const opacity = 1 - (Math.abs(rotation) / 15 / 2);
-    this.element.style.opacity = opacity;
+  end(event) {
+    const touch = event.changedTouches[0]
+    const newX = touch.clientX - this.offsetX
+    const screenWidth = window.innerWidth
 
-    console.log(`moving: ${this.element.style.left}, rotation: ${rotation}deg, opacity: ${opacity}`);
+    const triggerPoint = screenWidth / 2 // if moved more than half a screen
+    const hitTriggerPoint = Math.abs(newX) > triggerPoint
+
+    if (hitTriggerPoint) {
+      // document.getElementById("debug").innerText = "Triggered!!" + new Date().toISOString()
+      console.info("triggered like or pass!")
+    } else {
+      this.element.style.transition = "left 0.3s, transform 0.3s";
+      this.element.style.left = `${this.boundingClientRect.left}px`;
+      this.element.style.transform = "rotate(0deg)";
+    }
+
+    setTimeout(() => {
+      this.element.style.transition = "";
+    }, 300);
   }
 }

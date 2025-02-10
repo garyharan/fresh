@@ -12,9 +12,17 @@
               <%= image_tag(@profile.images.first.photo.variant(:medium), class: "w-24 h-24 md:w-40 md:h-40 rounded-full cursor-zoom-in", alt: @profile.display_name, index: 0) %>
             <% end %>
           <% else %>
-            <svg class="w-24 h-24 inline border rounded-md" fill="white" stroke="black" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" style="transform: scale(4);"></path>
-            </svg>
+            <% if hotwire_native? && controller_name == "profile" || @profile.id == Current.user.profile.id %>
+                <%= link_to profile_images_path(@profile) do %><%# no index on image to avoid carousel kicking in %>
+                  <svg class="w-24 h-24 inline border rounded-md" fill="white" stroke="black" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" style="transform: scale(4);"></path>
+                  </svg>
+                <% end %>
+              <% else %>
+                  <svg class="w-24 h-24 inline border rounded-md" fill="white" stroke="black" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" style="transform: scale(4);"></path>
+                  </svg>
+              <% end %>
           <% end %>
         </div>
       </div>

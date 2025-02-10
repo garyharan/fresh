@@ -1,0 +1,14 @@
+<div class="size-full bg-red-600">
+  <div class="bg-red-300 border border-blue-300 w-96 h-96 mx-auto relative object-cover" data-controller="gallery swiper">
+    <% @profiles.first.images.each_with_index do |image| %>
+      <%= image_tag image.photo, loading: "lazy", class: "object-cover h-full w-full absolute top-0 left-0"  %>
+    <% end %>
+  </div>
+</div>
+
+<div
+  id="debug"
+  class=""
+  data-controller="bridge--like" onclick="this.innerText = parseInt(this.innerText + 1)">
+1
+</div>

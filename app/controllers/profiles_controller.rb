@@ -6,6 +6,7 @@ class ProfilesController < ApplicationController
 
   # GET /profiles or /profiles.json
   def index
+    @profiles = Profile.recommended(Current.user.profile)
   end
 
   def passed
