@@ -1,11 +1,11 @@
 <% content_for(:title, "Discovery") %>
 
-<div data-controller="vibrator swiper" class="h-dvh">
+<div data-controller="vibrator swiper" class="h-dvh py-4">
 <% [User.find(12).profile].each do |profile| # @profiles.each do |profile| %>
-  <div class="flex flex-col">
-      <div class="border border-blue-300 w-96 h-96 mx-auto mt-2 relative object-cover light:bg-white dark:bg-black" data-controller="gallery" data-swiper-target="images">
+  <div class="flex flex-col items-center justify-center">
+      <div class="border border-blue-300 w-96 h-96 relative my-auto object-cover light:bg-white dark:bg-black" data-controller="gallery" data-swiper-target="images">
         <% profile.images.each_with_index do |image| %>
-          <%= image_tag image.photo, loading: "lazy", class: "object-cover h-full w-full absolute top-0 left-0  bg-white dark:bg-black"  %>
+          <%= image_tag image.photo, loading: "lazy", class: "object-cover h-full w-full absolute top-0 bg-white dark:bg-black"  %>
         <% end %>
       </div>
       <div class="grow">spacer</div>

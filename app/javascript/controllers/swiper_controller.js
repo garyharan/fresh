@@ -4,9 +4,9 @@ export default class extends Controller {
   static targets =  ["images", "passButton", "likeButton"]
 
   connect() {
-    console.info("asdfa")
     this.offsetX = 0
     this.offsetY = 0
+
     this.boundingClientRect = this.element.getBoundingClientRect()
     this.imagesTarget.addEventListener("touchstart", this.start.bind(this))
 
@@ -16,9 +16,10 @@ export default class extends Controller {
 
   start(event) {
     const touch = event.touches[0];
+
     this.offsetX = touch.clientX - this.boundingClientRect.left
     this.offsetY = touch.clientY - this.boundingClientRect.top
-    this.element.style.position = "absolute"
+
   }
 
   move(event) {
@@ -32,8 +33,6 @@ export default class extends Controller {
     const rotation = (deltaX / screenWidth) * 15;
     this.imagesTarget.style.left = `${newX}px`;
     this.imagesTarget.style.transform = `rotate(${rotation}deg)`;
-
-    console.info(this.percentageToTriggerPoint(newX));
 
     if (newX > 0) {
       this.likeButtonTarget.style.opacity = 1.0
@@ -59,25 +58,26 @@ export default class extends Controller {
     if (this.hitTriggerPoint(newX)) {
       window.dispatchEvent(new Event("vibrateHeavy"))
     } else {
-      this.reset()
+      this.reset(event)
     }
-
-    setTimeout(() => {
-      this.imagesTarget.style.transition = "";
-    }, 300);
   }
 
-  reset() {
+  reset(event) {
     this.likeButtonTarget.style.opacity = 1.0
     this.passButtonTarget.style.opacity = 1.0
 
     this.likeButtonTarget.style.transform = "scale(1)"
     this.passButtonTarget.style.transform = "scale(1)"
 
-
-    this.imagesTarget.style.transition = "left 0.3s, transform 0.3s";
-    this.imagesTarget.style.left = `${this.boundingClientRect.left}px`;
+    this.imagesTarget.style.transition = "left 0.3s, top 0.3s, transform 0.3s";
+    this.imagesTarget.style.position = "relative"
+    this.imagesTarget.style.left = "0px"
+    this.imagesTarget.style.top = "0px"
     this.imagesTarget.style.transform = "rotate(0deg)";
+
+    setTimeout(() => {
+      this.imagesTarget.style.transition = "";
+    }, 300);
   }
 
   hitTriggerPoint(newX) {
