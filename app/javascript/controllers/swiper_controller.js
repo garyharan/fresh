@@ -1,14 +1,17 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
+  static targets =  ["images", "passButton", "likeButton"]
+
   connect() {
+    console.info("asdfa")
     this.offsetX = 0
     this.offsetY = 0
     this.boundingClientRect = this.element.getBoundingClientRect()
+    this.imagesTarget.addEventListener("touchstart", this.start.bind(this))
 
-    this.element.addEventListener("touchstart", this.start.bind(this))
-    this.element.addEventListener("touchmove", this.move.bind(this))
-    this.element.addEventListener("touchend", this.end.bind(this))
+    this.imagesTarget.addEventListener("touchmove", this.move.bind(this))
+    this.imagesTarget.addEventListener("touchend", this.end.bind(this))
   }
 
   start(event) {
@@ -27,8 +30,22 @@ export default class extends Controller {
     const screenWidth = window.innerWidth;
     const deltaX = newX - this.boundingClientRect.left;
     const rotation = (deltaX / screenWidth) * 15;
-    this.element.style.left = `${newX}px`;
-    this.element.style.transform = `rotate(${rotation}deg)`;
+    this.imagesTarget.style.left = `${newX}px`;
+    this.imagesTarget.style.transform = `rotate(${rotation}deg)`;
+
+    console.info(this.percentageToTriggerPoint(newX));
+
+    if (newX > 0) {
+      this.likeButtonTarget.style.opacity = 1.0
+      this.passButtonTarget.style.opacity = 0.5
+      this.likeButtonTarget.style.transform = "scale(" + Math.min(this.percentageToTriggerPoint(newX) + 1 , 1.5) + ")"
+      this.passButtonTarget.style.transform = "scale(" + Math.max(0, 1 - this.percentageToTriggerPoint(newX)) + ")"
+    } else if (newX < 0) {
+      this.likeButtonTarget.style.opacity = 0.5
+      this.passButtonTarget.style.opacity = 1.0
+      this.likeButtonTarget.style.transform = "scale(" + Math.max(0, 1 - this.percentageToTriggerPoint(newX)) + ")"
+      this.passButtonTarget.style.transform = "scale(" + Math.min(this.percentageToTriggerPoint(newX) + 1 , 1.5) + ")"
+    }
 
     if (this.hitTriggerPoint(newX)) {
       window.dispatchEvent(new Event("vibrateLight"))
@@ -42,19 +59,36 @@ export default class extends Controller {
     if (this.hitTriggerPoint(newX)) {
       window.dispatchEvent(new Event("vibrateHeavy"))
     } else {
-      this.element.style.transition = "left 0.3s, transform 0.3s";
-      this.element.style.left = `${this.boundingClientRect.left}px`;
-      this.element.style.transform = "rotate(0deg)";
+      this.reset()
     }
 
     setTimeout(() => {
-      this.element.style.transition = "";
+      this.imagesTarget.style.transition = "";
     }, 300);
+  }
+
+  reset() {
+    this.likeButtonTarget.style.opacity = 1.0
+    this.passButtonTarget.style.opacity = 1.0
+
+    this.likeButtonTarget.style.transform = "scale(1)"
+    this.passButtonTarget.style.transform = "scale(1)"
+
+
+    this.imagesTarget.style.transition = "left 0.3s, transform 0.3s";
+    this.imagesTarget.style.left = `${this.boundingClientRect.left}px`;
+    this.imagesTarget.style.transform = "rotate(0deg)";
   }
 
   hitTriggerPoint(newX) {
     const screenWidth = window.innerWidth
     const triggerPoint = screenWidth / 2.5 // a little less than half a screen
     return Math.abs(newX) > triggerPoint
+  }
+
+  percentageToTriggerPoint(newX) {
+    const screenWidth = window.innerWidth
+    const triggerPoint = screenWidth / 2.5 // a little less than half a screen
+    return Math.min(1, Math.abs(newX) / triggerPoint);
   }
 }

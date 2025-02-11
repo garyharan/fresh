@@ -1,17 +1,25 @@
 <% content_for(:title, "Discovery") %>
 
-<div class="flex flex-col">
-  <% [@profiles.sample].each do |profile| %>
-    <div class="size-full bg-red-600" data-controller="vibrator">
-      <div class="bg-red-300 border border-blue-300 w-96 h-96 mx-auto relative object-cover" data-controller="gallery swiper">
-        <% @profiles.first.images.each_with_index do |image| %>
-          <%= image_tag image.photo, loading: "lazy", class: "object-cover h-full w-full absolute top-0 left-0"  %>
+<div data-controller="vibrator swiper" class="h-dvh">
+<% [User.find(12).profile].each do |profile| # @profiles.each do |profile| %>
+  <div class="flex flex-col">
+      <div class="border border-blue-300 w-96 h-96 mx-auto mt-2 relative object-cover light:bg-white dark:bg-black" data-controller="gallery" data-swiper-target="images">
+        <% profile.images.each_with_index do |image| %>
+          <%= image_tag image.photo, loading: "lazy", class: "object-cover h-full w-full absolute top-0 left-0  bg-white dark:bg-black"  %>
         <% end %>
       </div>
-    </div>
-    <div id="like_button" onclick="this.innerText = parseInt(this.innerText) + 1">1</div>
-  <% end %>
-  <% if @profiles.empty? %>
-    <h2>No profiles to show yet.  Come back soon.</h2>
-  <% end %>
+      <div class="grow">spacer</div>
+  </div>
+  <div class="flex flex-row mx-auto fixed bottom-0 w-full justify-center">
+    <%= button_to 'Pass', profile_passes_path(profile_id: profile.id), method: :post, class: "m-4 bg-red-500 text-white py-2 px-4 rounded-full", data: { 'swiper-target': "passButton" } %>
+    <%= button_to 'Like', profile_likes_path(profile_id: profile.id), method: :post, class: "m-4 bg-blue-500 text-white py-2 px-4 rounded-full", data: { 'swiper-target': "likeButton" } %>
+  </div>
+<% end %>
 </div>
+
+
+<% if @profiles.empty? %>
+  <div class="flex items-center justify-center h-svh">
+    <p>No profiles to show yet. Come back soon.</p>
+  </div>
+<% end %>
