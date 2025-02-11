@@ -1,17 +1,7 @@
-<div class="size-full bg-red-600">
+<div class="size-full bg-red-600" data-controller="liker">
   <div class="bg-red-300 border border-blue-300 w-96 h-96 mx-auto relative object-cover" data-controller="gallery swiper">
     <% @profiles.first.images.each_with_index do |image| %>
       <%= image_tag image.photo, loading: "lazy", class: "object-cover h-full w-full absolute top-0 left-0"  %>
     <% end %>
   </div>
-</div>
-
-<div class="bg-green-300" data-controller="liker">
- LIKER
-</div>
-
-<div
-  id="debug"
-  class="absolute bottom-2 right-2">
-1
 </div>

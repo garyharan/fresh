@@ -6,8 +6,6 @@ export default class extends Controller {
     this.offsetY = 0
     this.boundingClientRect = this.element.getBoundingClientRect()
 
-    console.log(this.boundingClientRect)
-
     this.element.addEventListener("touchstart", this.start.bind(this))
     this.element.addEventListener("touchmove", this.move.bind(this))
     this.element.addEventListener("touchend", this.end.bind(this))
@@ -42,11 +40,10 @@ export default class extends Controller {
     const hitTriggerPoint = Math.abs(newX) > triggerPoint
 
     if (hitTriggerPoint) {
-      document.getElementById("debug").innerText = "We hit trigger point"
       if (newX - triggerPoint > 0) {
-        window.dispatchEvent(new Event("like"))
+        window.dispatchEvent(new Event("vibrateLight"))
       } else {
-        window.dispatchEvent(new Event("pass"))
+        window.dispatchEvent(new Event("vibrateHeavy"))
       }
     } else {
       this.element.style.transition = "left 0.3s, transform 0.3s";

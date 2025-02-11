@@ -2,9 +2,16 @@
 
 <div class="flex flex-col">
   <% [@profiles.sample].each do |profile| %>
-    <%= render partial: "selectable_profile", locals: { profile: profile }  %>
+    <div class="size-full bg-red-600" data-controller="vibrator">
+      <div class="bg-red-300 border border-blue-300 w-96 h-96 mx-auto relative object-cover" data-controller="gallery swiper">
+        <% @profiles.first.images.each_with_index do |image| %>
+          <%= image_tag image.photo, loading: "lazy", class: "object-cover h-full w-full absolute top-0 left-0"  %>
+        <% end %>
+      </div>
+    </div>
+    <div id="like_button" onclick="this.innerText = parseInt(this.innerText) + 1">1</div>
   <% end %>
   <% if @profiles.empty? %>
-    <h2>No profiles to show</h2>
+    <h2>No profiles to show yet.  Come back soon.</h2>
   <% end %>
 </div>

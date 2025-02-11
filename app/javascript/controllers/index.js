@@ -49,9 +49,6 @@ application.register("height", HeightController)
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
-import LikerController from "./liker_controller"
-application.register("liker", LikerController)
-
 import LocationController from "./location_controller"
 application.register("location", LocationController)
 
@@ -84,3 +81,6 @@ application.register("sortable", SortableController)
 
 import SwiperController from "./swiper_controller"
 application.register("swiper", SwiperController)
+
+import VibratorController from "./vibrator_controller"
+application.register("vibrator", VibratorController)
