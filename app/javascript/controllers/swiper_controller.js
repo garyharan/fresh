@@ -54,7 +54,7 @@ export default class extends Controller {
 
   hitTriggerPoint(newX) {
     const screenWidth = window.innerWidth
-    const triggerPoint = screenWidth / 2 // if moved more than half a screen
+    const triggerPoint = screenWidth / 2.5 // a little less than half a screen
     return Math.abs(newX) > triggerPoint
   }
 }
