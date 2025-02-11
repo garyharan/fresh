@@ -29,22 +29,18 @@ export default class extends Controller {
     const rotation = (deltaX / screenWidth) * 15;
     this.element.style.left = `${newX}px`;
     this.element.style.transform = `rotate(${rotation}deg)`;
+
+    if (this.hitTriggerPoint(newX)) {
+      window.dispatchEvent(new Event("vibrateLight"))
+    }
   }
 
   end(event) {
     const touch = event.changedTouches[0]
     const newX = touch.clientX - this.offsetX
-    const screenWidth = window.innerWidth
 
-    const triggerPoint = screenWidth / 2 // if moved more than half a screen
-    const hitTriggerPoint = Math.abs(newX) > triggerPoint
-
-    if (hitTriggerPoint) {
-      if (newX - triggerPoint > 0) {
-        window.dispatchEvent(new Event("vibrateLight"))
-      } else {
-        window.dispatchEvent(new Event("vibrateHeavy"))
-      }
+    if (this.hitTriggerPoint(newX)) {
+      window.dispatchEvent(new Event("vibrateHeavy"))
     } else {
       this.element.style.transition = "left 0.3s, transform 0.3s";
       this.element.style.left = `${this.boundingClientRect.left}px`;
@@ -54,5 +50,11 @@ export default class extends Controller {
     setTimeout(() => {
       this.element.style.transition = "";
     }, 300);
+  }
+
+  hitTriggerPoint(newX) {
+    const screenWidth = window.innerWidth
+    const triggerPoint = screenWidth / 2 // if moved more than half a screen
+    return Math.abs(newX) > triggerPoint
   }
 }
