@@ -4,12 +4,27 @@ export default class extends Controller {
   connect() {
     this.images = this.element.getElementsByTagName("img")
 
-    this.selectedIndex = 0
-    this.display(0)
+    this.setupPageIndicator()
 
     this.element.addEventListener("click", (event) => {
       this.slide(event)
     })
+
+    this.selectedIndex = 0
+    this.display(0)
+  }
+
+  setupPageIndicator() {
+    this.pageIndicator = document.createElement("div")
+    this.pageIndicator.classList.add("relative", "top-1", "left-0", "z-101", "w-full", "flex", "justify-center")
+
+    Array.from(this.images).forEach((image) => {
+      const div = document.createElement("div")
+      div.classList.add("bg-slate-100", "h-1", "z-100", "mx-1", "flex-grow", "rounded-full", "border", "border-slate-300")
+      this.pageIndicator.appendChild(div)
+    })
+
+    this.element.appendChild(this.pageIndicator)
   }
 
   slide(e) {
@@ -27,6 +42,17 @@ export default class extends Controller {
     Array.from(this.images).forEach((image, i) => {
       image.style.display = i === index ? "block" : "none"
     })
+
+    Array.from(this.pageIndicator.children).forEach((indicator, i) => {
+      if (i === index) {
+        indicator.classList.remove("bg-slate-500")
+        indicator.classList.add("bg-slate-100")
+      } else {
+        indicator.classList.remove("bg-slate-100")
+        indicator.classList.add("bg-slate-500")
+      }
+    })
+
     this.selectedIndex = index
   }
 }

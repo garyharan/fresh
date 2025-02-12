@@ -4,6 +4,8 @@ class LikesController < ApplicationController
     @like =
       Like.create! profile_id: params[:profile_id],
                    user_id: Current.user.id
+
+    redirect_to(profiles_path)
   end
 
   def destroy

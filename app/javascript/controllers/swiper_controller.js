@@ -8,8 +8,8 @@ export default class extends Controller {
     this.offsetY = 0
 
     this.boundingClientRect = this.element.getBoundingClientRect()
-    this.imagesTarget.addEventListener("touchstart", this.start.bind(this))
 
+    this.imagesTarget.addEventListener("touchstart", this.start.bind(this))
     this.imagesTarget.addEventListener("touchmove", this.move.bind(this))
     this.imagesTarget.addEventListener("touchend", this.end.bind(this))
   }
@@ -19,7 +19,6 @@ export default class extends Controller {
 
     this.offsetX = touch.clientX - this.boundingClientRect.left
     this.offsetY = touch.clientY - this.boundingClientRect.top
-
   }
 
   move(event) {
@@ -57,9 +56,22 @@ export default class extends Controller {
 
     if (this.hitTriggerPoint(newX)) {
       window.dispatchEvent(new Event("vibrateHeavy"))
+      if (newX > 0) {
+        this.like(event)
+      } else if (newX < 0) {
+        this.pass(event)
+      }
     } else {
       this.reset(event)
     }
+  }
+
+  like(event) {
+    this.likeButtonTarget.click()
+  }
+
+  pass(event) {
+    this.passButtonTarget.click()
   }
 
   reset(event) {
