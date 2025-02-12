@@ -64,6 +64,9 @@ application.register("password-reset-email", PasswordResetEmailController)
 import PhotosController from "./photos_controller"
 application.register("photos", PhotosController)
 
+import PinchController from "./pinch_controller"
+application.register("pinch", PinchController)
+
 import ReadableController from "./readable_controller"
 application.register("readable", ReadableController)
 
