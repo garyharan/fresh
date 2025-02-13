@@ -1,7 +1,11 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["image"]
+  static targets = [
+    "container",
+    "image",
+    "messaging"
+  ]
 
   connect() {
     this.startDistance = 0
@@ -11,10 +15,15 @@ export default class extends Controller {
     this.startX = 0
     this.startY = 0
     this.isDragging = false
+    this.bounds = this.containerTarget.getBoundingClientRect()
 
     this.imageTarget.addEventListener("touchstart", this.startTouch.bind(this), { passive: false })
     this.imageTarget.addEventListener("touchmove", this.handleMove.bind(this), { passive: false })
     this.imageTarget.addEventListener("touchend", this.endTouch.bind(this))
+
+    this.imageTarget.addEventListener("load", this.checkIfSubmitable.bind(this))
+
+    this.checkIfSubmitable()
   }
 
   startTouch(event) {
@@ -42,6 +51,7 @@ export default class extends Controller {
       this.offsetY = touch.clientY - this.startY
       this.imageTarget.style.transform = `translate(${this.offsetX}px, ${this.offsetY}px) scale(${this.currentScale})`
     }
+    this.checkIfSubmitable()
   }
 
   endTouch(event) {
@@ -49,6 +59,40 @@ export default class extends Controller {
       this.currentScale = parseFloat(this.imageTarget.style.transform.match(/scale\(([^)]+)\)/)?.[1] || 1)
       this.isDragging = false
     }
+  }
+
+  checkIfSubmitable(event) {
+    if (this.inBounds()) {
+      this.messagingTarget.innerHTML = "<p>In bounds</p>"
+    } else {
+      this.messagingTarget.innerHTML = "<p>🚫</p>"
+    }
+  }
+
+  inBounds() {
+    this.containerBounds = this.containerTarget.getBoundingClientRect()
+    this.imageBounds     = this.imageTarget.getBoundingClientRect()
+
+    return this.topIsInBounds() &&
+      this.bottomIsInBounds() &&
+      this.leftIsInBounds() &&
+      this.rightIsInBounds()
+  }
+
+  topIsInBounds() {
+    return this.imageBounds.y <= this.containerBounds.y
+  }
+
+  bottomIsInBounds() {
+    return this.imageBounds.x <= this.containerBounds.x
+  }
+
+  leftIsInBounds() {
+    return (this.imageBounds.width + this.imageBounds.x) >= (this.containerBounds.x + this.containerBounds.width)
+  }
+
+  rightIsInBounds() {
+    return (this.imageBounds.height + this.imageBounds.y) >= (this.containerBounds.y + this.containerBounds.height)
   }
 
   getDistance(touches) {

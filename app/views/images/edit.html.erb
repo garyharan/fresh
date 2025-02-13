@@ -1,7 +1,8 @@
-<div class="mx-auto md:w-2/3 w-full">
+<div class="mx-auto md:w-2/3 w-full" data-controller="pinch">
   <h1 class="font-bold text-4xl">Resize image</h1>
 
-  <div class="mt-4 w-96 h-96 rounded overflow-clip" data-controller="pinch">
-    <%= image_tag @image.photo, class: "", "data-pinch-target": "image" %>
+  <div class="mt-4 w-96 h-96 rounded bg-slate-200 overflow-clip relative" data-pinch-target="container">
+    <%= image_tag @image.photo, class: "relative top-0 left-0", "data-pinch-target": "image" %>
   </div>
+  <div class="" data-pinch-target="messaging"></div>
 </div>
