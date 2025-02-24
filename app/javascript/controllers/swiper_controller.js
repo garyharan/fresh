@@ -12,6 +12,9 @@ export default class extends Controller {
     this.imagesTarget.addEventListener("touchstart", this.start.bind(this))
     this.imagesTarget.addEventListener("touchmove", this.move.bind(this))
     this.imagesTarget.addEventListener("touchend", this.end.bind(this))
+
+    this.likeButtonTarget.addEventListener("click", this.vibrateHeavy.bind(this))
+    this.passButtonTarget.addEventListener("click", this.vibrateHeavy.bind(this))
   }
 
   start(event) {
@@ -55,7 +58,6 @@ export default class extends Controller {
     const newX = touch.clientX - this.offsetX
 
     if (this.hitTriggerPoint(newX)) {
-      window.dispatchEvent(new Event("vibrateHeavy"))
       if (newX > 0) {
         this.like(event)
       } else if (newX < 0) {
@@ -67,10 +69,12 @@ export default class extends Controller {
   }
 
   like(event) {
+    this.vibrateHeavy()
     this.likeButtonTarget.click()
   }
 
   pass(event) {
+    this.vibrateHeavy()
     this.passButtonTarget.click()
   }
 
@@ -102,5 +106,9 @@ export default class extends Controller {
     const screenWidth = window.innerWidth
     const triggerPoint = screenWidth / 2.5 // a little less than half a screen
     return Math.min(1, Math.abs(newX) / triggerPoint);
+  }
+
+  vibrateHeavy() {
+    window.dispatchEvent(new Event("vibrateHeavy"))
   }
 }
