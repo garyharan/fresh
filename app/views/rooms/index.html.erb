@@ -1,8 +1,15 @@
 <% content_for(:title, "Chat") %>
 
-
 <div class="w-full">
   <div id="rooms" class="min-w-full">
+    <% if @rooms.empty? %>
+      <div class="flex items-center justify-center h-svh p-6">
+        <div>
+          <p class="text-xl text-center">Once you have a match you</p>
+          <p class="text-xl text-center">will be able to chat.</p>
+        </div>
+      </div>
+    <% end %>
     <% @rooms.each do |room| %>
       <%= link_to room_path(room), id: dom_id(room), class: "block p-2 m-2 sm:m-4 md:m-6 bg-white border border-gray-200 rounded-lg shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700" do %>
         <div class="flex justify-between relative">

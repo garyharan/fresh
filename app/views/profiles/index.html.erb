@@ -1,8 +1,11 @@
 <% content_for(:title, "Discovery") %>
 
 <% if @profiles.empty? %>
-  <div class="flex items-center justify-center h-svh">
-    <p>No profiles to show yet. Come back soon.</p>
+  <div class="flex items-center justify-center h-svh p-6">
+    <div>
+      <p class="text-xl text-center">No profiles to show yet.</p>
+      <p class="text-xl text-center">Come back soon.</p>
+    </div>
   </div>
 <% else %>
   <div data-controller="vibrator swiper" class="h-dvh py-4">
