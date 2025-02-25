@@ -18,7 +18,7 @@
     <%= form.password_field :password, required: true, autocomplete: "current-password", placeholder: "Enter your password", class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
-  <div class="inline">
+  <div class="my-4">
     <%= form.submit "Sign in", class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer w-full", data: {
       controller: "bridge--button",
       bridge_title: "Sign in",
@@ -26,11 +26,11 @@
     } %>
   </div>
 
-  <div class="mt-4 text-sm text-gray-500 sm:mt-0">
-    <%= link_to "Forgot password?", new_password_path, class: "text-gray-700 underline" %>
+  <div class="mb-4">
+    <%= link_to "Create an account instead", new_user_path, class: "rounded-lg py-3 px-5 bg-white border border-blue-600 text-blue-600 inline-block font-medium cursor-pointer w-full text-center" %>
   </div>
 
-  <div class="">
-    <%= link_to "Create an account instead", new_user_path %>
+  <div class="mt-4 text-sm text-gray-500 sm:mt-0">
+    <%= link_to "Forgot password?", new_password_path, class: "text-gray-700 underline" %>
   </div>
 <% end %>
