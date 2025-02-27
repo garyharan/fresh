@@ -6,21 +6,19 @@ class ConfigurationsController < ApplicationController
       settings: {},
       rules: [
         {
-          patterns: [
-            "/rooms/[0-9]+"
-          ],
-          properties: {
-            view_controller: "chat"
-          }
+          patterns: ["/rooms/[0-9]+"],
+          properties: { view_controller: "chat" }
         },
         {
           patterns: [
-            "/session/new$",
-            "/users/new$"
+            ".*",
+            "/profiles$"
           ],
-          properties: {
-            context: "modal"
-          }
+          properties: { context: "default", push_to_refresh_enabled: "true" }
+        },
+        {
+          patterns: ["/session/new$", "/users/new$"],
+          properties: { context: "modal" }
         }
       ]
     }

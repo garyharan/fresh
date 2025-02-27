@@ -1,10 +1,14 @@
 <% if hotwire_native? %>
   <% content_for(:title, "Create your account") %>
+
+  <div class="flex justify-center py-4">
+    <h1 id="title" title="Fresh.Dating"><span class="text-md">❤</span><span class="text-md md:text-3xl">Fresh.Dating</span></h1>
+  </div>
 <% else %>
-  <h1 class="font-bold text-4xl">Create your account</h1>
+  <h1 class="font-bold text-4xl p-4">Create your account</h1>
 <% end %>
 
-<%= form_with model: @user, url: users_path, method: :post, class: "contents" do |form| %>
+<%= form_with model: @user, url: users_path, method: :post, class: "p-4" do |form| %>
   <div class="my-5">
     <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
@@ -13,12 +17,15 @@
     <%= form.password_field :password, required: true, autocomplete: "current-password", placeholder: "Enter your password", maxlength: 72, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
-  <div class="col-span-6 sm:flex sm:items-center sm:gap-4 hotwire-native:hidden">
-    <div class="inline">
-      <%= form.submit "Sign up", class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer", data: {
-        controller: "bridge--button",
-        bridge_title: "Sign up"
-      } %>
-    </div>
+  <div class="my-4">
+    <%= form.submit "Create my account", class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer w-full", data: {
+      controller: "bridge--button",
+      bridge_title: "Create",
+      bridge_position: "right"
+    } %>
+  </div>
+
+  <div class="mb-4">
+    <%= link_to "Sign in instead", new_session_path, class: "rounded-lg py-3 px-5 bg-white border border-blue-600 text-blue-600 inline-block font-medium cursor-pointer w-full text-center" %>
   </div>
 <% end %>

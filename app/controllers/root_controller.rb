@@ -1,5 +1,5 @@
 class RootController < ApplicationController
-  allow_unauthenticated_access
+  allow_unauthenticated_access only: :index
   before_action :redirect_if_logged_in
 
   def index
