@@ -1,3 +1,7 @@
+<% if hotwire_native? %>
+  <% content_for(:title, "Back") %>
+<% end %>
+
 <div class="hotwire-native:flex flex-col hotwire-native:items-center hotwire-native:justify-center hotwire-native:h-screen">
   <section class="flex justify-between gap-1 p-4">
     <div class="hotwire-native:mx-auto">

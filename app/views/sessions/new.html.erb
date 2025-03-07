@@ -8,7 +8,6 @@
   <h1 class="font-bold text-4xl p-4">Sign in</h1>
 <% end %>
 
-
 <%= form_with url: session_url, class: "p-4", data: { "turbo-action": "replace"} do |form| %>
   <div class="my-5">
     <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address], class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
@@ -30,7 +29,7 @@
     <%= link_to "Create an account instead", new_user_path, class: "rounded-lg py-3 px-5 bg-white border border-blue-600 text-blue-600 inline-block font-medium cursor-pointer w-full text-center" %>
   </div>
 
-  <div class="mt-4 text-sm text-gray-500 sm:mt-0">
+  <div class="mt-4 text-sm text-gray-500 sm:mt-0 hotwire-native:hidden">
     <%= link_to "Forgot password?", new_password_path, class: "text-gray-700 underline" %>
   </div>
 <% end %>

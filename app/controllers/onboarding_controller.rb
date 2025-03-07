@@ -1,8 +1,6 @@
 class OnboardingController < ApplicationController
   before_action :set_profile
 
-  layout 'onboarding'
-
   def one
     @profile.step = 1
   end

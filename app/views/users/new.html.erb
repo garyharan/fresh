@@ -8,7 +8,7 @@
   <h1 class="font-bold text-4xl p-4">Create your account</h1>
 <% end %>
 
-<%= form_with model: @user, url: users_path, method: :post, class: "p-4" do |form| %>
+<%= form_with model: @user, url: users_path, method: :post, class: "p-4", data: { "turbo_action": "replace" } do |form| %>
   <div class="my-5">
     <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
@@ -25,7 +25,7 @@
     } %>
   </div>
 
-  <div class="mb-4">
+  <div class="mb-4 hotwire-native:hidden">
     <%= link_to "Sign in instead", new_session_path, class: "rounded-lg py-3 px-5 bg-white border border-blue-600 text-blue-600 inline-block font-medium cursor-pointer w-full text-center" %>
   </div>
 <% end %>

@@ -9,6 +9,10 @@ class LikesControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
+  test "should redirect to chat room if like is reciprocal" do
+
+  end
+
   test "should get destroy" do
     like = Like.create(profile: profiles(:two), user: profiles(:one).user)
 

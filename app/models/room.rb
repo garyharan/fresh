@@ -12,6 +12,10 @@ class Room < ApplicationRecord
     Room.find_by_profiles(profiles) || Room.create_with_profiles(profiles)
   end
 
+  def self.find_or_create_by_like(like)
+    Room.find_or_create_by_profiles([like.user.profile, like.profile])
+  end
+
   def self.find_by_profiles(profiles)
     Room.joins(:profiles).where(profiles: { id: profiles.map(&:id) }).group("rooms.id").having("count(profiles.id) = ?", profiles.size).first
   end

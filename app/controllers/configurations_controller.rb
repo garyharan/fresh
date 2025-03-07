@@ -6,19 +6,45 @@ class ConfigurationsController < ApplicationController
       settings: {},
       rules: [
         {
-          patterns: ["/rooms/[0-9]+"],
-          properties: { view_controller: "chat" }
+          patterns: [
+            "/rooms/[0-9]+"
+          ],
+          properties: {
+            view_controller: "chat"
+          }
         },
         {
           patterns: [
             ".*",
-            "/profiles$"
+            "/profile$",
+            "/profiles$",
+            "/settings$",
+            "/rooms/$",
           ],
-          properties: { context: "default", push_to_refresh_enabled: "true" }
+          properties: {
+            view_controller: "tab_bar",
+            pull_to_refresh_enabled: "true"
+          }
         },
         {
-          patterns: ["/session/new$", "/users/new$"],
-          properties: { context: "modal" }
+          patterns: [
+            "/$",
+            "/session/new$",
+            "/users/new$",
+            "/onboarding/.*"
+          ],
+          properties: {
+            view_controller: "onboarding",
+            pull_to_refresh_enabled: "true"
+          }
+        },
+        {
+          patterns: [
+            "/session$"
+          ],
+          properties: {
+            view_controller: "logout"
+          }
         }
       ]
     }
