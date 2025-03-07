@@ -9,8 +9,22 @@ class LikesControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test "should redirect to chat room if like is reciprocal" do
+  test "should create a room if like is reciprocal" do
+    Room.all.destroy_all
+    Like.create! profile: profiles(:one), user: users(:velvet)
 
+    assert_difference "Room.count" do
+      post profile_likes_url(profiles(:two), format: :turbo_stream)
+    end
+  end
+
+  test "should redirect to chat room if like is reciprocal" do
+    Like.create! profile: profiles(:one), user: users(:velvet)
+
+    post profile_likes_url(profiles(:two), format: :turbo_stream)
+    assert_redirected_to room_url(
+      Room.find_or_create_by_profiles([profiles(:one), profiles(:two)])
+    )
   end
 
   test "should get destroy" do
