@@ -7,14 +7,6 @@ class ConfigurationsController < ApplicationController
       rules: [
         {
           patterns: [
-            "/rooms/[0-9]+"
-          ],
-          properties: {
-            view_controller: "chat"
-          }
-        },
-        {
-          patterns: [
             ".*",
             "/profile$",
             "/profiles$",
@@ -36,6 +28,14 @@ class ConfigurationsController < ApplicationController
           properties: {
             view_controller: "onboarding",
             pull_to_refresh_enabled: "true"
+          }
+        },
+        {
+          patterns: [
+            "/rooms/[0-9]+"
+          ],
+          properties: {
+            view_controller: "chat"
           }
         },
         {
