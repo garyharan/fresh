@@ -34,11 +34,18 @@ module Authentication
     def request_authentication
       session[:return_to_after_authenticating] = request.url
 
-      redirect_to new_session_path
+      if hotwire_native?
+        trigger_authentication_request_on_device
+      else
+        redirect_to new_session_path
+      end
     end
 
+
     def after_authentication_url
-      session.delete(:return_to_after_authenticating) || root_url
+      cookies.signed[:refresh_url_after_login].tap { cookies.delete(:refresh_url_after_login) } ||
+        session.delete(:return_to_after_authenticating) ||
+        root_url
     end
 
 
@@ -52,5 +59,9 @@ module Authentication
     def terminate_session
       Current.session.destroy
       cookies.delete(:session_id)
+    end
+
+    def trigger_authentication_request_on_device
+      head :unauthorized # 401 unauthorized error opens authentication window on device
     end
 end

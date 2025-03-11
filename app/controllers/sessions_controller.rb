@@ -16,6 +16,11 @@ class SessionsController < ApplicationController
 
   def destroy
     terminate_session
+
+    if hotwire_native?
+      cookies.signed.permanent[:refresh_url_after_login] = request.referrer
+    end
+
     redirect_to new_session_path
   end
 end
