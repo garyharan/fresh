@@ -6,7 +6,8 @@ class ConfigurationsController < ApplicationController
       settings: {},
       rules: [
         patterns: [
-          "/session/new"
+          "/session/new",
+          "/users/new"
         ],
         properties: {
           context: "modal"
