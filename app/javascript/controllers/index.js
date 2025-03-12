@@ -7,8 +7,11 @@ import { application } from "./application"
 import Bridge__ButtonController from "./bridge/button_controller"
 application.register("bridge--button", Bridge__ButtonController)
 
-import Bridge__VibrateController from "./bridge/vibrate_controller"
-application.register("bridge--vibrate", Bridge__VibrateController)
+import Bridge__TitleController from "./bridge/title_controller"
+application.register("bridge--title", Bridge__TitleController)
+
+import Bridge__VibratorController from "./bridge/vibrator_controller"
+application.register("bridge--vibrator", Bridge__VibratorController)
 
 import CardController from "./card_controller"
 application.register("card", CardController)
@@ -84,6 +87,3 @@ application.register("sortable", SortableController)
 
 import SwiperController from "./swiper_controller"
 application.register("swiper", SwiperController)
-
-import VibratorController from "./vibrator_controller"
-application.register("vibrator", VibratorController)

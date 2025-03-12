@@ -5,9 +5,9 @@
     <div class="flex justify-center py-4">
       <h1 id="title" title="Fresh.Dating"><span class="text-md">❤</span><span class="text-md md:text-3xl">Fresh.Dating</span></h1>
     </div>
-  <% else %>
-    <h1 class="font-bold text-4xl p-4">Sign in</h1>
   <% end %>
+
+  <h1 class="font-bold text-4xl p-4 hotwire-native:hidden" data-controller="bridge--title" data-bridge-text="Sign in">Sign in</h1>
 
   <%= form_with url: session_url, class: "p-4", data: { "turbo-action": "replace"} do |form| %>
     <div class="my-5">
