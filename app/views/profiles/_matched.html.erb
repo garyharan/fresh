@@ -1,0 +1,16 @@
+<%= turbo_frame_tag :discovery do %>
+  <div class="text-xxl text-center flex flex-col items-center justify-center h-screen">
+    <div class="">
+      You matched with <%= @like.profile.display_name %>!
+    </div>
+    <div class="mt-4">
+      <%= link_to 'Send a Message', room_path(Room.find_or_create_by_like(@like)), class: 'rounded-lg py-3 px-5 bg-green-600 text-white inline-block font-medium cursor-pointer w-full hover:bg-green-500 active:bg-green-400' %>
+    </div>
+    <div class="mt-4">
+      or
+    </div>
+    <div class="mt-4">
+      <%= link_to 'Continue matching', profiles_path, class: 'rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer w-full hover:bg-blue-500 active:bg-blue-400' %>
+    </div>
+  </div>
+<% end %>

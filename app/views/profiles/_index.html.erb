@@ -1,0 +1,33 @@
+  <% if @profiles.empty? %>
+    <div class="flex items-center justify-center h-svh p-6">
+      <div>
+        <p class="text-xl text-center">No profiles to show yet.</p>
+        <p class="text-xl text-center">Come back soon.</p>
+      </div>
+    </div>
+  <% else %>
+    <div data-controller="bridge--vibrator swiper" class="h-dvh py-4">
+    <% [@profiles.first].each do |profile| # @profiles.each do |profile| %>
+      <div class="flex flex-col items-center justify-center relative rounded" data-swiper-target="images">
+          <div class="border border-blue-300 w-96 h-96 relative my-auto object-cover rounded light:bg-white dark:bg-black" data-controller="gallery">
+            <% profile.images.each_with_index do |image| %>
+              <%= image_tag image.photo, loading: "lazy", class: "object-cover h-full w-full absolute top-0 light:bg-white dark:bg-black rounded"  %>
+            <% end %>
+          </div>
+          <div class="text-xl font-bold">
+            <%= profile.display_name %>
+          </div>
+          <div class="flex flex-row text-sm">
+            <%= "#{age(profile.born_on)}yo" unless profile.born_on.blank? %> • <%= profile.city %>
+          </div>
+          <div class="grow my-4">
+            <%= render partial: "details", locals: { profile: profile } %>
+          </div>
+      </div>
+      <div class="flex flex-row mx-auto fixed bottom-0 w-full justify-center">
+        <%= button_to 'Pass', profile_passes_path(profile_id: profile.id), method: :post, class: "m-4 bg-red-500 text-white py-2 px-4 rounded-full", data: { 'swiper-target': "passButton" } %>
+        <%= button_to 'Like', profile_likes_path(profile_id: profile.id), method: :post, class: "m-4 bg-blue-500 text-white py-2 px-4 rounded-full", data: { 'swiper-target': "likeButton" } %>
+      </div>
+    <% end %>
+    </div>
+  <% end %>
