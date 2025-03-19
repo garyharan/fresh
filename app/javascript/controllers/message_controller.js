@@ -10,13 +10,27 @@ export default class extends Controller {
       this.setMessageOwnerAsOtherUser()
     }
 
-    this.element.classList.add("mt-2")
-    this.makeTopBorderRounded()
-
-    this.setBubbleBottom()
+    this.styleBubble()
 
     if (this.element.getAttribute("data-repress-scroll") !== "true") {
       this.scrollToMessage()
+    }
+  }
+
+  styleBubble() {
+    if (!this.previousMessageMatchesMessageUser()) {
+      this.makeTopBorderRounded()
+    }
+
+    if (!this.nextMessageMatchesMessageUser()) {
+      this.setBubbleBottom()
+    }
+
+    if (this.previousMessageMatchesMessageUser()) {
+      this.previousMessage().classList.remove("rounded-bl-xl")
+      this.previousMessage().classList.remove("rounded-br-xl")
+    } else {
+      this.element.classList.add("mt-4")
     }
   }
 
@@ -55,10 +69,6 @@ export default class extends Controller {
 
   makeTopBorderRounded() {
     this.element.classList.add("rounded-t-xl")
-  }
-
-  makeBottomBorderRounded() {
-    this.element.classList.add("rounded-b-xl")
   }
 
   currentUserID() {

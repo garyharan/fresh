@@ -21,15 +21,15 @@
       </div>
     <% end %>
 
-    <div class="flex-1 flex flex-col-reverse py-2 mb-6 overflow-y-auto w-full" data-room-target="messages">
+    <div class="flex-1 flex flex-col py-2 mb-6 overflow-y-auto w-full" data-room-target="messages">
+      <%= turbo_frame_tag "pagination" do %>
+        <%= render "next_page_button" %>
+      <% end %>
+
       <%= turbo_frame_tag "messages" do %>
         <% @messages.each do |message| %>
           <%= render partial: 'messages/message', locals: { message: message, repress_scroll: false } %>
         <% end %>
-      <% end %>
-
-      <%= turbo_frame_tag "pagination" do %>
-        <%= render "next_page_button" %>
       <% end %>
     </div>
 
