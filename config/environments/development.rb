@@ -65,6 +65,7 @@ Rails.application.configure do
   config.action_view.annotate_rendered_view_with_filenames = true
 
   # Uncomment if you wish to allow Action Cable access from any origin.
+  config.action_cable.allowed_request_origins = ["http://garyharan.local:3000/*", "http://localhost:3000/*"]
   # config.action_cable.disable_request_forgery_protection = true
 
   # Raise error when a before_action's only/except options reference missing actions.

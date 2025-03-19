@@ -1,4 +1,6 @@
 <div class="min-h-screen flex flex-col" data-controller="room">
+  <%= turbo_stream_from @room %>
+
   <div class="flex flex-col flex-1">
 
     <% unless hotwire_native? %>
