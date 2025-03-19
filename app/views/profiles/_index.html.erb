@@ -21,7 +21,7 @@
             <%= "#{age(profile.born_on)}yo" unless profile.born_on.blank? %> • <%= profile.city %>
           </div>
           <div class="grow my-4">
-            <%= render partial: "details", locals: { profile: profile } %>
+            <%= render partial: "profiles/details", locals: { profile: profile } %>
           </div>
       </div>
       <div class="flex flex-row mx-auto fixed bottom-0 w-full justify-center">
