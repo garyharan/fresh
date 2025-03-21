@@ -4,6 +4,10 @@ class Room < ApplicationRecord
 
   has_many :messages, class_name: "Message", dependent: :destroy
 
+  def users
+    profiles.map(&:user)
+  end
+
   def name
     profiles.map(&:display_name).to_sentence
   end

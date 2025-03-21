@@ -11,6 +11,8 @@
       </div>
     <% end %>
     <% @rooms.each do |room| %>
+      <%= turbo_stream_from "unread_count_#{room.id}_#{Current.user.id}" %>
+
       <%= link_to room_path(room), id: dom_id(room), class: "block p-2 m-2 sm:m-4 md:m-6 bg-white border border-gray-200 rounded-lg shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700" do %>
         <div class="flex justify-between relative">
 
@@ -23,13 +25,7 @@
           <div class="grow text-md md:text-xl lg:text-2xl font-semibold m-0 pl-2">
             <div class="flex flex-col justify-center grow h-full">
               <div> <%= room.profiles.where.not(id: Current.user.profile.id).first.display_name %> </div>
-              <% if room.messages.unread_by(Current.user).count > 0 %>
-                <div class="text-sm text-gray-500 flex flex-row mt-2">
-                  <div class="inline-flex w-4 h-4 mr-2 text-xs font-bold text-white bg-blue-500 border-2 border-white rounded-full dark:border-gray-900">
-                  </div>
-                  <div class="text-xs sm:text-sm"><%= t("messages.unread_count", count: room.messages.unread_by(Current.user).count) %></div>
-                </div>
-              <% end %>
+              <%= render partial: "shared/unread_messages_with_count", locals: { room: room, user: Current.user } %>
             </div>
           </div>
 

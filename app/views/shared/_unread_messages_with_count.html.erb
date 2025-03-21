@@ -1,0 +1,11 @@
+<%= turbo_frame_tag "unread_count_#{room.id}_#{user.id}" do %>
+  <% if room.messages.unread_by(user).count > 0 %>
+    <div class="text-sm text-gray-500 flex flex-row mt-2">
+      <div class="inline-flex w-4 h-4 mr-2 text-xs font-bold text-white bg-blue-500 border-2 border-white rounded-full dark:border-gray-900">
+      </div>
+      <div class="text-xs sm:text-sm">
+        <%= t("messages.unread_count", count: room.messages.unread_by(user).count) %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

@@ -11,6 +11,8 @@
   >
       <%= render "shared/nav" unless hotwire_native? %>
 
+      <%= turbo_stream_from Current.user if authenticated? %>
+
       <main class="hotwire-native:m-0" <%= hotwire_native? || true ? 'data-controller="bridge--vibrate"' : '' %>>
         <%= render "shared/flashes" %>
         <%= yield %>
