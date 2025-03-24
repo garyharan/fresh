@@ -2,8 +2,6 @@ class ImagesController < ApplicationController
   before_action :set_profile
   before_action :set_image, only: %i[show edit destroy]
 
-  layout "settings", only: :index
-
   def index
     @images = @profile.images.order(:position)
     @image = Image.new

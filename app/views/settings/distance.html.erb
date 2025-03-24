@@ -1,6 +1,6 @@
 <% content_for(:title) { "Distance" } %>
 
-<span class="">Set maximum distance for matches</span>
+<p class="m-4">Set maximum distance for matches</p>
 
 <%= form_for @user, method: :patch, data: { controller: "distance",  "distance-units-value": (@user.profile.country == 'United States' ? 'imperial' : 'metric') } do |form| %>
 

@@ -2,8 +2,6 @@ class SettingsController < ApplicationController
   before_action :set_user
   before_action :set_profile
 
-  layout "settings"
-
   def index
   end
 
