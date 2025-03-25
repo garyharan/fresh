@@ -15,12 +15,14 @@ export default class extends Controller {
   }
 
   setupPageIndicator() {
+    if (this.images.length == 1) return
+
     this.pageIndicator = document.createElement("div")
     this.pageIndicator.classList.add("relative", "top-1", "left-0", "z-101", "w-full", "flex", "justify-center")
 
     Array.from(this.images).forEach((image) => {
       const div = document.createElement("div")
-      div.classList.add("bg-slate-100", "h-1", "z-100", "mx-1", "flex-grow", "rounded-full", "border", "border-slate-300")
+      div.classList.add("bg-slate-100", "h-1", "z-100", "mx-1", "flex-grow", "opacity-50", "rounded-full", "border", "border-slate-300")
       this.pageIndicator.appendChild(div)
     })
 
@@ -36,6 +38,8 @@ export default class extends Controller {
     } else {
       this.display(Math.max(this.selectedIndex - 1, 0))
     }
+
+    window.dispatchEvent(new Event("vibrateLight"))
   }
 
   display(index) {
