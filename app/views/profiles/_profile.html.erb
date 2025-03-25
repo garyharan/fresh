@@ -1,17 +1,22 @@
-<li>
-  <%= link_to profile_path(profile), class: "flex flex-col md:flex-row items-center p-2 m-2 shadow bg-red-300 border hover:border-slate-300 rounded-lg" do %>
-    <%= render partial: "profiles/header", locals: { profile: profile } %>
-
-    <div class="flex grow basis-1/2 justify-end items-stretch text-center">
-      <div class="flex w-full place-items-center">
+<div data-controller="bridge--vibrator swiper" class="h-dvh py-4">
+  <div class="flex flex-col items-center justify-center relative rounded" data-swiper-target="images">
+      <div class="border border-blue-300 w-96 h-96 relative my-auto object-cover rounded light:bg-white dark:bg-black" data-controller="gallery">
+        <% profile.images.each_with_index do |image| %>
+          <%= image_tag image.photo, loading: "lazy", class: "object-cover h-full w-full absolute top-0 light:bg-white dark:bg-black rounded"  %>
+        <% end %>
+      </div>
+      <div class="text-xl font-bold">
+        <%= profile.display_name %>
+      </div>
+      <div class="flex flex-row text-sm">
+        <%= "#{age(profile.born_on)}yo" unless profile.born_on.blank? %> • <%= profile.city %>
+      </div>
+      <div class="grow my-4">
         <%= render partial: "profiles/details", locals: { profile: profile } %>
       </div>
-
-      <div class="flex w-8 ml-4 hidden md:inline-block">
-        <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"></path>
-        </svg>
-      </div>
-    </div>
-  <% end %>
-</li>
+  </div>
+  <div class="flex flex-row mx-auto fixed bottom-0 w-full justify-center">
+    <%= button_to 'Pass', profile_passes_path(profile_id: profile.id), method: :post, class: "m-4 bg-red-500 text-white py-2 px-4 rounded-full", data: { 'swiper-target': "passButton" } %>
+    <%= button_to 'Like', profile_likes_path(profile_id: profile.id), method: :post, class: "m-4 bg-blue-500 text-white py-2 px-4 rounded-full", data: { 'swiper-target': "likeButton" } %>
+  </div>
+</div>
