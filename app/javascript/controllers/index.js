@@ -7,6 +7,9 @@ import { application } from "./application"
 import Bridge__ButtonController from "./bridge/button_controller"
 application.register("bridge--button", Bridge__ButtonController)
 
+import Bridge__MenuController from "./bridge/menu_controller"
+application.register("bridge--menu", Bridge__MenuController)
+
 import Bridge__TitleController from "./bridge/title_controller"
 application.register("bridge--title", Bridge__TitleController)
 
