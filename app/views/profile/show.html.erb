@@ -1,3 +1,3 @@
 <% content_for(:title, "Profile") %>
 
-<%= render 'profiles/show' %>
+<%= render partial: 'profiles/profile', locals: { profile: @profile } %>

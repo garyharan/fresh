@@ -4,4 +4,8 @@ module ProfilesHelper
     feet, inches = inches.divmod(12)
     "#{feet}'#{inches.floor}\""
   end
+
+  def previewing?(profile)
+    Current.user&.profile == profile
+  end
 end

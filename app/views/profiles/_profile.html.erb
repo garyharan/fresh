@@ -1,4 +1,4 @@
-<div data-controller="bridge--vibrator swiper" class="h-dvh py-4">
+<div data-controller="<%= previewing?(profile) ? "" : "bridge--vibrator swiper" %>" class="h-dvh py-4">
   <div class="flex flex-col items-center justify-center relative rounded" data-swiper-target="images">
 
       <div class="border border-blue-300 w-96 h-96 relative my-auto object-cover rounded light:bg-white dark:bg-black" data-controller="gallery">
@@ -18,8 +18,11 @@
       </div>
 
   </div>
-  <div class="flex flex-row mx-auto fixed bottom-0 w-full justify-center">
-    <%= button_to 'Pass', profile_passes_path(profile_id: profile.id), method: :post, class: "m-4 bg-red-500 text-white py-2 px-4 rounded-full", data: { 'swiper-target': "passButton" } %>
-    <%= button_to 'Like', profile_likes_path(profile_id: profile.id), method: :post, class: "m-4 bg-blue-500 text-white py-2 px-4 rounded-full", data: { 'swiper-target': "likeButton" } %>
-  </div>
+
+  <% unless previewing?(profile) %>
+    <div class="flex flex-row mx-auto fixed bottom-0 w-full justify-center">
+      <%= button_to 'Pass', profile_passes_path(profile_id: profile.id), method: :post, class: "m-4 bg-red-500 text-white py-2 px-4 rounded-full", data: { 'swiper-target': "passButton" } %>
+      <%= button_to 'Like', profile_likes_path(profile_id: profile.id), method: :post, class: "m-4 bg-blue-500 text-white py-2 px-4 rounded-full", data: { 'swiper-target': "likeButton" } %>
+    </div>
+  <% end %>
 </div>
