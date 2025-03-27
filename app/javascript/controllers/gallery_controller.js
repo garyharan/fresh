@@ -4,7 +4,10 @@ export default class extends Controller {
   connect() {
     this.images = this.element.getElementsByTagName("img")
 
-    this.setupPageIndicator()
+    if (this.imagesLength != this.images.length) {
+      this.setupPageIndicator()
+      this.imagesLength = this.images.length
+    }
 
     this.element.addEventListener("click", (event) => {
       this.slide(event)
@@ -12,6 +15,14 @@ export default class extends Controller {
 
     this.selectedIndex = 0
     this.display(0)
+  }
+
+  disconnect() {
+    if (this.pageIndicator) {
+      this.pageIndicator.remove()
+      this.pageIndicator = null
+    }
+    this.element.removeEventListener("click", this.slide)
   }
 
   setupPageIndicator() {
