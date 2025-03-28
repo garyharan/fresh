@@ -1,0 +1,16 @@
+<div class="text-xs sm:text-md md:text-lg font-medium text-center text-gray-300 bg-black w-full shrink-0 sticky top-0 z-30">
+  <div class="flex flex-wrap justify-between items-center w-full p-2 pl-4 h-18">
+    <%= link_to rooms_url do %>
+      <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+    <% end %>
+
+    <% @interlocutors.each do |profile| %>
+      <%= link_to profile, class: "flex grow ml-20" do %>
+        <%= image_tag(profile.images.first.photo.variant(:thumb), class: "w-10 h-10 border-2 rounded-full bg-white", alt: profile.display_name) if profile.images.any? && profile.images.first.photo.present? %>
+        <div class="text-xl leading-loose ml-2">
+          <%= profile.display_name %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
