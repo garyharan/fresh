@@ -19,7 +19,6 @@ export default class extends Controller {
         body: this.messageFieldTarget.value
       }
     })
-    console.info(data)
 
     fetch(this.element.action, {
       method: this.element.method,
@@ -36,7 +35,7 @@ export default class extends Controller {
       this.messageFieldTarget.value = ''
       this.messageFieldTarget.focus()
     } else {
-      console.error(response)
+      alert("Something didn't work right.  Try sending your message again.")
     }
   }
 

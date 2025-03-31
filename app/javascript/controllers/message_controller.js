@@ -4,82 +4,83 @@ export default class extends Controller {
   static targets = [ "avatar" ]
 
   connect() {
-    if (this.messageIsFromCurrentUser()) {
-      this.setMessageOwnerAsCurrentUser()
-    } else {
-      this.setMessageOwnerAsOtherUser()
-    }
-
-    this.styleBubble()
+    this.#applyColour()
+    this.#styleBubble()
 
     if (this.element.getAttribute("data-repress-scroll") !== "true") {
-      this.scrollToMessage()
+      this.#scrollToMessage()
     }
   }
 
-  styleBubble() {
-    if (!this.previousMessageMatchesMessageUser()) {
-      this.makeTopBorderRounded()
-    }
+  #styleBubble() {
+    const previousMessage = this.#previousMessage()
+    const currentMessage  = this.element
 
-    if (!this.nextMessageMatchesMessageUser()) {
-      this.setBubbleBottom()
-    }
-
-    if (this.previousMessageMatchesMessageUser()) {
-      this.previousMessage().classList.remove("rounded-bl-xl")
-      this.previousMessage().classList.remove("rounded-br-xl")
+    if (this.#messageIsFromCurrentUser()) {
+      this.#createRightTail(this.element)
     } else {
-      this.element.classList.add("mt-4")
+      this.#createLeftTail(this.element)
+    }
+
+    if (previousMessage) {
+      const previousCreatedAt = new Date(previousMessage.getAttribute("data-created-at").replace(" UTC", "Z"));
+      const currentCreatedAt = new Date(currentMessage.getAttribute("data-created-at").replace(" UTC", "Z"));
+
+      const withinOneMinute = ((currentCreatedAt - previousCreatedAt) / 1000) <= 60;
+
+      if (withinOneMinute && this.#previousMessageMatchesMessageUser()) {
+        this.#removeTail(previousMessage);
+      }
     }
   }
 
-  scrollToMessage() {
+  #applyColour() {
+    if (this.#messageIsFromCurrentUser()) {
+      this.#setMessageOwnerAsCurrentUserColour()
+    } else {
+      this.#setMessageOwnerAsOtherUserColour()
+    }
+  }
+
+  #createRightTail(element) {
+    element.classList.remove("rounded-br-3xl")
+  }
+
+  #createLeftTail(element) {
+    element.classList.remove("rounded-bl-3xl")
+  }
+
+  #removeTail(element) {
+    element.classList.add("rounded-br-3xl")
+    element.classList.add("rounded-bl-3xl")
+  }
+
+  #scrollToMessage() {
     this.element.scrollTo(0, this.element.scrollHeight);
     this.element.scrollIntoView()
   }
 
-  messageIsFromCurrentUser() {
-    return this.element.getAttribute("data-user-id") === this.currentUserID()
+  #messageIsFromCurrentUser() {
+    return this.element.getAttribute("data-user-id") === this.#currentUserID()
   }
 
-  previousMessageMatchesMessageUser() {
-    return this.previousMessage() !== null && this.previousMessage().getAttribute("data-user-id") === this.element.getAttribute('data-user-id')
+  #previousMessageMatchesMessageUser() {
+    return this.#previousMessage() !== null && this.#previousMessage().getAttribute("data-user-id") === this.element.getAttribute('data-user-id')
   }
 
-  nextMessageMatchesMessageUser() {
-    return this.nextMessage() !== null && this.nextMessage().getAttribute("data-user-id") === this.element.getAttribute('data-user-id')
-  }
-
-  setMessageOwnerAsCurrentUser() {
+  #setMessageOwnerAsCurrentUserColour() {
     this.element.classList.add("bg-blue-300", "ml-20")
   }
 
-  setMessageOwnerAsOtherUser() {
+  #setMessageOwnerAsOtherUserColour() {
     this.element.classList.add("bg-gray-300",  "mr-20")
   }
 
-  setBubbleBottom() {
-    if (this.messageIsFromCurrentUser()) {
-      this.element.classList.add("rounded-bl-xl")
-    } else {
-      this.element.classList.add("rounded-br-xl")
-    }
-  }
-
-  makeTopBorderRounded() {
-    this.element.classList.add("rounded-t-xl")
-  }
-
-  currentUserID() {
+  #currentUserID() {
     return document.body.getAttribute("data-user-id")
   }
 
-  previousMessage() {
+  #previousMessage() {
     return this.element.previousElementSibling
-  }
-
-  nextMessage() {
-    return this.element.nextElementSibling
   }
 }
