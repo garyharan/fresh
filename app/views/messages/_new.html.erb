@@ -1,18 +1,21 @@
 <div>
-  <%= form_with model: [ room, Message.new ] do |form| %>
+  <%= form_with model: [ room, Message.new ], data: {controller: "message-form"} do |form| %>
     <%= form.label :body, class: "mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white" do %>
       Your message
     <% end %>
     <div class="flex">
       <%= form.text_area :body, rows: 1, autocomplete: "false", class: "block resize-none overflow-hidden w-full p-2 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500", required: true, data: {
         controller: 'growing-textarea',
-        'room-target': "greedyField"
+        'room-target': "messageField",
+        'message-form-target': "messageField"
       } %>
       <div class="align-bottom ml-2 self-end">
-          <%= button_tag class: "text-white inline-flex p-2 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" do %>
+        <%= button_tag class: "text-white inline-flex p-2 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800", data: {
+          'message-form-target': "submitButton"
+        } do %>
           <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13a1 1 0 102 0V9.414l1.293 1.293a1 1 0 001.414-1.414z" clip-rule="evenodd"></path></svg>
         <% end %>
-        </div>
+      </div>
     </div>
   <% end %>
 </div>

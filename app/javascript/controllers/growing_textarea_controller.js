@@ -9,6 +9,7 @@ export default class extends Controller {
     this.element.form.addEventListener("turbo:submit-end", this.resetField.bind(this))
 
     this.originalHeight = this.element.style.height
+    this.element.focus()
   }
 
   handleResize() {

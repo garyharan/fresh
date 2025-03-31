@@ -3,6 +3,11 @@ class MessagesController < ApplicationController
 
   def create
     @message = Message.create! message_params.merge(user: Current.user, room: @room)
+
+    respond_to do |format|
+      format.turbo_stream
+      format.json { render json: @message, status: :created }
+    end
   end
 
   private
