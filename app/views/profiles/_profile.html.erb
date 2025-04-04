@@ -37,6 +37,27 @@
           bridge_ios_image: "photo.stack"
         }
       %>
+
+      <%= link_to "Discovery Preferences", settings_path,
+        class: "m-4 bg-green-400 text-white py-2 px-4 rounded-full",
+        data: {
+          bridge__menu_target: "item",
+          bridge_title: "Preferences",
+          bridge_ios_image: "gearshape"
+        }
+        %>
+
+      <%= link_to "Logout", session_path,
+          method: :delete,
+          class: "rounded-lg py-3 px-5 bg-red-600 text-white inline-block font-medium cursor-pointer hover:bg-red-500 active:bg-red-400 mx-4",
+          data: {
+            turbo_method: :delete,
+            turbo_confirm: "Are you sure you want to sign out?",
+            bridge__menu_target: "item",
+            bridge_title: "Logout",
+            bridge_ios_image: "rectangle.portrait.and.arrow.forward.fill"
+          }
+      %>
     </div>
   <% else %>
     <div class="flex flex-row mx-auto fixed bottom-0 w-full justify-center">
