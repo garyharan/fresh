@@ -3,7 +3,7 @@
 
       <div class="border border-blue-300 w-96 h-96 relative my-auto object-cover rounded light:bg-white dark:bg-black" data-controller="gallery">
         <% profile.images.each_with_index do |image| %>
-          <%= image_tag image.photo, loading: "lazy", class: "object-cover h-full w-full absolute top-0 light:bg-white dark:bg-black rounded"  %>
+          <%= image_tag image.photo, loading: "lazy", class: "object-cover h-full w-full absolute top-0 light:bg-white dark:bg-black rounded", style: "touch-action: manipulation;"  %>
         <% end %>
       </div>
 
