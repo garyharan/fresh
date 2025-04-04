@@ -85,6 +85,9 @@ application.register("replace-classes", ReplaceClassesController)
 import RoomController from "./room_controller"
 application.register("room", RoomController)
 
+import ScrollLoaderController from "./scroll_loader_controller"
+application.register("scroll-loader", ScrollLoaderController)
+
 import SettingsFormController from "./settings_form_controller"
 application.register("settings-form", SettingsFormController)
 

@@ -1,0 +1,17 @@
+<% if @messages.none? %>
+  <turbo-stream action="remove" target="request_more"></turbo-stream>
+<% else %>
+  <turbo-stream action="prepend" target="messages">
+    <template>
+      <% @messages.each do |message| %>
+        <%= render partial: 'messages/message', locals: { message: message, repress_scroll: true } %>
+      <% end %>
+    </template>
+  </turbo-stream>
+
+  <turbo-stream action="replace" target="request_more">
+    <template>
+      <%= render partial: 'rooms/request_more', locals: { room: @room, messages: @messages } %>
+    </template>
+  </turbo-stream>
+<% end %>

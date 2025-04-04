@@ -1,8 +1,6 @@
-<div>
+<div class="p-2">
   <%= form_with model: [ room, Message.new ], data: {controller: "message-form"} do |form| %>
-    <%= form.label :body, class: "mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white" do %>
-      Your message
-    <% end %>
+    <%= form.label :body, class: "sr-only" do %>Your message<% end %>
     <div class="flex">
       <%= form.text_area :body, rows: 1, autocomplete: "false", class: "block resize-none overflow-hidden w-full p-2 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500", required: true, data: {
         controller: 'growing-textarea',

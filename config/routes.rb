@@ -61,6 +61,7 @@ Rails.application.routes.draw do
   resources :rooms do
     member do
       post :show
+      get :request_more
     end
     resources :messages
   end

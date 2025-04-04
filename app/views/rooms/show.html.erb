@@ -1,25 +1,22 @@
 <%= turbo_stream_from @room %>
 
-<%= render partial: "header" unless hotwire_native? %>
-
-<div class="absolute bottom-0 flex flex-col w-full" data-controller="room">
-  <div class="flex flex-col flex-1">
-
-    <div class="flex-1 flex flex-col py-2 mb-6 overflow-y-auto w-full" data-room-target="messages">
-      <%= turbo_frame_tag "pagination" do %>
-        <%= render "next_page_button" %>
-      <% end %>
-
-      <%= turbo_frame_tag "messages" do %>
-        <% @messages.each do |message| %>
-          <%= render partial: 'messages/message', locals: { message: message, repress_scroll: false } %>
-        <% end %>
-      <% end %>
-    </div>
-
+<div class="flex flex-col h-screen" data-controller="room">
+  <div class="w-full h-fit">
+    <%= render partial: "header" unless hotwire_native? %>
   </div>
 
-  <div class="py-2 w-full px-4 shrink-0 sticky bottom-6 z-30">
+  <div class="flex-1 overflow-auto p-2 flex flex-col-reverse" data-room-target="messages">
+
+    <%= turbo_frame_tag "messages" do %>
+      <% @messages.each do |message| %>
+        <%= render partial: 'messages/message', locals: { message: message, repress_scroll: false } %>
+      <% end %>
+    <% end %>
+
+    <%= render partial: 'rooms/request_more', locals: { room: @room, messages: @messages } %>
+  </div>
+
+  <div class="sticky bottom-0 w-full">
     <%= render 'messages/new', room: @room %>
   </div>
 </div>
