@@ -7,6 +7,7 @@ export default class extends BridgeComponent {
 
   connect() {
     super.connect()
+
     this.#addMenuButton()
   }
 
@@ -25,7 +26,9 @@ export default class extends BridgeComponent {
       }
     })
 
-    this.send("connect", {items}, message => {
+    const buttonImage = this.element.getAttribute("data-menu-image") || "ellipsis.circle"
+
+    this.send("connect", {items, buttonImage}, message => {
       const item = this.itemTargets[message.data.index]
       new BridgeElement(item).click()
     })

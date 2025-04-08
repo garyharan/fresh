@@ -44,15 +44,18 @@ export default class extends Controller {
 
   #createRightTail(element) {
     element.classList.remove("rounded-br-3xl")
+    element.classList.add("mb-4")
   }
 
   #createLeftTail(element) {
     element.classList.remove("rounded-bl-3xl")
+    element.classList.add("mb-4")
   }
 
   #removeTail(element) {
     element.classList.add("rounded-br-3xl")
     element.classList.add("rounded-bl-3xl")
+    element.classList.remove("mb-4")
   }
 
   #scrollToMessage() {

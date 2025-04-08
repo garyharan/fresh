@@ -19,13 +19,13 @@
   </div>
 
   <% if previewing?(profile) %>
-    <div data-controller="bridge--menu" class="hotwire-native:hidden">
+    <div data-controller="bridge--menu" data-menu-image="square.and.pencil" class="hotwire-native:hidden">
       <%= link_to "Edit Profile", edit_profile_path(profile),
         class: "m-4 bg-green-400 text-white py-2 px-4 rounded-full",
         data: {
           bridge__menu_target: "item",
           bridge_title: "Edit Profile",
-          bridge_ios_image: "square.and.pencil"
+          bridge_ios_image: "person.crop.circle"
         }
       %>
 
@@ -37,15 +37,6 @@
           bridge_ios_image: "photo.stack"
         }
       %>
-
-      <%= link_to "Discovery Preferences", settings_path,
-        class: "m-4 bg-green-400 text-white py-2 px-4 rounded-full",
-        data: {
-          bridge__menu_target: "item",
-          bridge_title: "Preferences",
-          bridge_ios_image: "gearshape"
-        }
-        %>
 
       <%= link_to "Logout", session_path,
           method: :delete,
