@@ -17,6 +17,11 @@ class ProfileTest < ActiveSupport::TestCase
     assert @velvet.liked_by?(@gathino.user)
   end
 
+  test 'maximum_distance delegation' do
+    @gathino.maximum_distance = 80085
+    assert_equal 80085, @gathino.maximum_distance
+  end
+
   test 'liked_by?(profile) when profile was not liked by other profile' do
     refute @gathino.liked_by?(@velvet.user)
   end

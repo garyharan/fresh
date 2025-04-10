@@ -22,6 +22,10 @@ class SettingsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "udpate should recede_or_redirect_to_settings" do
+
+  end
+
   test "should toggle public settings" do
     @user = users(:gathino)
     sign_in @user

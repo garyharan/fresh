@@ -2,20 +2,10 @@
 
 <%= render partial: "index" %>
 
-<% if hotwire_native? %>
-  <div data-controller="bridge--menu" data-menu-image="slider.horizontal.3" class="hotwire-native:hidden">
-    <%= link_to "Distance", settings_distance_path(),
-      class: "m-4 bg-green-400 text-white py-2 px-4 rounded-full",
-      data: {
-        bridge__menu_target: "item",
-        bridge_title: "Discovery distance",
-        bridge_ios_image: "slider.horizontal.below.rectangle"
-      }
-    %>
-
-    <%= link_to "Search preferences", settings_distance_path, data: {
-      bridge__menu_target: "item",
-      bridge_title: "Search preferences",
-      bridge_ios_image: "slider.horizontal.2.square.on.square"
-    }%>
-<% end %>
+<%= link_to "Discovery preferences", settings_path, data: {
+  controller: "bridge--button",
+  bridge_position: "right",
+  bridge_title: "Prefs",
+  bridge_image: "slider.horizontal.3",
+  bridge_vibrate: true
+ }, class: "hotwire-native:hidden" %>

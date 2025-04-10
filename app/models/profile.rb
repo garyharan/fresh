@@ -10,6 +10,8 @@ class Profile < ApplicationRecord
   has_many :images, dependent: :destroy
   has_many :cards, dependent: :destroy
 
+  delegate :maximum_distance, :maximum_distance=, to: :user, allow_nil: true
+
   belongs_to :gender, required: false
   has_many :attractions, dependent: :destroy
   has_many :genders, through: :attractions

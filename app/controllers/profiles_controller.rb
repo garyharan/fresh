@@ -48,15 +48,14 @@ class ProfilesController < ApplicationController
   def update
     respond_to do |format|
       if update_profile!
-        format.html do
-          redirect_to edit_profile_url(@profile), notice: "Profile was successfully updated."
+        format.turbo_stream do
+          redirect_to profiles_path, notice: "Successfuly updated."
         end
-        format.json { render :show, status: :ok, location: @profile }
+        format.html do
+          recede_or_redirect_to settings_path(@profile), notice: "Profile was successfully updated."
+        end
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json do
-          render json: @profile.errors, status: :unprocessable_entity
-        end
       end
     end
   end
@@ -95,7 +94,7 @@ class ProfilesController < ApplicationController
   def update_profile!
     @profile = Current.user.profile
 
-    @profile.update(profile_params)
+    @profile.update!(profile_params) && @profile.user.save!
   end
 
   def profile_params
@@ -110,6 +109,7 @@ class ProfilesController < ApplicationController
         :drinking,
         :smoking,
         :children,
+        :maximum_distance,
         :city,
         :state,
         :country,

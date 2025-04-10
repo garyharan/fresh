@@ -6,6 +6,34 @@ class ConfigurationsController < ApplicationController
       settings: {},
       rules: [
         {
+          patterns: ["/turbo_recede_historical_location_url"],
+          properties: {"presentation": "pop"}
+        },
+        {
+          patterns: ["/turbo_resume_historical_location_url"],
+          properties: {"presentation": "none"}
+        },
+        {
+          patterns: ["/turbo_refresh_historical_location_url"],
+          properties: {"presentation": "refresh"}
+        },
+        {
+          patterns: [
+            "/profiles"
+          ],
+          properties: {
+            presentation: "replace_root"
+          }
+        }
+        {
+          patterns: [
+            "/settings"
+          ],
+          properties: {
+            context: "modal"
+          }
+        },
+        {
           patterns: [
             "/session/new",
             "/users/new"

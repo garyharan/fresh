@@ -14,7 +14,7 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
 
   test 'should be logged in' do
     get profiles_url
-    assert_redirected_to user_session_path
+    assert_response :redirect
   end
 
   test 'should get index' do
@@ -106,17 +106,23 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should update profile' do
-    sign_in users(:gathino)
+    sign_in @profile.user
 
     patch profile_url(@profile),
           params: {
             profile: {
-              born_on: @profile.born_on,
-              gender_id: Gender.first.id
+              born_on: "2001-01-01",
+              gender_id: Gender.last.id,
+              maximum_distance: 80085
             }
           }
 
-    assert_redirected_to profile_url(@profile)
+    @profile.reload
+
+    assert_equal Date.parse("2001-01-01"), @profile.born_on
+    assert_equal Gender.last.id, @profile.gender_id
+    assert_equal 80085, @profile.maximum_distance
+    assert_redirected_to edit_profile_path(@profile)
   end
 
   test 'should destroy profile' do
