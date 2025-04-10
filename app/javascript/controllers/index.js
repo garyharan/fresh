@@ -13,6 +13,9 @@ application.register("bridge--menu", Bridge__MenuController)
 import Bridge__TitleController from "./bridge/title_controller"
 application.register("bridge--title", Bridge__TitleController)
 
+import Bridge__ToastController from "./bridge/toast_controller"
+application.register("bridge--toast", Bridge__ToastController)
+
 import Bridge__VibratorController from "./bridge/vibrator_controller"
 application.register("bridge--vibrator", Bridge__VibratorController)
 
