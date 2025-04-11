@@ -12,7 +12,7 @@ class ConfigurationsController < ApplicationController
           properties: {
             presentation: "replace_root"
           }
-        }
+        },
         {
           patterns: [
             "/settings"
