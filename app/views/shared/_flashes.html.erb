@@ -1,7 +1,14 @@
 <% if hotwire_native? %>
+
   <% if notice.present? %>
     <span data-controller="bridge--toast" data-bridge-message="<%= notice %>" data-bridge-flash="true" class="hidden">
       <%= notice %>
+    </span>
+  <% end %>
+
+  <% if alert.present? %>
+    <span data-controller="bridge--toast" data-bridge-message="<%= alert %>" data-bridge-flash="true" class="hidden">
+      <%= alert %>
     </span>
   <% end %>
 
