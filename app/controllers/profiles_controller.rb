@@ -4,7 +4,6 @@ class ProfilesController < ApplicationController
   before_action :new_profile, only: :new
   before_action :set_profile, only: %i[edit update destroy]
 
-  # GET /profiles or /profiles.json
   def index
     @profiles = Profile.recommended(Current.user.profile)
   end

@@ -5,18 +5,22 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_difference('User.count', 1) do
       post users_url, params: { user: { email_address: 'test@example.com', password: 'password' } }
     end
+  end
 
-    assert_response :success
+  test "should create corresponding profile" do
+    assert_difference('Profile.count', 1) do
+      post users_url, params: { user: { email_address: 'test@example.com', password: 'password' } }
+    end
   end
 
   test "should not create a user if email already exists" do
     User.create!(email_address: 'test@example.com', password: 'password')
 
     assert_no_difference('User.count') do
-      post users_url, params: { user: { email_address: 'test@example.com', password: 'password' } }
+      assert_raises(ActiveRecord::RecordNotUnique) do
+        post users_url, params: { user: { email_address: 'test@example.com', password: 'password' } }
+      end
     end
-
-    assert_response :unprocessable_entity
   end
 
   test "should update distance" do

@@ -1,5 +1,5 @@
 class ProfileController < ApplicationController
   def show
-    @profile = Profile.find(Current.session.user.id)
+    @profile = Current.session.user.profile
   end
 end

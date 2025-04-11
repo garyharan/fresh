@@ -1,5 +1,9 @@
 class ProfileValidator < ActiveModel::Validator
   def validate(profile)
+    if profile.step == :creation
+      profile.errors.add("user_id", "must be set") if profile.user_id.blank?
+    end
+
     if profile.step.nil? || profile.step == 1
       if profile.display_name.blank?
         profile.errors.add("display_name", "can't be blank")
