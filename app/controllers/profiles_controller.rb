@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  before_action :force_profile_completion, only: %i[index]
+  # before_action :force_profile_completion, only: %i[index]
 
   before_action :new_profile, only: :new
   before_action :set_profile, only: %i[edit update destroy]
@@ -48,7 +48,7 @@ class ProfilesController < ApplicationController
     respond_to do |format|
       if update_profile!
         format.turbo_stream do
-          redirect_to profiles_path, notice: "Successfuly updated."
+          recede_or_redirect_to profiles_path
         end
         format.html do
           recede_or_redirect_to settings_path(@profile), notice: "Profile was successfully updated."

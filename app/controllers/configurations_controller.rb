@@ -39,7 +39,8 @@ class ConfigurationsController < ApplicationController
             "/users/new"
           ],
           properties: {
-            context: "modal"
+            context: "modal",
+            modal_style: "full"
           }
         },
         {
@@ -48,6 +49,17 @@ class ConfigurationsController < ApplicationController
           ],
           properties: {
             view_controller: "chat"
+          }
+        },
+        {
+          patterns: [
+            "/onboarding/.*",
+            "/profiles/new"
+          ],
+          properties: {
+            context: "modal",
+            presentation: "replace",
+            modal_style: "large"
           }
         }
       ]

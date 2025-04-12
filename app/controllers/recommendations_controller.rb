@@ -1,5 +1,5 @@
 class RecommendationsController < ApplicationController
-  before_action :force_profile_completion
+  # before_action :force_profile_completion
 
   before_action :set_group
   before_action :set_profile, only: %i[like pass]

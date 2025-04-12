@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
-    if @user.save && Profile.create(user_id: @user.id, step: :creation)
+    if @user.save && Profile.create(user_id: @user.id, step: :creation) && start_new_session_for(@user)
       redirect_to root_url, notice: 'User was successfully created.'
     else
       render :new

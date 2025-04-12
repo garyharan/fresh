@@ -7,6 +7,13 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
+  test "should login when creating a user" do
+    post users_url, params: { user: { email_address: 'test@example.com', password: 'password' } }
+    patch user_url(id: 1), params: { user: { distance: 100 } }
+
+    assert_response :no_content
+  end
+
   test "should create corresponding profile" do
     assert_difference('Profile.count', 1) do
       post users_url, params: { user: { email_address: 'test@example.com', password: 'password' } }
