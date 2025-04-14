@@ -7,16 +7,22 @@
           <%= image_tag image.photo, loading: "lazy", class: "object-cover h-full w-full absolute top-0 light:bg-white dark:bg-black rounded", style: "touch-action: manipulation;"  %>
         <% end %>
       </div>
+  </div>
 
-      <div class="text-xl font-bold">
-        <%= profile.display_name %>
-      </div>
-      <div class="flex flex-row text-sm">
-        <%= "#{age(profile.born_on)}yo" unless profile.born_on.blank? %> • <%= profile.city %>
-      </div>
-      <div class="grow my-4">
-        <%= render partial: "profiles/details", locals: { profile: profile } %>
-      </div>
+  <div class="">
+    <div class="text-xl font-bold my-4">
+      <%= profile.display_name %>
+    </div>
+    <div class="flex flex-row text-sm my-4">
+      <%= "#{age(profile.born_on)}yo" unless profile.born_on.blank? %> • <%= profile.city %>
+    </div>
+    <div class="grow my-4">
+      <%= render partial: "profiles/details", locals: { profile: profile } %>
+    </div>
+
+    <div class="grow my-4">
+      <%= render partial: "profiles/cards", locals: { profile: profile } %>
+    </div>
   </div>
 
   <% if previewing?(profile) %>
