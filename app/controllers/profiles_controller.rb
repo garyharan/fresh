@@ -12,20 +12,16 @@ class ProfilesController < ApplicationController
     @profiles = Profile.joins(:passes).where(passes: { user_id: Current.user.id }).order("passes.created_at DESC")
   end
 
-  # GET /profiles/1 or /profiles/1.json
   def show
     @profile = Profile.find(params[:id])
   end
 
-  # GET /profiles/new
   def new
   end
 
-  # GET /profiles/1/edit
   def edit
   end
 
-  # POST /profiles or /profiles.json
   def create
     respond_to do |format|
       if create_profile!
@@ -43,15 +39,16 @@ class ProfilesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /profiles/1 or /profiles/1.json
   def update
     respond_to do |format|
       if update_profile!
         format.turbo_stream do
-          recede_or_redirect_to profiles_path
+          flash[:notice] = "Successfully updated."
+          refresh_or_redirect_to profiles_path
         end
         format.html do
-          recede_or_redirect_to settings_path(@profile), notice: "Profile was successfully updated."
+          flash[:notice] = "Profile was successfully updated."
+          recede_or_redirect_to settings_path(@profile)
         end
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -59,7 +56,6 @@ class ProfilesController < ApplicationController
     end
   end
 
-  # DELETE /profiles/1 or /profiles/1.json
   def destroy
     @profile.destroy
 
@@ -73,7 +69,6 @@ class ProfilesController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_profile
     @profile = Current.user.profile
   end
