@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   helper_method :hotwire_native?
 
   def hotwire_native?
-    request.user_agent =~ /Hotwire Native/
+    !!(request.user_agent =~ /Hotwire Native/)
   end
 
   private
