@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
   def create
     if user = User.authenticate_by(params.permit(:email_address, :password))
       start_new_session_for user
-      redirect_to after_authentication_url
+      refresh_or_redirect_to after_authentication_url
     else
       redirect_to new_session_path, alert: "Try another email address or password."
     end
@@ -21,6 +21,6 @@ class SessionsController < ApplicationController
       cookies.signed.permanent[:refresh_url_after_login] = request.referrer
     end
 
-    redirect_to new_session_path
+    refresh_or_redirect_to new_session_path
   end
 end

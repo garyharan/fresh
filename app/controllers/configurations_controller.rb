@@ -19,10 +19,19 @@ class ConfigurationsController < ApplicationController
         },
         {
           patterns: [
-            "/profiles"
+            "/profiles$"
           ],
           properties: {
             presentation: "replace_root"
+          }
+        },
+        {
+          patterns: [
+            "/profiles/[0-9]+/edit"
+          ],
+          properties: {
+            context: "modal",
+            modal_stye: "full"
           }
         },
         {
