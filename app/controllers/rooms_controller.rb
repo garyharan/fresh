@@ -1,6 +1,5 @@
 class RoomsController < ApplicationController
   before_action :set_room, only: %i[ show request_more unread ]
-  layout "chat", only: :show
 
   PER_PAGE = 15
 

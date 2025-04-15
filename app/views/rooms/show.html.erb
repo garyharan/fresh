@@ -1,3 +1,4 @@
+<% content_for(:title, @room.profiles.map(&:display_name).to_sentence) %>
 <%= turbo_stream_from @room %>
 
 <div class="flex flex-col h-screen" data-controller="room">
