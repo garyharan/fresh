@@ -38,7 +38,6 @@ class OnboardingController < ApplicationController
     @profile.step = 3
   end
 
-
   def four
     @profile.step = 4
   end
