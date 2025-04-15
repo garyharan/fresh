@@ -1,26 +1,25 @@
-<div data-controller="<%= previewing?(profile) ? "" : "swiper" %> bridge--vibrator" class="h-dvh py-4">
+<div data-controller="<%= previewing?(profile) ? "" : "swiper" %> bridge--vibrator" class="container h-dvh w-full">
   <div class="flex flex-col items-center justify-center relative rounded" data-swiper-target="images">
-
-      <div class="border border-blue-300 w-96 h-96 relative my-auto object-cover rounded light:bg-white dark:bg-black" data-controller="gallery">
-        <% profile.images.each_with_index do |image| %>
-          <% next if  Rails.env.test? && !image.photo.attached? %>
-          <%= image_tag image.photo, loading: "lazy", class: "object-cover h-full w-full absolute top-0 light:bg-white dark:bg-black rounded", style: "touch-action: manipulation;"  %>
-        <% end %>
-      </div>
+    <div class="border border-blue-300 size-96 relative my-auto object-cover rounded light:bg-white dark:bg-black" data-controller="gallery">
+      <% profile.images.each_with_index do |image| %>
+        <% next if  Rails.env.test? && !image.photo.attached? %>
+        <%= image_tag image.photo, loading: "lazy", class: "object-cover h-full w-full absolute top-0 light:bg-white dark:bg-black rounded", style: "touch-action: manipulation;"  %>
+      <% end %>
+    </div>
   </div>
 
-  <div class="">
+  <div class="flex flex-col w-full overflow-clip">
     <div class="text-2xl font-bold mt-4 mx-4">
       <%= profile.display_name %>
     </div>
-    <div class="flex flex-row text-sm mx-4">
+    <div class="text-sm mx-4">
       <%= "#{age(profile.born_on)}yo" unless profile.born_on.blank? %> • <%= profile.city %>
     </div>
-    <div class="grow mb-4 mt-2">
+    <div class="mb-4 mt-2">
       <%= render partial: "profiles/details", locals: { profile: profile } %>
     </div>
 
-    <div class="grow my-4">
+    <div class="my-4">
       <%= render partial: "profiles/cards", locals: { profile: profile } %>
     </div>
   </div>
