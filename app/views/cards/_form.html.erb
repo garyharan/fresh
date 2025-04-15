@@ -6,18 +6,12 @@
         <div class="flex flex-row border-b border-white">
           <div class="grow p-2">
             <div class="text-xl font-bold uppercase text-gray-400">
-
-              Select a prompt:
-
+              <%= card.kind.to_s.titleize%>
             </div>
             <div class="text-xl font-bold">
+<%= form.select :title, options_for_select(cards_select_options(card.kind), form.object.title), { include_blank: "Please select a prompt" }, { required: true, class: "block w-full px-2 py-1 text-md text-gray-800 bg-white border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" } %>
 
-              <% cards_select_options(card.kind).each do |label, value| %>
-                <div class="py-2 flex justify-between items-center">
-                  <div><%= form.label :title, label, for: "card_title_#{value}" %></div>
-                  <div><%= form.radio_button :title, value, id: "card_title_#{value}", data: { card_target: 'title' } %></div>
-                </div>
-              <% end %>
+
 
             </div>
           </div>

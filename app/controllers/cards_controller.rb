@@ -5,7 +5,7 @@ class CardsController < ApplicationController
   end
 
   def new
-    @card = Card.new kind: params[:kind], title: Card::KINDS[params[:kind].to_sym].first
+    @card = Card.new kind: params[:kind]
   end
 
   def create
