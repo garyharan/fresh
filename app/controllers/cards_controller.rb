@@ -1,8 +1,11 @@
 class CardsController < ApplicationController
   before_action :set_profile
 
+  def index
+  end
+
   def new
-    @card = Card.new kind: params[:kind]
+    @card = Card.new kind: params[:kind], title: Card::KINDS[params[:kind].to_sym].first
   end
 
   def create

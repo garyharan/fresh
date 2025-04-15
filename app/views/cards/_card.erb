@@ -1,59 +1,48 @@
 <% if card = @profile.cards.find { |card| card.kind.to_sym == kind.to_sym } %>
-  <%= turbo_frame_tag "#{kind}_card", class: "group" do %>
+  <%= turbo_frame_tag "#{kind}_card" do %>
 
-    <h2 class="inline uppercase text-gray-500 text-sm"><%= t(card.kind) %></h2>
-    <div class="w-full pb-8">
-      <div class="block max-w bg-white border-gray-200 rounded-b-md shadow-md">
-        <div class="flex border rounded-t-md pl-4 bg-black text-lg leading-8 font-semibold text-white dark:text-white leading-10">
-
-          <div class="grow text-lg leading-8 font-semibold text-white dark:text-white leading-10">
-            <%= t(card.title) %>
+    <div class="m-2 mb-4">
+      <%= link_to edit_card_path(card), class: "" do %>
+        <div class="rounded bg-slate-100 border border-slate-200 w-full">
+          <div class="flex flex-row border-b border-white">
+            <div class="grow p-2">
+              <div class="text-xl font-bold uppercase text-gray-400"><%= kind.to_s.titleize %></div>
+              <div class="grow text-xl font-bold"><%= t(card.title) %></div>
+            </div>
+            <div class="shrink flex items-center pr-4">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6"> <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" /> </svg>
+            </div>
           </div>
-
-          <% if authenticated? && Current.user == @profile.user %>
-            <div class="hidden group-hover:md:flex p-2">
-              <%= link_to(card, method: :delete, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "text-xs pr-6 md:text-md text-red-700 font-bold hover:text-red-500 hover:underline whitespace-nowrap") do %>
-                <svg class="w-3 h-3 md:w-6 md:h-6 inline" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path></svg> Delete this card
-              <% end %>
-            </div>
-            <div class="hidden group-hover:md:flex p-2">
-              <%= link_to edit_card_path(card), class: "text-xs md:text-md text-blue-700 font-bold hover:text-blue-500 hover:underline whitespace-nowrap", data: { turbo_frame: "#{kind}_card" } do %>
-                <svg class="w-3 h-3 md:w-6 md:h-6 inline" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"></path><path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd"></path></svg> Edit this card
-              <% end %>
-            </div>
-          <% end %>
+          <p class="text-gray-700 text-lg p-2 w-full"><%= card.content %></p>
         </div>
-
-        <div class="p-4 text-gray-700 dark:text-white flex flex-col gap-4">
-          <%= simple_format card.content %>
-        </div>
-
-        <% if authenticated? && Current.user == @profile.user %>
-          <p class="text-right pt-0 pl-0 pb-3 pr-3 hidden group-hover:block group-hover:md:hidden">
-            <%= link_to(card, method: :delete, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "text-xs pr-6 md:text-md text-red-700 font-bold hover:text-red-500 hover:underline whitespace-nowrap") do %>
-              <svg class="w-3 h-3 md:w-6 md:h-6 inline" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path></svg> Delete this card
-            <% end %>
-            <%= link_to edit_card_path(card), class: "text-xs md:text-md text-blue-700 font-bold hover:text-blue-500 hover:underline whitespace-nowrap", data: { turbo_frame: "#{kind}_card" } do %>
-              <svg class="w-3 h-3 md:w-6 md:h-6 inline" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"></path><path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd"></path></svg> Edit this card
-            <% end %>
-          </p>
-        <% end %>
-      </div>
+      <% end %>
     </div>
+
   <% end %>
 
 <% else %>
 
-    <% if authenticated? && Current.user.profile == @profile %>
-      <%= turbo_frame_tag "#{kind}_card", class: "group" do %>
-        <div class="w-full pb-8">
-          <div class="text-center">
-            <%= link_to new_card_path(kind: kind), method: :get, format: :turbo_stream, class: "bg-gray-100 text-gray-800 text-sm font-medium px-2.5 py-1 rounded dark:bg-gray-700 dark:text-gray-300 hover:bg-blue-300" do %>
-              <svg class="w-3 h-3 inline mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd"></path></svg><span >Add the <%= t(kind) %> card</span>
-            <% end %>
+  <% if authenticated? && Current.user.profile == @profile %>
+
+    <%= turbo_frame_tag "#{kind}_card" do %>
+
+      <div class="m-2 my-8">
+        <%= link_to new_card_path(kind: kind), method: :get, format: :turbo_stream, class: "" do %>
+          <div class="rounded bg-white w-full">
+            <div class="flex flex-row border-b border-white">
+              <div class="grow p-2">
+                <div class="text-xl font-bold">Add the <%= kind.to_s.titleize %> card</div>
+              </div>
+              <div class="shrink flex items-center pr-4">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6"> <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /> </svg>
+              </div>
+            </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
+
     <% end %>
+
+  <% end %>
 
 <% end %>

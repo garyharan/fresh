@@ -1,0 +1,13 @@
+<% Card::KINDS.keys.each do |kind| %>
+  <%= render partial: "card", locals: { kind: kind } %>
+<% end %>
+
+<%= link_to "Done", "refresh_historical_location",
+    class: "hotwire-native:hidden",
+    data: {
+      controller: "bridge--button",
+      bridge_position: "right",
+      bridge_title: "Done",
+      bridge_vibrate: true
+    }
+%>

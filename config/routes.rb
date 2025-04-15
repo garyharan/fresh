@@ -57,7 +57,7 @@ Rails.application.routes.draw do
 
   resources :public_profiles, only: %i[show]
 
-  resources :cards, only: %i[new edit create update destroy]
+  resources :cards
 
   resources :rooms do
     member do

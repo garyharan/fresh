@@ -10,13 +10,13 @@
   </div>
 
   <div class="">
-    <div class="text-xl font-bold my-4">
+    <div class="text-2xl font-bold mt-4 mx-4">
       <%= profile.display_name %>
     </div>
-    <div class="flex flex-row text-sm my-4">
+    <div class="flex flex-row text-sm mx-4">
       <%= "#{age(profile.born_on)}yo" unless profile.born_on.blank? %> • <%= profile.city %>
     </div>
-    <div class="grow my-4">
+    <div class="grow mb-4 mt-2">
       <%= render partial: "profiles/details", locals: { profile: profile } %>
     </div>
 
@@ -28,7 +28,6 @@
   <% if previewing?(profile) %>
     <div data-controller="bridge--menu" data-menu-image="square.and.pencil" class="hotwire-native:hidden">
       <%= link_to "Edit Profile", edit_profile_path(profile),
-        class: "m-4 bg-green-400 text-white py-2 px-4 rounded-full",
         data: {
           bridge__menu_target: "item",
           bridge_title: "Edit Profile",
@@ -37,7 +36,6 @@
       %>
 
       <%= link_to "Edit Photos", profile_images_path(profile),
-        class: "",
         data: {
           bridge__menu_target: "item",
           bridge_title: "Edit Photos",
@@ -45,9 +43,16 @@
         }
       %>
 
+      <%= link_to "Edit Cards", cards_path,
+        data: {
+          bridge__menu_target: "item",
+          bridge_title: "Edit Cards",
+          bridge_ios_image: "folder.badge.person.crop"
+        }
+      %>
+
       <%= link_to "Logout", session_path,
           method: :delete,
-          class: "rounded-lg py-3 px-5 bg-red-600 text-white inline-block font-medium cursor-pointer hover:bg-red-500 active:bg-red-400 mx-4",
           data: {
             turbo_method: :delete,
             turbo_confirm: "Are you sure you want to sign out?",

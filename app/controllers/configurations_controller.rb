@@ -27,15 +27,6 @@ class ConfigurationsController < ApplicationController
         },
         {
           patterns: [
-            "/profiles/[0-9]+/edit"
-          ],
-          properties: {
-            context: "modal",
-            modal_stye: "full"
-          }
-        },
-        {
-          patterns: [
             "/settings"
           ],
           properties: {
@@ -44,8 +35,11 @@ class ConfigurationsController < ApplicationController
         },
         {
           patterns: [
+            "/profiles/[0-9]+/edit",
             "/session/new",
-            "/users/new"
+            "/users/new",
+            "/cards",
+            "/cards/.*"
           ],
           properties: {
             context: "modal",

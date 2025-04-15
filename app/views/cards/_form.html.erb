@@ -1,28 +1,44 @@
-<%= form_with(model: @card, class: "contents", data: { controller: 'card' }) do |form| %>
-  <%= form.hidden_field :kind, data: { card_target: 'kind' } %>
+<div class="m-2 mb-4">
+  <%= form_with(model: @card, class: "pb-8", data: { controller: 'card' }) do |form| %>
+    <%= form.hidden_field :kind, data: { card_target: 'kind' } %>
 
-  <h2 class="inline uppercase text-gray-500 text-sm"><%= t(card.kind) %></h2>
-  <div class="block max-w bg-white border-gray-200 rounded-md shadow-md ">
-    <%= form.select(:title, cards_select_options(card.kind), {}, class: "block w-full border rounded-t-md pl-4 bg-black text-lg leading-5 font-semibold text-white dark:text-white", data: { card_target: 'title' }) %>
+      <div class="rounded bg-slate-100 border border-slate-200">
+        <div class="flex flex-row border-b border-white">
+          <div class="grow p-2">
+            <div class="text-xl font-bold uppercase text-gray-400">
 
-    <% if @card.errors.any? %>
-      <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-        <h2><%= pluralize(image.errors.count, "error") %> prohibited this image from being saved:</h2>
+              Select a prompt:
 
-        <ul>
-          <% @card.errors.each do |error| %>
-            <li><%= error.full_message %></li>
-          <% end %>
-        </ul>
+            </div>
+            <div class="text-xl font-bold">
+
+              <% cards_select_options(card.kind).each do |label, value| %>
+                <div class="py-2 flex justify-between items-center">
+                  <div><%= form.label :title, label, for: "card_title_#{value}" %></div>
+                  <div><%= form.radio_button :title, value, id: "card_title_#{value}", data: { card_target: 'title' } %></div>
+                </div>
+              <% end %>
+
+            </div>
+          </div>
+          <div class="shrink flex items-center pr-4">
+          </div>
+        </div>
+        <div class="p-4">
+          <%= form.text_area :content, rows: 5, placeholder: "Write something...", data: { card_target: 'content' }, class: "block w-full px-2 text-md text-gray-800 bg-white border-0 border-transparent focus:border-transparent focus:ring-0 focus:ring-0 bg-white", required: true %>
+        </div>
       </div>
-    <% end %>
 
-    <div class="p-4">
-      <%= form.text_area :content, rows: 6, placeholder: t(:write_something), data: { card_target: 'content' }, class: "block w-full px-2 text-md text-gray-800 bg-white border-0 border-transparent focus:border-transparent focus:ring-0 dark:bg-gray-800 focus:bg-gray-100 focus:ring-0 dark:text-white dark:placeholder-gray-400" %>
-    </div>
+      <div class="w-full flex pt-2 pb-4">
+        <% if card.kind != :about_me %>
+        <div class="flex w-1/2 justify-center items-center">
+          <%= link_to("Remove #{card.kind.to_s.titleize}", card, method: :delete, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }) %>
+        </div>
+        <% end %>
 
-    <div class="p-4 text-right">
-     <%= form.submit class: "text-xs rounded-md py-1 px-2 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
-    </div>
-  </div>
-<% end %>
+        <div class="flex w-1/2 justify-center items-center">
+        <%= form.submit class: "text-lg rounded-md py-2 px-4 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+        </div>
+      </div>
+  <% end %>
+</div>
