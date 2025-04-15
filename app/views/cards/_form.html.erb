@@ -6,16 +6,11 @@
         <div class="flex flex-row border-b border-white">
           <div class="grow p-2">
             <div class="text-xl font-bold uppercase text-gray-400">
-              <%= card.kind.to_s.titleize%>
+              <%= card.kind.to_s.titleize %>
             </div>
             <div class="text-xl font-bold">
-<%= form.select :title, options_for_select(cards_select_options(card.kind), form.object.title), { include_blank: "Please select a prompt" }, { required: true, class: "block w-full px-2 py-1 text-md text-gray-800 bg-white border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" } %>
-
-
-
+              <%= form.select :title, options_for_select(cards_select_options(card.kind), form.object.title), { include_blank: "Please select a prompt" }, { required: true, class: "block w-full px-2 py-1 text-md text-gray-800 bg-white border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500", data: { card_target: "title" } } %>
             </div>
-          </div>
-          <div class="shrink flex items-center pr-4">
           </div>
         </div>
         <div class="p-4">

@@ -19,6 +19,7 @@ class CardsController < ApplicationController
   def update
     @card = Card.find(params[:id])
 
+    flash[:notice] = "Updated #{@card.kind.to_s.titleize} card"
     @card.update card_params
   end
 
