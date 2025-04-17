@@ -10,3 +10,11 @@
 <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
 
 <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+
+<script>
+document.documentElement.classList.toggle(
+  "dark",
+  localStorage.theme === "dark" ||
+    (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches),
+);
+</script>

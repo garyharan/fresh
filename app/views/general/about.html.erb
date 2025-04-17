@@ -1,17 +1,20 @@
 <% content_for(:title, "no_title") %>
+<div class="dark:bg-black">
+  <div class="flex flex-col justify-center items-center">
+    <img src="fresh_dating_logo.png" class="size-24 mt-8" alt="Fresh Dating Logo" />
+    <div class="text-5xl">
+      <span class="font-black font-[Verdana] bg-gradient-to-r from-[rgb(86,19,203)] to-[rgb(234,70,149)] text-transparent bg-clip-text ">Fresh</span><span class="font-thin font-mono  text-[rgb(78, 16, 186)]">Dating</span>
+    </div>
 
-<div class="flex flex-col justify-center items-center">
-  <img src="fresh_dating_logo.png" class="size-24 mt-8" alt="Fresh Dating Logo" />
-  <div class="text-5xl">
-    <span class="font-black font-[Verdana] bg-gradient-to-r from-[rgb(86,19,203)] to-[rgb(234,70,149)] text-transparent bg-clip-text ">Fresh</span><span class="font-thin font-mono  text-[rgb(78, 16, 186)]">Dating</span>
+    <p class="text-lg w-full px-8 py-8 text-center text-justify">
+      We're a small team from Canada. No growth hacks, no gimmicks. Just a belief: dating should feel better. More honest. More human. We don't believe in gatekeeping connection. The basics are free, forever. Fair pricing, always.
+    </p>
   </div>
 
-  <p class="text-lg w-full px-4 py-8 text-center">This application is made for love in the Greater Montreal region by a very small and dedicated team.</p>
+  <%= link_to "/recede_historical_location", "/recede_historical_location", class: "hotwire-native:hidden", data: {
+    controller: "bridge--button",
+    bridge_position: "right",
+    bridge_title: "Done",
+    bridge_vibrate: true
+  } %>
 </div>
-
-<%= link_to "/recede_historical_location", "/recede_historical_location", class: "hotwire-native:hidden", data: {
-  controller: "bridge--button",
-  bridge_position: "right",
-  bridge_title: "Done",
-  bridge_vibrate: true
-} %>

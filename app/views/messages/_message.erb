@@ -1,7 +1,7 @@
 <div
   id="<%= dom_id message  %>"
   title="<%= message.created_at.to_formatted_s(:rfc822)  %>"
-  class="flex p-1 px-4 mx-1 leading-loose rounded-t-3xl rounded-br-3xl rounded-bl-3xl mt-1"
+  class="flex p-1 px-4 mx-1 leading-loose rounded-t-3xl rounded-br-3xl rounded-bl-3xl mt-1 dark:text-black"
   data-user-id="<%= message.user.id %>"
   data-message-id="<%= message.id %>"
   data-created-at="<%= message.created_at %>"
