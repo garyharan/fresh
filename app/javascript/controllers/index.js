@@ -99,3 +99,6 @@ application.register("sortable", SortableController)
 
 import SwiperController from "./swiper_controller"
 application.register("swiper", SwiperController)
+
+import ThemeController from "./theme_controller"
+application.register("theme", ThemeController)
