@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "general/about"
   get "profile/show"
   resource :session
   resources :passwords, param: :token
@@ -95,6 +96,8 @@ Rails.application.routes.draw do
   get "geo", to: "geo#show"
 
   root "root#index"
+
+  get "/about", to: "general#about"
 
   get 'dashboard', to: 'dashboard#index'
 

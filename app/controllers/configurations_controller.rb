@@ -39,7 +39,8 @@ class ConfigurationsController < ApplicationController
             "/session/new",
             "/users/new",
             "/cards",
-            "/cards/.*"
+            "/cards/.*",
+            "/about"
           ],
           properties: {
             context: "modal",

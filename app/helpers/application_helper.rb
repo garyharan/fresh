@@ -1,4 +1,15 @@
 module ApplicationHelper
+  def hotwire_native_title(string)
+    case string
+    when "no_title"
+      ""
+    when ""
+      "Fresh Dating"
+    else
+      string
+    end
+  end
+
   def age(dob)
     return "??" if dob.nil?
 
