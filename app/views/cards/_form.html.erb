@@ -2,19 +2,19 @@
   <%= form_with(model: @card, class: "pb-8", data: { controller: 'card' }) do |form| %>
     <%= form.hidden_field :kind, data: { card_target: 'kind' } %>
 
-      <div class="rounded bg-slate-100 border border-slate-200">
+      <div class="rounded bg-slate-100 dark:bg-gray-600 border border-slate-200">
         <div class="flex flex-row border-b border-white">
           <div class="grow p-2">
             <div class="text-xl font-bold uppercase text-gray-400">
               <%= card.kind.to_s.titleize %>
             </div>
             <div class="text-xl font-bold">
-              <%= form.select :title, options_for_select(cards_select_options(card.kind), form.object.title), { include_blank: "Please select a prompt" }, { required: true, class: "block w-full px-2 py-1 text-md text-gray-800 bg-white border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500", data: { card_target: "title" } } %>
+              <%= form.select :title, options_for_select(cards_select_options(card.kind), form.object.title), { include_blank: "Please select a prompt" }, { required: true, class: "block w-full px-2 py-1 text-md text-gray-800 bg-white border border-gray-300 dark:border-gray-500 rounded-md dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500", data: { card_target: "title" } } %>
             </div>
           </div>
         </div>
         <div class="p-4">
-          <%= form.text_area :content, rows: 5, placeholder: "Write something...", data: { card_target: 'content' }, class: "block w-full px-2 text-md text-gray-800 bg-white border-0 border-transparent focus:border-transparent focus:ring-0 focus:ring-0 bg-white", required: true %>
+          <%= form.text_area :content, rows: 5, placeholder: "Write something...", data: { card_target: 'content' }, class: "block w-full px-2 text-md text-gray-800 bg-white border-0 border-transparent focus:border-transparent focus:ring-0 focus:ring-0 bg-white dark:border-gray-500 rounded-md dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white", required: true %>
         </div>
       </div>
 
