@@ -2,11 +2,9 @@
 <%= turbo_stream_from @room %>
 
 <div class="flex flex-col h-screen" data-controller="room">
-  <div class="w-full h-fit">
-    <%= render partial: "header" unless hotwire_native? %>
-  </div>
 
-  <div class="flex-1 overflow-auto p-2 flex flex-col-reverse" data-room-target="messages">
+  <div class="flex-1 p-2 flex flex-col" data-room-target="messages">
+    <%# = render partial: 'rooms/request_more', locals: { room: @room, messages: @messages } %>
 
     <%= turbo_frame_tag "messages" do %>
       <% @messages.each do |message| %>
@@ -14,7 +12,6 @@
       <% end %>
     <% end %>
 
-    <%= render partial: 'rooms/request_more', locals: { room: @room, messages: @messages } %>
   </div>
 
   <div class="sticky bottom-0 w-full">
