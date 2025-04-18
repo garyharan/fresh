@@ -36,6 +36,7 @@ class ConfigurationsController < ApplicationController
         {
           patterns: [
             "/profiles/[0-9]+/edit",
+            "/profiles/[0-9]+/images",
             "/session/new",
             "/users/new",
             "/cards",

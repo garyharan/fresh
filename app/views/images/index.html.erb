@@ -9,3 +9,13 @@
     <%= render "form", image: @image %>
   </div>
 </div>
+
+<%= link_to "Done", "refresh_historical_location",
+    class: "hotwire-native:hidden",
+    data: {
+      controller: "bridge--button",
+      bridge_position: "right",
+      bridge_title: "Done",
+      bridge_vibrate: true
+    }
+%>
