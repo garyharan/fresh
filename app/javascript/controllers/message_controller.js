@@ -6,9 +6,8 @@ export default class extends Controller {
   connect() {
     this.#applyColour()
     this.#styleBubble()
-
-    if (this.element.getAttribute("data-repress-scroll") !== "true") {
-      this.#scrollToMessage()
+    if (this.element.getAttribute("data-repress-scroll") == "false") {
+      window.dispatchEvent(new Event("message_controller::message_received"))
     }
   }
 
@@ -59,8 +58,7 @@ export default class extends Controller {
   }
 
   #scrollToMessage() {
-    this.element.scrollTo(0, this.element.scrollHeight);
-    this.element.scrollIntoView()
+    window.scrollBy(0, 10000000)
   }
 
   #messageIsFromCurrentUser() {

@@ -1,7 +1,7 @@
 class RoomsController < ApplicationController
   before_action :set_room, only: %i[ show request_more unread ]
 
-  PER_PAGE = 30
+  PER_PAGE = 10
 
   def index
     @rooms = Current.user.profile.rooms
