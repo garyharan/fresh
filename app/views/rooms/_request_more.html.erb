@@ -1,9 +1,9 @@
-<%= turbo_frame_tag "request_more",  data: { controller: "scroll-loader" } do %>
+<%= turbo_frame_tag "request_more" do %>
   <div class="w-full flex justify-center items-center">
     <%= link_to "Load more", request_more_room_path(room, before: @messages.map(&:id).min), data: { turbo_stream: true, "scroll-loader-target": 'button' } %>
   </div>
 
-  <div data-scroll-loader-target="spinner" data-room-id="<%= room.id %>" class="invisible w-full flex justify-center items-center my-6">
+  <div data-scroll-loader-target="spinner" data-room-id="<%= room.id %>" class="invisible w-full flex justify-center items-center mt-2">
     <%= render partial: "shared/spinner" %>
   </div>
 <% end %>

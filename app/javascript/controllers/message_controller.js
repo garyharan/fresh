@@ -1,10 +1,9 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = [ "avatar" ]
+  static targets = [ "bubble" ]
 
   connect() {
-    this.#applyColour()
     this.#styleBubble()
     if (this.element.getAttribute("data-repress-scroll") == "false") {
       window.dispatchEvent(new Event("message_controller::message_received"))
@@ -12,14 +11,8 @@ export default class extends Controller {
   }
 
   #styleBubble() {
-    const previousMessage = this.#previousMessage()
+    const previousMessage = this.element.previousElementSibling
     const currentMessage  = this.element
-
-    if (this.#messageIsFromCurrentUser()) {
-      this.#createRightTail(this.element)
-    } else {
-      this.#createLeftTail(this.element)
-    }
 
     if (previousMessage) {
       const previousCreatedAt = new Date(previousMessage.getAttribute("data-created-at").replace(" UTC", "Z"));
@@ -27,61 +20,9 @@ export default class extends Controller {
 
       const withinOneMinute = ((currentCreatedAt - previousCreatedAt) / 1000) <= 60;
 
-      if (withinOneMinute && this.#previousMessageMatchesMessageUser()) {
-        this.#removeTail(previousMessage);
+      if (!withinOneMinute) {
+        this.element.classList.remove("border-transparent")
       }
     }
-  }
-
-  #applyColour() {
-    if (this.#messageIsFromCurrentUser()) {
-      this.#setMessageOwnerAsCurrentUserColour()
-    } else {
-      this.#setMessageOwnerAsOtherUserColour()
-    }
-  }
-
-  #createRightTail(element) {
-    element.classList.remove("rounded-br-3xl")
-    element.classList.add("mb-4")
-  }
-
-  #createLeftTail(element) {
-    element.classList.remove("rounded-bl-3xl")
-    element.classList.add("mb-4")
-  }
-
-  #removeTail(element) {
-    element.classList.add("rounded-br-3xl")
-    element.classList.add("rounded-bl-3xl")
-    element.classList.remove("mb-4")
-  }
-
-  #scrollToMessage() {
-    window.scrollBy(0, 10000000)
-  }
-
-  #messageIsFromCurrentUser() {
-    return this.element.getAttribute("data-user-id") === this.#currentUserID()
-  }
-
-  #previousMessageMatchesMessageUser() {
-    return this.#previousMessage() !== null && this.#previousMessage().getAttribute("data-user-id") === this.element.getAttribute('data-user-id')
-  }
-
-  #setMessageOwnerAsCurrentUserColour() {
-    this.element.classList.add("bg-blue-300", "ml-20")
-  }
-
-  #setMessageOwnerAsOtherUserColour() {
-    this.element.classList.add("bg-gray-300",  "mr-20")
-  }
-
-  #currentUserID() {
-    return document.body.getAttribute("data-user-id")
-  }
-
-  #previousMessage() {
-    return this.element.previousElementSibling
   }
 }

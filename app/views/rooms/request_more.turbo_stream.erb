@@ -1,7 +1,7 @@
-<% if @messages.none? %>
+<% if @messages.none? || @messages.count % RoomsController::PER_PAGE != 0 %>
   <turbo-stream action="remove" target="request_more"></turbo-stream>
 <% else %>
-  <turbo-stream action="prepend" target="messages">
+  <turbo-stream action="prepend_with_scroll_adjust" target="messages">
     <template>
       <% @messages.each do |message| %>
         <%= render partial: 'messages/message', locals: { message: message, repress_scroll: true } %>
@@ -9,7 +9,7 @@
     </template>
   </turbo-stream>
 
-  <turbo-stream action="replace" target="request_more">
+  <turbo-stream action="replace_with_scroll_adjust" target="request_more">
     <template>
       <%= render partial: 'rooms/request_more', locals: { room: @room, messages: @messages } %>
     </template>

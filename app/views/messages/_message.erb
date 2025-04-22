@@ -1,14 +1,25 @@
+<%
+  ownership_classes = if Current.user.id == message.user.id
+    "bg-blue-300 ml-20"
+  else
+    "bg-gray-300 mr-20"
+  end
+%>
 <div
-  id="<%= dom_id message  %>"
-  title="<%= message.created_at.to_formatted_s(:rfc822)  %>"
-  class="flex p-1 px-4 mx-1 leading-loose rounded-t-3xl rounded-br-3xl rounded-bl-3xl mt-1 dark:text-black"
-  data-user-id="<%= message.user.id %>"
-  data-message-id="<%= message.id %>"
-  data-created-at="<%= message.created_at %>"
-  data-readable-url="<%= reads_path %>"
-  data-readable-readers="<%= message.readers.map(&:id).join(',') %>"
-  data-controller="message readable"
-  data-repress-scroll="<%= defined?(repress_scroll) ? repress_scroll : false %>"
+    id="<%= dom_id message  %>"
+    class="border-b border-slate-200 border-transparent dark:border-black dark:border-transparent border-dotted py-1"
+    data-controller="message readable"
+    title="<%= message.created_at.to_formatted_s(:rfc822)  %>"
+    data-user-id="<%= message.user.id %>"
+    data-message-id="<%= message.id %>"
+    data-created-at="<%= message.created_at %>"
+    data-readable-url="<%= reads_path %>"
+    data-readable-readers="<%= message.readers.map(&:id).join(',') %>"
+    data-repress-scroll="<%= defined?(repress_scroll) ? repress_scroll : false %>"
 >
-  <%= raw message.body.gsub(/\n/, '<br>') %>
+  <div data-message-target="bubble"
+    class="flex p-1 px-4 mx-1 leading-loose rounded-t-3xl rounded-br-3xl rounded-bl-3xl dark:text-black <%= ownership_classes %>"
+  >
+    <%= raw message.body.gsub(/\n/, '<br>') %>
+  </div>
 </div>
