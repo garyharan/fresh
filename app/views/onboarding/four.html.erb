@@ -1,19 +1,12 @@
-<div class="w-full md:w-9/12 mx-auto mt-10" data-controller="onboarding">
-  <%= render 'steps' %>
+<% content_for(:title, "Say something about you") %>
+
+<div data-controller="onboarding">
+  <%= render 'steps' unless hotwire_native? %>
 
   <div class="flex flex-col h-64">
-    <div class="grow"></div>
+    <%= render 'cards/card', kind: 'about_me' %>
 
-    <div>
-      <%= render 'cards/card', kind: 'about_me' %>
-    </div>
-
-    <div class="">
-    </div>
-
-    <div>
-      <%= render 'onboarding/fifth_step_button', images: @images %>
-    </div>
+    <%= render 'onboarding/fifth_step_button' %>
   </div>
 
 </div>

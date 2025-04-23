@@ -1,7 +1,7 @@
 <%= turbo_frame_tag "images_form", data: { controller: 'photos' } do %>
-  <%= form_with(model: Image.new, url: [@profile, Image.new], class: "contents") do |form| %>
+  <%= form_with(model: Image.new, url: [@profile, Image.new], class: "block size-full rounded-lg") do |form| %>
     <% if @image&.errors&.any? %>
-      <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg">
         <h2><%= pluralize(image.errors.count, "error") %> prohibited this image from being saved:</h2>
 
         <ul>
@@ -12,9 +12,11 @@
       </div>
     <% end %>
 
-    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="large_size" data-photos-target="uploadSection">
-      <div class="m-2">Upload photos</div>
-      <%= form.file_field :photo, multiple: true, data: { action: "change->photos#submit" }, class: "block w-full text-lg text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" %>
+    <label class="block text-sm min-h-full p-4 font-medium text-gray-900 " data-photos-target="uploadSection">
+
+      <p class="text-2xl size-full min-h-24 rounded-lg border border-1 border-slate-300 dark:border-white text-center content-center bg-purple-300">+</p>
+
+      <%= form.file_field :photo, multiple: true, data: { action: "change->photos#submit" }, class: "hidden" %>
     </label>
 
     <div class="inline hidden">

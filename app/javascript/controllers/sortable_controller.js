@@ -1,15 +1,11 @@
 import { Controller } from "@hotwired/stimulus"
 
-// Connects to data-controller="sortable"
 export default class extends Controller {
   connect() {
     this.sortable = new Sortable(this.element, {
       draggable: ".draggable",
-      handle: ".handle",
       onEnd: this.update.bind(this)
     });
-
-    this.hideFirstDeleteButton();
   }
 
   update(event) {
@@ -31,18 +27,6 @@ export default class extends Controller {
       },
       body: data,
     });
-
-    this.hideFirstDeleteButton();
-  }
-
-  hideFirstDeleteButton() {
-    this.element.querySelectorAll('.delete_button').forEach((button, index) => {
-      if (index == 0) {
-        button.style.display = "none";
-      } else {
-        button.style.display = "block";
-      }
-    })
   }
 
   getMetaValue(name) {

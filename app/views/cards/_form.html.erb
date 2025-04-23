@@ -1,4 +1,4 @@
-<div class="m-2 mb-4">
+<div class="m-2 m-4">
   <%= form_with(model: @card, class: "pb-8", data: { controller: 'card' }) do |form| %>
     <%= form.hidden_field :kind, data: { card_target: 'kind' } %>
 
@@ -18,15 +18,15 @@
         </div>
       </div>
 
-      <div class="w-full flex pt-2 pb-4">
-        <% if card.kind != :about_me %>
-        <div class="flex w-1/2 justify-center items-center">
-          <%= link_to("Remove #{card.kind.to_s.titleize}", card, method: :delete, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }) %>
+      <div class="flex mt-4">
+        <div class="flex w-1/2">
+          <% if card.persisted? %>
+            <%= link_to("Remove #{card.kind.to_s.titleize}", card, method: :delete, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }) %>
+          <% end %>
         </div>
-        <% end %>
 
         <div class="flex w-1/2 justify-center items-center">
-        <%= form.submit class: "text-lg rounded-md py-2 px-4 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+          <%= form.submit class: "text-lg rounded-md py-2 px-4 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
         </div>
       </div>
   <% end %>

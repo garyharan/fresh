@@ -4,11 +4,17 @@
 
     <div class="grid justify-items-stretch">
       <div class="w-fit justify-self-center mr-4 mt-10">
-        <%= button_to "Finish", onboarding_finish_path, method: :get, data: { "turbo-action": "replace"}, class: "justify-self-end text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-64 px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" %>
+        <%= button_to "Finish", onboarding_finish_path, method: :get, data: { "turbo-action": "replace"}, class: "justify-self-end text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-64 px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800", data: {
+            controller: "bridge--button",
+            bridge_position: "right",
+            bridge_title: "Finish",
+            bridge_vibrate: true
+          } %>
       </div>
     </div>
 
   <% else %>
+    <button class="hidden" data-controller="bridge--button" bridge_title="" ></button>
 
     <%= render 'shared/contextual_help', message: t('fill_first_card_to_finish') %>
 

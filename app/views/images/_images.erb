@@ -1,18 +1,13 @@
 <%= turbo_frame_tag "images" do %>
-  <ul data-controller="sortable" data-url="<%= sort_profile_images_path(Current.user.profile) %>" class="space-y-3 list-inside text-gray-500 dark:text-gray-400">
+  <div data-controller="sortable" data-url="<%= sort_profile_images_path(Current.user.profile) %>" class="mt-4 grid grid-flow-rows grid-cols-3 gap-2">
     <% @images.each do |image| %>
       <% next if image == "" || !image.photo.attached? %>
-      <li id="<%= dom_id image %>" class="flex w-full items-center draggable  gap-4">
-          <div class="cursor-row-resize handle">
-            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
-          </div>
-          <div class="flex-grow justify-self-center">
-            <%= image_tag image.photo.variant(:thumb), class: "rounded-lg" %>
-          </div>
-          <div class="justify-self-right">
-            <%= button_to "🗑️", profile_image_path(@profile.id, image), method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "delete_button", style: "display: none;" %>
-          </div>
-      </li>
+      <div id="<%= dom_id image %>" class="draggable">
+        <%= button_to profile_image_path(@profile.id, image), method: :delete, data: { turbo_confirm: "Do you want to remove this photo?" } do %>
+          <%= image_tag image.photo.variant(:medium), class: "rounded-lg" %>
+        <% end %>
+      </div>
     <% end %>
-  </ul>
+    <%= render 'images/form' %>
+  </div>
 <% end %>

@@ -1,8 +1,9 @@
-<div class="w-full md:w-9/12 mx-auto mt-10" data-controller="onboarding">
-  <%= render 'steps' %>
+<% content_for(:title, "Your best shot") %>
+
+<div class="w-full px-4" data-controller="onboarding">
+  <%= render 'steps' unless hotwire_native?  %>
 
   <%= render 'images/images', images: @images %>
-  <%= render 'images/form' %>
 
   <%= render 'onboarding/fourth_step_button', images: @images %>
 </div>
