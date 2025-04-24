@@ -4,13 +4,22 @@ export default class extends Controller {
   static targets = [ "bubble" ]
 
   connect() {
-    this.#styleBubble()
-    if (this.element.getAttribute("data-repress-scroll") == "false") {
-      window.dispatchEvent(new Event("message_controller::message_received"))
+    this.currentUserId = document.body.getAttribute("data-user-id")
+    this.#styleBubbleBackground()
+    this.#styleSpacers()
+  }
+
+  #styleBubbleBackground() {
+    if (this.currentUserId == this.element.getAttribute("data-user-id")) {
+      this.bubbleTarget.classList.add("bg-blue-300")
+      this.bubbleTarget.classList.add("ml-20")
+    } else {
+      this.bubbleTarget.classList.add("bg-gray-300")
+      this.bubbleTarget.classList.add("mr-20")
     }
   }
 
-  #styleBubble() {
+  #styleSpacers() {
     const previousMessage = this.element.previousElementSibling
     const currentMessage  = this.element
 

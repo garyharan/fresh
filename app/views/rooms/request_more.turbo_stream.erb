@@ -1,4 +1,4 @@
-<% if @messages.none? || @messages.count % RoomsController::PER_PAGE != 0 %>
+<% if @messages.none? %>
   <turbo-stream action="remove" target="request_more"></turbo-stream>
 <% else %>
   <turbo-stream action="prepend_with_scroll_adjust" target="messages">

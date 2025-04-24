@@ -1,13 +1,7 @@
 <% content_for(:title, "My Photos") %>
 
 <div class="flex flex-col mx-auto" style="max-width: 1024px;">
-  <div class="w-100% m-2 md:m-8">
-    <%= render 'images/images', images: @images %>
-  </div>
-
-  <div id="add_images" class="m-2 md:m-8">
-    <%= render "form", image: @image %>
-  </div>
+  <%= render 'images/images', images: @images %>
 </div>
 
 <%= link_to "Done", "refresh_historical_location",

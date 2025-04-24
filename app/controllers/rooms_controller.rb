@@ -1,7 +1,7 @@
 class RoomsController < ApplicationController
   before_action :set_room, only: %i[ show request_more unread ]
 
-  PER_PAGE = 45
+  PER_PAGE = 35
 
   def index
     @rooms = Current.user.profile.rooms
@@ -9,7 +9,8 @@ class RoomsController < ApplicationController
 
   def show
     @interlocutors = @room.profiles.where.not(id: Current.user.profile.id)
-    @messages = @room.messages.order(:id).last(PER_PAGE)
+    @messages = @room.messages.order(id: :desc).limit(PER_PAGE).reverse
+
 
     respond_to do |format|
       format.html
@@ -17,7 +18,11 @@ class RoomsController < ApplicationController
   end
 
   def request_more
-    @messages = @room.messages.where("id < ?", params[:before].to_i).order(:id).includes(:user).last(PER_PAGE)
+    @messages = @room.messages.where("id < ?", params[:before].to_i)
+                      .order(id: :desc)
+                      .includes(:user)
+                      .limit(PER_PAGE)
+                      .reverse
   end
 
   private
