@@ -4,18 +4,13 @@
     <%= render 'layouts/header' %>
   </head>
 
-  <body
-    class="mb-0 pb-0 select-none overflow-x-hidden max-w-full text-[#06011e] dark:text-slate-300 bg-white dark:bg-[#06011e] dark:text-slate-300"
-    data-user-id="<%= authenticated? ? Current.user.id : -1 %>"
-    data-controller="bridge--vibrator theme"
-    <%= hotwire_native? ? 'data-hotwire-native=true' : '' %>
-  >
+  <body class="mb-0 pb-0 select-none overflow-x-hidden max-w-full text-[#06011e] dark:text-slate-300 bg-white dark:bg-[#06011e] dark:text-slate-300" data-user-id="<%= authenticated? ? Current.user.id : -1 %>" data-controller="bridge--vibrator theme" <%= hotwire_native? ? 'data-hotwire-native="true"' : '' %>>
     <div>
       <%= render "shared/nav" unless hotwire_native? %>
 
       <%= turbo_stream_from Current.user if authenticated? %>
 
-      <main class="hotwire-native:m-0" <%= hotwire_native? || true ? 'data-controller="bridge--vibrate"' : '' %>>
+      <main class="hotwire-native:m-0">
         <%= render "shared/flashes" %>
         <%= yield %>
       </main>
