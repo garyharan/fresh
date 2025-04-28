@@ -3,6 +3,6 @@
 <%= link_to "About", "/about", data: {
   controller: "bridge--logo",
   bridge_position: "left"
-}, class: "hotwire-native:hidden" %>
+}, class: "hidden" if hotwire_native? %>
 
 <%= render partial: 'profiles/profile', locals: { profile: @profile } %>
