@@ -70,9 +70,6 @@ application.register("message", MessageController)
 import MessageFormController from "./message_form_controller"
 application.register("message-form", MessageFormController)
 
-import NotificationGranterController from "./notification_granter_controller"
-application.register("notification-granter", NotificationGranterController)
-
 import PasswordResetEmailController from "./password_reset_email_controller"
 application.register("password-reset-email", PasswordResetEmailController)
 

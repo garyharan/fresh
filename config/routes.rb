@@ -17,7 +17,6 @@ Rails.application.routes.draw do
     post :toggle_public
 
     get :invite
-    get :notifications
 
     get :distance
     get :orientation

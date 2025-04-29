@@ -15,9 +15,6 @@ class SettingsController < ApplicationController
   def invite
   end
 
-  def notifications
-  end
-
   def distance
     @user = Current.user
   end
