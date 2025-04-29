@@ -18,7 +18,7 @@ class RootControllerTest < ActionDispatch::IntegrationTest
   test "should redirect if profile is incomplete" do
     @gathino = users(:gathino)
     sign_in @gathino
-    @gathino.profile.update(display_name: nil)
+    @gathino.profile.update_columns(display_name: nil)
     refute @gathino.profile.complete?
 
     get root_url
