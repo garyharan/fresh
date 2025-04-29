@@ -8,7 +8,6 @@ class LikesController < ApplicationController
     if @like.reciprocated?
       @room = Room.find_or_create_by_like(@like)
       respond_to do |format|
-        format.html { redirect_to @room }
         format.turbo_stream {
           render turbo_stream: turbo_stream.replace('discovery', partial: 'profiles/matched')
         }

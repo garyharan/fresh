@@ -22,9 +22,9 @@ class LikesControllerTest < ActionDispatch::IntegrationTest
     Like.create! profile: profiles(:one), user: users(:velvet)
 
     post profile_likes_url(profiles(:two), format: :turbo_stream)
-    assert_redirected_to room_url(
-      Room.find_or_create_by_profiles([profiles(:one), profiles(:two)])
-    )
+    assert_response :success
+    assert_match %r{<turbo-stream action="replace" target="discovery"}, response.body
+    assert /Send a Message/ =~ response.body
   end
 
   test "should get destroy" do
