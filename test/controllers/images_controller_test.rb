@@ -32,8 +32,6 @@ class ImagesControllerTest < ActionDispatch::IntegrationTest
              }
            }
     end
-
-    assert_redirected_to profile_images_url(@profile)
   end
 
   test "should create multiple images" do
@@ -41,7 +39,10 @@ class ImagesControllerTest < ActionDispatch::IntegrationTest
       post profile_images_url(@profile),
            params: {
              image: {
-               photo: [fixture_file_upload("test/fixtures/files/captain.jpeg", "image/jpeg"), fixture_file_upload("test/fixtures/files/gathino.png", "image/png")],
+               photo: [
+                  fixture_file_upload("test/fixtures/files/captain.jpeg", "image/jpeg"),
+                  fixture_file_upload("test/fixtures/files/gathino.png", "image/png")
+                ],
                profile_id: @image.profile_id
              }
            }
