@@ -13,9 +13,6 @@ Rails.application.routes.draw do
 
   resources :settings, only: [:index, :update]
   namespace :settings do
-    get :public
-    post :toggle_public
-
     get :invite
 
     get :distance
@@ -54,8 +51,6 @@ Rails.application.routes.draw do
     resources :passes, only: %i[create destroy]
   end
   get 'profile', to: 'profile#show'
-
-  resources :public_profiles, only: %i[show]
 
   resources :cards
 
