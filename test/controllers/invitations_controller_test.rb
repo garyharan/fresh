@@ -8,7 +8,7 @@ class InvitationsControllerTest < ActionDispatch::IntegrationTest
 
     get "/invitation/#{@user.invite_code}"
 
-    assert_redirected_to new_user_registration_path
+    assert_redirected_to new_user_path
     assert_equal @user.invite_code, session[:invite_code]
   end
 end
