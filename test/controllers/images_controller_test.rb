@@ -55,11 +55,6 @@ class ImagesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get edit" do
-    get edit_profile_image_url(@profile, @image)
-    assert_response :success
-  end
-
   test "should destroy image" do
     assert_difference("Image.count", -1) do
       delete profile_image_url(@profile, @image)

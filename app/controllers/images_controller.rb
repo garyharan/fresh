@@ -14,9 +14,6 @@ class ImagesController < ApplicationController
     @image = Image.new
   end
 
-  def edit
-  end
-
   def sort
     image = @profile.images.find(sort_params[:id])
     image.insert_at(sort_params[:position].to_i)
