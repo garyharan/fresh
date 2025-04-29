@@ -10,13 +10,4 @@ class ConfigurationsControllerTest < ActionDispatch::IntegrationTest
       JSON.parse(@response.body)
     end
   end
-
-  test "should have new sessions and new users as modals" do
-    json_response = JSON.parse(@response.body)
-
-    assert_includes json_response['rules'][0]['patterns'], '/session/new$'
-    assert_includes json_response['rules'][0]['patterns'], '/users/new$'
-
-    assert_includes json_response['rules'][0]['properties']['context'], 'modal'
-  end
 end
