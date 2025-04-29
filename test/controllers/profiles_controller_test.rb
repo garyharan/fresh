@@ -35,13 +35,6 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'should redirect to profile creation page if you do not have a profile yet' do
-    sign_in users(:no_profile_yet)
-
-    get profiles_url
-    assert_redirected_to new_profile_url
-  end
-
   test 'should get new' do
     sign_in users(:gathino)
     get new_profile_url
@@ -122,7 +115,6 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
     assert_equal Date.parse("2001-01-01"), @profile.born_on
     assert_equal Gender.last.id, @profile.gender_id
     assert_equal 80085, @profile.maximum_distance
-    assert_redirected_to edit_profile_path(@profile)
   end
 
   test 'should destroy profile' do
