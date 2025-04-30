@@ -1,19 +1,20 @@
 {
   "dependencies": {
-    "@hotwired/hotwire-native-bridge": "^1.0.0",
-    "@hotwired/stimulus": "^3.1.0",
-    "@hotwired/turbo-rails": "^7.2.0",
+    "@hotwired/hotwire-native-bridge": "^1.2.1",
+    "@hotwired/stimulus": "^3.2.2",
+    "@hotwired/turbo-rails": "^8.0.13",
     "@rails/activestorage": "^7.0.4",
-    "esbuild": "^0.25.0",
+    "esbuild": "^0.25.3",
     "flowbite": "^1.5.5",
-    "sortablejs": "^1.15.0"
+    "sortablejs": "^1.15.6"
   },
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets",
     "build:css": "tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css"
   },
   "devDependencies": {
-    "@types/sortablejs": "^1.15.0"
+    "@types/sortablejs": "^1.15.6",
+    "caniuse-lite": "^1.0.30001716"
   },
   "engines": {
     "node": ">= 18.0.0"
