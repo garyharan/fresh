@@ -2,7 +2,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 source "https://rubygems.org"
 
 ruby "3.4.2"
-gem "rails", "~> 8.0.0"
+gem "rails", "~> 8.0.2"
 
 gem "bcrypt", "~> 3.1"
 gem 'sendgrid-ruby' # Required for sending password resets and confirmations
