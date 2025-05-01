@@ -7,12 +7,12 @@ gem "rails", "~> 8.0.2"
 gem "bcrypt", "~> 3.1"
 gem 'sendgrid-ruby' # Required for sending password resets and confirmations
 
-gem "sprockets-rails"
+gem "jsbundling-rails"
+gem "cssbundling-rails"
+gem "propshaft"
 
 gem "sqlite3"
 gem "puma"
-
-# gem "importmap-rails"
 
 gem "turbo-rails"
 gem "stimulus-rails"
