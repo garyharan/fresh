@@ -12,7 +12,7 @@ gem "sprockets-rails"
 gem "sqlite3"
 gem "puma"
 
-gem "importmap-rails"
+# gem "importmap-rails"
 
 gem "turbo-rails"
 gem "stimulus-rails"

@@ -1,9 +1,3 @@
 //= link_tree ../images
 //= link_directory ../stylesheets .css
-//= link_tree ../builds
-//= link @hotwired--hotwire-native-bridge.js
-//= link channels/consumer.js
-//= link channels/index.js
-//= link channels/unread_channel.js
-//= link_tree ../../javascript/
-//= link application.js
+//= link builds/application.js
