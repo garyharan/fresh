@@ -7,6 +7,12 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
+  test "should track IP address of user" do
+    post users_url, params: { user: { email_address: 'test@example.com', password: 'password' } }
+    user = User.find_by(email_address: 'test@example.com')
+    assert_not_nil user.first_signin_ip_address
+  end
+
   test "should login when creating a user" do
     post users_url, params: { user: { email_address: 'test@example.com', password: 'password' } }
     patch user_url(id: 1), params: { user: { distance: 100 } }

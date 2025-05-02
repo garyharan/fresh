@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.first_signin_ip_address = request.remote_ip
 
     if @user.save && Profile.create(user_id: @user.id, step: :creation) && start_new_session_for(@user)
       redirect_to root_url, notice: 'User was successfully created.'
