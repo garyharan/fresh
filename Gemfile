@@ -26,7 +26,7 @@ gem "redis"
 
 gem 'kaminari'
 
-# R2 Cloudflare https://developers.cloudflare.com/r2/examples/aws-sdk-ruby/
+# Using: https://cloud.linode.com/object-storage/buckets
 gem "aws-sdk-s3"
 
 # To get City or County from profile LAT/LON
