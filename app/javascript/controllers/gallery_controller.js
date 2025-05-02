@@ -54,6 +54,8 @@ export default class extends Controller {
   }
 
   display(index) {
+    if (!this.pageIndicator) { return }
+
     Array.from(this.images).forEach((image, i) => {
       image.style.display = i === index ? "block" : "none"
     })
