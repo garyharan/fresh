@@ -3,7 +3,7 @@
     <div class="border border-blue-300 size-96 relative my-auto object-cover rounded light:bg-white dark:bg-black" data-controller="gallery">
       <% profile.images.each_with_index do |image| %>
         <% next if  Rails.env.test? && !image.photo.attached? %>
-        <%= image_tag image.photo.variant(:medium), class: "object-cover h-full w-full absolute top-0 light:bg-white dark:bg-black rounded", style: "touch-action: manipulation;"  %>
+        <%= image_tag image.photo.variant(:standard), class: "object-cover h-full w-full absolute top-0 light:bg-white dark:bg-black rounded", style: "touch-action: manipulation;"  %>
       <% end %>
     </div>
   </div>

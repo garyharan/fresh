@@ -4,7 +4,7 @@
       <% next if image == "" || !image.photo.attached? %>
       <div id="<%= dom_id image %>" class="draggable">
         <%= button_to profile_image_path(@profile.id, image), method: :delete, data: { turbo_confirm: "Do you want to remove this photo?" } do %>
-          <%= image_tag image.photo.variant(:medium), class: "rounded-lg" %>
+          <%= image_tag image.photo.variant(:standard), class: "rounded-lg" %>
         <% end %>
       </div>
     <% end %>
