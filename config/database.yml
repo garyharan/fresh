@@ -13,4 +13,4 @@ test:
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  database: sqlite3:///home/deploy/fresh-dating-app/shared/production.sqlite3
