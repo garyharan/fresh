@@ -20,16 +20,12 @@ export default class extends Controller {
   }
 
   #scrollToBottom() {
-    console.info("Scroll to bottom")
     window.scrollTo(0, (window.innerHeight + document.documentElement.scrollHeight + 1000))
   }
 
   #resetScrollLoader() {
     this.button = this.element.querySelector('[data-scroll-loader-target="button"]')
     this.spinner = this.element.querySelector('[data-scroll-loader-target="spinner"]')
-
-    console.info(this.button)
-    console.info(this.spinner)
 
     if (this.button && this.spinner) {
       this.#startObservingButton()
@@ -59,7 +55,6 @@ export default class extends Controller {
     let that = this
 
     event.detail.render = function(streamElement) {
-      console.info(streamElement)
       if (streamElement.action == "prepend_with_scroll_adjust") {
         let previousScrollHeight = document.documentElement.scrollHeight
         let previousScrollTop = document.documentElement.scrollTop
