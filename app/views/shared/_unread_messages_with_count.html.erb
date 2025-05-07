@@ -1,4 +1,4 @@
-<%= turbo_frame_tag "unread_count_#{room.id}_#{user.id}" do %>
+<%= turbo_frame_tag "unread_count_#{room.id}_#{user.id}", data: { "room-unread-count-reset-target": "frame" } do %>
   <% if room.messages.unread_by(user).count > 0 %>
     <div class="text-sm text-gray-500 flex flex-row mt-2">
       <div class="inline-flex w-4 h-4 mr-2 text-xs font-bold text-white bg-blue-500 border-2 border-white rounded-full dark:border-gray-900">
