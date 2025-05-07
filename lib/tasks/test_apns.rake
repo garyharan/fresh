@@ -24,6 +24,7 @@ namespace :apns do
       response.status   # => '200'
       response.headers  # => {":status"=>"200", "apns-id"=>"6f2cd350-bfad-4af0-a8bc-0d501e9e1799"}
       response.body     # => ""
+      puts response.inspect
     end
 
     connection.push_async(push)
