@@ -18,6 +18,10 @@ gem "turbo-rails"
 gem "stimulus-rails"
 gem "tailwindcss-rails"
 
+# For notifications
+gem "apnotic", "~> 1.7"
+gem "noticed", "~> 2.6"
+
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
