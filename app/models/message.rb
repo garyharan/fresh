@@ -34,11 +34,14 @@ class Message < ApplicationRecord
     NotificationChannel.broadcast_to(recipient, { new_message: self.id, room: room.id, sender: user.id, sender_name: user.profile.display_name, body: body, url: room_path(room) })
     UnreadChannel.broadcast_to(recipient, { unread_count: Message.unread_by(recipient).count })
 
+
     room.users.each do |user|
       broadcast_replace_to user,
         target: "unread_count_#{room.id}_#{user.id}",
         partial: "shared/unread_messages_with_count",
         locals: { user: user, room: room }
+
+      NewMessageNotifier.with(message: self).deliver(user) unless user == self.user
     end
   end
 

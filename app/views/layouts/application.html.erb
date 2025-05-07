@@ -8,7 +8,10 @@
     <div>
       <%= render "shared/nav" unless hotwire_native? %>
 
-      <%= turbo_stream_from Current.user if authenticated? %>
+      <% if authenticated? %>
+        <%= turbo_stream_from Current.user %>
+        <meta data-controller="bridge--notification-token" />
+      <% end %>
 
       <main class="hotwire-native:m-0">
         <%= render "shared/flashes" %>

@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resource :session
   resources :passwords, param: :token
 
+  resources :notification_tokens, only: :create
+
   resources :users, only: [:new, :create, :update]
 
   resources :partnerships
