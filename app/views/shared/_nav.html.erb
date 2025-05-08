@@ -1,7 +1,11 @@
 <% if controller_name == "rooms" && action_name == "show" %>
   <%= render "rooms/header" %>
 <% else %>
-  <% unless hotwire_native? %>
+  <% if hotwire_native? %>
+    <div class=""><%= content_for(:left_button) %></div>
+    <div class=""><%= content_for(:right_button) %></div>
+  <% else %>
+
     <%
     active_tab_classes = "inline-block p-2 md:p-4 text-blue-600 rounded-t-lg border-b-2 border-blue-600 active dark:text-blue-500 dark:border-blue-500 whitespace-nowrap"
     inactive_tab_classes = "inline-block p-2 md:p-4 rounded-t-lg border-b-2 border-transparent hover:text-gray-100 hover:border-gray-300 dark:hover:text-gray-300 whitespace-nowrap"
@@ -29,6 +33,13 @@
             </ul>
             <% if authenticated? %>
                 <ul class="flex justify-self-end order-2">
+
+                    <% if content_for(:right_button) %>
+                      <li class="p-2">
+                        <%= content_for(:right_button) %>
+                      </li>
+                    <% end %>
+
                     <% if Current.user&.profile&.rooms&.any?%>
                       <li class="md:mx-4">
                         <%= link_to rooms_path, class: "relative inline-flex #{controller_name == 'rooms' ? 'text-blue-600 border-b-2 border-blue-600 p-2' : 'p-2'}" do %>
@@ -37,6 +48,7 @@
                         <% end %>
                       </li>
                     <% end %>
+
                     <li class="mr-2" data-controller="dropdown">
                         <div class="trigger p-2">
                             <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
