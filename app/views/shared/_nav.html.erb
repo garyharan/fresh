@@ -1,11 +1,10 @@
-<% if controller_name == "rooms" && action_name == "show" %>
-  <%= render "rooms/header" %>
+<% if hotwire_native? %>
+  <div class=""><%= content_for(:left_button) %></div>
+  <div class=""><%= content_for(:right_button) %></div>
 <% else %>
-  <% if hotwire_native? %>
-    <div class=""><%= content_for(:left_button) %></div>
-    <div class=""><%= content_for(:right_button) %></div>
+  <% if controller_name == "rooms" && action_name == "show" %>
+    <%= render "rooms/header" %>
   <% else %>
-
     <%
     active_tab_classes = "inline-block p-2 md:p-4 text-blue-600 rounded-t-lg border-b-2 border-blue-600 active dark:text-blue-500 dark:border-blue-500 whitespace-nowrap"
     inactive_tab_classes = "inline-block p-2 md:p-4 rounded-t-lg border-b-2 border-transparent hover:text-gray-100 hover:border-gray-300 dark:hover:text-gray-300 whitespace-nowrap"
