@@ -49,8 +49,7 @@ Rails.application.routes.draw do
       get :passed
     end
 
-    resources :likes, only: %i[create destroy]
-    resources :passes, only: %i[create destroy]
+    resources :assessments, only: :create
   end
   get 'profile', to: 'profile#show'
 

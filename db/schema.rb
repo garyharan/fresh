@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_05_143504) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_09_180443) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -37,6 +37,17 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_05_143504) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "assessments", force: :cascade do |t|
+    t.integer "from_profile_id", null: false
+    t.integer "to_profile_id", null: false
+    t.integer "kind", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["from_profile_id", "to_profile_id"], name: "index_assessments_on_from_profile_id_and_to_profile_id", unique: true
+    t.index ["from_profile_id"], name: "index_assessments_on_from_profile_id"
+    t.index ["to_profile_id"], name: "index_assessments_on_to_profile_id"
   end
 
   create_table "attractions", force: :cascade do |t|
@@ -246,6 +257,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_05_143504) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "assessments", "profiles", column: "from_profile_id"
+  add_foreign_key "assessments", "profiles", column: "to_profile_id"
   add_foreign_key "attractions", "genders"
   add_foreign_key "attractions", "profiles"
   add_foreign_key "cards", "profiles"

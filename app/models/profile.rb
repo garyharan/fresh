@@ -6,6 +6,7 @@ class Profile < ApplicationRecord
 
   has_many :likes, foreign_key: :profile_id, dependent: :destroy
   has_many :passes, foreign_key: :profile_id, dependent: :destroy
+  has_many :assessments, foreign_key: :from_profile_id, dependent: :destroy
 
   has_many :images, dependent: :destroy
   has_many :cards, dependent: :destroy

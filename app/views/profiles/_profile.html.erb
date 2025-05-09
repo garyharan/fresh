@@ -62,8 +62,8 @@
   </div>
 <% else %>
   <div class="flex flex-row mx-auto fixed bottom-0 w-full justify-center">
-    <%= button_to 'Pass', profile_passes_path(profile_id: profile.id), method: :post, class: "m-4 bg-red-500 text-white py-2 px-4 rounded-full", data: { 'swiper-target': "passButton" } %>
-    <%= button_to 'Like', profile_likes_path(profile_id: profile.id), method: :post, class: "m-4 bg-blue-500 text-white py-2 px-4 rounded-full", data: { 'swiper-target': "likeButton" } %>
+    <%= button_to 'Pass', profile_assessments_path(profile_id: profile.id, kind: :passed), method: :post, class: "m-4 bg-red-500 text-white py-2 px-4 rounded-full", data: { 'swiper-target': "passButton" } %>
+    <%= button_to 'Like', profile_assessments_path(profile_id: profile.id, kind: :liked), method: :post, class: "m-4 bg-blue-500 text-white py-2 px-4 rounded-full", data: { 'swiper-target': "likeButton" } %>
   </div>
 <% end %>
 

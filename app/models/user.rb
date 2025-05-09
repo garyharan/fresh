@@ -15,10 +15,10 @@ class User < ApplicationRecord
   has_many :passes, foreign_key: :user_id, dependent: :destroy
 
   def liked_profiles
-    Profile.joins(:likes).where(likes: { user_id: id })
+    profile.assessments.where(kind: :liked).map(&:to_profile)
   end
 
   def passed_profiles
-    Profile.joins(:passes).where(passes: { user_id: id })
+    profile.assessments.where(kind: :passed).map(&:to_profile)
   end
 end
