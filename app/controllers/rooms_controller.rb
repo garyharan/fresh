@@ -10,11 +10,6 @@ class RoomsController < ApplicationController
   def show
     @interlocutors = @room.profiles.where.not(id: Current.user.profile.id)
     @messages = @room.messages.order(id: :desc).limit(PER_PAGE).reverse
-
-
-    respond_to do |format|
-      format.html
-    end
   end
 
   def request_more
