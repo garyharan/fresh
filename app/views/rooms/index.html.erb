@@ -13,9 +13,14 @@
     <% @rooms.each do |room| %>
       <%= turbo_stream_from "unread_count_#{room.id}_#{Current.user.id}" %>
 
-      <%= link_to room_path(room), id: dom_id(room), class: "block p-2 m-2 sm:m-4 md:m-6 bg-white border border-gray-200 rounded-lg shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700", data: { controller: "room-unread-count-reset",
-      action: "click->room-unread-count-reset#reset"
-      } do %>
+      <%= link_to(
+        room_path(room),
+        id: dom_id(room),
+        class: "block p-2 m-2 sm:m-4 md:m-6 bg-white border border-gray-200 rounded-lg shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700",
+        data: {
+          controller: "room-unread-count-reset",
+          action: "room-unread-count-reset#reset"
+        }) do %>
         <div class="flex justify-between relative">
 
           <div class="min-w-fit my-auto grow-0">

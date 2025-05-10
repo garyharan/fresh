@@ -91,6 +91,9 @@ application.register("replace-classes", ReplaceClassesController)
 import RoomController from "./room_controller"
 application.register("room", RoomController)
 
+import RoomUnreadCountResetController from "./room_unread_count_reset_controller"
+application.register("room-unread-count-reset", RoomUnreadCountResetController)
+
 import ScrollLoaderController from "./scroll_loader_controller"
 application.register("scroll-loader", ScrollLoaderController)
 
