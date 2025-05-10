@@ -42,13 +42,8 @@ class ImagesController < ApplicationController
           @images = @profile.images.order(:position)
         end
         format.html { redirect_to profile_images_url(@profile) }
-        format.json { render :show, status: :created, location: @image }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json do
-          render json: @images.first { |i| i.errors.any? }.errors,
-                 status: :unprocessable_entity
-        end
       end
     end
   end

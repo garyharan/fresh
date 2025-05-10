@@ -5,7 +5,6 @@ class MessagesController < ApplicationController
 
       respond_to do |format|
         format.turbo_stream
-        format.json { render json: @message, status: :created }
       end
     else
       flash.notice = "This room is no longer available."

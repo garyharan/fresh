@@ -29,12 +29,8 @@ class ProfilesController < ApplicationController
           redirect_to profile_url(@profile),
                       notice: "Profile was successfully created."
         end
-        format.json { render :show, status: :created, location: @profile }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json do
-          render json: @profile.errors, status: :unprocessable_entity
-        end
       end
     end
   end
@@ -63,7 +59,6 @@ class ProfilesController < ApplicationController
       format.html do
         redirect_to profiles_url, notice: "Profile was successfully destroyed."
       end
-      format.json { head :no_content }
     end
   end
 
