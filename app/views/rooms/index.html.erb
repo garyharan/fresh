@@ -11,39 +11,40 @@
       </div>
     <% end %>
     <% @rooms.each do |room| %>
-      <%= turbo_stream_from "unread_count_#{room.id}_#{Current.user.id}" %>
+      <div id="<%= dom_id(room) %>">
+        <%= turbo_stream_from "unread_count_#{room.id}_#{Current.user.id}" %>
 
-      <%= link_to(
-        room_path(room),
-        id: dom_id(room),
-        class: "block p-2 m-2 sm:m-4 md:m-6 bg-white border border-gray-200 rounded-lg shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700",
-        data: {
-          controller: "room-unread-count-reset",
-          action: "room-unread-count-reset#reset"
-        }) do %>
-        <div class="flex justify-between relative">
+        <%= link_to(
+          room_path(room),
+          id: dom_id(room),
+          class: "block p-2 m-2 sm:m-4 md:m-6 bg-white border border-gray-200 rounded-lg shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700",
+          data: {
+            controller: "room-unread-count-reset",
+            action: "room-unread-count-reset#reset"
+          }) do %>
+          <div class="flex justify-between relative">
 
-          <div class="min-w-fit my-auto grow-0">
-            <% room.profiles.where.not(id: Current.user.profile.id).map do |profile| %>
-              <%= image_tag(profile.images.first.photo.variant(:medium), class: "w-12 h-12 sm:w-24 sm:h-24 md:w-32 md:h-32 border-2 rounded-full", alt: profile.display_name) if profile.images.any? && profile.images.first.photo.present? %>
-            <% end %>
-          </div>
+            <div class="min-w-fit my-auto grow-0">
+              <% room.profiles.where.not(id: Current.user.profile.id).map do |profile| %>
+                <%= image_tag(profile.images.first.photo.variant(:medium), class: "w-12 h-12 sm:w-24 sm:h-24 md:w-32 md:h-32 border-2 rounded-full", alt: profile.display_name) if profile.images.any? && profile.images.first.photo.present? %>
+              <% end %>
+            </div>
 
-          <div class="grow text-md md:text-xl lg:text-2xl font-semibold m-0 pl-2">
-            <div class="flex flex-col justify-center grow h-full">
-              <div> <%= room.profiles.where.not(id: Current.user.profile.id).first.display_name %> </div>
-              <%= render partial: "shared/unread_messages_with_count", locals: { room: room, user: Current.user } %>
+            <div class="grow text-md md:text-xl lg:text-2xl font-semibold m-0 pl-2">
+              <div class="flex flex-col justify-center grow h-full">
+                <div> <%= room.profiles.where.not(id: Current.user.profile.id).first.display_name %> </div>
+                <%= render partial: "shared/unread_messages_with_count", locals: { room: room, user: Current.user } %>
+              </div>
+            </div>
+
+            <div class="">
+              <div class="flex flex-col h-full justify-center">
+                <svg class="w-4 h-4 sm:w-10 sm:h-10 lg:w-12 lg:h-12 sm:mx-2 md:mx-6 lg:mx-10" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+              </div>
             </div>
           </div>
-
-          <div class="">
-            <div class="flex flex-col h-full justify-center">
-              <svg class="w-4 h-4 sm:w-10 sm:h-10 lg:w-12 lg:h-12 sm:mx-2 md:mx-6 lg:mx-10" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
-            </div>
-          </div>
-
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     <% end %>
   </div>
 </div>

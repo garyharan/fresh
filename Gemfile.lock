@@ -210,6 +210,8 @@ GEM
       racc (~> 1.4)
     noticed (2.6.1)
       rails (>= 6.1.0)
+    paranoia (3.0.1)
+      activerecord (>= 6, < 8.1)
     pp (0.6.2)
       prettyprint
     prettyprint (0.2.0)
@@ -361,6 +363,7 @@ DEPENDENCIES
   minitest-mock_expectations
   nanoid
   noticed (~> 2.6)
+  paranoia
   propshaft
   puma
   rails (~> 8.0.2)

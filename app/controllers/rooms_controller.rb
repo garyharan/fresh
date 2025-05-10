@@ -1,5 +1,5 @@
 class RoomsController < ApplicationController
-  before_action :set_room, only: %i[ show request_more unread ]
+  before_action :set_room, only: %i[ show destroy request_more unread ]
 
   PER_PAGE = 35
 
@@ -10,6 +10,12 @@ class RoomsController < ApplicationController
   def show
     @interlocutors = @room.profiles.where.not(id: Current.user.profile.id)
     @messages = @room.messages.order(id: :desc).limit(PER_PAGE).reverse
+  end
+
+  def destroy
+    @room.destroy
+    flash.notice = "You've successfully blocked this room."
+    recede_or_redirect_to rooms_path
   end
 
   def request_more

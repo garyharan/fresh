@@ -1,8 +1,11 @@
 class Room < ApplicationRecord
+  acts_as_paranoid
   has_and_belongs_to_many :profiles
   accepts_nested_attributes_for :profiles
 
-  has_many :messages, class_name: "Message", dependent: :destroy
+  has_many :messages, class_name: "Message"
+
+  after_destroy :block_other_users
 
   def users
     profiles.map(&:user)
@@ -29,5 +32,17 @@ class Room < ApplicationRecord
     room.profiles = profiles
     room.save!
     room
+  end
+
+  private
+
+  def block_other_users
+    self.users.each do |user|
+      broadcast_replace_to user,
+        target: "new_message_form_room_#{self.id}",
+        partial: "shared/messages_no_longer_possible"
+
+      broadcast_remove_to "unread_count_#{self.id}_#{user.id}", target: "room_#{self.id}"
+    end
   end
 end

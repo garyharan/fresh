@@ -13,6 +13,7 @@ gem "propshaft"
 
 gem "sqlite3"
 gem "puma"
+gem "paranoia"
 
 gem "turbo-rails"
 gem "stimulus-rails"
