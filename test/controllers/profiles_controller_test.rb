@@ -27,14 +27,6 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'should get passed profiles' do
-    sign_in @profile.user
-
-    get passed_profiles_url
-
-    assert_response :success
-  end
-
   test 'should get new' do
     sign_in users(:gathino)
     get new_profile_url

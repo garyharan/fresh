@@ -8,10 +8,6 @@ class ProfilesController < ApplicationController
     @profiles = Profile.recommended(Current.user.profile)
   end
 
-  def passed
-    @profiles = Profile.joins(:passes).where(passes: { user_id: Current.user.id }).order("passes.created_at DESC")
-  end
-
   def show
     @profile = Profile.find(params[:id])
   end

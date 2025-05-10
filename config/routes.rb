@@ -33,20 +33,9 @@ Rails.application.routes.draw do
   get "onboarding/four"
   get "onboarding/finish"
 
-  resources :recommendations do
-    member do
-      post :like
-      post :pass
-    end
-  end
-
   resources :profiles do
     resources :images, except: :update do
       patch :sort, on: :collection
-    end
-
-    collection do
-      get :passed
     end
 
     resources :assessments, only: :create

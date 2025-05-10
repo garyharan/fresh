@@ -4,8 +4,6 @@ class Profile < ApplicationRecord
   has_many :partnerships, dependent: :destroy
   has_many :partners, :through => :partnerships
 
-  has_many :likes, foreign_key: :profile_id, dependent: :destroy
-  has_many :passes, foreign_key: :profile_id, dependent: :destroy
   has_many :assessments, foreign_key: :from_profile_id, dependent: :destroy
 
   has_many :images, dependent: :destroy
@@ -114,13 +112,4 @@ class Profile < ApplicationRecord
     "Often",
     "Prefer not to say"
   ]
-
-  def liked_by?(model)
-    case model
-    when User
-      likes.where(user: model).any?
-    when Profile
-      likes.where(user: model.user).any?
-    end
-  end
 end

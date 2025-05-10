@@ -11,19 +11,9 @@ class ProfileTest < ActiveSupport::TestCase
     @enby = Gender.create!(label: 'Non-Binary and/or Two Spirit Person')
   end
 
-  test 'liked_by?(profile) when profile was liked by other profile' do
-    Like.create! profile: @velvet, user: @gathino.user
-
-    assert @velvet.liked_by?(@gathino.user)
-  end
-
   test 'maximum_distance delegation' do
     @gathino.maximum_distance = 80085
     assert_equal 80085, @gathino.maximum_distance
-  end
-
-  test 'liked_by?(profile) when profile was not liked by other profile' do
-    refute @gathino.liked_by?(@velvet.user)
   end
 
   test '#of_gender returns all the profile of a specific gender' do
@@ -91,7 +81,7 @@ class ProfileTest < ActiveSupport::TestCase
     @gathino.update(gender: @man, genders: [@woman, @enby])
     @velvet.update(gender: @enby, genders: [@man, @enby])
 
-    Like.create! profile: @gathino, user: @velvet.user
+    Assessment.create! from_profile: @velvet, to_profile: @gathino, kind: :liked
 
     assert_includes Profile.recommended(@gathino), @velvet
   end
@@ -102,7 +92,7 @@ class ProfileTest < ActiveSupport::TestCase
 
     assert_includes Profile.recommended(@gathino), @velvet
 
-    @gathino.user.likes.create! profile: @velvet
+    Assessment.create!(from_profile: @gathino, to_profile: @velvet, kind: :liked)
     refute_includes Profile.recommended(@gathino), @velvet
   end
 
