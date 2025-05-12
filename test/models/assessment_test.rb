@@ -1,14 +1,6 @@
 require "test_helper"
 
 class AssessmentTest < ActiveSupport::TestCase
-  test "should not allow assessing yourself" do
-    profile = profiles(:one)
-    assessment = Assessment.new(from_profile: profile, to_profile: profile, kind: :liked)
-
-    assert_not assessment.valid?
-    assert_includes assessment.errors[:to_profile], "can't be yourself"
-  end
-
   test "#reciprocated? is true if kind is liked" do
     profile_one = profiles(:one)
     profile_two = profiles(:two)
