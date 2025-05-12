@@ -1,7 +1,7 @@
 require "test_helper"
 
 class AssessmentTest < ActiveSupport::TestCase
-  test "#reciprocated? is true if kind is liked" do
+  test "#reciprocated? returns true when the assessments are the same kind" do
     profile_one = profiles(:one)
     profile_two = profiles(:two)
 
@@ -12,7 +12,7 @@ class AssessmentTest < ActiveSupport::TestCase
     assert assessment_two.reciprocated?, "should be recriprocated if liked in return"
   end
 
-  test "#reciprocated? is false if one of the people has not reciprocated" do
+  test "#reciprocated? returns false if the kinds are different" do
     profile_one = profiles(:one)
     profile_two = profiles(:two)
 
@@ -21,16 +21,5 @@ class AssessmentTest < ActiveSupport::TestCase
 
     refute assessment_one.reciprocated?, "should be recriprocated if liked in return"
     refute assessment_two.reciprocated?, "should be recriprocated if liked in return"
-  end
-
-  test "#reciprocated? returns false if all profiles are not liked" do
-    profile_one = profiles(:one)
-    profile_two = profiles(:two)
-
-    assessment_one = Assessment.create!(from_profile: profile_one, to_profile: profile_two, kind: :blocked)
-    assessment_two = Assessment.create!(from_profile: profile_two, to_profile: profile_one, kind: :passed)
-
-    refute assessment_one.reciprocated?, "should be recriprocated if both liked one another"
-    refute assessment_two.reciprocated?, "should be recriprocated if both liked one another"
   end
 end

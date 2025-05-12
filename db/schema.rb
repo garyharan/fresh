@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_10_143302) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_12_160529) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -158,12 +158,14 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_10_143302) do
   end
 
   create_table "partnerships", force: :cascade do |t|
-    t.bigint "profile_id", null: false
-    t.bigint "partner_id", null: false
+    t.integer "from_profile_id", null: false
+    t.integer "to_profile_id", null: false
+    t.integer "status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["partner_id"], name: "index_partnerships_on_partner_id"
-    t.index ["profile_id"], name: "index_partnerships_on_profile_id"
+    t.index ["from_profile_id", "to_profile_id"], name: "index_partnerships_on_from_profile_id_and_to_profile_id", unique: true
+    t.index ["from_profile_id"], name: "index_partnerships_on_from_profile_id"
+    t.index ["to_profile_id"], name: "index_partnerships_on_to_profile_id"
   end
 
   create_table "passes", force: :cascade do |t|
@@ -192,12 +194,11 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_10_143302) do
     t.string "relationship_style"
     t.string "children"
     t.integer "images_count", default: 0
-    t.bigint "gender_id"
     t.boolean "show_orientation", default: false
     t.boolean "pot", default: false
     t.boolean "public", default: false
     t.string "public_code"
-    t.index ["gender_id"], name: "index_profiles_on_gender_id"
+    t.integer "gender_id"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
@@ -268,6 +269,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_10_143302) do
   add_foreign_key "messages", "rooms"
   add_foreign_key "messages", "users"
   add_foreign_key "notification_tokens", "users"
+  add_foreign_key "partnerships", "profiles", column: "from_profile_id"
+  add_foreign_key "partnerships", "profiles", column: "to_profile_id"
   add_foreign_key "passes", "profiles"
   add_foreign_key "passes", "users"
   add_foreign_key "profiles", "users"

@@ -1,9 +1,6 @@
 class Profile < ApplicationRecord
   belongs_to :user
 
-  has_many :partnerships, dependent: :destroy
-  has_many :partners, :through => :partnerships
-
   has_many :assessments, foreign_key: :from_profile_id, dependent: :destroy
 
   has_many :images, dependent: :destroy
@@ -47,8 +44,7 @@ class Profile < ApplicationRecord
         profiles: {
           id: [
             profile.id,
-            profile.user.liked_profiles.pluck(:id),
-            profile.user.passed_profiles.pluck(:id)
+            profile.assessments.pluck(:to_profile_id)
           ].flatten
         }
       )
