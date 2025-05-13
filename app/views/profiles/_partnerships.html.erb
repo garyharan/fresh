@@ -1,30 +1,58 @@
-<%= turbo_frame_tag "partnerships" do %>
-  <% if Current.user.profile.relationship_style == "Non-monogamous" %>
+<% if assessed?(profile) %>
+  <% if profile.partnerships.confirmed.exists?(to_profile: Current.user.profile) %>
+    <%= link_to "Remove #{profile.display_name} as my partner", partnership_url(profile_id: profile.id),
+      method: :delete,
+      class: "hotwire-native:hidden",
+      data: {
+        turbo_confirm: "Are you sure you want to remove this profile as your partner?",
+        turbo_method: :delete,
+        turbo_action: "replace",
+        controller: "bridge--button",
+        bridge_position: "right",
+        bridge_title: "Remove as my partner",
+        bridge_image: "person.crop.circle.badge.minus",
+        bridge_vibrate: true
+      }
+    %>
+  <% else %>
+    <%= link_to "Mark #{profile.display_name} as my partner", partnerships_url(profile_id: profile.id),
+        method: :post,
+        class: "hotwire-native:hidden",
+        data: {
+          turbo_confirm: "Are you sure you want to mark this profile as your partner?",
+          turbo_method: :post,
+          turbo_action: "replace",
+          controller: "bridge--button",
+          bridge_position: "right",
+          bridge_title: "Mark as my partner",
+          bridge_image: "person.crop.circle.badge.plus",
+          bridge_vibrate: true
+        }
+    %>
+  <% end %>
+<% end %>
 
-    <% if Current.user.profile.partnerships.find_by(partner_id: @profile.id) %>
+<% if profile.partnerships.any? %>
+  <% if profile.partnerships.confirmed.any? %>
+    <div class="flex flex-col items-center justify-center mt-4">
+      <div class="text-sm font-semibold mr-2 w-full text-center">
+        Partnered with:
+      </div>
 
-      <p>You are already in a partnership with this user.</p>
-
-      <%= link_to partnership_path(Current.user.profile.partnerships.find_by(partner_id: @profile.id)), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove this partner from your profile?" }, class: "inline-flex items-center mx-auto min-w-36 py-2 px-4 text-sm font-medium text-white rounded-full hover:underline hover:font-bold focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 group bg-gray-600" do %>
-        <svg class="w-4 h-4 inline mr-2" fill="white" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M22 10.5h-6m-2.25-4.125a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zM4 19.235v-.11a6.375 6.375 0 0112.75 0v.109A12.318 12.318 0 0110.374 21c-2.331 0-4.512-.645-6.374-1.766z"></path>
-        </svg>
-        Remove partner
+      <% profile.partnerships.confirmed.each do |partnership| %>
+        <div class="flex flex-row items-center justify-center">
+          <%= image_tag partnership.to_profile.images.first.photo.variant(:thumb), class: "w-10 h-10 border-2 rounded-full bg-white", alt: partnership.to_profile.display_name if partnership.to_profile.images.any? && partnership.to_profile.images.first.photo.present? %>
+          <div class="text-md font-semibold ml-2">
+            <%= partnership.to_profile.display_name %>
+          </div>
+        </div>
       <% end %>
-
-    <% else %>
-
-      <%= form_for([Partnership.new(partner: @profile)]) do |form| %>
-        <%= form.hidden_field :partner_id, value: @profile.id %>
-        <%= button_tag(type: :submit, data: { turbo_confirm: "#{profile.display_name} will be notified and needs to confirm this partnership before it is displayed.  Want to continue?" }, class: "inline-flex items-center mx-auto w-36 py-2 px-4 text-sm font-medium text-white rounded-full hover:underline hover:font-bold focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 group bg-gray-600") do %>
-          <svg class="w-5 h-5 inline" fill="white" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zM4 19.235v-.11a6.375 6.375 0 0112.75 0v.109A12.318 12.318 0 0110.374 21c-2.331 0-4.512-.645-6.374-1.766z"></path>
-          </svg>
-          <span class="ml-2">Add Partner</span>
-        <% end %>
-      <% end %>
-
-    <% end %>
-
+    </div>
+  <% else %>
+    <div class="flex flex-col items-center justify-center mt-4">
+      <div class="text-sm font-semibold mr-2 w-full text-center">
+        In a relationship with <%= profile.partnerships.count %> <%= "partner".pluralize(profile.partnerships.count) %>.
+      </div>
+    </div>
   <% end %>
 <% end %>

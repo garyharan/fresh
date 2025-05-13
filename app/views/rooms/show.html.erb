@@ -10,6 +10,15 @@
       bridge_ios_image: "exclamationmark.octagon"
     }
   %>
+
+  <% @room.users.reject { it == Current.user }.each do |user| %>
+    <%= link_to "View #{user.profile.display_name}'s profile", profile_path(user.profile),
+      data: {
+        bridge__menu_target: "item",
+        bridge_title: "View #{user.profile.display_name}'s profile",
+        bridge_ios_image: "person.crop.circle"
+      } %>
+  <% end %>
 </div>
 
 <%= turbo_stream_from @room %>

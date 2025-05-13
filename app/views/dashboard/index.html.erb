@@ -25,7 +25,7 @@
     <div>
       <h2 class="font-bold text-2xl">Passes</h2>
       <p class="text-gray-500 text-4xl text-bold">
-        <%= Pass.count %>
+        <%= Assessment.where(kind: :liked).count %>
       </p>
     </div>
   </div>
@@ -34,7 +34,7 @@
     <div>
       <h2 class="font-bold text-2xl">Likes</h2>
       <p class="text-gray-500 text-4xl text-bold">
-        <%= Like.count %>
+        <%= Assessment.where(kind: :passed).count %>
       </p>
     </div>
   </div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_12_160529) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_13_161152) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -160,11 +160,13 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_12_160529) do
   create_table "partnerships", force: :cascade do |t|
     t.integer "from_profile_id", null: false
     t.integer "to_profile_id", null: false
-    t.integer "status", default: 0, null: false
+    t.integer "status", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["from_profile_id", "status"], name: "index_partnerships_on_from_profile_id_and_status"
     t.index ["from_profile_id", "to_profile_id"], name: "index_partnerships_on_from_profile_id_and_to_profile_id", unique: true
     t.index ["from_profile_id"], name: "index_partnerships_on_from_profile_id"
+    t.index ["to_profile_id", "from_profile_id"], name: "index_partnerships_on_to_profile_id_and_from_profile_id", unique: true
     t.index ["to_profile_id"], name: "index_partnerships_on_to_profile_id"
   end
 

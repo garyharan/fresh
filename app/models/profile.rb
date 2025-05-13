@@ -2,6 +2,7 @@ class Profile < ApplicationRecord
   belongs_to :user
 
   has_many :assessments, foreign_key: :from_profile_id, dependent: :destroy
+  has_many :partnerships, class_name: "Partnership", foreign_key: :from_profile_id
 
   has_many :images, dependent: :destroy
   has_many :cards, dependent: :destroy

@@ -1,4 +1,4 @@
-<div data-controller="<%= previewing?(profile) ? "" : "swiper" %>" class="container h-dvh w-full mt-4">
+<div data-controller="<%= previewing?(profile) || assessed?(profile) ? "" : "swiper" %>" class="container h-dvh w-full mt-4">
   <div class="flex flex-col items-center justify-center relative rounded" data-swiper-target="images">
     <div class="border border-blue-300 size-96 relative my-auto object-cover rounded light:bg-white dark:bg-black" data-controller="gallery">
       <% profile.images.each_with_index do |image| %>
@@ -7,6 +7,8 @@
       <% end %>
     </div>
   </div>
+
+  <%= render partial: "profiles/partnerships", locals: { profile: profile } %>
 
   <div class="flex flex-col w-full overflow-clip">
     <div class="text-2xl font-bold mt-4 mx-4">
@@ -61,10 +63,15 @@
     %>
   </div>
 <% else %>
-  <div class="flex flex-row mx-auto fixed bottom-0 w-full justify-center">
-    <%= button_to 'Pass', profile_assessments_path(profile_id: profile.id, kind: :passed), method: :post, class: "m-4 bg-red-500 text-white py-2 px-4 rounded-full", data: { 'swiper-target': "passButton" } %>
-    <%= button_to 'Like', profile_assessments_path(profile_id: profile.id, kind: :liked), method: :post, class: "m-4 bg-blue-500 text-white py-2 px-4 rounded-full", data: { 'swiper-target': "likeButton" } %>
-  </div>
+
+  <% unless assessed?(profile) %>
+
+    <div class="flex flex-row mx-auto fixed bottom-0 w-full justify-center">
+      <%= button_to 'Pass', profile_assessments_path(profile_id: profile.id, kind: :passed), method: :post, class: "m-4 bg-red-500 text-white py-2 px-4 rounded-full", data: { 'swiper-target': "passButton" } %>
+      <%= button_to 'Like', profile_assessments_path(profile_id: profile.id, kind: :liked), method: :post, class: "m-4 bg-blue-500 text-white py-2 px-4 rounded-full", data: { 'swiper-target': "likeButton" } %>
+    </div>
+
+  <% end %>
 <% end %>
 
 </div>

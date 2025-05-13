@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create, :update]
 
-  resources :partnerships
+  resources :partnerships, only: [:create, :destroy]
   namespace :admin do
     resources :profiles
   end
@@ -19,8 +19,6 @@ Rails.application.routes.draw do
 
     get :distance
     get :orientation
-
-    get :partnerships
   end
 
   get "onboarding/one"

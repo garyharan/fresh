@@ -124,4 +124,8 @@ class ProfileTest < ActiveSupport::TestCase
 
     assert_not_nil profile.public_code
   end
+  test "has_many partnerships association" do
+    partnership = Partnership.create!(from_profile: @gathino, to_profile: @velvet, status: :unconfirmed)
+    assert_includes @gathino.partnerships, partnership
+  end
 end

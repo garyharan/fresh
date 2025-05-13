@@ -6,6 +6,12 @@ module ProfilesHelper
   end
 
   def previewing?(profile)
-    Current.user&.profile == profile
+    return false unless Current.user
+    Current.user.profile == profile
+  end
+
+  def assessed?(profile)
+    return false unless Current.user
+    Assessment.exists?(from_profile: Current.user.profile, to_profile: profile)
   end
 end
