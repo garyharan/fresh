@@ -44,4 +44,36 @@ class ProfilesHelperTest < ActionView::TestCase
       refute assessed?(users(:velvet).profile)
     end
   end
+
+  test "#matched? should return true if both profiles liked each other" do
+    Current.stub :user, users(:gathino) do
+      Assessment.create!(from_profile: users(:gathino).profile, to_profile: users(:velvet).profile, kind: :liked)
+      Assessment.create!(from_profile: users(:velvet).profile, to_profile: users(:gathino).profile, kind: :liked)
+
+      assert matched?(users(:velvet).profile)
+    end
+  end
+
+  test "#matched? should return false if only one profile liked the other" do
+    Current.stub :user, users(:gathino) do
+      Assessment.create!(from_profile: users(:gathino).profile, to_profile: users(:velvet).profile, kind: :liked)
+
+      refute matched?(users(:velvet).profile)
+    end
+  end
+
+  test "#matched? should return false if profiles passed on each other" do
+    Current.stub :user, users(:gathino) do
+      Assessment.create!(from_profile: users(:gathino).profile, to_profile: users(:velvet).profile, kind: :passed)
+      Assessment.create!(from_profile: users(:velvet).profile, to_profile: users(:gathino).profile, kind: :passed)
+
+      refute matched?(users(:velvet).profile)
+    end
+  end
+
+  test "#matched? should return false if there is no current user" do
+    Current.stub :user, nil do
+      refute matched?(users(:velvet).profile)
+    end
+  end
 end

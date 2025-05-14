@@ -9,9 +9,11 @@ class PartnershipsController < ApplicationController
     )
 
     if @partnership.save
-      refresh_or_redirect_to profile_path(to_profile), notice: "Partnership created successfully."
+      flash.notice = "Partnership created successfully."
+      refresh_or_redirect_to profile_path(to_profile)
     else
-      refresh_or_redirect_to profile_path(to_profile), alert: "Failed to create partnership."
+      flash.alert = "Failed to create partnership."
+      refresh_or_redirect_to profile_path(to_profile)
     end
   end
 

@@ -14,4 +14,10 @@ module ProfilesHelper
     return false unless Current.user
     Assessment.exists?(from_profile: Current.user.profile, to_profile: profile)
   end
+
+  def matched?(profile)
+    return false unless Current.user
+    Assessment.exists?(from_profile: profile, to_profile: Current.user.profile, kind: :liked) &&
+    Assessment.exists?(from_profile: Current.user.profile, to_profile: profile, kind: :liked)
+  end
 end

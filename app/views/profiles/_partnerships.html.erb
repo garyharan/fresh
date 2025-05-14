@@ -1,5 +1,5 @@
-<% if assessed?(profile) %>
-  <% if profile.partnerships.confirmed.exists?(to_profile: Current.user.profile) %>
+<% if matched?(profile) %>
+  <% if Current.user.profile.partnerships.exists?(to_profile: profile) %>
     <%= link_to "Remove #{profile.display_name} as my partner", partnership_url(profile_id: profile.id),
       method: :delete,
       class: "hotwire-native:hidden",
@@ -32,26 +32,26 @@
   <% end %>
 <% end %>
 
-<% if profile.partnerships.any? %>
-  <% if profile.partnerships.confirmed.any? %>
-    <div class="flex flex-col items-center justify-center mt-4">
-      <div class="text-sm font-semibold mr-2 w-full text-center">
-        Partnered with:
-      </div>
-
-      <% profile.partnerships.confirmed.each do |partnership| %>
-        <div class="flex flex-row items-center justify-center">
-          <%= image_tag partnership.to_profile.images.first.photo.variant(:thumb), class: "w-10 h-10 border-2 rounded-full bg-white", alt: partnership.to_profile.display_name if partnership.to_profile.images.any? && partnership.to_profile.images.first.photo.present? %>
-          <div class="text-md font-semibold ml-2">
-            <%= partnership.to_profile.display_name %>
-          </div>
-        </div>
-      <% end %>
+<% if profile.partnerships.confirmed.any? %>
+  <div class="flex flex-col items-center justify-center mt-4">
+    <div class="text-sm font-semibold mr-2 w-full text-center">
+      Partnered with:
     </div>
-  <% else %>
+
+    <% profile.partnerships.confirmed.each do |partnership| %>
+      <div class="flex flex-row items-center justify-center">
+        <%= image_tag partnership.to_profile.images.first.photo.variant(:thumb), class: "w-10 h-10 border-2 rounded-full bg-white", alt: partnership.to_profile.display_name if partnership.to_profile.images.any? && partnership.to_profile.images.first.photo.present? %>
+        <div class="text-md font-semibold ml-2">
+          <%= partnership.to_profile.display_name %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <% if matched?(profile) && marked_as_partner?(profile) %>
     <div class="flex flex-col items-center justify-center mt-4">
       <div class="text-sm font-semibold mr-2 w-full text-center">
-        In a relationship with <%= profile.partnerships.count %> <%= "partner".pluralize(profile.partnerships.count) %>.
+        This user has not yet marked you as their partner. You will appear here when they do.
       </div>
     </div>
   <% end %>
