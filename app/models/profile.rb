@@ -59,7 +59,6 @@ class Profile < ApplicationRecord
         )
       )
 
-    # Filter by relationship style if the user has that preference enabled
     if profile.only_show_my_relationship_style && profile.relationship_style.present?
       base_query = base_query.where(relationship_style: profile.relationship_style)
     end
