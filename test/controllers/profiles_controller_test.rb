@@ -98,7 +98,8 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
             profile: {
               born_on: "2001-01-01",
               gender_id: Gender.last.id,
-              maximum_distance: 80085
+              maximum_distance: 80085,
+              only_show_my_relationship_style: true
             }
           }
 
@@ -107,6 +108,7 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
     assert_equal Date.parse("2001-01-01"), @profile.born_on
     assert_equal Gender.last.id, @profile.gender_id
     assert_equal 80085, @profile.maximum_distance
+    assert @profile.only_show_my_relationship_style
   end
 
   test 'should destroy profile' do

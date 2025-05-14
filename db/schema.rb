@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_13_161152) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_14_142101) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -201,6 +201,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_13_161152) do
     t.boolean "public", default: false
     t.string "public_code"
     t.integer "gender_id"
+    t.boolean "only_show_my_relationship_style", default: false
+    t.index ["only_show_my_relationship_style"], name: "index_profiles_on_only_show_my_relationship_style"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 

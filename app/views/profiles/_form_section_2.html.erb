@@ -4,8 +4,14 @@
     <%= form.collection_check_boxes(:gender_ids, Gender.all, :id, :label) do |box| %>
       <li>
         <%= box.check_box class: "hidden peer", id: "profile_gender_ids_#{box.object.id}" %>
-        <%= box.label for: "profile_gender_ids_#{box.object.id}", class: "#{@profile.errors[:attractions].any? ? 'border-red-500 bg-red-50' : 'bg-white border-gray-200'} inline-flex justify-between items-center p-3 pl-5 w-full text-gray-500 rounded-full border cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700" do %>
+        <%= box.label for: "profile_gender_ids_#{box.object.id}", class: "group #{@profile.errors[:attractions].any? ? 'border-red-500 bg-red-50' : 'bg-white border-gray-200'} inline-flex justify-between items-center p-3 pl-5 w-full text-gray-500 rounded-full border cursor-pointer dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 dark:text-gray-400 dark:bg-gray-800" do %>
           <%= box.object.label.pluralize %>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+            viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor"
+            class="size-6 hidden peer-checked:group-[]:block">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+          </svg>
         <% end %>
       </li>
     <% end %>
@@ -16,7 +22,15 @@
     <% Profile::POSSIBLE_CHILDREN_CONFIGURATIONS.each_with_index do |option, index| %>
       <li>
         <%= form.radio_button :children, option, class: "hidden peer", id: "children_option_#{index}" %>
-        <%= form.label :children, option, for: "children_option_#{index}", class: "#{@profile.errors[:children].any? ? 'border-red-500 bg-red-50' : 'bg-white border-gray-200'} inline-flex justify-between items-center p-3 pl-5 w-full text-gray-500 rounded-full border cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700" %>
+        <%= form.label :children, for: "children_option_#{index}", class: "group #{@profile.errors[:children].any? ? 'border-red-500 bg-red-50' : 'bg-white border-gray-200'} inline-flex justify-between items-center p-3 pl-5 w-full text-gray-500 rounded-full border cursor-pointer dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 dark:text-gray-400 dark:bg-gray-800" do %>
+          <%= option %>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+            viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor"
+            class="size-6 hidden peer-checked:group-[]:block">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+          </svg>
+        <% end %>
       </li>
     <% end %>
   </ul>
@@ -26,7 +40,15 @@
     <% Profile::POSSIBLE_RELATIONSHIP_STYLES.each_with_index do |option, index| %>
       <li>
         <%= form.radio_button :relationship_style, option, class: "hidden peer", id: "relationship_style_option_#{index}" %>
-        <%= form.label :relationship_style, option, for: "relationship_style_option_#{index}", class: "#{@profile.errors[:relationship_style].any? ? 'border-red-500 bg-red-50' : 'bg-white border-gray-200'} inline-flex justify-between items-center p-3 pl-5 w-full text-gray-500 rounded-full border cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700" %>
+        <%= form.label :relationship_style, for: "relationship_style_option_#{index}", class: "group #{@profile.errors[:relationship_style].any? ? 'border-red-500 bg-red-50' : 'bg-white border-gray-200'} inline-flex justify-between items-center p-3 pl-5 w-full text-gray-500 rounded-full border cursor-pointer dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 dark:text-gray-400 dark:bg-gray-800" do %>
+          <%= option %>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+            viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor"
+            class="size-6 hidden peer-checked:group-[]:block">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+          </svg>
+        <% end %>
       </li>
     <% end %>
   </ul>
@@ -42,7 +64,15 @@
     <% Profile::POSSIBLE_SMOKING_OPTIONS.each_with_index do |option, index| %>
       <li>
         <%= form.radio_button :smoking, option, class: "hidden peer", id: "smoking_option_#{index}" %>
-        <%= form.label :smoking, option, for: "smoking_option_#{index}", class: "#{@profile.errors[:smoking].any? ? 'border-red-500 bg-red-50' : 'bg-white border-gray-200'} inline-flex justify-between items-center p-3 pl-5 w-full text-gray-500 bg-white rounded-full border cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700" %>
+        <%= form.label :smoking, for: "smoking_option_#{index}", class: "group #{@profile.errors[:smoking].any? ? 'border-red-500 bg-red-50' : 'bg-white border-gray-200'} inline-flex justify-between items-center p-3 pl-5 w-full text-gray-500 bg-white rounded-full border cursor-pointer dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 dark:text-gray-400 dark:bg-gray-800" do %>
+          <%= option %>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+            viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor"
+            class="size-6 hidden peer-checked:group-[]:block">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+          </svg>
+        <% end %>
       </li>
     <% end %>
   </ul>
@@ -52,7 +82,15 @@
     <% Profile::POSSIBLE_DRINKING_OPTIONS.each_with_index do |option, index| %>
       <li>
         <%= form.radio_button :drinking, option, class: "hidden peer", id: "drinking_option_#{index}" %>
-        <%= form.label :drinking, option, for: "drinking_option_#{index}", class: "#{@profile.errors[:drinking].any? ? 'border-red-500 bg-red-50' : 'bg-white border-gray-200'} inline-flex justify-between items-center p-3 pl-5 w-full text-gray-500 rounded-full border cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700" %>
+        <%= form.label :drinking, for: "drinking_option_#{index}", class: "group #{@profile.errors[:drinking].any? ? 'border-red-500 bg-red-50' : 'bg-white border-gray-200'} inline-flex justify-between items-center p-3 pl-5 w-full text-gray-500 rounded-full border cursor-pointer dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 dark:text-gray-400 dark:bg-gray-800" do %>
+          <%= option %>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+            viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor"
+            class="size-6 hidden peer-checked:group-[]:block">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+          </svg>
+        <% end %>
       </li>
     <% end %>
   </ul>

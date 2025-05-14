@@ -86,6 +86,7 @@ class ProfilesController < ApplicationController
         :display_name,
         :gender_id,
         :relationship_style,
+        :only_show_my_relationship_style,
         :show_orientation,
         :born_on,
         :height,

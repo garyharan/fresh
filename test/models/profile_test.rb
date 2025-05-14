@@ -105,6 +105,17 @@ class ProfileTest < ActiveSupport::TestCase
     assert Profile.recommended(@gathino).none? { |p| p.distance > 10_000 }
   end
 
+  test "#recommended only shows you non-monogamous profiles it is your preference" do
+    @gathino.update(gender: @man, genders: [@woman, @enby])
+    @velvet.update(gender: @enby, genders: [@man, @enby])
+    @gathino.update(only_show_my_relationship_style: true)
+
+    @gathino.update(relationship_style: "Non-monogamous")
+    @velvet.update(relationship_style: "Monogamous")
+
+    assert_not_includes Profile.recommended(@gathino), @velvet
+  end
+
   test "destroys rooms when profile is destroyed" do
     room          = Room.find_or_create_by_profiles([@gathino, @velvet])
     unlinked_room = Room.find_or_create_by_profiles([@velvet, @mariet])

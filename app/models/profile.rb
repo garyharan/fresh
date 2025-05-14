@@ -40,7 +40,7 @@ class Profile < ApplicationRecord
   def self.recommended(profile)
     raise ::ArgumentError, "Profile must be complete" unless profile.complete?
 
-    where
+    base_query = where
       .not(
         profiles: {
           id: [
@@ -58,6 +58,13 @@ class Profile < ApplicationRecord
           }
         )
       )
+
+    # Filter by relationship style if the user has that preference enabled
+    if profile.only_show_my_relationship_style && profile.relationship_style.present?
+      base_query = base_query.where(relationship_style: profile.relationship_style)
+    end
+
+    base_query
       .near([profile.latitude, profile.longitude], profile.user.maximum_distance / 10_000)
       .select("
         profiles.*,
