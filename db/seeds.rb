@@ -10,7 +10,7 @@ if Gender.count.zero?
   end
 end
 
-if Rails.env.development? || Rails.env.test?
+if Rails.env.development?
   if User.count < 20
     (0..10).each do |number|
       u =
