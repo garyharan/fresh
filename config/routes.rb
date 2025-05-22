@@ -54,6 +54,7 @@ Rails.application.routes.draw do
 
   resources :configurations, only: [] do
     get :ios_v1, on: :collection
+    get :android_v1, on: :collection
   end
 
   namespace :api, defaults: {format: :json} do

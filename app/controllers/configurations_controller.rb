@@ -70,4 +70,68 @@ class ConfigurationsController < ApplicationController
       ]
     }
   end
+
+  def android_v1
+    render json: {
+      settings: {},
+      rules: [
+        {
+          patterns: ["/recede_historical_location"],
+          properties: { presentation: "pop" }
+        },
+        {
+          patterns: ["/resume_historical_location"],
+          properties: { presentation: "none" }
+        },
+        {
+          patterns: ["/refresh_historical_location"],
+          properties: { presentation: "refresh" }
+        },
+        {
+          patterns: [
+            "/profiles$",
+            "/profile$",
+            "/rooms$"
+          ],
+          properties: { presentation: "replace_root" },
+          pull_to_refresh_enabled: true
+        },
+        {
+          patterns: ["/settings"],
+          properties: { context: "modal" }
+        },
+        {
+          patterns: [
+            "/profiles/[0-9]+/edit",
+            "/profiles/[0-9]+/images",
+            "/session/new",
+            "/users/new",
+            "/cards",
+            "/cards/.*",
+            "/about"
+          ],
+          properties: {
+            context: "modal",
+            modal_style: "full",
+            pull_to_refresh_enabled: false
+          }
+        },
+        {
+          patterns: ["/rooms/[0-9]+"],
+          properties: { view_controller: "chat" }
+        },
+        {
+          patterns: [
+            "/onboarding/.*",
+            "/profiles/new"
+          ],
+          properties: {
+            context: "modal",
+            presentation: "replace",
+            modal_style: "large"
+          }
+        }
+      ]
+    }
+  end
 end
