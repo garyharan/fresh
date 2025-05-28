@@ -93,8 +93,10 @@ class ConfigurationsController < ApplicationController
             "/profile$",
             "/rooms$"
           ],
-          properties: { presentation: "replace_root" },
-          pull_to_refresh_enabled: true
+          properties: {
+            presentation: "replace_root",
+            pull_to_refresh_enabled: true
+          },
         },
         {
           patterns: ["/settings"],
@@ -113,12 +115,15 @@ class ConfigurationsController < ApplicationController
           properties: {
             context: "modal",
             modal_style: "full",
-            pull_to_refresh_enabled: false
+            pull_to_refresh_enabled: true
           }
         },
         {
           patterns: ["/rooms/[0-9]+"],
-          properties: { view_controller: "chat" }
+          properties: {
+            title: "Chat",
+            uri: "hotwire://fragment/chat"
+          }
         },
         {
           patterns: [
