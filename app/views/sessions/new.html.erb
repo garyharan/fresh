@@ -8,24 +8,18 @@
 
 <h1 class="font-bold text-4xl p-4 hotwire-native:hidden" data-controller="bridge--title" data-bridge-text="Sign in">Sign in</h1>
 
-<%= form_with url: session_url, class: "p-4" do |form| %>
-  <div class="my-5">
-    <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address], class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
+<%= form_with url: session_path, method: :post, html: { class: "p-4" } do |form| %>
+  <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address], class: "block shadow rounded-md border border-gray-400 text-gray-200 dark:text-gray-600 outline-none px-3 py-2 my-4 w-full" %>
 
-  <div class="my-5">
-    <%= form.password_field :password, required: true, autocomplete: "current-password", placeholder: "Enter your password", class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
+  <%= form.password_field :password, required: true, autocomplete: "current-password", placeholder: "Enter your password", class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 my-4 w-full" %>
 
-  <div class="my-4">
-    <%= form.submit "Sign in", class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer w-full", data: {
-      controller: "bridge--button",
-      bridge_title: "Sign in",
-      bridge_position: "right"
-    } %>
-  </div>
+  <%= form.submit "Sign in", class: "rounded-lg py-3 px-5 my-4 bg-blue-600 text-white inline-block font-medium cursor-pointer w-full", data: {
+    controller: "bridge--button",
+    bridge_title: "Sign in",
+    bridge_position: "right"
+  } %>
 
-  <div class="mt-0 text-sm text-gray-500 sm:mt-0 hotwire-native:hidden">
+  <div class="my-4 text-sm text-gray-500 hotwire-native:hidden">
     <%= link_to "Forgot password?", new_password_path, class: "text-gray-700 underline" %>
   </div>
 
@@ -33,7 +27,5 @@
     or
   </div>
 
-  <div class="mb-4">
-    <%= link_to "Create an account instead", new_user_path, class: "rounded-lg py-3 px-5 bg-white border border-blue-600 text-blue-600 inline-block font-medium cursor-pointer w-full text-center", data: { "turbo-frame": "user_form" } %>
-  </div>
+  <%= link_to "Create an account instead", new_user_path, class: "rounded-lg py-3 px-5 my-4 bg-white border border-blue-600 text-blue-600 inline-block font-medium cursor-pointer w-full text-center", data: { "turbo-frame": "user_form" } %>
 <% end %>

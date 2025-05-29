@@ -76,18 +76,6 @@ class ConfigurationsController < ApplicationController
       settings: {},
       rules: [
         {
-          patterns: ["/recede_historical_location"],
-          properties: { presentation: "pop" }
-        },
-        {
-          patterns: ["/resume_historical_location"],
-          properties: { presentation: "none" }
-        },
-        {
-          patterns: ["/refresh_historical_location"],
-          properties: { presentation: "refresh" }
-        },
-        {
           patterns: [
             "/profiles$",
             "/profile$",
