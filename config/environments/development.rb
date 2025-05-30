@@ -1,18 +1,29 @@
 require "active_support/core_ext/integer/time"
 
+# Rails.application.default_url_options = {
+#   host: 'http://garyharan.local',
+#   port: 3000
+# }
 Rails.application.default_url_options = {
-  host: 'garyharan.local',
-  port: 3000
+  host: "https://meet-vertically-sturgeon.ngrok-free.app",
+  port: 443
 }
 
 Rails.application.configure do
-  # Settings specified here will take precedence over those in config/application.rb.
+  # config.hosts << "#{
+  #   Rails.application.default_url_options[:host].gsub("http://", "")
+  # }:#{
+  #   Rails.application.default_url_options[:port]
+  # }"
+
+  config.hosts << "garyharan.local"
+  config.hosts << "meet-vertically-sturgeon.ngrok-free.app"
+
+  config.action_controller.default_url_options = Rails.application.default_url_options
+  config.action_mailer.default_url_options = Rails.application.default_url_options
 
   # Make code changes take effect immediately without server restart.
   config.enable_reloading = true
-
-  # allow requests from anywhere in dev.
-  config.hosts.clear
 
   # Do not eager load code on boot.
   config.eager_load = false
@@ -70,10 +81,6 @@ Rails.application.configure do
 
   # Annotate rendered view with file names.
   config.action_view.annotate_rendered_view_with_filenames = true
-
-  # Uncomment if you wish to allow Action Cable access from any origin.
-  # config.action_cable.allowed_request_origins = ["http://garyharan.local:3000/*", "http://localhost:3000/*"]
-  # config.action_cable.disable_request_forgery_protection = true
 
   # Raise error when a before_action's only/except options reference missing actions.
   config.action_controller.raise_on_missing_callback_actions = true
