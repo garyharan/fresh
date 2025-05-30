@@ -1,13 +1,14 @@
 <% content_for(:title, room_title(Current.user, @room)) %>
 
-<div data-controller="bridge--menu" data-menu-image="ellipsis" class="hidden">
+<div data-controller="bridge--menu" data-menu-ios-image="ellipsis" data-menu-android-image="more_horiz" class="hidden">
   <%= link_to "Leave this room", room_path(@room), method: :delete,
     data: {
       turbo_confirm: "Are you sure you want to block this conversation?",
       turbo_method: :delete,
       bridge__menu_target: "item",
       bridge_title: "Block room",
-      bridge_ios_image: "exclamationmark.octagon"
+      bridge_ios_image: "exclamationmark.octagon",
+      bridge_android_image: "block"
     }
   %>
 
@@ -16,7 +17,8 @@
       data: {
         bridge__menu_target: "item",
         bridge_title: "View #{user.profile.display_name}'s profile",
-        bridge_ios_image: "person.crop.circle"
+        bridge_ios_image: "person.crop.circle",
+        bridge_android_image: "person"
       } %>
   <% end %>
 </div>

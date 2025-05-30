@@ -26,12 +26,13 @@
   </div>
 
 <% if previewing?(profile) %>
-  <div data-controller="bridge--menu" data-menu-image="square.and.pencil" class="hidden">
+  <div data-controller="bridge--menu" data-menu-ios-image="square.and.pencil" data-menu-android-image="edit_square" data-class="hidden">
     <%= link_to "Edit Profile", edit_profile_path(profile),
       data: {
         bridge__menu_target: "item",
         bridge_title: "Edit Profile",
-        bridge_ios_image: "person.crop.circle"
+        bridge_ios_image: "person.crop.circle",
+        bridge_android_image: "edit_note"
       }
     %>
 
@@ -39,7 +40,8 @@
       data: {
         bridge__menu_target: "item",
         bridge_title: "Edit Photos",
-        bridge_ios_image: "photo.stack"
+        bridge_ios_image: "photo.stack",
+        bridge_android_image: "photo_library"
       }
     %>
 
@@ -47,7 +49,8 @@
       data: {
         bridge__menu_target: "item",
         bridge_title: "Edit Cards",
-        bridge_ios_image: "folder.badge.person.crop"
+        bridge_ios_image: "folder.badge.person.crop",
+        bridge_android_image: "layers"
       }
     %>
 
@@ -58,7 +61,8 @@
           turbo_confirm: "Are you sure you want to sign out?",
           bridge__menu_target: "item",
           bridge_title: "Logout",
-          bridge_ios_image: "rectangle.portrait.and.arrow.forward.fill"
+          bridge_ios_image: "rectangle.portrait.and.arrow.forward.fill",
+          bridge_android_image: "logout"
         }
     %>
   </div>

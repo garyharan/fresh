@@ -26,9 +26,10 @@ export default class extends BridgeComponent {
       }
     })
 
-    const buttonImage = this.element.getAttribute("data-menu-image") || "ellipsis.circle"
+    const buttonIosImage = this.element.getAttribute("data-menu-ios-image") || "ellipsis.circle"
+    const buttonAndroidImage = this.element.getAttribute("data-menu-android-image") || "more_vert"
 
-    this.send("connect", {items, buttonImage}, message => {
+    this.send("connect", {items, buttonIosImage, buttonAndroidImage}, message => {
       const item = this.itemTargets[message.data.index]
       new BridgeElement(item).click()
     })
