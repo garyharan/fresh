@@ -2,7 +2,7 @@ require "test_helper"
 
 class ApplicationHelperTest < ActionView::TestCase
   test "#hotwire_native_title should return appropriate titles" do
-    assert_equal "", hotwire_native_title("no_title")
+    assert_equal "‎ ", hotwire_native_title("no_title")
     assert_equal "Fresh Dating", hotwire_native_title("")
     assert_equal "Custom Title", hotwire_native_title("Custom Title")
   end
