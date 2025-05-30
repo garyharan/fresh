@@ -16,9 +16,6 @@ application.register("bridge--menu", Bridge__MenuController)
 import Bridge__NotificationTokenController from "./bridge/notification_token_controller"
 application.register("bridge--notification-token", Bridge__NotificationTokenController)
 
-import Bridge__TitleController from "./bridge/title_controller"
-application.register("bridge--title", Bridge__TitleController)
-
 import Bridge__ToastController from "./bridge/toast_controller"
 application.register("bridge--toast", Bridge__ToastController)
 
