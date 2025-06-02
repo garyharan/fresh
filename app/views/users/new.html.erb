@@ -1,12 +1,12 @@
   <% if hotwire_native? %>
-    <% content_for :title, :no_title %>
+    <% content_for(:title, "Create your account") %>
 
     <div class="flex justify-center py-4">
       <h1 id="title" title="Fresh.Dating"><span class="text-md">❤</span><span class="text-md md:text-3xl">Fresh.Dating</span></h1>
     </div>
   <% end %>
 
-  <h1 class="font-bold text-4xl p-4 hotwire-native:hidden">Create your account</h1>
+  <h1 class="font-bold text-4xl p-4 hotwire-native:hidden" data-controller="bridge--title" data-bridge-text="Create your account">Create your account</h1>
 
   <%= form_with model: @user, url: users_path, method: :post, class: "p-4", data: { "turbo_action": "replace" } do |form| %>
     <div class="my-5">
