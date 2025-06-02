@@ -1,21 +1,11 @@
 require "active_support/core_ext/integer/time"
 
-# Rails.application.default_url_options = {
-#   host: 'http://garyharan.local',
-#   port: 3000
-# }
-Rails.application.default_url_options = {
+Rils.application.default_url_options = {
   host: "https://meet-vertically-sturgeon.ngrok-free.app",
   port: 443
 }
 
 Rails.application.configure do
-  # config.hosts << "#{
-  #   Rails.application.default_url_options[:host].gsub("http://", "")
-  # }:#{
-  #   Rails.application.default_url_options[:port]
-  # }"
-
   config.hosts << "garyharan.local"
   config.hosts << "meet-vertically-sturgeon.ngrok-free.app"
 
