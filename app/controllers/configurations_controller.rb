@@ -9,9 +9,7 @@ class ConfigurationsController < ApplicationController
           patterns: [
             "/profiles$"
           ],
-          properties: {
-            presentation: "replace_root"
-          }
+          properties: {}
         },
         {
           patterns: [
@@ -70,7 +68,6 @@ class ConfigurationsController < ApplicationController
             "/rooms$"
           ],
           properties: {
-            presentation: "replace_root",
             pull_to_refresh_enabled: true
           },
         },
