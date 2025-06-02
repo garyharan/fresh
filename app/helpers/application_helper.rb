@@ -1,10 +1,8 @@
 module ApplicationHelper
   def hotwire_native_title(string)
     case string
-    when "no_title"
-      ""
-    when ""
-      "Fresh Dating"
+    when "no_title", ""
+      "‎ " # This is used to hide the title in the native app
     else
       string
     end

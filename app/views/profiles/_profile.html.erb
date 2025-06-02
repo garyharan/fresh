@@ -1,7 +1,7 @@
 <% if Current.user&.profile == profile %>
   <% content_for :title, "Profile" %>
 <% else %>
-  <% content_for :title, profile.display_name %>
+  <% content_for :title, "Discovery" %>
 <% end %>
 
 <div data-controller="<%= previewing?(profile) || assessed?(profile) ? "" : "swiper" %>" class="container h-dvh w-full mt-4">
