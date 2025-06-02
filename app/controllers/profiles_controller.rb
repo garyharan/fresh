@@ -34,7 +34,7 @@ class ProfilesController < ApplicationController
       if update_profile!
         format.turbo_stream do
           flash[:notice] = "Successfully updated."
-          refresh_or_redirect_to profiles_path
+          recede_or_redirect_to profiles_path
         end
         format.html do
           flash[:notice] = "Profile was successfully updated."

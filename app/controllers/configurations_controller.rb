@@ -72,8 +72,12 @@ class ConfigurationsController < ApplicationController
           },
         },
         {
-          patterns: ["/settings"],
-          properties: { context: "modal" }
+          patterns: [
+            "/settings"
+          ],
+          properties: {
+            context: "modal"
+          }
         },
         {
           patterns: [
