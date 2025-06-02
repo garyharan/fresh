@@ -1,6 +1,6 @@
 require "active_support/core_ext/integer/time"
 
-Rils.application.default_url_options = {
+Rails.application.default_url_options = {
   host: "https://meet-vertically-sturgeon.ngrok-free.app",
   port: 443
 }
