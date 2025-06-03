@@ -1,3 +1,8 @@
+<% if @profiles.empty? && Current.user&.profile == profile %>
+  <% content_for :title, "Profile" %>
+<% else %>
+  <% content_for :title, "Discovery" %>
+<% end %>
 
 <% content_for(:right_button) do %>
   <%= link_to settings_path, data: {

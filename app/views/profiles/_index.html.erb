@@ -2,8 +2,6 @@
   <% if @profiles.empty? %>
     <%= render partial: "profiles/none" %>
   <% else %>
-    <% [@profiles.first].each do |profile| %>
-      <%= render partial: "profiles/profile", locals: { profile: profile } %>
-    <% end %>
+    <%= render partial: "profiles/profile", locals: { profile: @profiles.first } %>
   <% end %>
 <% end %>

@@ -1,9 +1,3 @@
-<% if Current.user&.profile == profile %>
-  <% content_for :title, "Profile" %>
-<% else %>
-  <% content_for :title, "Discovery" %>
-<% end %>
-
 <div data-controller="<%= previewing?(profile) || assessed?(profile) ? "" : "swiper" %>" class="container h-dvh w-full mt-4">
   <div class="flex flex-col items-center justify-center relative rounded" data-swiper-target="images">
     <div class="border border-blue-300 size-96 relative my-auto object-cover rounded light:bg-white dark:bg-black" data-controller="gallery">
