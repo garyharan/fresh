@@ -95,13 +95,16 @@ class ConfigurationsController < ApplicationController
             pull_to_refresh_enabled: true
           }
         },
-        {
-          patterns: ["/rooms/[0-9]+"],
-          properties: {
-            title: "Chat",
-            uri: "hotwire://fragment/chat"
-          }
-        },
+        # {
+        #   patterns: [
+        #     "/rooms/[0-9]+"
+        #   ],
+        #   properties: {
+        #     title: "Chat",
+        #     # uri: "hotwire://fragment/chat",
+        #     context: "modal" # Will change when merged: https://github.com/hotwired/hotwire-native-android/pull/139
+        #   }
+        # },
         {
           patterns: [
             "/onboarding/.*",
