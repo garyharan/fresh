@@ -1,4 +1,4 @@
-<% if @profiles.empty? && Current.user&.profile == profile %>
+<% if @profiles.empty? && Current.user&.profile == @profiles.first %>
   <% content_for :title, "Profile" %>
 <% else %>
   <% content_for :title, "Discovery" %>
