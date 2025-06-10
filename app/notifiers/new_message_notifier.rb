@@ -29,4 +29,27 @@ class NewMessageNotifier < ApplicationNotifier
       Rails.logger.info "APNs delivery info: #{delivery_info.inspect}"
     end
   end
+
+  deliver_by :fcm do |config|
+    config.credentials = Rails.application.credentials.fcm.to_h
+
+    config.device_tokens = -> {
+      recipient.notification_tokens.where(platform: :FCM).pluck(:token)
+    }
+
+    config.json = -> (device_token) {
+      {
+        message: {
+          token: device_token,
+          notification: {
+            title: "New Message",
+            body: "You received a message from #{params[:message].user.profile.display_name}!"
+          },
+          data: {
+            path: room_url(params[:message].room)
+          }
+        }
+      }
+    }
+  end
 end
