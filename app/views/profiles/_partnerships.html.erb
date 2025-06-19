@@ -2,7 +2,7 @@
   <% if Current.user.profile.partnerships.exists?(to_profile: profile) %>
     <%= link_to "Remove #{profile.display_name} as my partner", partnership_url(profile_id: profile.id),
       method: :delete,
-      class: "hotwire-native:hidden",
+      class: "hidden",
       data: {
         turbo_confirm: "Are you sure you want to remove this profile as your partner?",
         turbo_method: :delete,
@@ -41,12 +41,14 @@
     </div>
 
     <% profile.partnerships.confirmed.each do |partnership| %>
-      <div class="flex flex-row items-center justify-center">
-        <%= image_tag partnership.to_profile.images.first.photo.variant(:thumb), class: "w-10 h-10 border-2 rounded-full bg-white", alt: partnership.to_profile.display_name if partnership.to_profile.images.any? && partnership.to_profile.images.first.photo.present? %>
-        <div class="text-md font-semibold ml-2">
-          <%= partnership.to_profile.display_name %>
+      <%= link_to profile_path(partnership.to_profile) do %>
+        <div class="flex flex-row items-center justify-center">
+          <%= image_tag partnership.to_profile.images.first.photo.variant(:thumb), class: "w-10 h-10 border-2 rounded-full bg-white", alt: partnership.to_profile.display_name if partnership.to_profile.images.any? && partnership.to_profile.images.first.photo.present? %>
+          <div class="text-md font-semibold ml-2">
+        <%= partnership.to_profile.display_name %>
+          </div>
         </div>
-      </div>
+      <% end %>
     <% end %>
   </div>
 <% else %>
