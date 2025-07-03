@@ -13,8 +13,7 @@
     "build:css": "tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css"
   },
   "devDependencies": {
-    "@types/sortablejs": "^1.15.6",
-    "caniuse-lite": "^1.0.30001716"
+    "@types/sortablejs": "^1.15.6"
   },
   "engines": {
     "node": ">= 18.0.0"
