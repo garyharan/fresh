@@ -1,4 +1,4 @@
-<div data-controller="<%= previewing?(profile) || assessed?(profile) ? "" : "swiper" %>" class="container h-dvh w-full mt-4">
+<div data-controller="<%= previewing?(profile) || assessed?(profile) ? "" : "swiper" %>" class="container h-dvh w-full mt-4 mb-24">
   <div class="flex flex-col items-center justify-center relative rounded" data-swiper-target="images">
     <div class="border border-blue-300 size-96 relative my-auto object-cover rounded light:bg-white dark:bg-black" data-controller="gallery">
       <% profile.images.each_with_index do |image| %>
@@ -20,7 +20,7 @@
     <div class="mb-4 mt-2">
       <%= render partial: "profiles/details", locals: { profile: profile } %>
     </div>
-    <div class="my-4">
+    <div class="my-4 mb-14">
       <%= render partial: "profiles/cards", locals: { profile: profile } %>
     </div>
   </div>
