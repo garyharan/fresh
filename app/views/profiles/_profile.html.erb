@@ -26,7 +26,7 @@
   </div>
 
   <% if previewing?(profile) %>
-    <div data-controller="bridge--menu" data-menu-ios-image="square.and.pencil" data-menu-android-image="edit_square" class="hidden">
+    <div data-controller="bridge--menu" data-menu-ios-image="square.and.pencil" data-menu-android-image="edit_square" class="hotwire-native:hidden">
       <%= link_to "Edit Profile", edit_profile_path(profile),
         data: {
           bridge__menu_target: "item",
