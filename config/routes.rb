@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get "legal/privacy"
+  get "legal/terms"
+
   get "general/about"
   get "profile/show"
   resource :session
