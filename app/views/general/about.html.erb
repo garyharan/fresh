@@ -10,9 +10,13 @@
   <p class="text-lg w-full px-8 py-8 text-center text-justify">
     We're a small team from Canada. No growth hacks, no gimmicks. Just a belief: dating should feel better. More honest. More human. We don't believe in gatekeeping connection. The basics are free, forever. Fair pricing, always.
   </p>
+
+  <p class="text-lg w-full px-8 py-8 text-center text-justify">
+    You can read our comprehensive <%= link_to "Terms of Use", legal_terms_path, class: "underline" %> and our <%= link_to "Privacy Policy", legal_privacy_path, class: "underline" %>
+  </p>
 </div>
 
-<%= link_to "/recede_historical_location", "/recede_historical_location", class: "hotwire-native:hidden", data: {
+<%= link_to "/recede_historical_location", "/recede_historical_location", class: "hidden", data: {
   controller: "bridge--button",
   bridge_position: "right",
   bridge_title: "Done",
