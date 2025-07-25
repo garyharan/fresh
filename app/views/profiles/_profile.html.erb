@@ -1,3 +1,38 @@
+
+<% if previewing?(profile) %>
+  <div data-controller="bridge--menu" data-menu-ios-image="square.and.pencil" data-menu-android-image="edit_square" class="hotwire-native:hidden w-full flex flex-row items-center justify-center m-4">
+    <%= link_to "Edit Profile", edit_profile_path(profile),
+      class: "p-2 px-4 mx-2 bg-slate-50 hover:bg-slate-200 rounded-full text-blue-600 hover:text-blue-700 font-semibold text-sm",
+      data: {
+        bridge__menu_target: "item",
+        bridge_title: "Edit Profile",
+        bridge_ios_image: "person.crop.circle",
+        bridge_android_image: "edit_note"
+      }
+    %>
+
+    <%= link_to "Edit Photos", profile_images_path(profile),
+      class: "p-2 px-4 mx-2 bg-slate-50 hover:bg-slate-200 rounded-full text-blue-600 hover:text-blue-700 font-semibold text-sm",
+      data: {
+        bridge__menu_target: "item",
+        bridge_title: "Edit Photos",
+        bridge_ios_image: "photo.stack",
+        bridge_android_image: "photo_library"
+      }
+    %>
+
+    <%= link_to "Edit Cards", cards_path,
+      class: "p-2 px-4 mx-2 bg-slate-50 hover:bg-slate-200 rounded-full text-blue-600 hover:text-blue-700 font-semibold text-sm",
+      data: {
+        bridge__menu_target: "item",
+        bridge_title: "Edit Cards",
+        bridge_ios_image: "folder.badge.person.crop",
+        bridge_android_image: "layers"
+      }
+    %>
+  </div>
+<% end %>
+
 <div data-controller="<%= previewing?(profile) || assessed?(profile) ? "" : "swiper" %>" class="container h-dvh w-full mt-4 mb-24">
   <div class="flex flex-col items-center justify-center relative rounded" data-swiper-target="images">
     <div class="border border-blue-300 size-96 relative my-auto object-cover rounded light:bg-white dark:bg-black" data-controller="gallery">
@@ -25,41 +60,11 @@
     </div>
   </div>
 
-  <% if previewing?(profile) %>
-    <div data-controller="bridge--menu" data-menu-ios-image="square.and.pencil" data-menu-android-image="edit_square" class="hotwire-native:hidden">
-      <%= link_to "Edit Profile", edit_profile_path(profile),
-        data: {
-          bridge__menu_target: "item",
-          bridge_title: "Edit Profile",
-          bridge_ios_image: "person.crop.circle",
-          bridge_android_image: "edit_note"
-        }
-      %>
-
-      <%= link_to "Edit Photos", profile_images_path(profile),
-        data: {
-          bridge__menu_target: "item",
-          bridge_title: "Edit Photos",
-          bridge_ios_image: "photo.stack",
-          bridge_android_image: "photo_library"
-        }
-      %>
-
-      <%= link_to "Edit Cards", cards_path,
-        data: {
-          bridge__menu_target: "item",
-          bridge_title: "Edit Cards",
-          bridge_ios_image: "folder.badge.person.crop",
-          bridge_android_image: "layers"
-        }
-      %>
+  <% unless assessed?(profile) || previewing?(profile) %>
+    <div class="flex flex-row mx-auto fixed bottom-0 w-full justify-center">
+      <%= button_to 'Pass', profile_assessments_path(profile_id: profile.id, kind: :passed), method: :post, class: "m-4 bg-red-500 text-white py-2 px-4 rounded-full", data: { 'swiper-target': "passButton" } %>
+      <%= button_to 'Like', profile_assessments_path(profile_id: profile.id, kind: :liked), method: :post, class: "m-4 bg-blue-500 text-white py-2 px-4 rounded-full", data: { 'swiper-target': "likeButton" } %>
     </div>
-  <% else %>
-    <% unless assessed?(profile) %>
-      <div class="flex flex-row mx-auto fixed bottom-0 w-full justify-center">
-        <%= button_to 'Pass', profile_assessments_path(profile_id: profile.id, kind: :passed), method: :post, class: "m-4 bg-red-500 text-white py-2 px-4 rounded-full", data: { 'swiper-target': "passButton" } %>
-        <%= button_to 'Like', profile_assessments_path(profile_id: profile.id, kind: :liked), method: :post, class: "m-4 bg-blue-500 text-white py-2 px-4 rounded-full", data: { 'swiper-target': "likeButton" } %>
-      </div>
-    <% end %>
   <% end %>
+
 </div>
