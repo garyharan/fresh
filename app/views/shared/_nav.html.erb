@@ -11,10 +11,11 @@
     %>
     <div class="text-xs sm:text-md md:text-lg font-medium text-center text-gray-300 w-full">
         <div class="flex flex-wrap justify-between items-center w-full">
-            <div class="flex my-2 mx-1 md:mx-4">
-                <%= link_to root_url do %>
-                  <h1 id="title" title="Fresh.Dating"><span class="text-md md:text-3xl">❤</span><span class="text-md md:text-3xl hidden md:inline">Fresh.Dating</span></h1>
-                <% end %>
+            <div class="flex my-2 mx-1 md:mx-4 items-center">
+              <%= link_to root_url, class: "flex items-center" do %>
+              <img src="fresh_dating_logo.png" class="size-4 md:size-8 mr-2" alt="Fresh Dating Logo" />
+              <h1 id="title" title="Fresh.Dating" class="flex items-center">Fresh.Dating</h1>
+              <% end %>
             </div>
             <ul class="flex md:order-1">
                 <% if %w[profile profiles images rooms].include? controller_name %>

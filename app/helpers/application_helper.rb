@@ -1,4 +1,8 @@
 module ApplicationHelper
+  def logging_in?
+    controller_name == "sessions" && action_name == "new" || controller_name == "users" && action_name == "new"
+  end
+
   def hotwire_native_title(string)
     case string
     when "no_title", ""
