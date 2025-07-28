@@ -109,5 +109,8 @@ application.register("sortable", SortableController)
 import SwiperController from "./swiper_controller"
 application.register("swiper", SwiperController)
 
+import TermsEnforcerController from "./terms_enforcer_controller"
+application.register("terms-enforcer", TermsEnforcerController)
+
 import ThemeController from "./theme_controller"
 application.register("theme", ThemeController)

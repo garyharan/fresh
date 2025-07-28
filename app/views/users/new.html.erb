@@ -7,7 +7,7 @@
 
   <h1 class="font-bold text-3xl p-4 hotwire-native:hidden" data-controller="bridge--title" data-bridge-text="Create your account">Create your account</h1>
 
-  <%= form_with model: @user, url: users_path, method: :post, class: "p-4", data: { "turbo_action": "replace" } do |form| %>
+  <%= form_with model: @user, url: users_path, method: :post, class: "p-4", data: { "turbo_action": "replace", controller: "terms-enforcer"  } do |form| %>
     <div class="my-5">
       <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
     </div>
@@ -17,12 +17,24 @@
     </div>
 
     <div class="my-4">
-      <%= form.submit "Create my account", class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer w-full", data: {
-        controller: "bridge--button",
-        bridge_title: "Create",
-        bridge_position: "right"
-      } %>
-    </div>
+      <div class="flex flex-col">
+        <%= form.label :terms_of_use, class: "inline-flex items-center cursor-pointer mb-4" do %>
+          <%= form.check_box :terms_of_use, required: true, class: "form-checkbox h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500", data: {
+              "terms-enforcer-target": "checkbox",
+              action: "terms-enforcer#toggle"
+          } %>
+          <span class="ml-2 text-sm text-gray-600">
+            I have read and agree to the <%= link_to "Terms of Use", legal_terms_path, class: "underline", target: "_blank", rel: "noopener" %>.
+          </span>
+        <% end %>
+        <%= form.submit "Create my account", class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer w-full disabled:bg-gray-200", data: {
+          controller: "bridge--button",
+          bridge_title: "Create",
+          bridge_position: "right",
+          "terms-enforcer-target": "submit"
+        },
+        disabled: true %>
+      </div>  </div>
 
     <div class="my-4 w-full text-center text-slate-600">
       or
