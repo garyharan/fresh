@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_14_142101) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_04_131454) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -97,13 +97,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_14_142101) do
     t.index ["profile_id"], name: "index_images_on_profile_id"
   end
 
-  create_table "likes", force: :cascade do |t|
-    t.integer "profile_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "user_id"
-  end
-
   create_table "memberships", force: :cascade do |t|
     t.bigint "group_id", null: false
     t.boolean "revoked", default: false
@@ -168,15 +161,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_14_142101) do
     t.index ["from_profile_id"], name: "index_partnerships_on_from_profile_id"
     t.index ["to_profile_id", "from_profile_id"], name: "index_partnerships_on_to_profile_id_and_from_profile_id", unique: true
     t.index ["to_profile_id"], name: "index_partnerships_on_to_profile_id"
-  end
-
-  create_table "passes", force: :cascade do |t|
-    t.bigint "profile_id", null: false
-    t.bigint "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["profile_id"], name: "index_passes_on_profile_id"
-    t.index ["user_id"], name: "index_passes_on_user_id"
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -275,8 +259,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_14_142101) do
   add_foreign_key "notification_tokens", "users"
   add_foreign_key "partnerships", "profiles", column: "from_profile_id"
   add_foreign_key "partnerships", "profiles", column: "to_profile_id"
-  add_foreign_key "passes", "profiles"
-  add_foreign_key "passes", "users"
   add_foreign_key "profiles", "users"
   add_foreign_key "profiles_rooms", "profiles"
   add_foreign_key "profiles_rooms", "rooms"
