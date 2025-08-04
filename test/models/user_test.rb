@@ -18,4 +18,15 @@ class UserTest < ActiveSupport::TestCase
     assert_includes @profile_two.user.passed_profiles, @profile_one
     refute_includes @profile_one.user.passed_profiles, @profile_two
   end
+
+
+  test "user should delete all associated data on destroy" do
+    assert_difference "User.count", -1 do
+      assert_difference "Profile.count", -1 do
+        assert_difference "Assessment.count", -2 do
+          @profile_one.user.destroy
+        end
+      end
+    end
+  end
 end

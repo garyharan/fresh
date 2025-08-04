@@ -2,7 +2,9 @@ class Profile < ApplicationRecord
   belongs_to :user
 
   has_many :assessments, foreign_key: :from_profile_id, dependent: :destroy
-  has_many :partnerships, class_name: "Partnership", foreign_key: :from_profile_id
+  has_many :received_assessments, class_name: "Assessment", foreign_key: :to_profile_id, dependent: :destroy
+  has_many :partnerships, class_name: "Partnership", foreign_key: :from_profile_id, dependent: :destroy
+  has_many :received_partnerships, class_name: "Partnership", foreign_key: :to_profile_id, dependent: :destroy
 
   has_many :images, dependent: :destroy
   has_many :cards, dependent: :destroy
@@ -11,11 +13,20 @@ class Profile < ApplicationRecord
 
   belongs_to :gender, required: false
   has_many :attractions, dependent: :destroy
-  has_many :genders, through: :attractions
+  has_many :genders, through: :attractions, dependent: :destroy
 
   has_and_belongs_to_many :rooms
   before_destroy do
-    rooms.each { |room| room .destroy }
+    rooms.each do |room|
+      if room.profiles.count <= 1
+        room.destroy
+      else
+        room.profiles.delete(self)
+      end
+    end
+
+    attractions.destroy_all
+    genders.destroy_all
   end
 
   include Identifiable
