@@ -26,6 +26,7 @@ class ConfigurationsController < ApplicationController
             "/profiles/[0-9]+/images",
             "/session/new",
             "/users/new",
+            "/users/[0-9]+",
             "/cards",
             "/cards/.*",
             "/about"
@@ -87,6 +88,7 @@ class ConfigurationsController < ApplicationController
             "/profiles/[0-9]+/images",
             "/session/new",
             "/users/new",
+            "/users/[0-9]+",
             "/cards",
             "/cards/.*",
             "/about"
