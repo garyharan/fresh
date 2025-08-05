@@ -30,6 +30,16 @@
         bridge_android_image: "layers"
       }
     %>
+
+    <%= link_to "Edit Account", user_path(Current.user),
+      class: "p-2 px-4 mx-2 bg-slate-50 hover:bg-slate-200 rounded-full text-blue-600 hover:text-blue-700 font-semibold text-sm",
+      data: {
+        bridge__menu_target: "item",
+        bridge_title: "Edit Account",
+        bridge_ios_image: "folder.badge.person.crop",
+        bridge_android_image: "layers"
+      }
+    %>
   </div>
 <% end %>
 

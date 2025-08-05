@@ -1,8 +1,12 @@
 <div class="flex flex-col">
-  <h2 class="block mt-4 mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"> <%= t(:display_name) %> <%= error_messages_for(@profile, :display_name) %> </h2>
+  <%= form.label :display_name, class: "block mt-4 mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" do %>
+    <%= t(:display_name) %> <%= error_messages_for(@profile, :display_name) %>
+  <% end %>
   <%= form.text_field :display_name, class: "#{@profile.errors[:display_name].any? ? 'border-red-500 bg-red-50' : 'border-gray-200'} block shadow rounded-md border text-slate-800 outline-none px-3 py-2 mt-2 w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" %>
 
-  <h2 class="block mt-4 mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Gender <%= error_messages_for(@profile, :gender_id) %></h2>
+  <%= form.label :gender_id, class: "block mt-4 mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" do %>
+    <%= t(:gender) %> <%= error_messages_for(@profile, :gender_id) %>
+  <% end %>
   <ul class="grid gap-2 w-full md:grid-cols-3">
     <% Gender.all.each_with_index do |option, index| %>
       <li>
@@ -27,9 +31,9 @@
       order: [:day, :month, :year], start_year: DateTime.now.year - 18, end_year: DateTime.now.year - 100, prompt: { day: 'Day', month: 'Month', year: 'Year'},
       with_css_classes:
         {
-          day:   "inline-flex min-w-fit h-12 border border-r-0 focus:border-x-2 items-center px-3 focus:outline-none rounded-l-md border-gray-300 text-gray-500 text-sm w-1/3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500",
-          month: "inline-flex grow border focus:border-x-2 border-gray-300 text-gray-900 text-xs md:text-sm leading-6 focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500",
-          year:  "m-0 border border-l-0 focus:border-l-2 rounded-r-md border-gray-300 text-gray-900 text-xs md:text-sm leading-6 focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          day:   "inline-flex min-w-fit h-12 border border-r-0 focus:border-x-2 items-center px-3 focus:outline-none rounded-l-md border-gray-300 text-gray-500 text-sm w-1/3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 is_day_select",
+          month: "inline-flex grow border focus:border-x-2 border-gray-300 text-gray-900 text-xs md:text-sm leading-6 focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 is_month_select",
+          year:  "m-0 border border-l-0 focus:border-l-2 rounded-r-md border-gray-300 text-gray-900 text-xs md:text-sm leading-6 focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 is_year_select"
         }
       }, class: (@profile.errors[:born_on].any? ? "bg-red-50 border-red-500" : "bg-gray-50")
     ) %>

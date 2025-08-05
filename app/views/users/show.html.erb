@@ -1,0 +1,14 @@
+<%= link_to "/recede_historical_location", "/recede_historical_location", class: "hidden", data: {
+  controller: "bridge--button",
+  bridge_position: "right",
+  bridge_title: "Done",
+  bridge_vibrate: true
+} %>
+
+<div class="mt-12 p-6 bg-red-50 border border-red-200 rounded-lg flex flex-col items-center">
+  <h2 class="text-xl font-bold text-red-700 mb-2">Delete Account</h2>
+  <p class="mb-4 text-red-600">This will permanently delete your account and all associated data. This action cannot be undone.</p>
+  <%= form_with url: user_path(Current.user), method: :delete, local: true, data: { confirm: "Are you sure you want to delete your account? This action cannot be undone." } do |f| %>
+    <%= f.submit "Delete my account and all its data", class: "mt-2 w-full py-2 px-4 bg-red-600 text-white font-bold rounded hover:bg-red-700 cursor-pointer" %>
+  <% end %>
+</div>

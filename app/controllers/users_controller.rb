@@ -5,6 +5,9 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def show
+  end
+
   def create
     @user = User.new(user_params)
     @user.first_signin_ip_address = request.remote_ip
@@ -20,6 +23,18 @@ class UsersController < ApplicationController
     @user = Current.user
 
     @user.update!(user_params)
+  end
+
+  def destroy
+    @user = Current.user
+
+    @user.destroy
+    terminate_session
+    flash.notice = "Your account and all associated data has been deleted."
+    refresh_or_redirect_to root_path, notice: "Your account and all associated data have been permanently deleted."
+  rescue => e
+    debugger
+    redirect_to settings_path, alert: "Error deleting account: #{e.message}"
   end
 
   private

@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   resources :notification_tokens, only: :create
 
-  resources :users, only: [:new, :create, :update]
+  resources :users, only: [:new, :show, :create, :update, :destroy]
 
   resources :partnerships, only: [:create, :destroy]
   namespace :admin do

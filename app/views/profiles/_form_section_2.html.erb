@@ -1,5 +1,5 @@
 <div class="flex flex-col">
-  <h2 class="block mt-4 mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">I am interested in <%= error_messages_for(@profile, :attractions) %></h2>
+  <label class="block mt-4 mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">I am interested in <%= error_messages_for(@profile, :attractions) %></label>
   <ul class="grid gap-2 xl:grid-cols-3">
     <%= form.collection_check_boxes(:gender_ids, Gender.all, :id, :label) do |box| %>
       <li>

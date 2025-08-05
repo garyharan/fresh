@@ -3,8 +3,9 @@ class Room < ApplicationRecord
   has_and_belongs_to_many :profiles
   accepts_nested_attributes_for :profiles
 
-  has_many :messages, class_name: "Message"
+  has_many :messages, class_name: "Message", dependent: :destroy
 
+  before_destroy :remove_profiles_from_room
   after_destroy :block_other_users
 
   def users
@@ -35,6 +36,12 @@ class Room < ApplicationRecord
   end
 
   private
+
+  def remove_profiles_from_room
+    profiles.each do |profile|
+      profile.rooms.delete(self)
+    end
+  end
 
   def block_other_users
     self.users.each do |user|
