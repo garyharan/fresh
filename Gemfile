@@ -5,7 +5,7 @@ ruby "3.4.2"
 gem "rails", "~> 8.0.2"
 
 gem "bcrypt", "~> 3.1"
-gem 'sendgrid-ruby' # Required for sending password resets and confirmations
+gem 'mailgun-ruby' # Required for sending password resets and confirmations
 
 gem "jsbundling-rails"
 gem "cssbundling-rails"
