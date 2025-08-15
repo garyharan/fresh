@@ -1,5 +1,5 @@
 class PasswordsMailer < ApplicationMailer
-  default from: "Fresh Dating Administrator <admin@fresh.dating>"
+  default from: '"Fresh Dating Administrator" <admin@fresh.dating>'
 
   def reset(user)
     @user = user
