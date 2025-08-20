@@ -30,6 +30,20 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
+  root:
+    index:
+      hero_title: "A refreshingly simple, remarkably authentic, experimental dating experience."
+      hero_paragraph: "Finding love is hard, but it doesn't have to be. Sadly lots of dating sites make things worse with false promises and ineffective upsells. Fresh.Dating gives you what you need to find love without having to break the bank."
+      sign_up: "Sign Up"
+      sign_in: "Sign in"
+      about_title: "About Fresh.Dating"
+      about_p1_html: "Born out of a frustration with the current dating app landscape, Fresh.Dating is a new kind of dating site.  <span class='font-bold'>Opinionated</span> in its design, it's built to be simple, fast, and <span class='font-bold'>effective</span>. It will be adding features in the coming months and switching things up from time to time.  The idea is that you'll be able to <span class='font-bold'>find love without having to break the bank</span>."
+      about_p2_html: "Because Fresh.Dating is still in <span class='font-bold'>beta</span> a lot of the upcoming features are still being <span class='font-bold'>worked on</span> and is in no way completed nor in a state we're yet proud of.  We're working hard to get it there though!"
+      features_intro: "Some of the things you can expect from Fresh.Dating in the coming months:"
+      feature_1: "See who you liked and passed on to get a chance to match with them again (free feature Bumble charges 24.99$ for)"
+      feature_2: "See if someone was online in the last few weeks (lots of sites show dead profiles to keep you uselessly swiping like you're a monkey)"
+      feature_3: "Web notifications for chat"
+      feature_4: "And many... many more!"
   messages:
     unread_count: "You have %{count} unread messages"
 

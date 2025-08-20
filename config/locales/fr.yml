@@ -1,4 +1,18 @@
 fr:
+  root:
+    index:
+      hero_title: "Une expérience de rencontre rafraîchissante, authentique et expérimentale."
+      hero_paragraph: "Trouver l'amour est difficile, mais cela ne doit pas l'être. Malheureusement, de nombreux sites de rencontre aggravent les choses avec de fausses promesses et des ventes additionnelles inefficaces. Fresh.Dating vous donne ce dont vous avez besoin pour trouver l'amour sans vous ruiner."
+      sign_up: "Créer un compte"
+      sign_in: "Se connecter"
+      about_title: "À propos de Fresh.Dating"
+      about_p1_html: "Né d'une frustration face au paysage actuel des applications de rencontre, Fresh.Dating est un nouveau type de site.  <span class='font-bold'>Assumé</span> dans sa conception, il est conçu pour être simple, rapide et <span class='font-bold'>efficace</span>. Nous ajouterons des fonctionnalités dans les prochains mois et nous ferons évoluer l'expérience. L'idée est que vous puissiez <span class='font-bold'>trouver l'amour sans vous ruiner</span>."
+      about_p2_html: "Comme Fresh.Dating est encore en <span class='font-bold'>bêta</span>, de nombreuses fonctionnalités sont en cours de <span class='font-bold'>développement</span> et le site n'est pas encore terminé ni à un niveau dont nous sommes pleinement fiers. Nous travaillons dur pour y parvenir !"
+      features_intro: "Voici quelques fonctionnalités que vous pouvez attendre de Fresh.Dating dans les prochains mois :"
+      feature_1: "Voyez les profils que vous avez aimés et passés pour avoir une chance de matcher à nouveau avec eux (fonction gratuite pour laquelle Bumble facture 24,99$)"
+      feature_2: "Voyez si quelqu'un s'est connecté au cours des dernières semaines (de nombreux sites affichent des profils inactifs pour vous faire swiper inutilement)"
+      feature_3: "Notifications web pour le chat"
+      feature_4: "Et bien d'autres encore !"
   about_me: A propos de moi
   self_summary: Un résumé de qui je suis
   what_others_say_about_me: Ce que les autres disent de moi

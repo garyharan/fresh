@@ -5,17 +5,16 @@
   <section>
     <div class="px-2 mx-auto sm:py-16 lg:px-6">
       <div class="max-w-screen-md mx-auto text-center">
-        <h2 class="mb-4 not-hotwire-native:text-5xl hotwire-native:text-xl tracking-tight font-extrabold text-gray-900 dark:text-white">A refreshingly simple, remarkably authentic, experimental dating experience.</h2>
+        <h2 class="mb-4 not-hotwire-native:text-5xl hotwire-native:text-xl tracking-tight font-extrabold text-gray-900 dark:text-white"><%= t('.hero_title') %></h2>
 
         <p class="mb-8 font-light text-gray-500 not-hotwire-native:text-2xl hotwire-native:hidden dark:text-gray-400">
-          Finding love is hard, but it doesn't have to be. Sadly lots of dating sites make things worse with false promises and ineffective upsells.
-          Fresh.Dating gives you what you need to find love without having to break the bank.
+          <%= t('.hero_paragraph') %>
         </p>
 
         <div class="flex flex-col space-y-4">
-          <%= link_to 'Sign Up', new_user_path, class: "inline-flex items-center justify-center px-4 py-2.5 text-xl font-medium text-center text-white bg-green-500 rounded-lg hover:bg-green-600 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900" %>
+          <%= link_to t('.sign_up'), new_user_path, class: "inline-flex items-center justify-center px-4 py-2.5 text-xl font-medium text-center text-white bg-green-500 rounded-lg hover:bg-green-600 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900" %>
 
-          <%= link_to 'Sign in', new_session_path, class: 'inline-flex items-center justify-center px-4 py-2.5 text-xl font-medium text-center text-white bg-green-500 rounded-lg hover:bg-green-600 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900' %>
+          <%= link_to t('.sign_in'), new_session_path, class: 'inline-flex items-center justify-center px-4 py-2.5 text-xl font-medium text-center text-white bg-green-500 rounded-lg hover:bg-green-600 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900' %>
         </div>
       </div>
     </div>
@@ -23,23 +22,23 @@
 
   <section class="hotwire-native:hidden">
     <div class="px-2 mx-auto w-lg max-w-screen-md text-center">
-      <h2 class="font-bold text-3xl my-4">About Fresh.Dating</h2>
+      <h2 class="font-bold text-3xl my-4"><%= t('.about_title') %></h2>
 
       <p class="text-left font-light text-gray-500 text-xl">
-        Born out of a frustration with the current dating app landscape, Fresh.Dating is a new kind of dating site.  <span class="font-bold">Opinionated</span> in its design, it's built to be simple, fast, and <span class="font-bold">effective</span>. It will be adding features in the coming months and switching things up from time to time.  The idea is that you'll be able to <span class="font-bold">find love without having to break the bank</span>.
+        <%= raw t('.about_p1_html') %>
       </p>
 
       <p class="text-left font-light text-gray-500 text-xl my-4">
-        Because Fresh.Dating is still in <span class="font-bold">beta</span> a lot of the upcoming features are still being <span class="font-bold">worked on</span> and is in no way completed nor in a state we're yet proud of.  We're working hard to get it there though!
+        <%= raw t('.about_p2_html') %>
       </p>
 
       <p class="text-left font-light text-gray-500 text-xl">
-        Some of the things you can expect from Fresh.Dating in the coming months:
+        <%= t('.features_intro') %>
         <ul class="text-left font-light text-gray-500 text-lg my-4">
-          <li class="ml-4 mt-4"><svg class="w-6 h-6 inline mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.88-.214.33-.403.713-.57 1.116-.334.804-.614 1.768-.84 2.734a31.365 31.365 0 00-.613 3.58 2.64 2.64 0 01-.945-1.067c-.328-.68-.398-1.534-.398-2.654A1 1 0 005.05 6.05 6.981 6.981 0 003 11a7 7 0 1011.95-4.95c-.592-.591-.98-.985-1.348-1.467-.363-.476-.724-1.063-1.207-2.03zM12.12 15.12A3 3 0 017 13s.879.5 2.5.5c0-1 .5-4 1.25-4.5.5 1 .786 1.293 1.371 1.879A2.99 2.99 0 0113 13a2.99 2.99 0 01-.879 2.121z" clip-rule="evenodd"></path></svg>See who you liked and passed on to get a chance to match with them again (free feature Bumble charges 24.99$ for)</li>
-          <li class="ml-4 mt-4"><svg class="w-6 h-6 inline mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.88-.214.33-.403.713-.57 1.116-.334.804-.614 1.768-.84 2.734a31.365 31.365 0 00-.613 3.58 2.64 2.64 0 01-.945-1.067c-.328-.68-.398-1.534-.398-2.654A1 1 0 005.05 6.05 6.981 6.981 0 003 11a7 7 0 1011.95-4.95c-.592-.591-.98-.985-1.348-1.467-.363-.476-.724-1.063-1.207-2.03zM12.12 15.12A3 3 0 017 13s.879.5 2.5.5c0-1 .5-4 1.25-4.5.5 1 .786 1.293 1.371 1.879A2.99 2.99 0 0113 13a2.99 2.99 0 01-.879 2.121z" clip-rule="evenodd"></path></svg>See if someone was online in the last few weeks (lots of sites show dead profiles to keep you uselessly swiping like you're a monkey)</li>
-          <li class="ml-4 mt-4"><svg class="w-6 h-6 inline mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.88-.214.33-.403.713-.57 1.116-.334.804-.614 1.768-.84 2.734a31.365 31.365 0 00-.613 3.58 2.64 2.64 0 01-.945-1.067c-.328-.68-.398-1.534-.398-2.654A1 1 0 005.05 6.05 6.981 6.981 0 003 11a7 7 0 1011.95-4.95c-.592-.591-.98-.985-1.348-1.467-.363-.476-.724-1.063-1.207-2.03zM12.12 15.12A3 3 0 017 13s.879.5 2.5.5c0-1 .5-4 1.25-4.5.5 1 .786 1.293 1.371 1.879A2.99 2.99 0 0113 13a2.99 2.99 0 01-.879 2.121z" clip-rule="evenodd"></path></svg>Web notifications for chat</li>
-          <li class="ml-4 mt-4"><svg class="w-6 h-6 inline mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.88-.214.33-.403.713-.57 1.116-.334.804-.614 1.768-.84 2.734a31.365 31.365 0 00-.613 3.58 2.64 2.64 0 01-.945-1.067c-.328-.68-.398-1.534-.398-2.654A1 1 0 005.05 6.05 6.981 6.981 0 003 11a7 7 0 1011.95-4.95c-.592-.591-.98-.985-1.348-1.467-.363-.476-.724-1.063-1.207-2.03zM12.12 15.12A3 3 0 017 13s.879.5 2.5.5c0-1 .5-4 1.25-4.5.5 1 .786 1.293 1.371 1.879A2.99 2.99 0 0113 13a2.99 2.99 0 01-.879 2.121z" clip-rule="evenodd"></path></svg>And many... many more!</li>
+          <li class="ml-4 mt-4"><svg class="w-6 h-6 inline mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.88-.214.33-.403.713-.57 1.116-.334.804-.614 1.768-.84 2.734a31.365 31.365 0 00-.613 3.58 2.64 2.64 0 01-.945-1.067c-.328-.68-.398-1.534-.398-2.654A1 1 0 005.05 6.05 6.981 6.981 0 003 11a7 7 0 1011.95-4.95c-.592-.591-.98-.985-1.348-1.467-.363-.476-.724-1.063-1.207-2.03zM12.12 15.12A3 3 0 017 13s.879.5 2.5.5c0-1 .5-4 1.25-4.5.5 1 .786 1.293 1.371 1.879A2.99 2.99 0 0113 13a2.99 2.99 0 01-.879 2.121z" clip-rule="evenodd"></path></svg><%= t('.feature_1') %></li>
+          <li class="ml-4 mt-4"><svg class="w-6 h-6 inline mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.88-.214.33-.403.713-.57 1.116-.334.804-.614 1.768-.84 2.734a31.365 31.365 0 00-.613 3.58 2.64 2.64 0 01-.945-1.067c-.328-.68-.398-1.534-.398-2.654A1 1 0 005.05 6.05 6.981 6.981 0 003 11a7 7 0 1011.95-4.95c-.592-.591-.98-.985-1.348-1.467-.363-.476-.724-1.063-1.207-2.03zM12.12 15.12A3 3 0 017 13s.879.5 2.5.5c0-1 .5-4 1.25-4.5.5 1 .786 1.293 1.371 1.879A2.99 2.99 0 0113 13a2.99 2.99 0 01-.879 2.121z" clip-rule="evenodd"></path></svg><%= t('.feature_2') %></li>
+          <li class="ml-4 mt-4"><svg class="w-6 h-6 inline mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.88-.214.33-.403.713-.57 1.116-.334.804-.614 1.768-.84 2.734a31.365 31.365 0 00-.613 3.58 2.64 2.64 0 01-.945-1.067c-.328-.68-.398-1.534-.398-2.654A1 1 0 005.05 6.05 6.981 6.981 0 003 11a7 7 0 1011.95-4.95c-.592-.591-.98-.985-1.348-1.467-.363-.476-.724-1.063-1.207-2.03zM12.12 15.12A3 3 0 017 13s.879.5 2.5.5c0-1 .5-4 1.25-4.5.5 1 .786 1.293 1.371 1.879A2.99 2.99 0 0113 13a2.99 2.99 0 01-.879 2.121z" clip-rule="evenodd"></path></svg><%= t('.feature_3') %></li>
+          <li class="ml-4 mt-4"><svg class="w-6 h-6 inline mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.88-.214.33-.403.713-.57 1.116-.334.804-.614 1.768-.84 2.734a31.365 31.365 0 00-.613 3.58 2.64 2.64 0 01-.945-1.067c-.328-.68-.398-1.534-.398-2.654A1 1 0 005.05 6.05 6.981 6.981 0 003 11a7 7 0 1011.95-4.95c-.592-.591-.98-.985-1.348-1.467-.363-.476-.724-1.063-1.207-2.03zM12.12 15.12A3 3 0 017 13s.879.5 2.5.5c0-1 .5-4 1.25-4.5.5 1 .786 1.293 1.371 1.879A2.99 2.99 0 0113 13a2.99 2.99 0 01-.879 2.121z" clip-rule="evenodd"></path></svg><%= t('.feature_4') %></li>
         </ul>
     </div>
   </section>
