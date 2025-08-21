@@ -7,6 +7,14 @@ woman:
   id: 2
   label: Woman
 
-other:
+non_binary:
   id: 3
-  label: Non-Binary and/or Two Spirit Person
+  label: Non-Binary
+
+queer:
+  id: 4
+  label: Queer
+
+two_spirit:
+  id: 5
+  label: Two Spirit
