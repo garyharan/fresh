@@ -24,7 +24,7 @@ class SignupFlowTest < ActionDispatch::IntegrationTest
     end
 
     assert_difference("User.count", -1) do
-      click_link "Edit Account"
+      click_link "Account"
       click_button "Delete my account and all its data"
       assert_text "Your account and all associated data have been permanently deleted."
     end
