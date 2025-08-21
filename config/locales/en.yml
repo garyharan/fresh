@@ -131,6 +131,14 @@ en:
     queer: Queer
     two_spirit: Two Spirit
 
+  navigation:
+    discover: Discover
+    my_profile: My profile
+    settings: Settings
+    sign_out: Sign out
+    profiles: Profiles
+    sign_out_confirm: Are you sure you want to sign out?
+
   groups_cta_title: Match-making events to bring people together
   groups_cta_description: Groups provide you with an easy way for your event-goers, club or forum members to express interest in a low friction way.  Just create the group, print out the QR code and let your members-goers scan it to join.  They'll be given all the instructions they need to get started and match with each other.  Ideal for speed dating, authentic dating, online forums or any kind of cocktail mingling nights.
 

@@ -24,3 +24,11 @@ fr:
     non_binary: Non-binaire
     queer: Queer
     two_spirit: Bispirituel
+
+  navigation:
+    discover: Découvrir
+    my_profile: Mon profil
+    settings: Paramètres
+    sign_out: Se déconnecter
+    profiles: Profils
+    sign_out_confirm: Êtes-vous sûr de vouloir vous déconnecter ?
