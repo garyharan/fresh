@@ -98,30 +98,38 @@ en:
 
   hobbies: Hobbies
   i_spend_lots_of_time_thinking_about: I spend a lot of time thinking about
-  hobby_i_want_to_learn: A hobby I would like to pick up
-  i_spent_too_much_time_on: I spend too much time on
-
-  cooking: Cooking
-  best_meal_i_make: The best meal I can cook
-  favorite_holiday_food: Favorite holiday food
-  something_i_cooked_once_but_never_again: Something I cooked once but never again
+  hobby_i_want_to_learn: Hobby I want to learn
+  i_spent_too_much_time_on: I spent too much time on
 
   outdoors: Outdoors
   my_favorite_outdoor_activity: My favorite outdoor activity
   my_favorite_outdoor_place: My favorite outdoor place
   my_favorite_outdoor_memory: My favorite outdoor memory
 
+  cooking: Cooking
+  best_meal_i_make: Best meal I make
+  favorite_holiday_food: Favorite holiday food
+  something_i_cooked_once_but_never_again: Something I cooked once but never again
+
   eating: Eating
-  munchies: Go to snacks
-  restaurant_i_been_to_the_most: The restaurant I went to the most
+  munchies: Munchies
+  restaurant_i_been_to_the_most: Restaurant I've been to the most
   favorite_restaurant: Favorite restaurant
   favorite_cuisine: Favorite cuisine
-  snob_about: What food I'm a real snob about
+  snob_about: I'm a snob about
 
   dating: Dating
   message_me_if: Message me if
-  before_we_date_let_me_know_this: Before we consider dating I need to know
-  first_date: What we could do for our first date
+  before_we_date_let_me_know_this: Before we date, let me know this
+  first_date: First date
+
+  gender: Gender
+  genders:
+    man: Man
+    woman: Woman
+    non_binary: Non-Binary
+    queer: Queer
+    two_spirit: Two Spirit
 
   groups_cta_title: Match-making events to bring people together
   groups_cta_description: Groups provide you with an easy way for your event-goers, club or forum members to express interest in a low friction way.  Just create the group, print out the QR code and let your members-goers scan it to join.  They'll be given all the instructions they need to get started and match with each other.  Ideal for speed dating, authentic dating, online forums or any kind of cocktail mingling nights.

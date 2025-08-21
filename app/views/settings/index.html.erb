@@ -29,7 +29,7 @@
         <li>
           <%= box.check_box class: "hidden peer", id: "profile_gender_ids_#{box.object.id}" %>
           <%= box.label for: "profile_gender_ids_#{box.object.id}", class: "#{@profile.errors[:attractions].any? ? 'border-red-500 bg-red-50' : 'bg-white border-gray-200'} inline-flex justify-between items-center p-3 pl-5 w-full text-gray-500 rounded-full border cursor-pointer dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 dark:text-gray-400 dark:bg-gray-800 group" do %>
-            <%= box.object.label.pluralize %>
+            <%= box.object.display_label.pluralize %>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                 viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor"

@@ -8,7 +8,7 @@ class ProfileTest < ActiveSupport::TestCase
 
     @man = Gender.create!(label: 'Man')
     @woman = Gender.create!(label: 'Woman')
-    @enby = Gender.create!(label: 'Non-Binary and/or Two Spirit Person')
+    @enby = Gender.create!(label: 'Non-Binary')
   end
 
   test 'maximum_distance delegation' do
@@ -19,7 +19,7 @@ class ProfileTest < ActiveSupport::TestCase
   test '#of_gender returns all the profile of a specific gender' do
     man = Gender.find_by(label: 'Man')
 
-    assert(Profile.of_gender(man).all? { |p| p.gender.label == 'Man' })
+    assert(Profile.of_gender(man).all? { |p| p.gender.display_label == 'Man' })
   end
 
   test '#attracted_to_gender returns all the profiles that are attracted to give genders' do

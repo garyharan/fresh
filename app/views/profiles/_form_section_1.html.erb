@@ -12,7 +12,7 @@
       <li>
         <%= form.radio_button :gender_id, option.id, class: "hidden peer", id: "gender_option_#{index}" %>
         <%= form.label :gender_id, for: "gender_option_#{index}", class: "group #{@profile.errors[:gender_id].any? ? 'border-red-500 bg-red-50' : 'border-gray-200'} inline-flex justify-between items-center p-3 pl-5 tracking-tighter w-full text-gray-500 bg-white rounded-full border cursor-pointer dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 dark:text-gray-400 dark:bg-gray-800" do %>
-          <%= option.label %>
+          <%= option.display_label %>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none"
               viewBox="0 0 24 24" stroke-width="1.5"
               stroke="currentColor"
