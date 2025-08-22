@@ -16,6 +16,67 @@ fr:
   about_me: A propos de moi
   self_summary: Un résumé de qui je suis
   what_others_say_about_me: Ce que les autres disent de moi
+  things_i_am_not: Ce que je ne suis définitivement pas
+
+  aspirations: Aspirations
+  what_i_do_with_my_life: Ce que je fais dans ma vie
+  current_goal: Objectif actuel
+  would_be_known_for: Ce pour quoi je serais connu
+  dream_job: Mon travail de rêve
+
+  talents: Talents
+  really_good_at: Je ne veux pas me vanter mais...
+  i_like_to_make: Les choses que j'aime créer
+  my_worst_quality: Ma pire qualité...
+
+  traits: Traits
+  first_thing_people_notice_about_me: La première chose que les gens remarquent chez moi
+  my_style_described_as: Mon style peut être décrit comme
+  favorite_thing_about_me: Ma chose préférée chez moi
+  weirdest_quirk: Le tic le plus bizarre
+
+  projects: Projets de vie
+  retirement_plan: Plan de retraite
+  dream_house: Maison de rêve
+  dream_vacation: Vacances de rêve
+
+  media: Médias
+  favorite_books: Livres préférés
+  favorite_bands: Groupes préférés
+  favorite_movies: Films préférés
+  favorite_shows: Émissions préférées
+
+  needs: Besoins
+  things_i_cant_live_without: 5 choses sans lesquelles je ne peux pas vivre
+  things_i_want_in_a_partner: Ce que je cherche chez un partenaire
+  food_i_cant_live_without: La nourriture sans laquelle je mourrais si je ne pouvais plus en avoir
+
+  hobbies: Loisirs
+  i_spend_lots_of_time_thinking_about: Je passe beaucoup de temps à penser à
+  hobby_i_want_to_learn: Loisir que je veux apprendre
+  i_spent_too_much_time_on: J'ai passé trop de temps sur
+
+  outdoors: Plein air
+  my_favorite_outdoor_activity: Mon activité de plein air préférée
+  my_favorite_outdoor_place: Mon endroit de plein air préféré
+  my_favorite_outdoor_memory: Mon souvenir de plein air préféré
+
+  cooking: Cuisine
+  best_meal_i_make: Le meilleur repas que je prépare
+  favorite_holiday_food: Nourriture de fête préférée
+  something_i_cooked_once_but_never_again: Quelque chose que j'ai cuisiné une fois mais plus jamais
+
+  eating: Alimentation
+  munchies: Collations
+  restaurant_i_been_to_the_most: Le restaurant où je suis allé le plus
+  favorite_restaurant: Restaurant préféré
+  favorite_cuisine: Cuisine préférée
+  snob_about: Je suis un snob à propos de
+
+  dating: Rencontres
+  message_me_if: Écrivez-moi si
+  before_we_date_let_me_know_this: Avant qu'on sorte ensemble, faites-moi savoir ceci
+  first_date: Premier rendez-vous
 
   gender: Genre
   genders:
@@ -83,3 +144,19 @@ fr:
 
   invite:
     invite_a_friend: Inviter un ami
+
+  cards:
+    kinds:
+      about_me: À propos de moi
+      aspirations: Aspirations
+      talents: Talents
+      traits: Traits
+      projects: Projets de vie
+      media: Médias
+      needs: Besoins
+      hobbies: Loisirs
+      outdoors: Plein air
+      cooking: Cuisine
+      eating: Alimentation
+      dating: Rencontres
+    add_card: "Ajouter la carte %{kind}"

@@ -6,7 +6,7 @@
         <div class="rounded bg-slate-100 dark:bg-gray-700 border border-slate-200 dark:border-gray-600 w-full">
           <div class="flex flex-row border-b border-white dark:border-gray-600">
             <div class="grow p-2">
-              <div class="text-xl font-bold uppercase text-gray-400"><%= kind.to_s.titleize %></div>
+              <div class="text-xl font-bold uppercase text-gray-400"><%= t("cards.kinds.#{kind}") %></div>
               <div class="grow text-xl font-bold"><%= t(card.title) %></div>
             </div>
             <div class="shrink flex items-center pr-4">
@@ -31,7 +31,7 @@
           <div class="rounded bg-slate-100 dark:bg-gray-700 border border-slate-200 dark:border-gray-600 w-full">
             <div class="flex flex-row">
               <div class="grow p-2">
-                <div class="text-xl font-bold">Add the <%= kind.to_s.titleize %> card</div>
+                <div class="text-xl font-bold"><%= t("cards.add_card", kind: t("cards.kinds.#{kind}")) %></div>
               </div>
               <div class="shrink flex items-center pr-4">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6"> <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /> </svg>
