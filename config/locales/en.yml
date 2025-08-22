@@ -251,3 +251,26 @@ en:
   likes:
     like:
       signup_to_like: Sign up to like this profile
+
+
+  date:
+    formats:
+      default: "%m/%d/%Y"
+      short: "%b %d"
+      long: "%B %d, %Y"
+    order:
+      - :month
+      - :day
+      - :year
+    january: January
+    february: February
+    march: March
+    april: April
+    may: May
+    june: June
+    july: July
+    august: August
+    september: September
+    october: October
+    november: November
+    december: December

@@ -189,3 +189,25 @@ fr:
       eating: Alimentation
       dating: Rencontres
     add_card: "Ajouter la carte %{kind}"
+
+  date:
+    formats:
+      default: "%d/%m/%Y"
+      short: "%d %b"
+      long: "%d %B %Y"
+    order:
+      - :day
+      - :month
+      - :year
+    january: Janvier
+    february: Février
+    march: Mars
+    april: Avril
+    may: Mai
+    june: Juin
+    july: Juillet
+    august: Août
+    september: Septembre
+    october: Octobre
+    november: Novembre
+    december: Décembre
