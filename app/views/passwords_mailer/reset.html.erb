@@ -1,7 +1,7 @@
 <p>
-  <b>Fresh.Dating</b> has received a request to reset your password.
+  <b>Fresh.Dating</b> <%= t('passwords.reset_request_received') %>
 </p>
 <p>
-  You can reset your Fresh.Dating password within the next 15 minutes on
-  <%= link_to "this password reset page", edit_password_url(@user.password_reset_token) %>.
+  <%= t('passwords.reset_within_15_minutes') %>
+  <%= link_to t('passwords.password_reset_page'), edit_password_url(@user.password_reset_token) %>.
 </p>
