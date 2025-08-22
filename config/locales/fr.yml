@@ -56,3 +56,30 @@ fr:
     remove: Supprimer
     remove_relationship_confirm: Êtes-vous sûr de vouloir supprimer cette relation ?
     no_partnerships: Vous n'avez aucun partenariat pour le moment
+
+  passwords:
+    forgot_password: Mot de passe oublié ?
+    enter_email_placeholder: Entrez votre adresse e-mail
+    email_reset_instructions: Instructions de réinitialisation par e-mail
+    reset_request_received: Fresh.Dating a reçu une demande de réinitialisation de votre mot de passe.
+    reset_within_15_minutes: Vous pouvez réinitialiser votre mot de passe Fresh.Dating dans les 15 prochaines minutes sur
+    password_reset_page: cette page de réinitialisation de mot de passe
+
+  onboarding:
+    say_something_about_you: Dites quelque chose sur vous
+    just_a_bit_more_info: Juste un peu plus d'infos...
+    next: Suivant
+    finish: Terminer
+    finish_my_profile: Terminer mon profil
+
+  dashboard:
+    dashboard: Tableau de bord
+    users: Utilisateurs
+    profiles: Profils
+    passes: Passes
+    likes: J'aime
+    rooms: Salles
+    messages: Messages
+
+  invite:
+    invite_a_friend: Inviter un ami

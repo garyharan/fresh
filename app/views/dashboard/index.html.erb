@@ -1,11 +1,11 @@
 <div class="m-10">
-  <h1 class="font-bold text-4xl">Dashboard</h1>
+  <h1 class="font-bold text-4xl"><%= t('dashboard.dashboard') %></h1>
 </div>
 
 <div class="flex flex-row flex-wrap">
   <div class="m-10">
     <div>
-      <h2 class="font-bold text-2xl">Users</h2>
+      <h2 class="font-bold text-2xl"><%= t('dashboard.users') %></h2>
       <p class="text-gray-500 text-4xl text-bold">
         <%= User.count %>
       </p>
@@ -14,7 +14,7 @@
 
   <div class="m-10">
     <div>
-      <h2 class="font-bold text-2xl">Profiles</h2>
+      <h2 class="font-bold text-2xl"><%= t('dashboard.profiles') %></h2>
       <p class="text-gray-500 text-4xl text-bold">
         <%= Profile.count %> <span class="text-gray-500 text-sm"></span>
       </p>
@@ -23,7 +23,7 @@
 
   <div class="m-10">
     <div>
-      <h2 class="font-bold text-2xl">Passes</h2>
+      <h2 class="font-bold text-2xl"><%= t('dashboard.passes') %></h2>
       <p class="text-gray-500 text-4xl text-bold">
         <%= Assessment.where(kind: :liked).count %>
       </p>
@@ -32,7 +32,7 @@
 
   <div class="m-10">
     <div>
-      <h2 class="font-bold text-2xl">Likes</h2>
+      <h2 class="font-bold text-2xl"><%= t('dashboard.likes') %></h2>
       <p class="text-gray-500 text-4xl text-bold">
         <%= Assessment.where(kind: :passed).count %>
       </p>
@@ -41,7 +41,7 @@
 
   <div class="m-10">
     <div>
-      <h2 class="font-bold text-2xl">Rooms</h2>
+      <h2 class="font-bold text-2xl"><%= t('dashboard.rooms') %></h2>
       <p class="text-gray-500 text-4xl text-bold">
         <%= Room.count %>
       </p>
@@ -50,7 +50,7 @@
 
   <div class="m-10">
     <div>
-      <h2 class="font-bold text-2xl">Messages</h2>
+      <h2 class="font-bold text-2xl"><%= t('dashboard.messages') %></h2>
       <p class="text-gray-500 text-4xl text-bold">
         <%= Message.count %>
       </p>

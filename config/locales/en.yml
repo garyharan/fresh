@@ -163,6 +163,33 @@ en:
     remove_relationship_confirm: Are you sure you want to remove this relationship?
     no_partnerships: You have no partnerships at the present time
 
+  passwords:
+    forgot_password: Forgot your password?
+    enter_email_placeholder: Enter your email address
+    email_reset_instructions: Email reset instructions
+    reset_request_received: Fresh.Dating has received a request to reset your password.
+    reset_within_15_minutes: You can reset your Fresh.Dating password within the next 15 minutes on
+    password_reset_page: this password reset page
+
+  onboarding:
+    say_something_about_you: Say something about you
+    just_a_bit_more_info: Just a bit more info...
+    next: Next
+    finish: Finish
+    finish_my_profile: Finish my profile
+
+  dashboard:
+    dashboard: Dashboard
+    users: Users
+    profiles: Profiles
+    passes: Passes
+    likes: Likes
+    rooms: Rooms
+    messages: Messages
+
+  invite:
+    invite_a_friend: Invite a friend
+
   groups_cta_title: Match-making events to bring people together
   groups_cta_description: Groups provide you with an easy way for your event-goers, club or forum members to express interest in a low friction way.  Just create the group, print out the QR code and let your members-goers scan it to join.  They'll be given all the instructions they need to get started and match with each other.  Ideal for speed dating, authentic dating, online forums or any kind of cocktail mingling nights.
 
