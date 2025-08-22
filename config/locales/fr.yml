@@ -78,6 +78,35 @@ fr:
   before_we_date_let_me_know_this: Avant qu'on sorte ensemble, faites-moi savoir ceci
   first_date: Premier rendez-vous
 
+  write_something: Écrire quelque chose...
+  select_your_prompt: Sélectionnez votre prompt
+  profile: Profil
+  display_name: Nom d'affichage
+  born_on: Né le
+  name: Nom
+  description: Description
+  group_context: Un groupe est un moyen pratique de permettre à ses membres de rechercher et de se rencontrer. Vous pouvez inviter les membres en leur fournissant un lien d'invitation ou en affichant le code QR du groupe lors d'une rencontre.
+
+  location: Localisation
+  city: Ville
+  province_or_state: Province ou État
+  country: Pays
+
+  groups_cta_title: Événements de rencontres pour rapprocher les gens
+  groups_cta_description: Les groupes vous offrent un moyen facile pour les participants à vos événements, les membres de votre club ou les membres de votre forum d'exprimer leur intérêt de manière simple. Créez simplement le groupe, imprimez le code QR et laissez vos membres-participants le scanner pour rejoindre. Ils recevront toutes les instructions nécessaires pour commencer et se rencontrer. Idéal pour les speed dating, les rencontres authentiques, les forums en ligne ou tout type de soirées de cocktail.
+
+  memberships_cta_title: "Acceptez votre invitation à %{group_name} et commencez à vous rencontrer avec d'autres membres."
+  memberships_cta_description: Les groupes comme celui-ci font se rencontrer des personnes qui ont assisté à un événement, font partie d'un club ou ont un intérêt similaire.
+
+  images_dragging_instructions: L'image la plus haute est celle qui apparaîtra comme miniature lorsque les gens recherchent votre profil. Vous pouvez changer l'ordre des images en les faisant glisser.
+  images_upload_at_least_one_to_finish: Téléchargez au moins une photo pour continuer.
+
+  fill_first_card_to_finish: Remplissez la section À propos de moi pour terminer.
+
+  members: Membres
+
+  member_in_group: "Membre de %{group_name}"
+
   gender: Genre
   genders:
     man: Homme
