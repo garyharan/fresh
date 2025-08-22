@@ -51,6 +51,12 @@ en:
   select_your_prompt: Select a prompt
 
   profile: Profile
+  profile_nav:
+    profile: Profile
+    photos: Photos
+    cards: Cards
+    account: Account
+
   display_name: Display name
   born_on: Born on
 
@@ -274,3 +280,12 @@ en:
     october: October
     november: November
     december: December
+
+
+  profile_details:
+    "Want someday": Want someday
+    "Don't want": Don't want
+    "Have & want more": Have & want more
+    "Have & don't want more": Have & don't want more
+    "Not sure yet": Not sure yet
+

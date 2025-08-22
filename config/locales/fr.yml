@@ -80,7 +80,14 @@ fr:
 
   write_something: Écrire quelque chose...
   select_your_prompt: Sélectionnez votre prompt
+
   profile: Profil
+  profile_nav:
+    profile: Profil
+    photos: Photos
+    cards: Cartes
+    account: Compte
+
   display_name: Nom d'affichage
   born_on: Né le
   name: Nom
@@ -211,3 +218,12 @@ fr:
     october: Octobre
     november: Novembre
     december: Décembre
+
+
+  profile_details:
+    "Want someday": J'en veux un jour
+    "Don't want": Je n'en veux pas
+    "Have & want more": J'en ai déjà et j'en veux plus
+    "Have & don't want more": J'en ai déjà mais je n'en veux pas plus
+    "Not sure yet": Pas encore sûr
+
