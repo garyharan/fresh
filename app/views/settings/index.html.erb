@@ -1,29 +1,29 @@
-<% content_for(:title, "Preferences") %>
+<% content_for(:title, t('settings.preferences')) %>
 
 <section class="w-full min-h-screen flex flex-col px-2" aria-label="Sidebar">
 
   <%= form_with(model: @user.profile) do |form| %>
 
     <div data-controller="distance">
-      <h2 class="mt-4 mb-2 font-bold text-xl">Set maximum distance for matches</h2>
+      <h2 class="mt-4 mb-2 font-bold text-xl"><%= t('settings.maximum_distance_title') %></h2>
       <%= form.range_field :maximum_distance, min: 100_000, max: 4_000_000, "data-distance-target": "input", class: "bg-gray-200 w-full h-2 rounded-lg appearance-none cursor-pointer dark:bg-gray-700" %>
       <p data-distance-target="display" class="inline-flex text-slate-400 text-lg border-gray-200 outline-none"></p>
       <span data-distance-target="saved" class="text-xs text-green-600 inline-flex place-content-center opacity-0 transition-opacity duration-1000">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
         </svg>
-        saved!
+        <%= t('settings.saved') %>
       </span>
 
       <span data-distance-target="error" class="text-xs text-red-600 inline-flex opacity-0 transition-opacity duration-1000">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
         </svg>
-        An error occurred preventing us to save your maximum distance.
+        <%= t('settings.error_message') %>
       </span>
     </div>
 
-    <h2 class="mt-8 mb-2 font-bold text-xl">Genders you are attracted to:</h2>
+    <h2 class="mt-8 mb-2 font-bold text-xl"><%= t('settings.attracted_to_genders') %></h2>
     <ul class="grid gap-2 xl:grid-cols-3">
       <%= form.collection_check_boxes(:gender_ids, Gender.all, :id, :label) do |box| %>
         <li>
@@ -41,12 +41,12 @@
       <% end %>
     </ul>
 
-    <h2 class="mt-8 mb-2 font-bold text-xl">Relationship style matching:</h2>
+    <h2 class="mt-8 mb-2 font-bold text-xl"><%= t('settings.relationship_style_matching') %></h2>
     <div class="flex items-center mt-2">
       <%= form.check_box :only_show_my_relationship_style, class: "hidden peer", id: "profile_only_show_my_relationship_style" %>
 
       <%= form.label :only_show_my_relationship_style, class: "group inline-flex items-center justify-between w-full p-3 text-gray-500 bg-white border border-gray-200 rounded-full cursor-pointer dark:text-gray-400 dark:bg-gray-800 peer-checked:text-blue-600 peer-checked:border-blue-600 dark:peer-checked:text-blue-500 dark:border-gray-700" do %>
-        <span>Show only <%= @user.profile.relationship_style %> profiles</span>
+        <span><%= t('settings.show_only_relationship_style') %></span>
         <svg xmlns="http://www.w3.org/2000/svg" fill="none"
             viewBox="0 0 24 24" stroke-width="1.5"
             stroke="currentColor"
@@ -57,7 +57,7 @@
     </div>
 
     <div class="mt-4">
-      <%= form.submit "Save Preferences", class: "hotwire-native:hidden rounded-lg w-full py-2 px-4 mt-6 bg-blue-600 text-white font-medium cursor-pointer hover:bg-blue-500 active:bg-blue-400", data: {
+      <%= form.submit t('settings.save_preferences'), class: "hotwire-native:hidden rounded-lg w-full py-2 px-4 mt-6 bg-blue-600 text-white font-medium cursor-pointer hover:bg-blue-500 active:bg-blue-400", data: {
         controller: "bridge--button",
         bridge_position: "right",
         bridge_title: "Save",

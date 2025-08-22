@@ -1,12 +1,12 @@
-<h2 class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Share my profile publicly</h2>
+<h2 class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"><%= t('settings.share_profile_publicly') %></h2>
 
-<p class="my-4">Get your profile out there.  Allow others to see your profile by making it available for Facebook groups and other places.</p>
+<p class="my-4"><%= t('settings.share_profile_description') %></p>
 
 <%= form_with(model: Current.user.profile, url: settings_toggle_public_path, method: :post, data: { turbo: true, controller: "settings-form" }) do |form| %>
   <label class="relative inline-flex items-center cursor-pointer">
     <%= form.check_box :public, class: "sr-only peer" %>
     <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
-    <span class="ml-3 text-xs md:text-base font-medium text-gray-900 dark:text-gray-300">Unlock public URL for my Profile</span>
+    <span class="ml-3 text-xs md:text-base font-medium text-gray-900 dark:text-gray-300"><%= t('settings.unlock_public_url') %></span>
   </label>
 
 <% end %>

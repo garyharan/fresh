@@ -32,3 +32,27 @@ fr:
     sign_out: Se déconnecter
     profiles: Profils
     sign_out_confirm: Êtes-vous sûr de vouloir vous déconnecter ?
+
+  settings:
+    preferences: Préférences
+    maximum_distance_title: Définir la distance maximale pour les correspondances
+    saved: sauvegardé !
+    error_message: Une erreur s'est produite nous empêchant de sauvegarder votre distance maximale.
+    attracted_to_genders: "Genres qui vous attirent :"
+    relationship_style_matching: "Correspondance de style de relation :"
+    show_only_relationship_style: Afficher uniquement les profils de mon style relationel
+    save_preferences: Sauvegarder les préférences
+    back: Retour
+    share_profile_publicly: Partager mon profil publiquement
+    share_profile_description: Faites connaître votre profil. Permettez aux autres de voir votre profil en le rendant disponible pour les groupes Facebook et autres endroits.
+    unlock_public_url: Débloquer l'URL publique pour mon profil
+    copied: Copié !
+    copy_to_clipboard: Copier dans le presse-papiers
+    anyone_with_link: Toute personne avec ce lien peut voir votre profil.
+    share_qr_code: "Vous pouvez également partager votre profil en utilisant le code QR suivant :"
+    invite_friend: Inviter un ami
+    invite_description: Plus on est de fous, plus on rit. Partagez ce lien avec des amis et aidez à faire grandir la communauté.
+    current_relationships: "Vous êtes actuellement listé comme ayant une relation avec les personnes suivantes :"
+    remove: Supprimer
+    remove_relationship_confirm: Êtes-vous sûr de vouloir supprimer cette relation ?
+    no_partnerships: Vous n'avez aucun partenariat pour le moment

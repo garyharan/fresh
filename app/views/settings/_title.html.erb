@@ -5,7 +5,7 @@
         <svg class="w-10 h-10 mr-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" d="M6 13.5V3.75m0 9.75a1.5 1.5 0 010 3m0-3a1.5 1.5 0 000 3m0 3.75V16.5m12-3V3.75m0 9.75a1.5 1.5 0 010 3m0-3a1.5 1.5 0 000 3m0 3.75V16.5m-6-9V3.75m0 3.75a1.5 1.5 0 010 3m0-3a1.5 1.5 0 000 3m0 9.75V10.5"></path>
         </svg>
-        <p class="text-2xl font-bold">Settings</p>
+        <p class="text-2xl font-bold"><%= t('navigation.settings') %></p>
       </div>
     <% else %>
       <div class="p-2">
@@ -14,7 +14,7 @@
             <div>
               <svg class="w-6 h-6 my-auto" fill="none" stroke="white" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5"></path></svg>
             </div>
-            <span class="my-auto">Back</span>
+            <span class="my-auto"><%= t('settings.back') %></span>
           </div>
         <% end %>
       </div>
