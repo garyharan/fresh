@@ -283,9 +283,17 @@ en:
 
 
   profile_details:
-    "Want someday": Want someday
-    "Don't want": Don't want
-    "Have & want more": Have & want more
-    "Have & don't want more": Have & don't want more
-    "Not sure yet": Not sure yet
+    children:
+      "Want someday": Want someday
+      "Don't want": Don't want
+      "Have & want more": Have & want more
+      "Have & don't want more": Have & don't want more
+      "Not sure yet": Not sure yet
+    relationship_style:
+      "Monogamous": Monogamous
+      "Non-monogamous": Non-monogamous
+      "I would rather not say": I would rather not say
+    drugs:
+      pot_friendly: 420 Friendly
 
+    editing_profile: Edition du profil

@@ -221,9 +221,17 @@ fr:
 
 
   profile_details:
-    "Want someday": J'en veux un jour
-    "Don't want": Je n'en veux pas
-    "Have & want more": J'en ai déjà et j'en veux plus
-    "Have & don't want more": J'en ai déjà mais je n'en veux pas plus
-    "Not sure yet": Pas encore sûr
+    children:
+      "Want someday": J'en veux un jour
+      "Don't want": Je n'en veux pas
+      "Have & want more": J'en ai déjà et j'en veux plus
+      "Have & don't want more": J'en ai déjà mais je n'en veux pas plus
+      "Not sure yet": Pas encore sûr
+    relationship_style:
+      "Monogamous": Monogame
+      "Non-monogamous": Non-monogame
+      "I would rather not say": Je préfère ne pas le dire
+    drugs:
+      pot_friendly: Ouvert au 420
 
+    editing_profile: Editing profile
