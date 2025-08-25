@@ -4,13 +4,25 @@ default: &default
   timeout: 5000
 
 development:
-  <<: *default
-  database: db/development.sqlite3
+  primary:
+    <<: *default
+    database: db/development.sqlite3
+  queue:
+    <<: *default
+    database: db/development_queue.sqlite3
 
 test:
-  <<: *default
-  database: db/test.sqlite3
+  primary:
+    <<: *default
+    database: db/test.sqlite3
+  queue:
+    database: db/test_queue.sqlite3
 
 production:
-  <<: *default
-  database: /home/deploy/fresh-dating-app/shared/production.sqlite3
+  primary:
+    <<: *default
+    database: /home/deploy/fresh-dating-app/shared/production.sqlite3
+  queue:
+    <<: *default
+    database: /home/deploy/fresh-dating-app/shared/queue.sqlite3
+    migrations_paths: db/queue_migrate
