@@ -10,6 +10,7 @@ development:
   queue:
     <<: *default
     database: db/development_queue.sqlite3
+    migrations_paths: db/queue_migrate
 
 test:
   primary:
@@ -18,6 +19,7 @@ test:
   queue:
     <<: *default
     database: db/test_queue.sqlite3
+    migrations_paths: db/queue_migrate
 
 production:
   primary:
