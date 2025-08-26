@@ -33,7 +33,6 @@ class UsersController < ApplicationController
     flash.notice = "Your account and all associated data has been deleted."
     refresh_or_redirect_to root_path, notice: "Your account and all associated data have been permanently deleted."
   rescue => e
-    debugger
     redirect_to settings_path, alert: "Error deleting account: #{e.message}"
   end
 
