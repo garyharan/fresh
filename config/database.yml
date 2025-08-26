@@ -16,6 +16,7 @@ test:
     <<: *default
     database: db/test.sqlite3
   queue:
+    <<: *default
     database: db/test_queue.sqlite3
 
 production:
