@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_26_194334) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_26_202641) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -241,6 +241,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_26_194334) do
     t.integer "maximum_distance", default: 500000
     t.string "password_digest", null: false
     t.string "first_signin_ip_address"
+    t.string "preferred_language", default: "en"
     t.index ["email_address"], name: "index_users_on_email", unique: true
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
     t.index ["invite_code"], name: "index_users_on_invite_code", unique: true

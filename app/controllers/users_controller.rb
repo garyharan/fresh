@@ -23,6 +23,8 @@ class UsersController < ApplicationController
     @user = Current.user
 
     @user.update!(user_params)
+    I18n.locale = @user.preferred_language if @user.preferred_language.present?
+    redirect_back(fallback_location: root_path)
   end
 
   def destroy
@@ -39,6 +41,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:maximum_distance, :password, :email_address)
+    params.require(:user).permit(:maximum_distance, :password, :email_address, :preferred_language)
   end
 end

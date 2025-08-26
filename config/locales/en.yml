@@ -283,6 +283,7 @@ en:
 
 
   profile_details:
+    preferred_language: My language of choice
     children:
       "Want someday": Want someday
       "Don't want": Don't want
@@ -297,3 +298,13 @@ en:
       pot_friendly: 420 Friendly
 
     editing_profile: Edition du profil
+
+  delete_account:
+    delete_account_title: Delete my account
+    are_you_sure_delete: Are you sure you want to delete your account? This action cannot be undone.
+    account_delete_info: This will permanently delete your account and all associated data. This action cannot be undone.
+    delete_account_cta: Delete my account and all associated data
+
+  languages:
+    fr: Français
+    en: English

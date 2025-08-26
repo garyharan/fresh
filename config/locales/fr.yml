@@ -221,6 +221,7 @@ fr:
 
 
   profile_details:
+    preferred_language: Ma langue de choix
     children:
       "Want someday": J'en veux un jour
       "Don't want": Je n'en veux pas
@@ -233,5 +234,14 @@ fr:
       "I would rather not say": Je préfère ne pas le dire
     drugs:
       pot_friendly: Ouvert au 420
+    editing_profile: Modifier le profil
 
-    editing_profile: Editing profile
+  delete_account:
+    delete_account_title: Supprimer mon compte
+    are_you_sure_delete: Êtes-vous sûr de vouloir supprimer votre compte ? Cette action est irreversible.
+    account_delete_info: Cela supprimera définitivement votre compte et toutes les données associées. Cette action est irréversible.
+    delete_account_cta: Effacer mon compte et toutes mes données.
+
+  languages:
+    fr: Français
+    en: English

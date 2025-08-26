@@ -41,7 +41,6 @@ module Authentication
       end
     end
 
-
     def after_authentication_url
       cookies.signed[:refresh_url_after_login].tap { cookies.delete(:refresh_url_after_login) } ||
         session.delete(:return_to_after_authenticating) ||

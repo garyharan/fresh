@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   helper_method :hotwire_native?
 
-  before_action :set_locale
+  after_action :set_locale
 
   def hotwire_native?
     !!(request.user_agent =~ /Hotwire Native/)
@@ -17,22 +17,20 @@ class ApplicationController < ActionController::Base
     redirect_to new_profile_url unless Current.user&.profile&.complete?
   end
 
-  SUPPORTED_LOCALES = %i[en fr]
-
   def set_locale
-    I18n.locale = requested_locale || I18n.default_locale
+    locale = locale_from_params || user_preferred_locale || locale_from_accept_language_header
+    I18n.locale = I18n.available_locales.include?(locale&.to_sym) ? locale.to_sym : I18n.default_locale
   end
 
-  def requested_locale
-    locale = params[:locale] || locale_from_accept_language_header
-    locale if locale.present? && SUPPORTED_LOCALES.include?(locale.to_sym)
+  def locale_from_params
+    params[:locale]
+  end
+
+  def user_preferred_locale
+    Current.user&.preferred_language
   end
 
   def locale_from_accept_language_header
-    request.env['HTTP_ACCEPT_LANGUAGE']&.scan(/^[a-z]{2}/)&.first&.to_sym
-  end
-
-  def default_url_options
-    { locale: I18n.locale }
+    request.env['HTTP_ACCEPT_LANGUAGE']&.scan(/^[a-z]{2}/)&.first
   end
 end

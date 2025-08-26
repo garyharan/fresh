@@ -11,6 +11,18 @@ class ApplicationControllerTest < ActionDispatch::IntegrationTest
     assert_equal :fr, I18n.locale
   end
 
+  test "should set locale from user preference" do
+    user = users(:gathino)
+    user.update(preferred_language: "fr")
+    sign_in user
+
+    get root_url
+    follow_redirect!  if @response.redirect?
+
+    assert_includes @response.body, "Se déconnecter"
+    assert_equal :fr, I18n.locale
+  end
+
   test "should set locale from Accept-Language header" do
     get root_url, headers: { "Accept-Language" => "fr,en;q=0.9" }
     assert_equal :fr, I18n.locale
