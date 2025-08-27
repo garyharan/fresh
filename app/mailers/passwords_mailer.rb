@@ -3,6 +3,6 @@ class PasswordsMailer < ApplicationMailer
 
   def reset(user)
     @user = user
-    mail subject: "Reset your Fresh.Dating password", to: user.email_address
+    mail subject: t('passwords.reset_mailer_subject', locale: user_locale(user)), to: user.email_address
   end
 end

@@ -170,6 +170,8 @@ en:
     no_partnerships: You have no partnerships at the present time
 
   passwords:
+    greeting: "Hello %{name}"
+    reset_mailer_subject: "Reset your Fresh.Dating password"
     forgot_password: Forgot your password?
     enter_email_placeholder: Enter your email address
     email_reset_instructions: Email reset instructions

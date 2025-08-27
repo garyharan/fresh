@@ -155,6 +155,8 @@ fr:
     no_partnerships: Vous n'avez aucun partenariat pour le moment
 
   passwords:
+    greeting: "Bonjour %{name}"
+    reset_mailer_subject: "Réinitialisation de votre mot de passe Fresh.Dating"
     forgot_password: Mot de passe oublié ?
     enter_email_placeholder: Entrez votre adresse e-mail
     email_reset_instructions: Instructions de réinitialisation par e-mail

@@ -1,7 +1,10 @@
 <p>
-  <b>Fresh.Dating</b> <%= t('passwords.reset_request_received') %>
+  <%= t('passwords.greeting', name: (@user&.profile.display_name || "there"), locale: user_locale(@user)) %>,
 </p>
 <p>
-  <%= t('passwords.reset_within_15_minutes') %>
-  <%= link_to t('passwords.password_reset_page'), edit_password_url(@user.password_reset_token) %>.
+  <b>Fresh.Dating</b> <%= t('passwords.reset_request_received', locale: user_locale(@user)) %>
+</p>
+<p>
+  <%= t('passwords.reset_within_15_minutes', locale: user_locale(@user)) %>
+  <%= link_to t('passwords.password_reset_page', locale: user_locale(@user)), edit_password_url(@user.password_reset_token) %>.
 </p>
