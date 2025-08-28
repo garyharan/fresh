@@ -20,3 +20,9 @@
     <%= f.submit t("delete_account.delete_account_cta"), class: "mt-2 w-full py-2 px-4 bg-red-600 text-white font-bold rounded hover:bg-red-700 cursor-pointer" %>
   <% end %>
 </div>
+
+<div class="md:mx-4 mt-8 text-gray-600 text-sm">
+  <p>
+    <%= t("account.terms_blurb", terms_link: link_to(t("account.terms_of_service"), legal_terms_path, class: "text-indigo-600 underline")).html_safe %>
+  </p>
+</div>

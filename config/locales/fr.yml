@@ -238,6 +238,10 @@ fr:
       pot_friendly: Ouvert au 420
     editing_profile: Modifier le profil
 
+  account:
+    terms_of_service: Conditions d'utilisation
+    terms_blurb: Votre compte est géré conformément aux %{terms_link}.
+
   delete_account:
     delete_account_title: Supprimer mon compte
     are_you_sure_delete: Êtes-vous sûr de vouloir supprimer votre compte ? Cette action est irreversible.

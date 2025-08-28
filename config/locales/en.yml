@@ -301,6 +301,10 @@ en:
 
     editing_profile: Edition du profil
 
+  account:
+    terms_of_service: Terms of Service
+    terms_blurb: Your account is managed in accordance to the %{terms_link}.
+
   delete_account:
     delete_account_title: Delete my account
     are_you_sure_delete: Are you sure you want to delete your account? This action cannot be undone.
