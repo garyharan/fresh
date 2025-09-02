@@ -15,6 +15,11 @@ module ProfilesHelper
     Assessment.exists?(from_profile: Current.user.profile, to_profile: profile)
   end
 
+  def blocked?(profile)
+    return false unless Current.user
+    Assessment.exists?(from_profile: Current.user.profile, to_profile: profile, kind: :blocked)
+  end
+
   def matched?(profile)
     return false unless Current.user
     Assessment.exists?(from_profile: profile, to_profile: Current.user.profile, kind: :liked) &&

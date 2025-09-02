@@ -31,6 +31,14 @@ class ProfilesHelperTest < ActionView::TestCase
     end
   end
 
+  test "#assessed? should return true if the profile was blocked" do
+    Current.stub :user, users(:gathino) do
+      Assessment.stub :exists?, true do
+        assert blocked?(users(:velvet).profile)
+      end
+    end
+  end
+
   test "#assessed? should return false if no assessment exists from the current user's profile to the given profile" do
     Current.stub :user, users(:gathino) do
       Assessment.stub :exists?, false do
@@ -74,6 +82,28 @@ class ProfilesHelperTest < ActionView::TestCase
   test "#matched? should return false if there is no current user" do
     Current.stub :user, nil do
       refute matched?(users(:velvet).profile)
+    end
+  end
+
+  test "#blocked? should return true if an assessment exists from the current user's profile to the given profile" do
+    Current.stub :user, users(:gathino) do
+      Assessment.stub :exists?, true do
+        assert blocked?(users(:velvet).profile)
+      end
+    end
+  end
+
+  test "#blocked? should return false if no assessment exists from the current user's profile to the given profile" do
+    Current.stub :user, users(:gathino) do
+      Assessment.stub :exists?, false do
+        refute blocked?(users(:velvet).profile)
+      end
+    end
+  end
+
+  test "#blocked? should return false if there is no current user" do
+    Current.stub :user, nil do
+      refute blocked?(users(:velvet).profile)
     end
   end
 end
