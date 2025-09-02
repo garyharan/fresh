@@ -1,7 +1,4 @@
-<% if hotwire_native? %>
-  <div class=""><%= content_for(:left_button) %></div>
-  <div class=""><%= content_for(:right_button) %></div>
-<% else %>
+<% unless hotwire_native? %>
   <% if controller_name == "rooms" && action_name == "show" %>
     <%= render "rooms/header" %>
   <% else %>
@@ -33,13 +30,6 @@
             </ul>
             <% if authenticated? %>
                 <ul class="flex justify-self-end order-2">
-
-                    <% if content_for(:right_button) %>
-                      <li class="p-2">
-                        <%= content_for(:right_button) %>
-                      </li>
-                    <% end %>
-
                     <% if Current.user&.profile&.rooms&.any?%>
                       <li class="md:mx-4">
                         <%= link_to rooms_path, class: "relative inline-flex #{controller_name == 'rooms' ? 'text-blue-600 border-b-2 border-blue-600 p-2' : 'p-2'}" do %>
