@@ -314,3 +314,7 @@ en:
   languages:
     fr: Français
     en: English
+
+  security:
+    block_cta: Block %{name}
+    block_user: Are you sure you want to block %{name}

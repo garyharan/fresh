@@ -251,3 +251,7 @@ fr:
   languages:
     fr: Français
     en: English
+
+  security:
+    block_cta: Bloquer %{name}
+    block_user: Êtes-vous sûr de vouloir bloquer %{name} ?

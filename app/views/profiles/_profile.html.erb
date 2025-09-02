@@ -104,10 +104,27 @@
     </div>
   </div>
 
-  <% unless assessed?(profile) || previewing?(profile) %>
+  <% unless assessed?(profile) || previewing?(profile) # assessed? returns true if blocked %>
     <div class="flex flex-row mx-auto fixed bottom-0 w-full justify-center">
       <%= button_to 'Pass', profile_assessments_path(profile_id: profile.id, kind: :passed), method: :post, class: "m-4 bg-red-500 text-white py-2 px-4 rounded-full", data: { 'swiper-target': "passButton" } %>
       <%= button_to 'Like', profile_assessments_path(profile_id: profile.id, kind: :liked), method: :post, class: "m-4 bg-blue-500 text-white py-2 px-4 rounded-full", data: { 'swiper-target': "likeButton" } %>
+    </div>
+
+    <div class="mb-12 flex justify-center">
+      <%= button_to t('security.block_cta', name: profile.display_name),
+        profile_assessments_path(profile_id: profile.id, kind: :blocked),
+        method: :post,
+        data: {
+          controller: "bridge--button",
+          bridge_position: "right",
+          bridge_ios_image: "person.slash",
+          bridge_android_image: "tune",
+          bridge_vibrate: true,
+          turbo_method: :post,
+          turbo_confirm: t('security.block_user', name: profile.display_name)
+        },
+        class: "m-4 mb-24 bg-red-500 text-white py-2 px-4 rounded-full hotwire-native:hidden"
+      %>
     </div>
   <% end %>
 
