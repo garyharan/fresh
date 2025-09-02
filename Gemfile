@@ -75,6 +75,7 @@ group :development do
   gem "letter_opener"
 
   gem "ruby-lsp"
+  gem "rubocop"
 end
 
 group :test do
