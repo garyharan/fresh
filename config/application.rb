@@ -1,6 +1,6 @@
-require_relative "boot"
+require_relative 'boot'
 
-require "rails/all"
+require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -23,5 +23,7 @@ module Fresh
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    config.active_record.verify_foreign_keys_for_fixtures = false
   end
 end
