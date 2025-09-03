@@ -1,6 +1,6 @@
-ENV["RAILS_ENV"] ||= "test"
-require_relative "../config/environment"
-require "rails/test_help"
+ENV['RAILS_ENV'] ||= 'test'
+require_relative '../config/environment'
+require 'rails/test_help'
 
 # as per https://rubydoc.info/github/teamcapybara/capybara/master#using-capybara-with-minitest
 require 'capybara/rails'
@@ -26,7 +26,7 @@ class ActionDispatch::IntegrationTest
   end
 
   def sign_in(user)
-    post session_url, params: { email_address: user.email_address, password: "password" }
+    post session_url, params: { email_address: user.email_address, password: 'password' }
   end
 
   def sign_out
@@ -35,50 +35,62 @@ class ActionDispatch::IntegrationTest
 end
 
 use_headless_chrome = ENV['HEADLESS_CHROME']
-#use_headless_chrome = true
+# use_headless_chrome = true
 
-if use_headless_chrome
-  Capybara.default_driver = :selenium_chrome_headless
-else
-  Capybara.default_driver = :selenium_chrome
-end
+Capybara.default_driver = if use_headless_chrome
+                            :selenium_chrome_headless
+                          else
+                            :selenium_chrome
+                          end
 
 Geocoder.configure(lookup: :test, ip_lookup: :test)
 Geocoder::Lookup::Test.set_default_stub(
   [
     {
-      "coordinates" => [45.498372796415964, -73.43277933544931],
-      "address" => "Saint-Hubert, Quebec, Canada",
-      "city" => "Saint-Hubert",
-      "state" => "Quebec",
-      "state_code" => "QC",
-      "country" => "Canada",
-      "country_code" => "CA"
+      'coordinates' => [45.498372796415964, -73.43277933544931],
+      'address' => 'Saint-Hubert, Quebec, Canada',
+      'city' => 'Saint-Hubert',
+      'state' => 'Quebec',
+      'state_code' => 'QC',
+      'country' => 'Canada',
+      'country_code' => 'CA'
     }
   ]
 )
 
 Geocoder::Lookup::Test.add_stub(
-  "Montreal, Quebec, Canada", [
+  'Montreal, Quebec, Canada', [
     {
       "coordinates": [45.5031824, -73.5698065],
-      "address": "Montreal, Quebec, Canada",
-      "city": "Montreal",
-      "state": "Quebec",
-      "country": "Canada",
-      "country_code": "CA"
+      "address": 'Montreal, Quebec, Canada',
+      "city": 'Montreal',
+      "state": 'Quebec',
+      "country": 'Canada',
+      "country_code": 'CA'
     }
   ]
 )
 Geocoder::Lookup::Test.add_stub(
-  "Laval, Quebec, Canada", [
+  'Laval, Quebec, Canada', [
     {
       "coordinates": [45.5757802, -73.7530656],
-      "address": "Laval, Quebec, Canada",
-      "city": "Laval",
-      "state": "Quebec",
-      "country": "Canada",
-      "country_code": "CA"
+      "address": 'Laval, Quebec, Canada',
+      "city": 'Laval',
+      "state": 'Quebec',
+      "country": 'Canada',
+      "country_code": 'CA'
+    }
+  ]
+)
+Geocoder::Lookup::Test.add_stub(
+  'Mont-Royal', [
+    {
+      "coordinates": [45.5155642, -73.6425992],
+      "address": 'Mount Royal (Mount Royal), QC, Canada',
+      "city": 'Mount Royal',
+      "state": 'Quebec',
+      "country": 'Canada',
+      "country_code": 'CA'
     }
   ]
 )

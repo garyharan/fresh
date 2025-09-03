@@ -1,0 +1,47 @@
+<% content_for :title, "Events" %>
+
+<div class="w-full p-2">
+  <div class="flex flex-row pt-5 justify-between items-center">
+    <h2 class="text-2xl font-normal">My events</h2>
+    <div class="text-slate-400 hover:text-slate-600 mr-4 hotwire-native:hidden">
+      <%= link_to new_event_path, class: "rounded-lg ml-4 block font-medium flex flex-row", data: {
+            turbo: false,
+            controller: "bridge--button",
+            bridge_position: "right",
+            bridge_title: t('events.new'),
+            bridge_ios_image: "calendar.badge.plus",
+            bridge_vibrate: true
+          } do %>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 md:size-8"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" /><line x1="12" y1="12" x2="12" y2="16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" /><line x1="10" y1="14" x2="14" y2="14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" /></svg>
+
+        <% if Current.user.events.any? %>
+          <span class="ml-2 hidden md:inline">Host Your Next Event</span>
+        <% else %>
+          <span class="ml-2 hidden md:block">Host Your First Event</span>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="flex justify-between items-center">
+    <div class="rounded w-full p-4">
+      <% if Current.user.events.any? %>
+        <ul class="m-2">
+          <% Current.user.events.each do |event| %>
+            <li><%= link_to event.name, edit_event_path(event) %></li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p class="my-2">You haven't created any events yet.</p>
+      <% end %>
+    </div>
+
+  </div>
+
+  <h2 class="mt-4 text-2xl font-normal">Events near me</h2>
+  <div id="events" class="min-w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <% (@events.take(1) * 12).each do |event| %>
+      <%= render event %>
+    <% end %>
+  </div>
+</div>

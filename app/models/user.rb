@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_many :messages, dependent: :destroy
   has_many :reads, dependent: :destroy
 
+  has_many :events, foreign_key: :creator_id, dependent: :destroy
+
   normalizes :email_address, with: ->(e) { e.strip.downcase }
 
   include Identifiable

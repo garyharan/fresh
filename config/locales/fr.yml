@@ -124,11 +124,16 @@ fr:
 
   navigation:
     discover: Découvrir
+    events: Événements
     my_profile: Mon profil
     settings: Paramètres
     sign_out: Se déconnecter
     profiles: Profils
     sign_out_confirm: Êtes-vous sûr de vouloir vous déconnecter ?
+
+  events:
+    create_new: Organisez votre prochain événement
+    create_first: Organisez votre premier événement
 
   settings:
     preferences: Préférences
@@ -220,7 +225,6 @@ fr:
     october: Octobre
     november: Novembre
     december: Décembre
-
 
   profile_details:
     preferred_language: Ma langue de choix

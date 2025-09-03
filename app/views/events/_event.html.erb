@@ -1,0 +1,10 @@
+<%= link_to event, id: dom_id(event), class: "p-4" do %>
+  <div class="rounded">
+
+    <p class="font-bold"><%= event.name %></p>
+    <p><%= event.location %></p>
+    <p><%= event.description %></p>
+
+    <p><%= event_time_range(event) %></p>
+  </div>
+<% end %>

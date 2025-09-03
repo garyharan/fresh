@@ -1,0 +1,10 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: Speed Dating Art Edition
+  location: Bistro Le Lounge
+  start_time: 2025-09-03 10:20:01
+  end_time: 2025-09-03 10:20:01
+  maximum_attendees: 10
+  allow_wait_list: false
+  creator: gathino

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :events
   get "legal/privacy"
   get "legal/terms"
 
