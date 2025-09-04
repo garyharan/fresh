@@ -147,8 +147,11 @@ en:
     sign_out_confirm: Are you sure you want to sign out?
 
   events:
+    my_events: My Events
+    nearby_events: Events near me
     create_new: Host Your Next Event
     create_first: Host Your First Event
+    have_not_created_yet: You have not created any events yet
 
   settings:
     preferences: Preferences
@@ -270,10 +273,30 @@ en:
       default: "%m/%d/%Y"
       short: "%b %d"
       long: "%B %d, %Y"
+      event_long: "%B %d, %Y %I:%M %p"
+      event_short: "%I:%M %p"
     order:
       - :month
       - :day
       - :year
+    month_names:
+      [
+        ~,
+        January,
+        February,
+        March,
+        April,
+        May,
+        June,
+        July,
+        August,
+        September,
+        October,
+        November,
+        December,
+      ]
+    abbr_month_names:
+      [~, Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec]
     january: January
     february: February
     march: March
@@ -286,6 +309,10 @@ en:
     october: October
     november: November
     december: December
+  time:
+    formats:
+      event_long: "%B %d, %Y %I:%M %p"
+      event_short: "%I:%M %p"
 
   profile_details:
     preferred_language: My language of choice
@@ -321,3 +348,17 @@ en:
   security:
     block_cta: Block %{name}
     block_user: Are you sure you want to block %{name}
+
+  activerecord:
+    errors:
+      models:
+        event:
+          attributes:
+            name:
+              blank: "Event name can't be blank."
+            location:
+              blank: "Event location can't be blank."
+            start_time:
+              blank: "Start date can't be blank."
+            end_time:
+              blank: "End date can't be blank."

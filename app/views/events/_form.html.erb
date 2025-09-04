@@ -1,49 +1,51 @@
-<%= form_with(model: event, class: "contents") do |form| %>
-  <% if event.errors.any? %>
-    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-      <h2><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h2>
-
-      <ul>
-        <% event.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="my-5">
-    <%= form.label :name %>
-    <%= form.text_field :name, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
+<%= form_with(model: event, class: "contents flex flex-col") do |form| %>
+  <div class="my-5 flex flex-col">
+    <%= form.label :name, class: "block mt-4 mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" do %>
+      Name <%= error_messages_for(event, :name) %>
+    <% end %>
+    <%= form.text_field :name, class: "#{event.errors[:name].any? ? 'border-red-500 bg-red-50' : 'border-gray-200'} block shadow rounded-md border text-slate-800 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
-  <div class="my-5">
-    <%= form.label :description %>
-    <%= form.text_area :description, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
+  <div class="my-5 flex flex-col">
+    <%= form.label :description, class: "block mt-4 mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" do %>
+      Description <%= error_messages_for(event, :description) %>
+    <% end %>
+    <%= form.text_area :description, class: "#{event.errors[:description].any? ? 'border-red-500 bg-red-50' : 'border-gray-200'} block shadow rounded-md border text-slate-800 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
-  <div class="my-5">
-    <%= form.label :location %>
-    <%= form.text_field :location, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
+  <div class="my-5 flex flex-col">
+    <%= form.label :location, class: "block mt-4 mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" do %>
+      Location <%= error_messages_for(event, :location) %>
+    <% end %>
+    <%= form.text_field :location, class: "#{event.errors[:location].any? ? 'border-red-500 bg-red-50' : 'border-gray-200'} block shadow rounded-md border text-slate-800 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
-  <div class="my-5">
-    <%= form.label :start_time %>
-    <%= form.datetime_field :start_time, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
+  <div class="my-5 flex flex-col">
+    <%= form.label :start_time, class: "block mt-4 mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" do %>
+      Start Time <%= error_messages_for(event, :start_time) %>
+    <% end %>
+    <%= form.datetime_field :start_time, class: "#{event.errors[:start_time].any? ? 'border-red-500 bg-red-50' : 'border-gray-200'} block shadow rounded-md border text-slate-800 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
-  <div class="my-5">
-    <%= form.label :end_time %>
-    <%= form.datetime_field :end_time, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
+  <div class="my-5 flex flex-col">
+    <%= form.label :end_time, class: "block mt-4 mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" do %>
+      End Time <%= error_messages_for(event, :end_time) %>
+    <% end %>
+    <%= form.datetime_field :end_time, class: "#{event.errors[:end_time].any? ? 'border-red-500 bg-red-50' : 'border-gray-200'} block shadow rounded-md border text-slate-800 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
-  <div class="my-5">
-    <%= form.label :maximum_attendees %>
-    <%= form.number_field :maximum_attendees, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
+  <div class="my-5 flex flex-col">
+    <%= form.label :maximum_attendees, class: "block mt-4 mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" do %>
+      Maximum Attendees <%= error_messages_for(event, :maximum_attendees) %>
+    <% end %>
+    <%= form.number_field :maximum_attendees, class: "#{event.errors[:maximum_attendees].any? ? 'border-red-500 bg-red-50' : 'border-gray-200'} block shadow rounded-md border text-slate-800 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
-  <div class="my-5">
-    <%= form.label :allow_wait_list %>
-    <%= form.checkbox :allow_wait_list, class: "block mt-2 h-5 w-5" %>
+  <div class="my-5 flex flex-col">
+    <%= form.label :allow_wait_list, class: "block mt-4 mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" do %>
+      Allow Wait List <%= error_messages_for(event, :allow_wait_list) %>
+    <% end %>
+    <%= form.check_box :allow_wait_list, class: "block mt-2 h-5 w-5" %>
   </div>
 
   <div class="inline">

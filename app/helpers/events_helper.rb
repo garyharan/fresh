@@ -1,11 +1,11 @@
 module EventsHelper
   def event_time_range(event)
-    start_str = event.start_time.strftime('%B %d, %Y %I:%M %p')
+    start_str = I18n.l(event.start_time, format: :event_long)
     if event.end_time
       end_str = if event.start_time.to_date == event.end_time.to_date
-                  event.end_time.strftime('%I:%M %p')
+                  I18n.l(event.end_time, format: :event_short)
                 else
-                  event.end_time.strftime('%B %d, %Y %I:%M %p')
+                  I18n.l(event.end_time, format: :event_long)
                 end
       "#{start_str} - #{end_str}"
     else

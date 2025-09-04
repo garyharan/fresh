@@ -132,8 +132,11 @@ fr:
     sign_out_confirm: Êtes-vous sûr de vouloir vous déconnecter ?
 
   events:
+    my_events: Mes événements
+    nearby_events: Événements proches
     create_new: Organisez votre prochain événement
     create_first: Organisez votre premier événement
+    have_not_created_yet: Vous n'avez pas encore créé d'événement
 
   settings:
     preferences: Préférences
@@ -209,10 +212,30 @@ fr:
       default: "%d/%m/%Y"
       short: "%d %b"
       long: "%d %B %Y"
+      event_long: "%B %d, %Y %I:%M %p"
+      event_short: "%I:%M %p"
     order:
       - :day
       - :month
       - :year
+    month_names:
+      [
+        ~,
+        Janvier,
+        Février,
+        Mars,
+        Avril,
+        Mai,
+        Juin,
+        Juillet,
+        Août,
+        Septembre,
+        Octobre,
+        Novembre,
+        Décembre,
+      ]
+    abbr_month_names:
+      [~, Janv, Févr, Mars, Avril, Mai, Juin, Juil, Août, Sept, Oct, Nov, Déc]
     january: Janvier
     february: Février
     march: Mars
@@ -225,6 +248,13 @@ fr:
     october: Octobre
     november: Novembre
     december: Décembre
+
+  time:
+    pm: pm
+    am: am
+    formats:
+      event_long: "%B %d, %Y %I:%M %p"
+      event_short: "%I:%M %p"
 
   profile_details:
     preferred_language: Ma langue de choix
@@ -259,3 +289,17 @@ fr:
   security:
     block_cta: Bloquer %{name}
     block_user: Êtes-vous sûr de vouloir bloquer %{name} ?
+
+  activerecord:
+    errors:
+      models:
+        event:
+          attributes:
+            name:
+              blank: "Le nom de l'événement ne peut pas être vide."
+            location:
+              blank: "Le lieu de l'événement ne peut pas être vide."
+            start_time:
+              blank: "La date de début ne peut pas être vide."
+            end_time:
+              blank: "La date de fin ne peut pas être vide."
