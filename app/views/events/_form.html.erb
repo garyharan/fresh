@@ -34,6 +34,7 @@
     <%= form.datetime_field :end_time, class: "#{event.errors[:end_time].any? ? 'border-red-500 bg-red-50' : 'border-gray-200'} block shadow rounded-md border text-slate-800 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
+<!--
   <div class="my-5 flex flex-col">
     <%= form.label :maximum_attendees, class: "block mt-4 mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" do %>
       Maximum Attendees <%= error_messages_for(event, :maximum_attendees) %>
@@ -47,6 +48,7 @@
     <% end %>
     <%= form.check_box :allow_wait_list, class: "block mt-2 h-5 w-5" %>
   </div>
+-->
 
   <div class="inline">
     <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
