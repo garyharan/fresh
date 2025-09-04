@@ -1,18 +1,21 @@
 class EventsController < ApplicationController
   allow_unauthenticated_access only: %i[show]
-  before_action :set_event, only: %i[show edit update destroy]
 
   def index
     @events = Event.all
   end
 
-  def show; end
+  def show
+    @event = Event.find(params.expect(:id))
+  end
 
   def new
     @event = Event.new
   end
 
-  def edit; end
+  def edit
+    @event = Current.user.events.find(params.expect(:id))
+  end
 
   def create
     @event = Event.new(event_params.merge(creator_id: Current.user.id))
@@ -27,6 +30,8 @@ class EventsController < ApplicationController
   end
 
   def update
+    @event = Current.user.events.find(params.expect(:id))
+
     respond_to do |format|
       if @event.update(event_params)
         format.html { redirect_to events_path, notice: 'Event was successfully updated.' }
@@ -37,6 +42,7 @@ class EventsController < ApplicationController
   end
 
   def destroy
+    @event = Current.user.events.find(params.expect(:id))
     @event.destroy!
 
     respond_to do |format|
@@ -45,10 +51,6 @@ class EventsController < ApplicationController
   end
 
   private
-
-  def set_event
-    @event = Event.find(params.expect(:id))
-  end
 
   def event_params
     params.expect(event: %i[name location start_time end_time maximum_attendees allow_wait_list])
