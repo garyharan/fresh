@@ -152,6 +152,12 @@ en:
     create_new: Host Your Next Event
     create_first: Host Your First Event
     have_not_created_yet: You have not created any events yet
+    attendances:
+      create:
+        cta: Attend this event
+      cancel:
+        cta: Cancel my attendance
+        confirm: Are you sure you want to cancel?
 
   settings:
     preferences: Preferences

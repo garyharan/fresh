@@ -137,6 +137,12 @@ fr:
     create_new: Organisez votre prochain événement
     create_first: Organisez votre premier événement
     have_not_created_yet: Vous n'avez pas encore créé d'événement
+    attendances:
+      create:
+        cta: Confirmer ma présence
+      cancel:
+        cta: Annuler ma présence
+        confirm: Êtes vous certain de vouloir annuler?
 
   settings:
     preferences: Préférences
