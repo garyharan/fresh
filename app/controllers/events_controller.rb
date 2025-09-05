@@ -14,7 +14,7 @@ class EventsController < ApplicationController
   end
 
   def edit
-    @event = Current.user.events.find(params.expect(:id))
+    @event = Current.user.created_events.find(params.expect(:id))
   end
 
   def create
@@ -30,7 +30,7 @@ class EventsController < ApplicationController
   end
 
   def update
-    @event = Current.user.events.find(params.expect(:id))
+    @event = Current.user.created_events.find(params.expect(:id))
 
     respond_to do |format|
       if @event.update(event_params)
@@ -42,7 +42,7 @@ class EventsController < ApplicationController
   end
 
   def destroy
-    @event = Current.user.events.find(params.expect(:id))
+    @event = Current.user.created_events.find(params.expect(:id))
     @event.destroy!
 
     respond_to do |format|
@@ -53,6 +53,6 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.expect(event: %i[name location start_time end_time maximum_attendees allow_wait_list])
+    params.expect(event: %i[name description location start_time end_time maximum_attendees allow_wait_list])
   end
 end
