@@ -138,6 +138,9 @@ fr:
     create_first: Organisez votre premier événement
     have_not_created_yet: Vous n'avez pas encore créé d'événement
     attendances:
+      calendar:
+        google_cta: Ajouter à Google Calendar
+        ics_cta: Ajouter à un autre calendier (Outlook, Apple, etc...)
       create:
         cta: Confirmer ma présence
       cancel:

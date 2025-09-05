@@ -153,6 +153,9 @@ en:
     create_first: Host Your First Event
     have_not_created_yet: You have not created any events yet
     attendances:
+      calendar:
+        google_cta: Add to Google Calendar
+        ics_cta: Add to another calendar (Outlook, Apple, etc...)
       create:
         cta: Attend this event
       cancel:
