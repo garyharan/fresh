@@ -40,8 +40,17 @@
 
   <h2 class="mt-4 text-2xl font-normal"><%= t('events.nearby_events') %></h2>
   <div id="events" class="min-w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-    <% (@events.take(1) * 12).each do |event| %>
-      <%= render event %>
+    <% @events.each do |event| %>
+      <%= link_to event, id: dom_id(event), class: "p-4" do %>
+        <div class="rounded">
+
+          <p class="font-bold"><%= event.name %></p>
+          <p><%= event.location %></p>
+          <p><%= event.description %></p>
+
+          <p><%= event_time_range(event) %></p>
+        </div>
+      <% end %>
     <% end %>
   </div>
 </div>

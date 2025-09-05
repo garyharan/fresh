@@ -8,7 +8,10 @@ class User < ApplicationRecord
   has_many :messages, dependent: :destroy
   has_many :reads, dependent: :destroy
 
-  has_many :events, foreign_key: :creator_id, dependent: :destroy
+  has_many :attendances
+  has_many :events, through: :attendances
+
+  has_many :created_events, class_name: 'Event', foreign_key: :creator_id, dependent: :destroy
 
   normalizes :email_address, with: ->(e) { e.strip.downcase }
 

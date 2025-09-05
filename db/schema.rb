@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_09_03_142001) do
+ActiveRecord::Schema[8.0].define(version: 2025_09_05_001401) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -48,6 +48,16 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_03_142001) do
     t.index ["from_profile_id", "to_profile_id"], name: "index_assessments_on_from_profile_id_and_to_profile_id", unique: true
     t.index ["from_profile_id"], name: "index_assessments_on_from_profile_id"
     t.index ["to_profile_id"], name: "index_assessments_on_to_profile_id"
+  end
+
+  create_table "attendances", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "event_id", null: false
+    t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_attendances_on_event_id"
+    t.index ["user_id"], name: "index_attendances_on_user_id"
   end
 
   create_table "attractions", force: :cascade do |t|
@@ -267,6 +277,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_03_142001) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "assessments", "profiles", column: "from_profile_id"
   add_foreign_key "assessments", "profiles", column: "to_profile_id"
+  add_foreign_key "attendances", "events"
+  add_foreign_key "attendances", "users"
   add_foreign_key "attractions", "genders"
   add_foreign_key "attractions", "profiles"
   add_foreign_key "cards", "profiles"

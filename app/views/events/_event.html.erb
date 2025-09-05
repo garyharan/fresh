@@ -1,10 +1,15 @@
-<%= link_to event, id: dom_id(event), class: "p-4" do %>
-  <div class="rounded">
+<div class="flex flex-col">
+  <h2 class="text-2xl font-bold"><%= event.name %></h2>
+  <p class="text-lg"><%= event.location %></p>
+  <p class="text-lg"><%= event.description %></p>
 
-    <p class="font-bold"><%= event.name %></p>
-    <p><%= event.location %></p>
-    <p><%= event.description %></p>
+  <p><%= event_time_range(event) %></p>
 
-    <p><%= event_time_range(event) %></p>
-  </div>
-<% end %>
+  <h1 class="text-2xl font-bold mt-4">Attend this event</h1>
+
+  <% if authenticated? && attendance = @event.attendances.find_by(user: Current.user) %>
+    <%= button_to "Cancel Attendance", event_attendance_path(@event, attendance), method: :delete, data: { confirm: "Are you sure you want to cancel?" }, class: "rounded p-3 bg-red-100 dark:bg-slate-100 text-slate-100 dark:text-slate-500" %>
+  <% else %>
+    <%= button_to "Attend This Event", event_attendances_path(@event), method: :post, class: "rounded p-3 bg-slate-100 dark:bg-slate-500 text-slate-500 dark:text-slate-100" %>
+  <% end %>
+</div>

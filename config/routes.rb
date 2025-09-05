@@ -1,23 +1,26 @@
 Rails.application.routes.draw do
-  resources :events
-  get "legal/privacy"
-  get "legal/terms"
+  get 'legal/privacy'
+  get 'legal/terms'
 
-  get "general/about"
-  get "profile/show"
+  get 'general/about'
+  get 'profile/show'
   resource :session
   resources :passwords, param: :token
 
   resources :notification_tokens, only: :create
 
-  resources :users, only: [:new, :show, :create, :update, :destroy]
+  resources :users, only: %i[new show create update destroy]
 
-  resources :partnerships, only: [:create, :destroy]
+  resources :partnerships, only: %i[create destroy]
   namespace :admin do
     resources :profiles
   end
 
-  resources :settings, only: [:index, :update]
+  resources :events do
+    resources :attendances, only: %i[create update destroy]
+  end
+
+  resources :settings, only: %i[index update]
   namespace :settings do
     get :invite
 
@@ -25,15 +28,15 @@ Rails.application.routes.draw do
     get :orientation
   end
 
-  get "onboarding/one"
+  get 'onboarding/one'
   get 'dashboard/index'
 
-  patch "onboarding/update_one"
-  get "onboarding/two"
-  patch "onboarding/update_two"
-  get "onboarding/three"
-  get "onboarding/four"
-  get "onboarding/finish"
+  patch 'onboarding/update_one'
+  get 'onboarding/two'
+  patch 'onboarding/update_two'
+  get 'onboarding/three'
+  get 'onboarding/four'
+  get 'onboarding/finish'
 
   resources :profiles do
     resources :images, except: :update do
@@ -61,7 +64,7 @@ Rails.application.routes.draw do
     get :android_v1, on: :collection
   end
 
-  namespace :api, defaults: {format: :json} do
+  namespace :api, defaults: { format: :json } do
     namespace :v1 do
       resources :notification_tokens, only: :create
 
@@ -80,13 +83,13 @@ Rails.application.routes.draw do
     end
   end
 
-  get "geo", to: "geo#show"
+  get 'geo', to: 'geo#show'
 
-  root "root#index"
+  root 'root#index'
 
-  get "/about", to: "general#about"
+  get '/about', to: 'general#about'
 
   get 'dashboard', to: 'dashboard#index'
 
-  get "/invitation/:invite_code", to: "invitations#save"
+  get '/invitation/:invite_code', to: 'invitations#save'
 end
