@@ -132,8 +132,10 @@ fr:
     sign_out_confirm: Êtes-vous sûr de vouloir vous déconnecter ?
 
   events:
-    my_events: Mes événements
-    nearby_events: Événements proches
+    my_events: À moi
+    my_events_long: Mes événements
+    nearby_events: Proches
+    nearby_events_long: Événements proche de moi
     create_new: Organisez votre prochain événement
     create_first: Organisez votre premier événement
     have_not_created_yet: Vous n'avez pas encore créé d'événement
