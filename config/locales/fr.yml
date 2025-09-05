@@ -140,7 +140,7 @@ fr:
     attendances:
       calendar:
         google_cta: Ajouter à Google Calendar
-        ics_cta: Ajouter à un autre calendier (Outlook, Apple, etc...)
+        ics_cta: Ajouter a un autre calendrier
       create:
         cta: Confirmer ma présence
       cancel:

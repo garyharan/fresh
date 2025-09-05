@@ -7,6 +7,8 @@ gem 'rails', '~> 8.0.2'
 gem 'bcrypt', '~> 3.1'
 gem 'mailgun-ruby' # Required for sending password resets and confirmations
 
+gem 'icalendar', '~> 2.8'
+
 gem 'cssbundling-rails'
 gem 'jsbundling-rails'
 gem 'propshaft'

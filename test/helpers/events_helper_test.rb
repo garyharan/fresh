@@ -38,7 +38,7 @@ class EventsHelperTest < ActionView::TestCase
     )
 
     assert_equal(
-      "https://www.google.com/calendar/render?action=TEMPLATE&text=My+Event&details=This+is+my+event.&location=123+Main+St%2C+Anytown%2C+USA&dates=20240704T150000Z%2F20240704T170000Z&ctz=UTC&sprop=http%3A%2F%2Flocalhost%2Fevents%2F#{event.id}",
+      "https://www.google.com/calendar/render?action=TEMPLATE&ctz=UTC&dates=20240704T150000Z%2F20240704T170000Z&details=This+is+my+event.&location=123+Main+St%2C+Anytown%2C+USA&sprop=http%3A%2F%2Ftest.host%2Fevents%2F&text=My+Event",
       google_calendar_url(event)
     )
   end

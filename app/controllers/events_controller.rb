@@ -1,3 +1,5 @@
+require 'icalendar'
+
 class EventsController < ApplicationController
   allow_unauthenticated_access only: %i[show]
 
@@ -7,6 +9,26 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params.expect(:id))
+  end
+
+  def calendar
+    @event = Event.find(params.expect(:id))
+
+    cal = Icalendar::Calendar.new
+    cal.event do |e|
+      e.dtstart     = @event.start_time.utc
+      e.dtend       = @event.end_time.utc
+      e.summary     = @event.name
+      e.description = @event.description
+      e.location    = @event.location
+      e.url         = event_url(@event)
+    end
+    cal.publish
+
+    send_data cal.to_ical,
+              type: 'text/calendar',
+              disposition: 'attachment',
+              filename: "#{@event.name.parameterize}.ics"
   end
 
   def new

@@ -14,16 +14,25 @@
     <div class="flex flex-col justify-center ">
       <% if authenticated? && attendance = @event.attendances.find_by(user: Current.user) %>
 
-        <%= link_to google_calendar_url(@event),
-          method: :get,
-          target: "_blank",
-          class: "rounded-full text-xl my-5 py-2 px-3 bg-slate-100 dark:bg-slate-500 text-slate-500 dark:text-slate-100" do
-        %>
-          <div class="flex flex-row gap-2 w-full">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 md:size-8"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" /><line x1="12" y1="12" x2="12" y2="16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" /><line x1="10" y1="14" x2="14" y2="14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" /></svg>
-            <span><%= t("events.attendances.calendar.google_cta") %></span>
-          </div>
-        <% end %>
+        <div class="flex flex-col gap-2 my-4">
+          <%= link_to google_calendar_url(@event),
+            method: :get,
+            target: "_blank",
+            class: "rounded-full text-xl py-2 px-3 bg-slate-100 dark:bg-slate-500 text-slate-500 dark:text-slate-100" do
+          %>
+            <div class="flex flex-row gap-2 w-full">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 md:size-8"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" /><text x="12" y="15" text-anchor="middle" dominant-baseline="central" font-size="9" stroke-width="1" fill="currentColor" font-family="Arial, sans-serif" font-weight="100">G</text></svg>
+              <span><%= t("events.attendances.calendar.google_cta") %></span>
+            </div>
+          <% end %>
+
+          <%= link_to  calendar_event_path(@event, format: :ics), class: "rounded-full text-xl py-2 px-3 bg-slate-100 dark:bg-slate-500 text-slate-500 dark:text-slate-100" do %>
+            <div class="flex flex-row gap-2 w-full">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 md:size-8"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" /><line x1="12" y1="12" x2="12" y2="16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" /><line x1="10" y1="14" x2="14" y2="14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" /></svg>
+              <span><%= t("events.attendances.calendar.ics_cta") %></span>
+            </div>
+          <% end %>
+        </div>
 
         <%= button_to t("events.attendances.cancel.cta"),
           event_attendance_path(@event, attendance),

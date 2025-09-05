@@ -155,7 +155,7 @@ en:
     attendances:
       calendar:
         google_cta: Add to Google Calendar
-        ics_cta: Add to another calendar (Outlook, Apple, etc...)
+        ics_cta: Add to another calendar
       create:
         cta: Attend this event
       cancel:

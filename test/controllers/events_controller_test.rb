@@ -86,4 +86,17 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :not_found
   end
+
+  test "#calendar should allow user to download an .ics file" do
+    sign_in users(:gathino)
+
+    get calendar_event_url(@event)
+    assert_response :success
+    assert_equal "text/calendar", @response.media_type
+    assert_includes @response.body, "BEGIN:VCALENDAR"
+    assert_includes @response.body, "SUMMARY:#{@event.name}"
+    assert_includes @response.body, "LOCATION:#{@event.location}"
+    assert_includes @response.body, "DTSTART:20240612T100000"
+    assert_includes @response.body, "DTEND:20240612T123000"
+  end
 end

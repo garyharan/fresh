@@ -18,6 +18,9 @@ Rails.application.routes.draw do
 
   resources :events do
     resources :attendances, only: %i[create update destroy]
+    member do
+      get :calendar
+    end
   end
 
   resources :settings, only: %i[index update]
