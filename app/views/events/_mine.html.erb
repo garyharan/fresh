@@ -1,10 +1,10 @@
-<h2 class="text-2xl font-normal ml-4"><%= t('events.my_events_long') %></h2>
+<h2 class="text-2xl font-normal m-4 mt-8"><%= t('events.my_events_long') %></h2>
 
 <div class="flex justify-between items-center">
   <div class="rounded w-full p-4">
     <% if Current.user.events.any? %>
       <ul class="m-2">
-        <% Current.user.events.each do |event| %>
+        <% Current.user.created_events.each do |event| %>
           <li><%= link_to event.name, edit_event_path(event), data: { turbo_frame: "_top" } %></li>
         <% end %>
       </ul>

@@ -1,15 +1,16 @@
-<h2 class="mt-4 text-2xl ml-4 font-normal"><%= t('events.nearby_events_long') %></h2>
+<h2 class="text-2xl font-normal m-4 mt-8"><%= t('events.nearby_events_long') %></h2>
 
 <div class="min-w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
   <% events.each do |event| %>
     <%= link_to event, id: dom_id(event), class: "p-4" do %>
       <div class="rounded">
 
-        <p class="font-bold"><%= event.name %></p>
-        <p><%= event.location %></p>
+        <p class="font-bold"><%= event.name %> @ <%= event.location %></p>
         <p><%= event.description %></p>
 
         <p><%= event_time_range(event) %></p>
+
+        <p><%= t('events.organized_by') %> <%= event.creator.profile.display_name %></p>
       </div>
     <% end %>
   <% end %>
