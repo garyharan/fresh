@@ -21,7 +21,7 @@ class ProfilesController < ApplicationController
       if create_profile!
         format.html do
           redirect_to profile_url(@profile),
-                      notice: "Profile was successfully created."
+                      notice: 'Profile was successfully created.'
         end
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -33,11 +33,11 @@ class ProfilesController < ApplicationController
     respond_to do |format|
       if update_profile!
         format.turbo_stream do
-          flash[:notice] = "Successfully updated."
-          recede_or_redirect_to profiles_path
+          flash[:notice] = 'Successfully updated.'
+          recede_or_redirect_to profile_path
         end
         format.html do
-          flash[:notice] = "Profile was successfully updated."
+          flash[:notice] = 'Profile was successfully updated.'
           recede_or_redirect_to settings_path(@profile)
         end
       else
@@ -51,7 +51,7 @@ class ProfilesController < ApplicationController
 
     respond_to do |format|
       format.html do
-        redirect_to profiles_url, notice: "Profile was successfully destroyed."
+        redirect_to profiles_url, notice: 'Profile was successfully destroyed.'
       end
     end
   end
@@ -63,7 +63,7 @@ class ProfilesController < ApplicationController
   end
 
   def new_profile
-    username = Current.user.email_address.split("@")[0]
+    username = Current.user.email_address.split('@')[0]
     @profile = Profile.new display_name: username
   end
 
@@ -81,25 +81,23 @@ class ProfilesController < ApplicationController
   end
 
   def profile_params
-    p =
-      params.require(:profile).permit(
-        :display_name,
-        :gender_id,
-        :relationship_style,
-        :only_show_my_relationship_style,
-        :show_orientation,
-        :born_on,
-        :height,
-        :drinking,
-        :smoking,
-        :children,
-        :maximum_distance,
-        :city,
-        :state,
-        :country,
-        :pot,
-        gender_ids: []
-      )
-    p
+    params.require(:profile).permit(
+      :display_name,
+      :gender_id,
+      :relationship_style,
+      :only_show_my_relationship_style,
+      :show_orientation,
+      :born_on,
+      :height,
+      :drinking,
+      :smoking,
+      :children,
+      :maximum_distance,
+      :city,
+      :state,
+      :country,
+      :pot,
+      gender_ids: []
+    )
   end
 end
