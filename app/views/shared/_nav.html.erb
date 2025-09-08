@@ -1,9 +1,16 @@
+<%
+active_tab_classes = "inline-block p-2 md:p-4 text-blue-600 rounded-t-lg border-b-2 border-blue-600 active dark:text-blue-500 dark:border-blue-500 whitespace-nowrap"
+inactive_tab_classes = "inline-block p-2 md:p-4 rounded-t-lg border-b-2 border-transparent hover:text-gray-100 hover:border-gray-300 dark:hover:text-gray-300 whitespace-nowrap"
+
+profiles_tab_active_pairs = [ %w(index profiles) ]
+events_tab_active_pairs = [ %w(index events), %w(show events), %w(new events), %w(edit events) ]
+profile_tab_active_pairs = [ %w(show profile), %w(edit profiles), %w(index images), %w(index cards), %w(show users) ]
+%>
+
 <% if controller_name == "rooms" && action_name == "show" %>
   <%= render "rooms/header" unless hotwire_native? %>
 <% else %>
   <%
-  active_tab_classes = "inline-block p-2 md:p-4 text-blue-600 rounded-t-lg border-b-2 border-blue-600 active dark:text-blue-500 dark:border-blue-500 whitespace-nowrap"
-  inactive_tab_classes = "inline-block p-2 md:p-4 rounded-t-lg border-b-2 border-transparent hover:text-gray-100 hover:border-gray-300 dark:hover:text-gray-300 whitespace-nowrap"
   %>
   <div class="text-xs sm:text-md md:text-lg font-medium text-center text-gray-300 w-full hotwire-native:hidden">
       <div class="flex flex-wrap justify-between items-center w-full">
@@ -14,28 +21,31 @@
             <% end %>
           </div>
 
-          <ul class="flex md:order-1">
-              <% if %w[profile profiles events images rooms].include? controller_name %>
-                  <li class="">
-                    <%= link_to profiles_path, class: (%w(index passed).include?(action_name) && controller_name == 'profiles' ? active_tab_classes : inactive_tab_classes) do %>
-                      <span title="<%= t('navigation.discover') %>" class="whitespace-nowrap"><svg class="w-6 h-6 inline" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9 9a2 2 0 114 0 2 2 0 01-4 0z"></path><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a4 4 0 00-3.446 6.032l-2.261 2.26a1 1 0 101.414 1.415l2.261-2.261A4 4 0 1011 5z" clip-rule="evenodd"></path></svg>
-                      <span class="hidden lg:inline"><%= t('navigation.discover') %></span></span>
-                    <% end %>
-                  </li>
-                  <li>
-                    <%= link_to events_path, class: (controller_name == 'events' ? active_tab_classes : inactive_tab_classes) do %>
-                      <span title="<%= t('navigation.events') %>" class="whitespace-nowrap">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 inline"> <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" /> </svg>
+          <ul class="flex">
+            <% if %w[profile profiles events rooms images cards users].include? controller_name %>
+                <li>
+                  <%= link_to profiles_path, class: (profiles_tab_active_pairs.include?([action_name, controller_name]) ? active_tab_classes : inactive_tab_classes) do %>
+                    <span title="<%= t('navigation.discover') %>" class="whitespace-nowrap"><svg class="w-6 h-6 inline" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9 9a2 2 0 114 0 2 2 0 01-4 0z"></path><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a4 4 0 00-3.446 6.032l-2.261 2.26a1 1 0 101.414 1.415l2.261-2.261A4 4 0 1011 5z" clip-rule="evenodd"></path></svg>
+                    <span class="hidden lg:inline"><%= t('navigation.discover') %></span></span>
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to events_path, class: (events_tab_active_pairs.include?([action_name, controller_name]) ? active_tab_classes : inactive_tab_classes) do %>
+                    <span title="<%= t('navigation.events') %>" class="whitespace-nowrap">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 inline"> <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" /> </svg>
+                    </span>
+                    <span class="hidden lg:inline"> <%= t('navigation.events') %></span>
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to "/profile", class: (profile_tab_active_pairs.include?([action_name, controller_name]) ? active_tab_classes : inactive_tab_classes) do %>
+                      <span title="<%= t('navigation.my_profile') %>" class="whitespace-nowrap">
+                        <svg class="w-6 h-6 inline" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path></svg>
                       </span>
-                      <span class="hidden lg:inline"> <%= t('navigation.events') %></span>
-                    <% end %>
-                  </li>
-                  <li class="">
-                    <%= link_to "/profile", class: (@profile == Current.user&.profile && action_name == 'show' ? active_tab_classes : inactive_tab_classes) do %>
-                      <span title="<%= t('navigation.my_profile') %>" class="whitespace-nowrap"><svg class="w-6 h-6 inline" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path></svg><span class="hidden lg:inline"> <%= t('navigation.my_profile') %></span>
-                    <% end %>
-                  </li>
-              <% end %>
+                      <span class="hidden lg:inline"><%= t('navigation.my_profile') %></span>
+                  <% end %>
+                </li>
+            <% end %>
           </ul>
 
           <% if authenticated? %>
