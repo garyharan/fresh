@@ -11,6 +11,15 @@
         <p><%= event_time_range(event) %></p>
 
         <p><%= t('events.organized_by') %> <%= event.creator.profile.display_name %></p>
+
+        <div class="auto-rows-auto gap-2">
+          <% event.attendances.each do |attendance| %>
+            <% if attendance.user.profile.images.first.photo.attached? %>
+              <%= image_tag attendance.user.profile.images.first.photo.variant(resize_to_fill: [24, 24]), alt: attendance.user.profile.display_name, class: "inline-block rounded-full size-6 mr-2 border border-slate-400" %>
+            <% end %>
+          <% end %>
+        </div>
+
       </div>
     <% end %>
   <% end %>
