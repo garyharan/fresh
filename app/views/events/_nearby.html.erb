@@ -2,7 +2,7 @@
 
 <div class="min-w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
   <% events.each do |event| %>
-    <%= link_to event, id: dom_id(event), class: "p-4" do %>
+    <%= link_to event, id: dom_id(event), class: "p-4", data: { turbo_frame: "_top" } do %>
       <div class="rounded">
 
         <p class="font-bold"><%= event.name %> @ <%= event.location %></p>
