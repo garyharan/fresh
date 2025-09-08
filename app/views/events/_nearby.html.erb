@@ -5,13 +5,11 @@
     <%= link_to event, id: dom_id(event), class: "p-4", data: { turbo_frame: "_top" } do %>
       <div class="rounded">
 
-        <p class="font-bold"><%= event.name %> @ <%= event.location %></p>
+        <p class="font-bold text-lg"><%= event.name %> @ <%= event.location %></p>
         <p class="text-sm"><%= event_time_range(event) %></p>
         <p class="text-xs"><%= t('events.organized_by') %> <%= event.creator.profile.display_name %></p>
 
         <p class="mt-2"><%= event.description %></p>
-
-
 
         <div class="auto-rows-auto gap-2 mt-2">
           <% event.attendances.each do |attendance| %>
