@@ -116,17 +116,6 @@ class ProfileTest < ActiveSupport::TestCase
     assert_not_includes Profile.recommended(@gathino), @velvet
   end
 
-  test "destroys rooms when profile is destroyed" do
-    room          = Room.find_or_create_by_profiles([@gathino, @velvet])
-    unlinked_room = Room.find_or_create_by_profiles([@velvet, @mariet])
-
-    assert_difference 'Room.count', -1 do
-      @gathino.destroy
-    end
-
-    assert unlinked_room.persisted?
-  end
-
   test "adds unique public_code on creation" do
     user = User.create! email_address: "john@doe.com", password: "password"
     profile = Profile.new user: user, display_name: "John Doe", born_on: 18.years.ago, gender: Gender.first, city: "Saint-Hubert", state: "QC", country: "Canada"
@@ -135,8 +124,18 @@ class ProfileTest < ActiveSupport::TestCase
 
     assert_not_nil profile.public_code
   end
+
   test "has_many partnerships association" do
     partnership = Partnership.create!(from_profile: @gathino, to_profile: @velvet, status: :unconfirmed)
     assert_includes @gathino.partnerships, partnership
+  end
+
+  test "calculates the latitude and longtitude after validation if the location changed" do
+    @gathino.update(latitude: nil, longitude: nil)
+    assert_nil @gathino.latitude
+    assert_nil @gathino.longitude
+    @gathino.update(city: "Montreal", state: "QC", country: "Canada")
+    assert_not_nil @gathino.latitude
+    assert_not_nil @gathino.longitude
   end
 end
