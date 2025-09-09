@@ -67,9 +67,6 @@ application.register("height", HeightController)
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
-import LocationController from "./location_controller"
-application.register("location", LocationController)
-
 import MessageController from "./message_controller"
 application.register("message", MessageController)
 
