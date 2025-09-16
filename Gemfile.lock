@@ -231,6 +231,8 @@ GEM
       libv8-node (~> 18.19.0.0)
     minitest (5.25.5)
     minitest-mock_expectations (1.2.0)
+    mocha (2.7.1)
+      ruby2_keywords (>= 0.0.5)
     msgpack (1.7.5)
     multi_json (1.15.0)
     multipart-post (2.4.1)
@@ -358,6 +360,7 @@ GEM
     ruby-vips (2.2.2)
       ffi (~> 1.12)
       logger
+    ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
     securerandom (0.4.1)
     selenium-webdriver (4.10.0)
@@ -443,6 +446,7 @@ DEPENDENCIES
   mailgun-ruby
   mini_racer
   minitest-mock_expectations
+  mocha
   nanoid
   noticed (~> 2.6)
   paranoia

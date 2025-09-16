@@ -95,6 +95,19 @@ Geocoder::Lookup::Test.add_stub(
   ]
 )
 
+Geocoder::Lookup::Test.add_stub(
+  'Bar Le Record', [
+    {
+      "coordinates": [45.543752878037225, -73.62017311633565],
+      "address": 'Bar Le Record, 17 Rue Saint-Joseph Est, Montréal, QC H2Y 1K1, Canada',
+      "city": 'Montreal',
+      "state": 'Quebec',
+      "country": 'Canada',
+      "country_code": 'CA'
+    }
+  ]
+)
+
 class ActiveSupport::TestCase
   # Run tests in parallel with specified workers
   parallelize(workers: :number_of_processors)

@@ -85,6 +85,7 @@ group :test do
 
   # allow assert_called
   gem 'minitest-mock_expectations'
+  gem 'mocha'
 end
 
 gem 'solid_queue', '~> 1.2'

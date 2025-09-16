@@ -13,11 +13,20 @@
     <%= form.text_area :description, class: "#{event.errors[:description].any? ? 'border-red-500 bg-red-50' : 'border-gray-200'} block shadow rounded-md border text-slate-800 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
-  <div class="my-5 flex flex-col">
+  <div class="my-5 flex flex-col" data-controller="address-completer">
     <%= form.label :location, class: "block mt-4 mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" do %>
       Location <%= error_messages_for(event, :location) %>
     <% end %>
-    <%= form.text_field :location, class: "#{event.errors[:location].any? ? 'border-red-500 bg-red-50' : 'border-gray-200'} block shadow rounded-md border text-slate-800 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.text_field :location, class: "#{event.errors[:location].any? ? 'border-red-500 bg-red-50' : 'border-gray-200'} block shadow rounded-md border text-slate-800 outline-none px-3 py-2 mt-2 w-full", data: {
+      address_completer_target: "input",
+      action: "input->address-completer#update"
+    } %>
+
+    <%= turbo_frame_tag "event_location", data: { address_completer_target: "frame", base_url: address_completion_url }  do %>
+    <% end %>
+
+    <%= form.hidden_field :latitude, data: { address_completer_target: "latitude" } %>
+    <%= form.hidden_field :longitude, data: { address_completer_target: "longitude" } %>
   </div>
 
   <div class="my-5 flex flex-col">

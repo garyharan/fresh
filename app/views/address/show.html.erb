@@ -1,0 +1,7 @@
+<%= turbo_frame_tag "event_location" do %>
+  <ul class="px-2 border border-blue-200">
+    <% @locations.each do |location| %>
+      <li data-full-address="<%= location.full_address %>" data-latitude="<%= location.latitude %>" data-longitude="<%= location.longitude %>" class="my-2"><%= location.name %>, <%= location.address %></li>
+    <% end %>
+  </ul>
+<% end %>

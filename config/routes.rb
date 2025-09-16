@@ -31,6 +31,8 @@ Rails.application.routes.draw do
     get :orientation
   end
 
+  get 'address_completion', to: 'address#show'
+
   get 'onboarding/one'
   get 'dashboard/index'
 

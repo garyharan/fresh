@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import AddressCompleterController from "./address_completer_controller"
+application.register("address-completer", AddressCompleterController)
+
 import Bridge__ButtonController from "./bridge/button_controller"
 application.register("bridge--button", Bridge__ButtonController)
 
