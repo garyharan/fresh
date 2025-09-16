@@ -4,7 +4,7 @@ class EventsController < ApplicationController
   allow_unauthenticated_access only: %i[show]
 
   def index
-    @events = Event.all
+    @events = Event.near([Current.user.profile.latitude, Current.user.profile.longitude])
   end
 
   def show
