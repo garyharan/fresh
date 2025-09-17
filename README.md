@@ -6,7 +6,7 @@ This is a sample Rails Hotwire application designed to support two mobile apps: 
 
 The app was originally intended to be a dating app, but App Store policies prevented its release and it was ultimately shelved. It includes features such as user authentication, profile management, real time chat, event creation and attendance, and real-time updates using Hotwire.
 
-It is open sourced to demonstrate how to build a modern Rails application with Hotwire, Tailwind CSS, and mobile integration using Hotwire Native but not intended for commercial use. For commercial use contact us about licensing.
+It is open sourced to demonstrate how to build a modern Rails application with Hotwire Native but not intended for commercial use. For commercial use contact us about licensing.
 
 ## Features
 
@@ -50,6 +50,8 @@ It is open sourced to demonstrate how to build a modern Rails application with H
 - **CSS Bundling** for asset pipeline
 
 ### Mobile Integration
+
+See [FreshAppIOS](https://github.com/garyharan/FreshAppIOS) and [FreshAppAndroid](https://github.com/garyharan/FreshAppAndroid) for the mobile app codebases.
 
 - **Hotwire Native bridge** for iOS and Android apps
 - **Device variant detection** for mobile-specific views
