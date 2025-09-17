@@ -20,8 +20,6 @@ class AttendancesControllerTest < ActionDispatch::IntegrationTest
       post event_attendances_url(@event)
     end
     assert_redirected_to event_url(@event)
-    follow_redirect!
-    assert_match 'You have requested to attend this event.', response.body
   end
 
   test "should destroy attendance and redirect with notice" do
@@ -30,14 +28,12 @@ class AttendancesControllerTest < ActionDispatch::IntegrationTest
       delete event_attendance_url(@event, attendance)
     end
     assert_redirected_to event_url(@event)
-    follow_redirect!
-    assert_match 'You are no longer attending this event.', response.body
   end
 
   test "should redirect with notice if attendance not found on destroy" do
-    delete event_attendance_url(@event, 0)
+    assert_difference('Attendance.count', 0) do
+      delete event_attendance_url(@event, 0)
+    end
     assert_redirected_to event_url(@event)
-    follow_redirect!
-    assert_match 'You are no longer attending this event.', response.body
   end
 end

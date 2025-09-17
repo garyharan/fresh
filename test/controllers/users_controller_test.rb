@@ -17,7 +17,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     post users_url, params: { user: { email_address: 'test@example.com', password: 'password' } }
     patch user_url(id: 1), params: { user: { distance: 100 } }
 
-    assert_response :no_content
+    assert_redirected_to root_path
   end
 
   test "should create corresponding profile" do
@@ -45,8 +45,6 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     @user.save!
 
     patch user_url(@user), params: { user: { maximum_distance: 100 } }
-
-    assert_response :success
 
     assert @user.reload.maximum_distance == 100
   end

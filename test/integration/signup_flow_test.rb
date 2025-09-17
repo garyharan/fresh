@@ -25,7 +25,7 @@ class SignupFlowTest < ActionDispatch::IntegrationTest
 
     assert_difference("User.count", -1) do
       click_link "Account"
-      click_button "Delete my account and all its data"
+      click_button "Delete my account and all associated data"
       assert_text "Your account and all associated data have been permanently deleted."
     end
   end
@@ -87,7 +87,7 @@ class SignupFlowTest < ActionDispatch::IntegrationTest
   end
 
   def fill_in_profile_section_4
-    click_link "Add the About Me card"
+    click_link "Add the About me card"
     select "My self-summary"
     fill_in "Write something...", with: "I am a test user."
     click_button "Create Card"
