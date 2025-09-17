@@ -1,6 +1,6 @@
 # ❤️ Fresh.Dating
 
-## Sample complex Rails Hotwire App with Mobile Integration
+## Sample Rails Hotwire App with Mobile Integration
 
 This is a sample Rails Hotwire application designed to support two mobile apps: one for Android and one for iOS. Both mobile apps are built using Hotwire Native, enabling a seamless, real-time user experience across platforms.
 
